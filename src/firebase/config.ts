@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyBJpNZAD6GjEKt1wNP8wvgNqiJGwddaW6w',
-    authDomain: 'bookmind-21ab5.firebaseapp.com',
-    projectId: 'bookmind-21ab5',
-    storageBucket: 'bookmind-21ab5.appspot.com',
-    messagingSenderId: '1032216671612',
-    appId: '1:1032216671612:web:127ff392973d5487dba0f9'
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 const app = initializeApp(firebaseConfig)
