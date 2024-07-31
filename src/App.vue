@@ -1,10 +1,14 @@
+<script setup lang="ts">
+    // Non è necessario importare nulla qui per il router
+</script>
+
 <template>
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-blue-600 mb-4">Benvenuto in BookMind</h1>
-        <p class="text-gray-700">La tua app di raccomandazione libri con IA.</p>
+    <div id="app">
+        <!-- Qui è dove il router renderizzerà i componenti -->
+        <router-view></router-view>
     </div>
 </template>
 
-<script setup lang="ts">
-// Il tuo codice TypeScript qui
-</script>
+<style>
+    /* Stili globali se necessario */
+</style>
