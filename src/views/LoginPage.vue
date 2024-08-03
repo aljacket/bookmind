@@ -2,10 +2,13 @@
     import { ref } from 'vue'
     import { useRouter } from 'vue-router'
     import { signInWithEmailAndPassword } from 'firebase/auth'
+
     import { initAuth } from '@/services/firebase/config'
+    import { useAuthStore } from '@/stores/auth'
 
     const auth = initAuth()
     const router = useRouter()
+    const authStore = useAuthStore()
 
     const email = ref('')
     const password = ref('')
@@ -13,8 +16,13 @@
 
     const login = async () => {
         try {
-            await signInWithEmailAndPassword(auth, email.value, password.value)
-            router.push('/home')
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                email.value,
+                password.value
+            )
+            authStore.setUser(userCredential.user)
+            router.push('/')
         } catch (error) {
             if (error instanceof Error) {
                 errorMessage.value = error.message
@@ -70,7 +78,9 @@
                 <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
                     Forgot Password?
                 </a>
-                <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Register </a>
+                <router-link to="/register" class="font-medium text-blue-600 hover:text-blue-500">
+                    Register
+                </router-link>
             </div>
         </div>
     </div>

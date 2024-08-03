@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
+import { getAuth, setPersistence, browserLocalPersistence } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -12,6 +12,16 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
 
-export const initAuth = () => getAuth(app)
+// Abilita la persistenza locale
+setPersistence(auth, browserLocalPersistence)
+    .then(() => {
+        console.log('Persistenza impostata su local')
+    })
+    .catch((error) => {
+        console.error("Errore nell'impostazione della persistenza:", error)
+    })
+
+export const initAuth = () => auth
 export const initFirestore = () => getFirestore(app)
