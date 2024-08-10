@@ -1,10 +1,14 @@
 <script setup lang="ts">
-    // Non è necessario importare nulla qui per il router
+    import Menu from './components/layout/Menu.vue'
+
+    import { useAuthStore } from '@/stores/auth'
+
+    const authStore = useAuthStore()
 </script>
 
 <template>
     <div id="app">
-        <!-- Qui è dove il router renderizzerà i componenti -->
+        <Menu v-if="authStore.isAuthenticated" />
         <router-view></router-view>
     </div>
 </template>

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import { initAuth } from '@/services/firebase/config'
 import { useAuthStore } from '@/stores/auth'
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,6 +20,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Register',
         component: () => import('@/views/RegisterPage.vue'),
         meta: { guestOnly: true }
+    },
+    {
+        path: '/preferences',
+        name: 'Preferences',
+        component: () => import('@/views/UserPreferences.vue'),
+        meta: { requiresAuth: true }
     }
     // Other routes can be added here
 ]
