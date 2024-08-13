@@ -1,21 +1,34 @@
 import openai from './config'
+import { incrementUsage } from './usageMonitor'
 
-export async function getSimpleBookRecommendation(genre: string): Promise<string> {
-    const prompt = `Suggerisci un libro del genere ${genre}. Fornisci solo il titolo e l'autore.`
+interface UserPreferences {
+    genre: string
+    bookLength: string
+    period: string
+    complexity: string
+    purpose: string
+}
+
+export async function getBookRecommendation(preferences: UserPreferences) {
+    const systemMessage =
+        'Sei un bibliotecario. Raccomanda libri in base alle preferenze date. Rispondi solo con titolo e autore.'
+    const prompt = `Libro: ${preferences.genre}, ${preferences.bookLength}, ${preferences.period}, ${preferences.complexity}, ${preferences.purpose}. Solo titolo e autore.`
 
     try {
-        const completion = await openai.chat.completions.create({
+        const response = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: [
-                { role: 'system', content: 'Sei un esperto di libri. Rispondi in modo conciso.' },
+                { role: 'system', content: systemMessage },
                 { role: 'user', content: prompt }
             ],
-            max_tokens: 50 // Ridotto per ottenere risposte più brevi
+            max_tokens: 50
         })
 
-        return completion.choices[0].message.content || 'Nessuna raccomandazione disponibile'
-    } catch (error) {
-        console.error('Errore nel ottenere raccomandazioni:', error)
-        return 'Si è verificato un errore. Riprova più tardi.'
+        incrementUsage(response.usage?.total_tokens || 0)
+
+        return response.choices[0].message.content?.trim() || 'Nessuna raccomandazione disponibile.'
+    } catch (error: any) {
+        console.error('Errore:', error.response?.data || error.message)
+        throw error
     }
 }

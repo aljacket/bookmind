@@ -3,18 +3,14 @@
         <h2 class="text-2xl font-bold mb-4">Le tue preferenze di lettura</h2>
         <form @submit.prevent="savePreferences" class="space-y-6">
             <div>
-                <label class="block mb-2">Generi preferiti:</label>
-                <div class="grid grid-cols-2 gap-2">
-                    <label v-for="genre in genres" :key="genre" class="flex items-center">
-                        <input
-                            type="checkbox"
-                            v-model="preferences.genres"
-                            :value="genre"
-                            class="mr-2"
-                        />
-                        {{ genre }}
-                    </label>
-                </div>
+                <label class="block mb-2">Genere preferito:</label>
+                <select v-model="preferences.genre" class="w-full p-2 border rounded">
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Non-Fiction">Non-Fiction</option>
+                </select>
             </div>
 
             <div>
@@ -27,18 +23,18 @@
             </div>
 
             <div>
-                <label class="block mb-2">Periodo storico di interesse:</label>
+                <label class="block mb-2">Periodo storico:</label>
                 <select v-model="preferences.period" class="w-full p-2 border rounded">
-                    <option value="now">Contemporaneo</option>
-                    <option value="last_century">XX secolo</option>
-                    <option value="before_century">Prima del XX secolo</option>
-                    <option value="all_time">Qualsiasi</option>
+                    <option value="contemporary">Contemporaneo</option>
+                    <option value="20th_century">XX secolo</option>
+                    <option value="pre_20th_century">Prima del XX secolo</option>
+                    <option value="any">Qualsiasi</option>
                 </select>
             </div>
 
             <div>
-                <label class="block mb-2">Livello di complessità:</label>
-                <select v-model="preferences.level" class="w-full p-2 border rounded">
+                <label class="block mb-2">Complessità:</label>
+                <select v-model="preferences.complexity" class="w-full p-2 border rounded">
                     <option value="easy">Lettura leggera</option>
                     <option value="medium">Moderatamente impegnativo</option>
                     <option value="hard">Molto impegnativo</option>
@@ -47,34 +43,12 @@
 
             <div>
                 <label class="block mb-2">Scopo della lettura:</label>
-                <select v-model="preferences.goal" class="w-full p-2 border rounded">
-                    <option value="commedy">Intrattenimento</option>
+                <select v-model="preferences.purpose" class="w-full p-2 border rounded">
+                    <option value="entertainment">Intrattenimento</option>
                     <option value="learning">Apprendimento</option>
-                    <option value="growing">Crescita personale</option>
+                    <option value="personal_growth">Crescita personale</option>
                     <option value="inspiration">Ispirazione</option>
                 </select>
-            </div>
-
-            <!-- Aggiungi qui gli altri campi per le domande rimanenti -->
-
-            <div>
-                <label class="block mb-2">Autori preferiti:</label>
-                <input
-                    v-model="preferences.favoriteAuthors"
-                    type="text"
-                    class="w-full p-2 border rounded"
-                    placeholder="Separa gli autori con una virgola"
-                />
-            </div>
-
-            <div>
-                <label class="block mb-2">Libri recenti apprezzati:</label>
-                <textarea
-                    v-model="preferences.recentBooks"
-                    class="w-full p-2 border rounded"
-                    rows="3"
-                    placeholder="Inserisci titoli di libri che hai apprezzato recentemente"
-                ></textarea>
             </div>
 
             <button
@@ -93,26 +67,12 @@
 
     const router = useRouter()
 
-    const genres = [
-        'Fantasy',
-        'Sci-Fi',
-        'Thriller',
-        'Romance',
-        'Horror',
-        'Biografie',
-        'Storia',
-        'Scienza',
-        'Self-Help'
-    ]
-
     const preferences = ref({
-        genres: [],
-        bookLength: '',
-        favoriteAuthors: '',
-        recentBooks: '',
-        period: '',
-        level: '',
-        goal: ''
+        genre: 'Fantasy',
+        bookLength: 'medium',
+        period: 'any',
+        complexity: 'medium',
+        purpose: 'entertainment'
     })
 
     onMounted(() => {
@@ -124,7 +84,6 @@
 
     const savePreferences = () => {
         localStorage.setItem('userPreferences', JSON.stringify(preferences.value))
-        // Per ora, torniamo semplicemente alla home
         router.push('/')
     }
 </script>
