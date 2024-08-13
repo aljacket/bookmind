@@ -3,19 +3,10 @@
         <h1 class="text-3xl font-bold mb-8">Welcome to BookMind</h1>
         <p v-if="authStore.user">Hello, {{ authStore.user.displayName || authStore.user.email }}</p>
 
-        <div v-if="hasPreferences" class="my-4 p-4 bg-white rounded shadow w-full max-w-md">
-            <h2 class="text-xl font-semibold mb-2">Le tue preferenze:</h2>
-            <p>Genere: {{ preferences.genre }}</p>
-            <p>Lunghezza: {{ preferences.bookLength }}</p>
-            <p>Periodo: {{ preferences.period }}</p>
-            <p>Complessità: {{ preferences.complexity }}</p>
-            <p>Scopo: {{ preferences.purpose }}</p>
-        </div>
-
         <button
             @click="getRecommendation"
             class="mb-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            :disabled="isLoading || !hasPreferences"
+            :disabled="isLoading"
         >
             {{ hasRecommendation ? 'Ottieni nuova raccomandazione' : 'Ottieni raccomandazione' }}
         </button>
@@ -34,46 +25,37 @@
         </div>
 
         <router-link to="/preferences" class="mt-4 text-blue-500 hover:text-blue-700">
-            {{ hasPreferences ? 'Aggiorna preferenze' : 'Imposta preferenze di lettura' }}
+            Aggiorna preferenze di lettura
         </router-link>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref } from 'vue'
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendation } from '@/services/openai/bookRecommendation'
+    import { getUserPreferences } from '@/services/indexedDB/userPreferences'
 
     const authStore = useAuthStore()
-    const preferences = ref({
-        genre: 'Fantasy',
-        bookLength: 'medium',
-        period: 'any',
-        complexity: 'medium',
-        purpose: 'entertainment'
-    })
-    const hasPreferences = ref(false)
     const recommendation = ref('')
     const isLoading = ref(false)
     const error = ref('')
     const hasRecommendation = ref(false)
 
-    onMounted(() => {
-        const savedPreferences = localStorage.getItem('userPreferences')
-        if (savedPreferences) {
-            preferences.value = JSON.parse(savedPreferences)
-            hasPreferences.value = true
-        }
-    })
-
     const getRecommendation = async () => {
-        if (isLoading.value || !hasPreferences.value) return
+        if (isLoading.value || !authStore.user) return
 
         isLoading.value = true
         error.value = ''
         try {
-            recommendation.value = await getBookRecommendation(preferences.value)
-            hasRecommendation.value = true
+            const preferences = await getUserPreferences(authStore.user.uid)
+            if (preferences) {
+                recommendation.value = await getBookRecommendation(preferences)
+                hasRecommendation.value = true
+            } else {
+                error.value =
+                    'Per favore, imposta le tue preferenze prima di ottenere una raccomandazione.'
+            }
         } catch (err) {
             error.value = 'Si è verificato un errore. Riprova più tardi.'
             console.error(err)

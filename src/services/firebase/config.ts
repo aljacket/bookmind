@@ -13,6 +13,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
+const db = getFirestore(app)
 
 // Abilita la persistenza locale
 setPersistence(auth, browserLocalPersistence)
@@ -23,5 +24,6 @@ setPersistence(auth, browserLocalPersistence)
         console.error("Errore nell'impostazione della persistenza:", error)
     })
 
+export { auth, db }
 export const initAuth = () => auth
-export const initFirestore = () => getFirestore(app)
+export const initFirestore = () => db

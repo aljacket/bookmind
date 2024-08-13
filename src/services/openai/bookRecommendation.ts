@@ -1,18 +1,13 @@
 import openai from './config'
 import { incrementUsage } from './usageMonitor'
-
-interface UserPreferences {
-    genre: string
-    bookLength: string
-    period: string
-    complexity: string
-    purpose: string
-}
+import type { UserPreferences } from '@/types/userPreferences'
 
 export async function getBookRecommendation(preferences: UserPreferences) {
-    const systemMessage =
-        'Sei un bibliotecario. Raccomanda libri in base alle preferenze date. Rispondi solo con titolo e autore.'
-    const prompt = `Libro: ${preferences.genre}, ${preferences.bookLength}, ${preferences.period}, ${preferences.complexity}, ${preferences.purpose}. Solo titolo e autore.`
+    const systemMessage = 'Sei un bibliotecario. Raccomanda libri in base alle preferenze date.'
+    const learningGoal = preferences.learningGoal
+        ? `Obiettivo di apprendimento: ${preferences.learningGoal}.`
+        : ''
+    const prompt = `Libro: ${preferences.genre}, ${preferences.bookLength}, ${preferences.period}, ${preferences.complexity}, ${preferences.purpose}. ${learningGoal} Solo titolo e autore.`
 
     try {
         const response = await openai.chat.completions.create({

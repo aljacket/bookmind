@@ -10,6 +10,14 @@
                     <option value="Romance">Romance</option>
                     <option value="Mystery">Mystery</option>
                     <option value="Non-Fiction">Non-Fiction</option>
+                    <option value="Self-Help">Self-Help</option>
+                    <option value="Business">Business</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Language Learning">Language Learning</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Travel">Travel</option>
                 </select>
             </div>
 
@@ -48,8 +56,27 @@
                     <option value="learning">Apprendimento</option>
                     <option value="personal_growth">Crescita personale</option>
                     <option value="inspiration">Ispirazione</option>
+                    <option value="skill_development">Sviluppo di competenze</option>
                 </select>
             </div>
+
+            <div
+                v-if="
+                    preferences.purpose === 'learning' ||
+                    preferences.purpose === 'skill_development'
+                "
+            >
+                <label class="block mb-2">Cosa vuoi imparare? (max 20 caratteri)</label>
+                <input
+                    v-model="preferences.learningGoal"
+                    type="text"
+                    maxlength="20"
+                    class="w-full p-2 border rounded"
+                    placeholder="Es: Programmare in Python"
+                />
+            </div>
+
+            <div v-if="error" class="text-red-500 mt-4">{{ error }}</div>
 
             <button
                 type="submit"
@@ -64,26 +91,48 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
     import { useRouter } from 'vue-router'
+    import { saveUserPreferences, getUserPreferences } from '@/services/indexedDB/userPreferences'
+    import { useAuthStore } from '@/stores/auth'
+    import type { UserPreferences } from '@/types/userPreferences'
 
     const router = useRouter()
+    const authStore = useAuthStore()
+    const error = ref('')
 
-    const preferences = ref({
+    const preferences = ref<UserPreferences>({
         genre: 'Fantasy',
         bookLength: 'medium',
         period: 'any',
         complexity: 'medium',
-        purpose: 'entertainment'
+        purpose: 'entertainment',
+        learningGoal: ''
     })
 
-    onMounted(() => {
-        const savedPreferences = localStorage.getItem('userPreferences')
-        if (savedPreferences) {
-            preferences.value = JSON.parse(savedPreferences)
+    onMounted(async () => {
+        if (authStore.user) {
+            try {
+                const savedPreferences = await getUserPreferences(authStore.user.uid)
+                if (savedPreferences) {
+                    preferences.value = savedPreferences
+                }
+            } catch (err) {
+                console.error('Error loading preferences:', err)
+                error.value = 'Errore nel caricamento delle preferenze'
+            }
         }
     })
 
-    const savePreferences = () => {
-        localStorage.setItem('userPreferences', JSON.stringify(preferences.value))
-        router.push('/')
+    const savePreferences = async () => {
+        if (authStore.user) {
+            try {
+                await saveUserPreferences(authStore.user.uid, preferences.value)
+                router.push('/')
+            } catch (err) {
+                console.error('Error saving preferences:', err)
+                error.value = 'Errore nel salvataggio delle preferenze'
+            }
+        } else {
+            error.value = 'Utente non autenticato'
+        }
     }
 </script>
