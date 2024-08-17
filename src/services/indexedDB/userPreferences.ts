@@ -56,3 +56,35 @@ export async function getUserPreferences(userId: string): Promise<UserPreference
         }
     })
 }
+
+const LAST_RECOMMENDATION_KEY = 'lastRecommendation'
+
+export async function saveLastRecommendation(
+    userId: string,
+    recommendation: string
+): Promise<void> {
+    const db = await openDB()
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORE_NAME, 'readwrite')
+        const store = transaction.objectStore(STORE_NAME)
+        const request = store.put(recommendation, `${userId}_${LAST_RECOMMENDATION_KEY}`)
+
+        request.onerror = () => reject('Error saving last recommendation')
+        request.onsuccess = () => resolve()
+    })
+}
+
+export async function getLastRecommendation(userId: string): Promise<string | null> {
+    const db = await openDB()
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORE_NAME, 'readonly')
+        const store = transaction.objectStore(STORE_NAME)
+        const request = store.get(`${userId}_${LAST_RECOMMENDATION_KEY}`)
+
+        request.onerror = () => reject('Error getting last recommendation')
+        request.onsuccess = () => {
+            const result = request.result
+            resolve(result ? result : null)
+        }
+    })
+}

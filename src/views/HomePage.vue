@@ -31,16 +31,34 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendation } from '@/services/openai/bookRecommendation'
-    import { getUserPreferences } from '@/services/indexedDB/userPreferences'
+    import {
+        getUserPreferences,
+        saveLastRecommendation,
+        getLastRecommendation
+    } from '@/services/indexedDB/userPreferences'
 
     const authStore = useAuthStore()
     const recommendation = ref('')
     const isLoading = ref(false)
     const error = ref('')
     const hasRecommendation = ref(false)
+
+    onMounted(async () => {
+        if (authStore.user) {
+            try {
+                const lastRecommendation = await getLastRecommendation(authStore.user.uid)
+                if (lastRecommendation) {
+                    recommendation.value = lastRecommendation
+                    hasRecommendation.value = true
+                }
+            } catch (err) {
+                console.error('Error loading last recommendation:', err)
+            }
+        }
+    })
 
     const getRecommendation = async () => {
         if (isLoading.value || !authStore.user) return
@@ -50,8 +68,10 @@
         try {
             const preferences = await getUserPreferences(authStore.user.uid)
             if (preferences) {
-                recommendation.value = await getBookRecommendation(preferences)
+                const newRecommendation = await getBookRecommendation(preferences)
+                recommendation.value = newRecommendation
                 hasRecommendation.value = true
+                await saveLastRecommendation(authStore.user.uid, newRecommendation)
             } else {
                 error.value =
                     'Per favore, imposta le tue preferenze prima di ottenere una raccomandazione.'
