@@ -15,7 +15,12 @@
                 v-if="isOpen"
                 class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
             >
-                <button @click="logout" class="text-xl mb-4 hover:text-blue-500">Logout</button>
+                <button
+                    @click="logout"
+                    class="text-xl mb-4 hover:text-blue-500 bg-red-100 px-4 py-2 rounded-md transition-colors duration-300 hover:bg-red-200"
+                >
+                    Logout
+                </button>
                 <!-- Add more menu items here -->
             </div>
         </Transition>
