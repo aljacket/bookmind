@@ -3,11 +3,9 @@ import { incrementUsage } from './usageMonitor'
 import type { UserPreferences } from '@/types/userPreferences'
 
 export async function getBookRecommendation(preferences: UserPreferences) {
-    const systemMessage = 'Sei un bibliotecario. Raccomanda libri in base alle preferenze date.'
-    const learningGoal = preferences.learningGoal
-        ? `Obiettivo di apprendimento: ${preferences.learningGoal}.`
-        : ''
-    const prompt = `Libro: ${preferences.genre}, ${preferences.bookLength}, ${preferences.period}, ${preferences.complexity}, ${preferences.purpose}. ${learningGoal} Solo titolo e autore.`
+    const systemMessage =
+        'Sei un bibliotecario esperto. Raccomanda libri in base alle preferenze fornite.'
+    const prompt = `Genera una raccomandazione di libro basata su: Genere: ${preferences.genre}, Lunghezza: ${preferences.bookLength}, Periodo: ${preferences.period}, Complessità: ${preferences.complexity}, Scopo: ${preferences.purpose}${preferences.learningGoal ? `, Obiettivo di apprendimento: ${preferences.learningGoal}` : ''}. Rispondi SOLO con un oggetto JSON contenente "title", "author", e "isbn" (usa ISBN-13). Niente altro testo.`
 
     try {
         const response = await openai.chat.completions.create({
@@ -16,12 +14,34 @@ export async function getBookRecommendation(preferences: UserPreferences) {
                 { role: 'system', content: systemMessage },
                 { role: 'user', content: prompt }
             ],
-            max_tokens: 50
+            temperature: 0.7,
+            max_tokens: 150
         })
 
-        incrementUsage(response.usage?.total_tokens || 0)
+        const content = response.choices[0].message.content?.trim() || '{}'
 
-        return response.choices[0].message.content?.trim() || 'Nessuna raccomandazione disponibile.'
+        // Rimuovi i backticks e l'indicatore "json" se presenti
+        const cleanedContent = content.replace(/```json\n?|\n?```/g, '').trim()
+
+        // Parse JSON response
+        let recommendation
+        try {
+            recommendation = JSON.parse(cleanedContent)
+        } catch (parseError) {
+            console.error('Errore nel parsing JSON:', parseError)
+            throw new Error("Formato di risposta non valido dall'API")
+        }
+
+        // Monitora l'uso dei token
+        const tokensUsed = response.usage?.total_tokens || 0
+        incrementUsage(tokensUsed)
+
+        return {
+            title: recommendation.title || '',
+            author: recommendation.author || '',
+            isbn: recommendation.isbn || '',
+            fullRecommendation: JSON.stringify(recommendation, null, 2)
+        }
     } catch (error: any) {
         console.error('Errore:', error.response?.data || error.message)
         throw error

@@ -61,7 +61,12 @@ const LAST_RECOMMENDATION_KEY = 'lastRecommendation'
 
 export async function saveLastRecommendation(
     userId: string,
-    recommendation: string
+    recommendation: {
+        title: string
+        author: string
+        isbn: string
+        fullRecommendation: string
+    }
 ): Promise<void> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
@@ -74,7 +79,12 @@ export async function saveLastRecommendation(
     })
 }
 
-export async function getLastRecommendation(userId: string): Promise<string | null> {
+export async function getLastRecommendation(userId: string): Promise<{
+    title: string
+    author: string
+    isbn: string
+    fullRecommendation: string
+} | null> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
         const transaction = db.transaction(STORE_NAME, 'readonly')

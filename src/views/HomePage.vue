@@ -17,7 +17,16 @@
 
         <div v-if="recommendation" class="my-4 p-4 bg-white rounded shadow w-full max-w-md">
             <h2 class="text-xl font-semibold mb-2">Libro raccomandato:</h2>
-            <p>{{ recommendation }}</p>
+            <p><strong>Titolo:</strong> {{ recommendation.title }}</p>
+            <p><strong>Autore:</strong> {{ recommendation.author }}</p>
+            <p><strong>ISBN:</strong> {{ recommendation.isbn || 'Non disponibile' }}</p>
+            <a
+                :href="amazonLink"
+                target="_blank"
+                class="text-blue-500 hover:underline mt-2 inline-block"
+            >
+                Acquista su Amazon
+            </a>
         </div>
 
         <div v-if="error" class="mt-4 p-4 bg-red-100 text-red-700 rounded w-full max-w-md">
@@ -31,9 +40,10 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, computed } from 'vue'
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendation } from '@/services/openai/bookRecommendation'
+    import { generateAmazonLink } from '@/utils/isbnUtils'
     import {
         getUserPreferences,
         saveLastRecommendation,
@@ -41,17 +51,36 @@
     } from '@/services/indexedDB/userPreferences'
 
     const authStore = useAuthStore()
-    const recommendation = ref('')
+    const recommendation = ref<null | {
+        title: string
+        author: string
+        isbn: string
+        fullRecommendation: string
+    }>(null)
     const isLoading = ref(false)
     const error = ref('')
     const hasRecommendation = ref(false)
+
+    const amazonLink = computed(() => {
+        console.log('reccomandation: ', recommendation.value)
+        // console.log('reccomandation ISBN: ', recommendation.value.isbn)
+        if (recommendation.value && recommendation.value.isbn) {
+            return generateAmazonLink(recommendation.value.isbn)
+        }
+        return ''
+    })
 
     onMounted(async () => {
         if (authStore.user) {
             try {
                 const lastRecommendation = await getLastRecommendation(authStore.user.uid)
                 if (lastRecommendation) {
-                    recommendation.value = lastRecommendation
+                    recommendation.value = {
+                        title: lastRecommendation.title,
+                        author: lastRecommendation.author,
+                        isbn: lastRecommendation.isbn,
+                        fullRecommendation: lastRecommendation.fullRecommendation
+                    }
                     hasRecommendation.value = true
                 }
             } catch (err) {
