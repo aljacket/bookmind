@@ -1,3 +1,5 @@
+// src/services/openai/bookRecommendation.ts
+
 import openai from './config'
 import { incrementUsage } from './usageMonitor'
 import type { UserPreferences } from '@/types/userPreferences'
@@ -5,7 +7,7 @@ import type { UserPreferences } from '@/types/userPreferences'
 export async function getBookRecommendation(preferences: UserPreferences) {
     const systemMessage =
         'Sei un bibliotecario esperto. Raccomanda libri in base alle preferenze fornite.'
-    const prompt = `Genera una raccomandazione di libro basata su: Genere: ${preferences.genre}, Lunghezza: ${preferences.bookLength}, Periodo: ${preferences.period}, Complessità: ${preferences.complexity}, Scopo: ${preferences.purpose}${preferences.learningGoal ? `, Obiettivo di apprendimento: ${preferences.learningGoal}` : ''}. Rispondi SOLO con un oggetto JSON contenente "title", "author", e "isbn" (usa ISBN-13). Niente altro testo.`
+    const prompt = `Genera una raccomandazione di libro basata su: Genere: ${preferences.genre}, Lunghezza: ${preferences.bookLength}, Periodo: ${preferences.period}, Complessità: ${preferences.complexity}, Scopo: ${preferences.purpose}${preferences.learningGoal ? `, Obiettivo di apprendimento: ${preferences.learningGoal}` : ''}. Rispondi SOLO con un oggetto JSON contenente "title" e "author". Niente altro testo.`
 
     try {
         const response = await openai.chat.completions.create({
@@ -15,7 +17,7 @@ export async function getBookRecommendation(preferences: UserPreferences) {
                 { role: 'user', content: prompt }
             ],
             temperature: 0.7,
-            max_tokens: 150
+            max_tokens: 100
         })
 
         const content = response.choices[0].message.content?.trim() || '{}'
@@ -39,7 +41,6 @@ export async function getBookRecommendation(preferences: UserPreferences) {
         return {
             title: recommendation.title || '',
             author: recommendation.author || '',
-            isbn: recommendation.isbn || '',
             fullRecommendation: JSON.stringify(recommendation, null, 2)
         }
     } catch (error: any) {

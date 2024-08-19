@@ -64,15 +64,21 @@ export async function saveLastRecommendation(
     recommendation: {
         title: string
         author: string
-        isbn: string
         fullRecommendation: string
+        isbn10?: string
+        isbn13?: string
+        pageCount?: number
+        publishedDate?: string
+        thumbnailUrl?: string
+        amazonLink?: string
     }
 ): Promise<void> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
         const transaction = db.transaction(STORE_NAME, 'readwrite')
         const store = transaction.objectStore(STORE_NAME)
-        const request = store.put(recommendation, `${userId}_${LAST_RECOMMENDATION_KEY}`)
+        const serializedRecommendation = JSON.parse(JSON.stringify(recommendation))
+        const request = store.put(serializedRecommendation, `${userId}_${LAST_RECOMMENDATION_KEY}`)
 
         request.onerror = () => reject('Error saving last recommendation')
         request.onsuccess = () => resolve()
@@ -82,8 +88,13 @@ export async function saveLastRecommendation(
 export async function getLastRecommendation(userId: string): Promise<{
     title: string
     author: string
-    isbn: string
     fullRecommendation: string
+    isbn10?: string
+    isbn13?: string
+    pageCount?: number
+    publishedDate?: string
+    thumbnailUrl?: string
+    amazonLink?: string
 } | null> {
     const db = await openDB()
     return new Promise((resolve, reject) => {

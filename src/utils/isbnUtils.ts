@@ -21,6 +21,7 @@ export function generateAmazonLink(isbn: string | undefined): string {
         console.warn('ISBN non disponibile per generare il link Amazon')
         return ''
     }
-    const isbn10 = isbn.length > 10 ? convertISBN13ToISBN10(isbn) : isbn
-    return `https://www.amazon.com/dp/${isbn10}/`
+    // const isbn10 = isbn.length > 10 ? convertISBN13ToISBN10(isbn) : isbn
+    // return `https://www.amazon.com/dp/${isbn10}/`
+    return `https://www.amazon.com/s?k=${isbn}`
 }

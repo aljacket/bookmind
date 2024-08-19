@@ -19,9 +19,23 @@
             <h2 class="text-xl font-semibold mb-2">Libro raccomandato:</h2>
             <p><strong>Titolo:</strong> {{ recommendation.title }}</p>
             <p><strong>Autore:</strong> {{ recommendation.author }}</p>
-            <p><strong>ISBN:</strong> {{ recommendation.isbn || 'Non disponibile' }}</p>
+            <p v-if="recommendation.isbn13">
+                <strong>ISBN-13:</strong> {{ recommendation.isbn13 }}
+            </p>
+            <p v-if="recommendation.pageCount">
+                <strong>Pagine:</strong> {{ recommendation.pageCount }}
+            </p>
+            <p v-if="recommendation.publishedDate">
+                <strong>Data di pubblicazione:</strong> {{ recommendation.publishedDate }}
+            </p>
+            <img
+                v-if="recommendation.thumbnailUrl"
+                :src="recommendation.thumbnailUrl"
+                alt="Copertina del libro"
+                class="mt-2"
+            />
             <a
-                :href="amazonLink"
+                :href="recommendation.amazonLink"
                 target="_blank"
                 class="text-blue-500 hover:underline mt-2 inline-block"
             >
@@ -44,6 +58,7 @@
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendation } from '@/services/openai/bookRecommendation'
     import { generateAmazonLink } from '@/utils/isbnUtils'
+    import { getBookDetails } from '@/services/googleBooks/googleBooksApi'
     import {
         getUserPreferences,
         saveLastRecommendation,
@@ -54,21 +69,17 @@
     const recommendation = ref<null | {
         title: string
         author: string
-        isbn: string
         fullRecommendation: string
+        isbn10?: string
+        isbn13?: string
+        pageCount?: number
+        publishedDate?: string
+        thumbnailUrl?: string
+        amazonLink?: string
     }>(null)
     const isLoading = ref(false)
     const error = ref('')
     const hasRecommendation = ref(false)
-
-    const amazonLink = computed(() => {
-        console.log('reccomandation: ', recommendation.value)
-        // console.log('reccomandation ISBN: ', recommendation.value.isbn)
-        if (recommendation.value && recommendation.value.isbn) {
-            return generateAmazonLink(recommendation.value.isbn)
-        }
-        return ''
-    })
 
     onMounted(async () => {
         if (authStore.user) {
@@ -78,8 +89,11 @@
                     recommendation.value = {
                         title: lastRecommendation.title,
                         author: lastRecommendation.author,
-                        isbn: lastRecommendation.isbn,
-                        fullRecommendation: lastRecommendation.fullRecommendation
+                        fullRecommendation: lastRecommendation.fullRecommendation,
+                        pageCount: lastRecommendation.pageCount,
+                        publishedDate: lastRecommendation.publishedDate,
+                        thumbnailUrl: lastRecommendation.thumbnailUrl,
+                        amazonLink: lastRecommendation.amazonLink
                     }
                     hasRecommendation.value = true
                 }
@@ -98,9 +112,33 @@
             const preferences = await getUserPreferences(authStore.user.uid)
             if (preferences) {
                 const newRecommendation = await getBookRecommendation(preferences)
-                recommendation.value = newRecommendation
+                const bookDetails = await getBookDetails(
+                    newRecommendation.title,
+                    newRecommendation.author
+                )
+
+                recommendation.value = {
+                    ...newRecommendation,
+                    ...bookDetails,
+                    amazonLink: bookDetails?.isbn10 ? generateAmazonLink(bookDetails.isbn13) : ''
+                }
+
                 hasRecommendation.value = true
-                await saveLastRecommendation(authStore.user.uid, newRecommendation)
+
+                // Crea un oggetto serializzabile
+                const serializedRecommendation = {
+                    title: recommendation.value.title,
+                    author: recommendation.value.author,
+                    fullRecommendation: recommendation.value.fullRecommendation,
+                    isbn10: recommendation.value.isbn10,
+                    isbn13: recommendation.value.isbn13,
+                    pageCount: recommendation.value.pageCount,
+                    publishedDate: recommendation.value.publishedDate,
+                    thumbnailUrl: recommendation.value.thumbnailUrl,
+                    amazonLink: recommendation.value.amazonLink
+                }
+
+                await saveLastRecommendation(authStore.user.uid, serializedRecommendation)
             } else {
                 error.value =
                     'Per favore, imposta le tue preferenze prima di ottenere una raccomandazione.'
