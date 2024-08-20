@@ -7,6 +7,19 @@ export interface UserPreferences {
     learningGoal?: string // Opzionale
 }
 
+export interface BookRecommendation {
+    title: string
+    author: string
+    fullRecommendation: string
+    isbn10?: string
+    isbn13?: string
+    pageCount?: number
+    publishedDate?: string
+    thumbnailUrl?: string
+    amazonLink?: string
+    iberLibroLink?: string
+}
+
 export function isValidUserPreferences(obj: any): obj is UserPreferences {
     return (
         typeof obj === 'object' &&

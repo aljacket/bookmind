@@ -34,13 +34,23 @@
                 alt="Copertina del libro"
                 class="mt-2"
             />
-            <a
-                :href="recommendation.amazonLink"
-                target="_blank"
-                class="text-blue-500 hover:underline mt-2 inline-block"
-            >
-                Acquista su Amazon
-            </a>
+            <div class="mt-4 space-y-2">
+                <a
+                    :href="recommendation.amazonLink"
+                    target="_blank"
+                    class="text-blue-500 hover:underline block"
+                >
+                    Acquista su Amazon
+                </a>
+                <a
+                    v-if="iberLibroLink"
+                    :href="iberLibroLink"
+                    target="_blank"
+                    class="text-blue-500 hover:underline block"
+                >
+                    Acquista su IberLibro
+                </a>
+            </div>
         </div>
 
         <div v-if="error" class="mt-4 p-4 bg-red-100 text-red-700 rounded w-full max-w-md">
@@ -64,37 +74,27 @@
         saveLastRecommendation,
         getLastRecommendation
     } from '@/services/indexedDB/userPreferences'
+    import type { BookRecommendation } from '@/types/userPreferences'
 
     const authStore = useAuthStore()
-    const recommendation = ref<null | {
-        title: string
-        author: string
-        fullRecommendation: string
-        isbn10?: string
-        isbn13?: string
-        pageCount?: number
-        publishedDate?: string
-        thumbnailUrl?: string
-        amazonLink?: string
-    }>(null)
+    const recommendation = ref<BookRecommendation | null>(null)
     const isLoading = ref(false)
     const error = ref('')
     const hasRecommendation = ref(false)
+
+    const iberLibroLink = computed(() => {
+        if (recommendation.value?.isbn13) {
+            return `https://www.iberlibro.com/servlet/SearchResults?kn=${recommendation.value.isbn13}`
+        }
+        return ''
+    })
 
     onMounted(async () => {
         if (authStore.user) {
             try {
                 const lastRecommendation = await getLastRecommendation(authStore.user.uid)
                 if (lastRecommendation) {
-                    recommendation.value = {
-                        title: lastRecommendation.title,
-                        author: lastRecommendation.author,
-                        fullRecommendation: lastRecommendation.fullRecommendation,
-                        pageCount: lastRecommendation.pageCount,
-                        publishedDate: lastRecommendation.publishedDate,
-                        thumbnailUrl: lastRecommendation.thumbnailUrl,
-                        amazonLink: lastRecommendation.amazonLink
-                    }
+                    recommendation.value = lastRecommendation
                     hasRecommendation.value = true
                 }
             } catch (err) {
@@ -120,25 +120,16 @@
                 recommendation.value = {
                     ...newRecommendation,
                     ...bookDetails,
-                    amazonLink: bookDetails?.isbn10 ? generateAmazonLink(bookDetails.isbn13) : ''
+                    amazonLink: bookDetails?.isbn13 ? generateAmazonLink(bookDetails.isbn13) : '',
+                    iberLibroLink: bookDetails?.isbn13
+                        ? `https://www.iberlibro.com/servlet/SearchResults?kn=${bookDetails.isbn13}`
+                        : ''
                 }
 
                 hasRecommendation.value = true
 
-                // Crea un oggetto serializzabile
-                const serializedRecommendation = {
-                    title: recommendation.value.title,
-                    author: recommendation.value.author,
-                    fullRecommendation: recommendation.value.fullRecommendation,
-                    isbn10: recommendation.value.isbn10,
-                    isbn13: recommendation.value.isbn13,
-                    pageCount: recommendation.value.pageCount,
-                    publishedDate: recommendation.value.publishedDate,
-                    thumbnailUrl: recommendation.value.thumbnailUrl,
-                    amazonLink: recommendation.value.amazonLink
-                }
-
-                await saveLastRecommendation(authStore.user.uid, serializedRecommendation)
+                // Save the recommendation including the IberLibro link
+                await saveLastRecommendation(authStore.user.uid, recommendation.value)
             } else {
                 error.value =
                     'Per favore, imposta le tue preferenze prima di ottenere una raccomandazione.'

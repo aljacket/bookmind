@@ -1,5 +1,8 @@
+// src/services/indexedDB/userPreferences.ts
+
 import type { UserPreferences } from '@/types/userPreferences'
 import { isValidUserPreferences } from '@/types/userPreferences'
+import type { BookRecommendation } from '@/types/userPreferences'
 
 const DB_NAME = 'BookMindDB'
 const STORE_NAME = 'userPreferences'
@@ -61,17 +64,7 @@ const LAST_RECOMMENDATION_KEY = 'lastRecommendation'
 
 export async function saveLastRecommendation(
     userId: string,
-    recommendation: {
-        title: string
-        author: string
-        fullRecommendation: string
-        isbn10?: string
-        isbn13?: string
-        pageCount?: number
-        publishedDate?: string
-        thumbnailUrl?: string
-        amazonLink?: string
-    }
+    recommendation: BookRecommendation
 ): Promise<void> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
