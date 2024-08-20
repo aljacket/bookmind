@@ -17,6 +17,7 @@ interface GoogleBooksResponse {
             imageLinks?: {
                 thumbnail?: string
             }
+            infoLink?: string
         }
     }>
 }
@@ -40,7 +41,8 @@ export async function getBookDetails(title: string, author: string) {
                 isbn13: isbn13 || '',
                 pageCount: book.pageCount,
                 publishedDate: book.publishedDate,
-                thumbnailUrl: book.imageLinks?.thumbnail
+                thumbnailUrl: book.imageLinks?.thumbnail,
+                googleBooksLink: book.infoLink || ''
             }
         }
 

@@ -50,6 +50,14 @@
                 >
                     Acquista su IberLibro
                 </a>
+                <a
+                    v-if="recommendation.googleBooksLink"
+                    :href="recommendation.googleBooksLink"
+                    target="_blank"
+                    class="text-blue-500 hover:underline block"
+                >
+                    Acquista su Google Books
+                </a>
             </div>
         </div>
 
@@ -123,7 +131,8 @@
                     amazonLink: bookDetails?.isbn13 ? generateAmazonLink(bookDetails.isbn13) : '',
                     iberLibroLink: bookDetails?.isbn13
                         ? `https://www.iberlibro.com/servlet/SearchResults?kn=${bookDetails.isbn13}`
-                        : ''
+                        : '',
+                    googleBooksLink: bookDetails?.googleBooksLink || ''
                 }
 
                 hasRecommendation.value = true

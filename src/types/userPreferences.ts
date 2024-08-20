@@ -18,6 +18,7 @@ export interface BookRecommendation {
     thumbnailUrl?: string
     amazonLink?: string
     iberLibroLink?: string
+    googleBooksLink?: string
 }
 
 export function isValidUserPreferences(obj: any): obj is UserPreferences {
