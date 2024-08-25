@@ -6,7 +6,8 @@
         "src/**/*",
         "src/**/*.vue",
         "src/**/*.ts",
-        "src/services/googleBooks/googleBooksApi.ts"
+        "src/services/**/*",
+        "src/components/**/*"
     ],
     "compilerOptions": {
         "composite": true,

@@ -10,7 +10,7 @@ export interface UserPreferences {
 export interface BookRecommendation {
     title: string
     author: string
-    fullRecommendation: string
+    fullRecommendation?: string
     isbn10?: string
     isbn13?: string
     pageCount?: number
