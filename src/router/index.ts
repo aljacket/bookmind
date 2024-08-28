@@ -7,7 +7,8 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'Home',
         component: () => import('@/views/HomePage.vue'),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true },
+        props: true
     },
     {
         path: '/login',

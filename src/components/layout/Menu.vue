@@ -1,16 +1,17 @@
+<!-- src/components/layout/Menu.vue -->
 <template>
-    <div>
-        <!-- Hamburger/X button -->
-        <button @click="toggleMenu" class="fixed top-4 right-4 z-50">
+    <div class="flex items-center h-full">
+        <!-- Hamburger button -->
+        <button @click="toggleMenu" class="text-gray-600 hover:text-gray-800 z-50 relative">
             <div class="w-6 h-6 flex flex-col justify-between" :class="{ 'toggle-open': isOpen }">
-                <span class="w-full h-1 bg-black transition-all duration-300"></span>
-                <span class="w-full h-1 bg-black transition-all duration-300"></span>
-                <span class="w-full h-1 bg-black transition-all duration-300"></span>
+                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
+                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
+                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
             </div>
         </button>
 
         <!-- Full-screen menu -->
-        <Transition name="slide-menu">
+        <Transition name="fade">
             <div
                 v-if="isOpen"
                 class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
@@ -66,13 +67,12 @@
         transform: translateY(-10px) rotate(-45deg);
     }
 
-    .slide-menu-enter-active,
-    .slide-menu-leave-active {
-        transition: transform 0.3s ease;
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.3s;
     }
-
-    .slide-menu-enter-from,
-    .slide-menu-leave-to {
-        transform: translateX(100%);
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
     }
 </style>
