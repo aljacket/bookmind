@@ -4,17 +4,30 @@
         <Header title="BookMind" />
 
         <main class="container mx-auto p-6 mt-8">
-            <h1 class="text-3xl font-bold mb-8">Welcome to BookMind</h1>
-            <p v-if="authStore.user">
-                Hello, {{ authStore.user.displayName || authStore.user.email }}
-            </p>
-
-            <div class="flex space-x-4 mb-8">
+            <div class="mt-8 mb-12 text-center">
+                <h2 v-if="authStore.user" class="text-3xl font-bold text-gray-800 mb-4">
+                    Benvenuto, {{ authStore.user.displayName || authStore.user.email }}
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">Pronto per un nuovo viaggio letterario?</p>
                 <router-link
                     to="/preferences"
-                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    class="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 inline-flex items-center"
                 >
-                    Aggiorna preferenze
+                    <svg
+                        class="w-6 h-6 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        ></path>
+                    </svg>
+                    Scopri Nuovi Libri
                 </router-link>
             </div>
 
@@ -33,56 +46,106 @@
                 Sto elaborando le tue raccomandazioni...
             </div>
 
-            <div
-                v-if="recommendations.length > 0"
-                class="my-4 p-4 bg-white rounded shadow w-full max-w-md"
-            >
-                <h2 class="text-xl font-semibold mb-2">Libri raccomandati:</h2>
-                <div
-                    v-for="(recommendation, index) in recommendations"
-                    :key="index"
-                    class="mb-4 pb-4 border-b border-gray-200"
-                >
-                    <p><strong>Titolo:</strong> {{ recommendation.title }}</p>
-                    <p><strong>Autore:</strong> {{ recommendation.author }}</p>
-                    <p v-if="recommendation.pageCount">
-                        <strong>Pagine:</strong> {{ recommendation.pageCount }}
-                    </p>
-                    <p v-if="recommendation.publishedDate">
-                        <strong>Data di pubblicazione:</strong> {{ recommendation.publishedDate }}
-                    </p>
-                    <img
-                        v-if="recommendation.thumbnailUrl"
-                        :src="recommendation.thumbnailUrl"
-                        alt="Copertina del libro"
-                        class="mt-2"
-                    />
-                    <div class="mt-4 space-y-2">
-                        <a
-                            v-if="recommendation.amazonLink"
-                            :href="recommendation.amazonLink"
-                            target="_blank"
-                            class="text-blue-500 hover:underline block"
-                        >
-                            Acquista su Amazon
-                        </a>
-                        <a
-                            v-if="recommendation.iberLibroLink"
-                            :href="recommendation.iberLibroLink"
-                            target="_blank"
-                            class="text-blue-500 hover:underline block"
-                        >
-                            Acquista su IberLibro
-                        </a>
-                        <a
-                            v-if="recommendation.googleBooksLink"
-                            :href="recommendation.googleBooksLink"
-                            target="_blank"
-                            class="text-blue-500 hover:underline block"
-                        >
-                            Acquista su Google Books
-                        </a>
+            <div v-if="recommendations.length > 0" class="mt-12">
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800">I Tuoi Libri Consigliati</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        v-for="(recommendation, index) in recommendations"
+                        :key="index"
+                        class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
+                    >
+                        <img
+                            v-if="recommendation.thumbnailUrl"
+                            :src="recommendation.thumbnailUrl"
+                            :alt="recommendation.title"
+                            class="w-full h-64 object-cover"
+                        />
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                                {{ recommendation.title }}
+                            </h3>
+                            <p class="text-gray-600 mb-4">{{ recommendation.author }}</p>
+                            <p v-if="recommendation.pageCount" class="text-sm text-gray-500 mb-2">
+                                Pagine: {{ recommendation.pageCount }}
+                            </p>
+                            <p
+                                v-if="recommendation.publishedDate"
+                                class="text-sm text-gray-500 mb-4"
+                            >
+                                Pubblicato: {{ recommendation.publishedDate }}
+                            </p>
+
+                            <div class="flex flex-col space-y-2">
+                                <a
+                                    v-if="recommendation.amazonLink"
+                                    :href="recommendation.amazonLink"
+                                    target="_blank"
+                                    class="flex items-center justify-start bg-yellow-400 text-gray-900 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 w-full"
+                                >
+                                    <img
+                                        src="/src/assets/images/amazon_icon.png"
+                                        alt="Amazon"
+                                        class="w-6 h-6 mr-4"
+                                    />
+                                    <span class="flex-grow text-center">Acquista su Amazon</span>
+                                </a>
+                                <a
+                                    v-if="recommendation.iberLibroLink"
+                                    :href="recommendation.iberLibroLink"
+                                    target="_blank"
+                                    class="flex items-center justify-start bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300 w-full"
+                                >
+                                    <img
+                                        src="/src/assets/images/iberlibro_icon.png"
+                                        alt="IberLibro"
+                                        class="w-6 h-6 mr-4"
+                                    />
+                                    <span class="flex-grow text-center">Acquista su IberLibro</span>
+                                </a>
+                                <a
+                                    v-if="recommendation.googleBooksLink"
+                                    :href="recommendation.googleBooksLink"
+                                    target="_blank"
+                                    class="flex items-center justify-start bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 w-full"
+                                >
+                                    <img
+                                        src="/src/assets/images/googleBooks_icon.png"
+                                        alt="Google Books"
+                                        class="w-6 h-6 mr-4"
+                                    />
+                                    <span class="flex-grow text-center"
+                                        >Acquista su Google Books</span
+                                    >
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div v-if="recommendations.length === 0 && !isLoading" class="mt-12 text-center">
+                <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+                    <div class="mb-6">
+                        <svg
+                            class="w-32 h-32 mx-auto text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="1.5"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Nessun libro consigliato</h3>
+                    <p class="text-gray-600 mb-6">
+                        Sembra che tu non abbia ancora ricevuto consigli di lettura. Inizia il tuo
+                        viaggio letterario!
+                    </p>
                 </div>
             </div>
 
@@ -90,6 +153,17 @@
                 {{ error }}
             </div>
         </main>
+
+        <footer class="mt-16 py-6 bg-gray-100">
+            <div class="container mx-auto text-center">
+                <p class="text-gray-600">
+                    Made with
+                    <span class="text-red-500">&hearts;</span>
+                    by
+                    <span class="font-semibold text-gray-800">BookMind Team</span>
+                </p>
+            </div>
+        </footer>
     </div>
 </template>
 
