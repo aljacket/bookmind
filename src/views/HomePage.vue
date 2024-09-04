@@ -154,16 +154,7 @@
             </div>
         </main>
 
-        <footer class="mt-16 py-6 bg-gray-100">
-            <div class="container mx-auto text-center">
-                <p class="text-gray-600">
-                    Made with
-                    <span class="text-red-500">&hearts;</span>
-                    by
-                    <span class="font-semibold text-gray-800">BookMind Team</span>
-                </p>
-            </div>
-        </footer>
+        <Footer />
     </div>
 </template>
 
@@ -181,6 +172,7 @@
     import { useRoute } from 'vue-router'
 
     import Header from '@/components/layout/Header.vue'
+    import Footer from '@/components/layout/Footer.vue'
     import WarningAlert from '@/components/alert/WarningAlert.vue'
     import ErrorAlert from '@/components/alert/ErrorAlert.vue'
 
