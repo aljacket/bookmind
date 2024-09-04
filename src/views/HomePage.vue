@@ -11,7 +11,7 @@
                 <p class="text-lg text-gray-600 mb-6">Pronto per un nuovo viaggio letterario?</p>
                 <router-link
                     to="/preferences"
-                    class="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 inline-flex items-center"
+                    class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 inline-flex items-center"
                 >
                     <svg
                         class="w-6 h-6 mr-2"

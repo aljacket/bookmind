@@ -4,18 +4,18 @@
         class="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 p-4 flex items-center justify-between"
     >
         <div class="w-6 mr-4">
-            <router-link v-if="showBackButton" to="/" class="text-white hover:text-gray-200">
+            <router-link v-if="showBackButton" to="/" class="text-gray-600 hover:text-gray-800">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    stroke-width="3"
                 >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="2"
                         d="M10 19l-7-7m0 0l7-7m-7 7h18"
                     />
                 </svg>
