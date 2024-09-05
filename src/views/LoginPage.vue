@@ -34,9 +34,15 @@
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
+        <div class="flex flex-col items-center">
+            <img
+                src="@/assets/images/bookmindlogo.webp"
+                alt="BookMind Logo"
+                class="w-32 h-32 mb-4"
+            />
+        </div>
         <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
-            <h1 class="text-3xl font-bold text-center text-blue-600">BookMind</h1>
             <form @submit.prevent="login" class="space-y-6">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">

@@ -80,40 +80,44 @@
                                     v-if="recommendation.amazonLink"
                                     :href="recommendation.amazonLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-yellow-400 text-gray-900 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 w-full"
+                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
                                 >
                                     <img
                                         src="/src/assets/images/amazon_icon.png"
                                         alt="Amazon"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center">Acquista su Amazon</span>
+                                    <span class="flex-grow text-center font-medium"
+                                        >Acquista su Amazon</span
+                                    >
                                 </a>
                                 <a
                                     v-if="recommendation.iberLibroLink"
                                     :href="recommendation.iberLibroLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300 w-full"
+                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
                                 >
                                     <img
                                         src="/src/assets/images/iberlibro_icon.png"
                                         alt="IberLibro"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center">Acquista su IberLibro</span>
+                                    <span class="flex-grow text-center font-medium"
+                                        >Acquista su IberLibro</span
+                                    >
                                 </a>
                                 <a
                                     v-if="recommendation.googleBooksLink"
                                     :href="recommendation.googleBooksLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 w-full"
+                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
                                 >
                                     <img
                                         src="/src/assets/images/googleBooks_icon.png"
                                         alt="Google Books"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center"
+                                    <span class="flex-grow text-center font-medium"
                                         >Acquista su Google Books</span
                                     >
                                 </a>

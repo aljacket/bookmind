@@ -1,15 +1,22 @@
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
         <!-- Header -->
         <Header title="Preferenze" :showBackButton="true" />
 
         <!-- Main content -->
-        <main class="container mx-auto p-6 mt-8">
-            <form
-                @submit.prevent="savePreferences"
-                class="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto"
-            >
-                <div class="space-y-6">
+        <main class="container mx-auto p-6">
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6 bg-blue-600 text-white">
+                    <h2 class="text-2xl font-bold mb-2">
+                        Personalizza la Tua Avventura Letteraria
+                    </h2>
+                    <p class="text-blue-100">
+                        Scegli le tue preferenze e lascia che BookMind ti guidi verso nuovi mondi di
+                        carta.
+                    </p>
+                </div>
+
+                <form @submit.prevent="savePreferences" class="p-6 space-y-6">
                     <div class="preference-group">
                         <label class="block text-sm font-medium text-gray-700 mb-2"
                             >Genere preferito</label
@@ -96,38 +103,38 @@
                             placeholder="Es: Programmare in Python"
                         />
                     </div>
-                </div>
 
-                <div
-                    v-if="error"
-                    class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700"
-                >
-                    {{ error }}
-                </div>
-
-                <div class="mt-8">
-                    <button
-                        type="submit"
-                        class="w-full bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 inline-flex items-center justify-center"
+                    <div
+                        v-if="error"
+                        class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700"
                     >
-                        <svg
-                            class="w-5 h-5 mr-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                        {{ error }}
+                    </div>
+
+                    <div class="mt-8">
+                        <button
+                            type="submit"
+                            class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:bg-blue-700 hover:scale-105 inline-flex items-center justify-center"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                            ></path>
-                        </svg>
-                        <span class="text-sm">Genera Consigli di Lettura</span>
-                    </button>
-                </div>
-            </form>
+                            <svg
+                                class="w-5 h-5 mr-2"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                ></path>
+                            </svg>
+                            <span class="text-sm">Scopri Nuovi Mondi Letterari</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </main>
     </div>
 </template>
