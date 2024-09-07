@@ -6,6 +6,8 @@
     import { initAuth } from '@/services/firebase/config'
     import { useAuthStore } from '@/stores/auth'
 
+    import CTAButton from '@/components/ui/CTAButton.vue'
+
     const auth = initAuth()
     const router = useRouter()
     const authStore = useAuthStore()
@@ -34,58 +36,59 @@
 </script>
 
 <template>
-    <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
-        <div class="flex flex-col items-center">
-            <img
-                src="@/assets/images/bookmindlogo.webp"
-                alt="BookMind Logo"
-                class="w-32 h-32 mb-4"
-            />
-        </div>
-        <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
-            <form @submit.prevent="login" class="space-y-6">
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
-                        Email:
-                    </label>
-                    <input
-                        id="email"
-                        v-model="email"
-                        type="email"
-                        required
-                        placeholder="Enter your email"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
+    <div
+        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100"
+    >
+        <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
+            <div class="flex flex-col items-center space-y-4">
+                <img
+                    src="@/assets/images/bookmind-logo-tp.png"
+                    alt="BookMind Logo"
+                    class="w-full h-42"
+                />
+            </div>
+            <form @submit.prevent="login" class="mt-8 space-y-6">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="email" class="sr-only">Email</label>
+                        <input
+                            id="email"
+                            v-model="email"
+                            type="email"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-t-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
+                            placeholder="Indirizzo email"
+                        />
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input
+                            id="password"
+                            v-model="password"
+                            type="password"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-b-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
+                            placeholder="Password"
+                        />
+                    </div>
                 </div>
+
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">
-                        Password:
-                    </label>
-                    <input
-                        id="password"
-                        v-model="password"
-                        type="password"
-                        required
-                        placeholder="Enter your password"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
+                    <CTAButton type="submit">Accedi</CTAButton>
                 </div>
-                <button
-                    type="submit"
-                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                    Login
-                </button>
             </form>
             <div v-if="errorMessage" class="mt-3 text-sm text-red-600">
                 {{ errorMessage }}
             </div>
-            <div class="flex justify-between mt-4 text-sm">
-                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-                    Forgot Password?
+            <div class="flex items-center justify-between mt-4 text-sm">
+                <a href="#" class="font-medium text-bookmind-600 hover:text-bookmind-500">
+                    Password dimenticata?
                 </a>
-                <router-link to="/register" class="font-medium text-blue-600 hover:text-blue-500">
-                    Register
+                <router-link
+                    to="/register"
+                    class="font-medium text-bookmind-600 hover:text-bookmind-500"
+                >
+                    Registrati
                 </router-link>
             </div>
         </div>

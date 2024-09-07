@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        font-family: Inter, system-ui, sans-serif;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-bookmind-600 hover:bg-bookmind-700 text-white font-bold py-2 px-4 rounded;
+    }
+    .btn-secondary {
+        @apply bg-bookmind-purple hover:bg-bookmind-purple-700 text-white font-bold py-2 px-4 rounded;
+    }
+}

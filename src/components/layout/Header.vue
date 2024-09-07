@@ -1,10 +1,14 @@
 <!-- src/components/layout/Header.vue -->
 <template>
     <header
-        class="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 p-4 flex items-center justify-between"
+        class="bg-gradient-to-r from-bookmind-50 to-bookmind-100 text-bookmind-800 p-4 flex items-center justify-between"
     >
         <div class="w-6 mr-4">
-            <router-link v-if="showBackButton" to="/" class="text-gray-600 hover:text-gray-800">
+            <router-link
+                v-if="showBackButton"
+                to="/"
+                class="text-bookmind-600 hover:text-bookmind-800"
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -21,7 +25,7 @@
                 </svg>
             </router-link>
         </div>
-        <h1 class="text-2xl font-bold">{{ title }}</h1>
+        <h1 class="text-2xl font-bold text-bookmind-700">{{ title }}</h1>
         <div class="w-6">
             <Menu />
         </div>

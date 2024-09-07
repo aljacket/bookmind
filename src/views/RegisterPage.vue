@@ -1,54 +1,64 @@
 <template>
-    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow">
-            <button @click="goBack" class="mb-4 text-blue-600 hover:text-blue-800">
-                &larr; Back to Login
-            </button>
-            <h1 class="text-3xl font-bold text-center text-blue-600">Register for BookMind</h1>
-            <form @submit.prevent="register" class="space-y-6">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-                    <input
-                        id="name"
-                        v-model="name"
-                        type="text"
-                        required
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
+    <div
+        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100"
+    >
+        <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
+            <div class="flex flex-col items-center space-y-4">
+                <h2 class="text-3xl font-extrabold text-bookmind-800 text-center">
+                    Registrati a BookMind
+                </h2>
+            </div>
+            <form @submit.prevent="register" class="mt-8 space-y-6">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="name" class="sr-only">Nome</label>
+                        <input
+                            id="name"
+                            v-model="name"
+                            type="text"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-t-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
+                            placeholder="Nome completo"
+                        />
+                    </div>
+                    <div>
+                        <label for="email" class="sr-only">Email</label>
+                        <input
+                            id="email"
+                            v-model="email"
+                            type="email"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
+                            placeholder="Indirizzo email"
+                        />
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input
+                            id="password"
+                            v-model="password"
+                            type="password"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-b-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
+                            placeholder="Password"
+                        />
+                    </div>
                 </div>
+
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
-                        Email:
-                    </label>
-                    <input
-                        id="email"
-                        v-model="email"
-                        type="email"
-                        required
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
+                    <CTAButton type="submit">Crea Account</CTAButton>
                 </div>
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">
-                        Password:
-                    </label>
-                    <input
-                        id="password"
-                        v-model="password"
-                        type="password"
-                        required
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    />
-                </div>
-                <button
-                    type="submit"
-                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                    Create Account
-                </button>
             </form>
             <div v-if="error" class="mt-3 text-sm text-red-600">
                 {{ error }}
+            </div>
+            <div class="flex items-center justify-center mt-4 text-sm">
+                <button
+                    @click="goBack"
+                    class="font-medium text-bookmind-600 hover:text-bookmind-500"
+                >
+                    Torna al Login
+                </button>
             </div>
         </div>
     </div>
@@ -59,8 +69,8 @@
     import { useRouter } from 'vue-router'
     import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
     import { initAuth } from '@/services/firebase/config'
-
     import { useAuthStore } from '@/stores/auth'
+    import CTAButton from '@/components/ui/CTAButton.vue'
 
     const router = useRouter()
     const auth = initAuth()
