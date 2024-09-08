@@ -2,27 +2,58 @@
 <template>
     <div class="flex items-center h-full">
         <!-- Hamburger button -->
-        <button @click="toggleMenu" class="text-gray-600 hover:text-gray-800 z-50 relative">
-            <div class="w-6 h-6 flex flex-col justify-between" :class="{ 'toggle-open': isOpen }">
-                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
-                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
-                <span class="w-full h-1 bg-gray-600 transition-all duration-300"></span>
-            </div>
+        <button
+            @click="toggleMenu"
+            class="text-bookmind-600 hover:text-bookmind-800 z-50 relative p-2 transition-all duration-300 ease-in-out"
+            :class="{ 'rotate-90': isOpen }"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="w-6 h-6"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                />
+            </svg>
         </button>
 
         <!-- Full-screen menu -->
         <Transition name="fade">
             <div
                 v-if="isOpen"
-                class="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
+                class="fixed inset-0 bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100 z-40 flex flex-col items-center justify-center"
             >
-                <button
-                    @click="logout"
-                    class="text-xl mb-4 hover:text-blue-500 bg-red-100 px-4 py-2 rounded-md transition-colors duration-300 hover:bg-red-200"
-                >
-                    Logout
-                </button>
-                <!-- Add more menu items here -->
+                <div class="bg-white rounded-xl shadow-lg p-8 max-w-sm w-full">
+                    <button
+                        @click="logout"
+                        class="w-full text-left mb-4 py-2 px-4 rounded-md transition-colors duration-300 hover:bg-bookmind-100 text-bookmind-600 hover:text-bookmind-800"
+                    >
+                        <span class="flex items-center">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                class="w-5 h-5 mr-2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                />
+                            </svg>
+                            Logout
+                        </span>
+                    </button>
+                    <!-- Add more menu items here -->
+                </div>
             </div>
         </Transition>
     </div>
@@ -57,22 +88,15 @@
 </script>
 
 <style scoped>
-    .toggle-open span:first-child {
-        transform: translateY(10px) rotate(45deg);
-    }
-    .toggle-open span:nth-child(2) {
-        opacity: 0;
-    }
-    .toggle-open span:last-child {
-        transform: translateY(-10px) rotate(-45deg);
-    }
-
     .fade-enter-active,
     .fade-leave-active {
-        transition: opacity 0.3s;
+        transition:
+            opacity 0.3s,
+            transform 0.3s;
     }
     .fade-enter-from,
     .fade-leave-to {
         opacity: 0;
+        transform: scale(0.95);
     }
 </style>
