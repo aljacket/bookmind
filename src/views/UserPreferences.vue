@@ -1,16 +1,16 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
+    <div class="min-h-screen bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100">
         <!-- Header -->
-        <Header title="Preferenze" :showBackButton="true" />
+        <Header title="Preferenze" :showBackButton="true" class="bg-white shadow-md" />
 
         <!-- Main content -->
-        <main class="container mx-auto p-6">
-            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="p-6 bg-blue-600 text-white">
+        <main class="container mx-auto p-6 mt-8">
+            <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 bg-bookmind-600 text-white">
                     <h2 class="text-2xl font-bold mb-2">
                         Personalizza la Tua Avventura Letteraria
                     </h2>
-                    <p class="text-blue-100">
+                    <p class="text-bookmind-100">
                         Scegli le tue preferenze e lascia che BookMind ti guidi verso nuovi mondi di
                         carta.
                     </p>
@@ -106,16 +106,13 @@
 
                     <div
                         v-if="error"
-                        class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700"
+                        class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 rounded"
                     >
                         {{ error }}
                     </div>
 
                     <div class="mt-8">
-                        <button
-                            type="submit"
-                            class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:bg-blue-700 hover:scale-105 inline-flex items-center justify-center"
-                        >
+                        <CTAButton type="submit">
                             <svg
                                 class="w-5 h-5 mr-2"
                                 fill="none"
@@ -130,8 +127,8 @@
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                                 ></path>
                             </svg>
-                            <span class="text-sm">Scopri Nuovi Mondi Letterari</span>
-                        </button>
+                            <span>Scopri Nuovi Mondi Letterari</span>
+                        </CTAButton>
                     </div>
                 </form>
             </div>
@@ -152,6 +149,7 @@
     import type { UserPreferences } from '@/types/userPreferences'
 
     import Header from '@/components/layout/Header.vue'
+    import CTAButton from '@/components/ui/CTAButton.vue'
 
     const router = useRouter()
     const authStore = useAuthStore()
@@ -208,10 +206,10 @@
 <style scoped>
     .form-select,
     .form-input {
-        @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+        @apply mt-1 block w-full rounded-md border-bookmind-300 shadow-sm focus:border-bookmind-300 focus:ring focus:ring-bookmind-200 focus:ring-opacity-50;
     }
 
     .preference-group {
-        @apply bg-gray-50 p-4 rounded-md shadow-sm;
+        @apply bg-bookmind-50 p-4 rounded-md shadow-sm;
     }
 </style>
