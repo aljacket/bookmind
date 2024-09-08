@@ -1,53 +1,40 @@
 <!-- src/views/HomePage.vue -->
 <template>
-    <div class="min-h-screen bg-gray-100">
-        <Header title="BookMind" />
+    <div class="min-h-screen bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100">
+        <Header title="BookMind" class="bg-white shadow-md" />
 
         <main class="container mx-auto p-6 mt-8">
-            <div class="mt-8 mb-12 text-center">
-                <h2 v-if="authStore.user" class="text-3xl font-bold text-gray-800 mb-4">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 v-if="authStore.user" class="text-3xl font-bold text-bookmind-800 mb-4">
                     Benvenuto, {{ authStore.user.displayName || authStore.user.email }}
                 </h2>
-                <p class="text-lg text-gray-600 mb-6">Pronto per un nuovo viaggio letterario?</p>
-                <router-link
-                    to="/preferences"
-                    class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 inline-flex items-center"
-                >
-                    <svg
-                        class="w-6 h-6 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                        ></path>
-                    </svg>
-                    Scopri Nuovi Libri
-                </router-link>
+                <p class="text-lg text-bookmind-600 mb-6">
+                    Pronto per un nuovo viaggio letterario?
+                </p>
+                <CTAButton @click="$router.push('/preferences')"> Scopri Nuovi Libri </CTAButton>
             </div>
 
             <WarningAlert
                 v-if="showRemainingCallsWarning"
                 message="Ti rimane solo una possibilità di ottenere raccomandazioni oggi."
+                class="mb-6"
             />
 
             <ErrorAlert
                 v-if="showNoMoreCallsWarning"
                 title="Limite raggiunto!"
                 message="Hai esaurito le possibilità di ottenere raccomandazioni per oggi. Riprova tra 24 ore."
+                class="mb-6"
             />
 
-            <div v-if="isLoading" class="my-4 text-center">
+            <div v-if="isLoading" class="my-4 text-center text-bookmind-600">
                 Sto elaborando le tue raccomandazioni...
             </div>
 
             <div v-if="recommendations.length > 0" class="mt-12">
-                <h2 class="text-2xl font-semibold mb-6 text-gray-800">I Tuoi Libri Consigliati</h2>
+                <h2 class="text-2xl font-semibold mb-6 text-bookmind-800">
+                    I Tuoi Libri Consigliati
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div
                         v-for="(recommendation, index) in recommendations"
@@ -61,16 +48,19 @@
                             class="w-full h-64 object-cover"
                         />
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                            <h3 class="text-xl font-semibold mb-2 text-bookmind-800">
                                 {{ recommendation.title }}
                             </h3>
-                            <p class="text-gray-600 mb-4">{{ recommendation.author }}</p>
-                            <p v-if="recommendation.pageCount" class="text-sm text-gray-500 mb-2">
+                            <p class="text-bookmind-600 mb-4">{{ recommendation.author }}</p>
+                            <p
+                                v-if="recommendation.pageCount"
+                                class="text-sm text-bookmind-500 mb-2"
+                            >
                                 Pagine: {{ recommendation.pageCount }}
                             </p>
                             <p
                                 v-if="recommendation.publishedDate"
-                                class="text-sm text-gray-500 mb-4"
+                                class="text-sm text-bookmind-500 mb-4"
                             >
                                 Pubblicato: {{ recommendation.publishedDate }}
                             </p>
@@ -80,7 +70,7 @@
                                     v-if="recommendation.amazonLink"
                                     :href="recommendation.amazonLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
+                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
                                 >
                                     <img
                                         src="/src/assets/images/amazon_icon.png"
@@ -95,7 +85,7 @@
                                     v-if="recommendation.iberLibroLink"
                                     :href="recommendation.iberLibroLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
+                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
                                 >
                                     <img
                                         src="/src/assets/images/iberlibro_icon.png"
@@ -110,7 +100,7 @@
                                     v-if="recommendation.googleBooksLink"
                                     :href="recommendation.googleBooksLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-gray-100 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 w-full border border-gray-300"
+                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
                                 >
                                     <img
                                         src="/src/assets/images/googleBooks_icon.png"
@@ -131,7 +121,7 @@
                 <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
                     <div class="mb-6">
                         <svg
-                            class="w-32 h-32 mx-auto text-gray-400"
+                            class="w-32 h-32 mx-auto text-bookmind-400"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -145,8 +135,10 @@
                             ></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Nessun libro consigliato</h3>
-                    <p class="text-gray-600 mb-6">
+                    <h3 class="text-2xl font-bold text-bookmind-800 mb-2">
+                        Nessun libro consigliato
+                    </h3>
+                    <p class="text-bookmind-600 mb-6">
                         Sembra che tu non abbia ancora ricevuto consigli di lettura. Inizia il tuo
                         viaggio letterario!
                     </p>
@@ -158,7 +150,7 @@
             </div>
         </main>
 
-        <Footer />
+        <Footer class="bg-white shadow-md mt-12" />
     </div>
 </template>
 
@@ -179,6 +171,7 @@
     import Footer from '@/components/layout/Footer.vue'
     import WarningAlert from '@/components/alert/WarningAlert.vue'
     import ErrorAlert from '@/components/alert/ErrorAlert.vue'
+    import CTAButton from '@/components/ui/CTAButton.vue'
 
     const authStore = useAuthStore()
     const route = useRoute()
