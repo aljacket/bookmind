@@ -1,46 +1,65 @@
-# bookmind
+# BookMind
 
-This template should help get you started developing with Vue 3 in Vite.
+BookMind is a Vue 3 application that helps users discover new books based on their preferences. It uses AI-powered recommendations to suggest personalized reading lists.
+
+## Features
+
+-   User authentication
+-   Personalized book recommendations
+-   User preference management
+-   Responsive design optimized for various devices
+
+## Technologies Used
+
+-   Vue 3
+-   TypeScript
+-   Tailwind CSS
+-   Firebase Authentication
+-   IndexedDB for local storage
+-   OpenAI API for book recommendations
+
+## Getting Started
+
+### Prerequisites
+
+-   Node.js (v14 or later)
+-   npm (v6 or later)
+
+### Installation
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/your-username/bookmind.git
+    cd bookmind
+    ```
+
+2. Install dependencies:
+
+    ```sh
+    npm install
+    ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add your Firebase and OpenAI API credentials:
+    ```
+    VITE_FIREBASE_API_KEY=your_firebase_api_key
+    VITE_OPENAI_API_KEY=your_openai_api_key
+    ```
+
+### Development
+
+Run the development server:
+npm run dev
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+We recommend using [VSCode](https://code.visualstudio.com/) with the [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension for the best development experience. Make sure to disable Vetur if you have it installed.
 
-## Type Support for `.vue` Imports in TS
+## Contributing
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Customize configuration
+## License
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-# bookmind
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
