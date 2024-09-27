@@ -92,15 +92,15 @@
                         "
                         class="preference-group"
                     >
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Cosa vuoi imparare? (max 20 caratteri)</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Cosa vuoi imparare? (max 40 caratteri)
+                        </label>
                         <input
                             v-model="preferences.learningGoal"
                             type="text"
-                            maxlength="20"
+                            maxlength="40"
                             class="form-input block w-full"
-                            placeholder="Es: Programmare in Python"
+                            placeholder="Es: Programmare in Python e sviluppo web"
                         />
                     </div>
 
@@ -154,6 +154,7 @@
     const router = useRouter()
     const authStore = useAuthStore()
     const error = ref('')
+    const isLoading = ref(false)
 
     const preferences = ref<UserPreferences>({
         genre: 'Fantasy',
@@ -188,10 +189,8 @@
                     return
                 }
                 const newRecommendations = await getBookRecommendations(preferences.value)
-                router.push({
-                    name: 'Home',
-                    query: { newRecommendations: JSON.stringify(newRecommendations) }
-                })
+                localStorage.setItem('newRecommendations', JSON.stringify(newRecommendations))
+                router.push({ name: 'Processing' })
             } catch (err) {
                 console.error('Error saving preferences or getting recommendations:', err)
                 error.value =

@@ -1,29 +1,18 @@
 <!-- src/components/layout/Menu.vue -->
 <template>
     <div class="flex items-center h-full">
-        <!-- Hamburger button -->
+        <!-- Pulsante hamburger con area cliccabile più ampia e padding a destra -->
         <button
             @click="toggleMenu"
-            class="text-bookmind-600 hover:text-bookmind-800 z-50 relative p-2 transition-all duration-300 ease-in-out"
-            :class="{ 'rotate-90': isOpen }"
+            class="text-bookmind-600 hover:text-bookmind-800 z-50 relative py-4 pr-4 transition-all duration-300 ease-in-out"
+            aria-label="Toggle menu"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                class="w-6 h-6"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                />
-            </svg>
+            <div class="w-6 h-6 flex items-center justify-center">
+                <span class="hamburger-icon" :class="{ open: isOpen }"></span>
+            </div>
         </button>
 
-        <!-- Full-screen menu -->
+        <!-- Menu a schermo intero -->
         <Transition name="fade">
             <div
                 v-if="isOpen"
@@ -52,7 +41,7 @@
                             Logout
                         </span>
                     </button>
-                    <!-- Add more menu items here -->
+                    <!-- Aggiungi altri elementi del menu qui -->
                 </div>
             </div>
         </Transition>
@@ -98,5 +87,47 @@
     .fade-leave-to {
         opacity: 0;
         transform: scale(0.95);
+    }
+
+    .hamburger-icon,
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        width: 24px;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-icon {
+        position: relative;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+    }
+
+    .hamburger-icon::before {
+        top: -8px;
+    }
+
+    .hamburger-icon::after {
+        bottom: -8px;
+    }
+
+    .hamburger-icon.open {
+        background-color: transparent;
+    }
+
+    .hamburger-icon.open::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .hamburger-icon.open::after {
+        bottom: 0;
+        transform: rotate(-45deg);
     }
 </style>

@@ -27,6 +27,13 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Preferences',
         component: () => import('@/views/UserPreferences.vue'),
         meta: { requiresAuth: true }
+    },
+    {
+        path: '/processing',
+        name: 'Processing',
+        component: () => import('@/views/ProcessingPage.vue'),
+        meta: { requiresAuth: true },
+        props: true
     }
     // Other routes can be added here
 ]
