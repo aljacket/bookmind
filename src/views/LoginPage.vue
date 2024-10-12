@@ -1,20 +1,26 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { useRouter } from 'vue-router'
     import { signInWithEmailAndPassword } from 'firebase/auth'
+    import { useI18n } from 'vue-i18n'
 
     import { initAuth } from '@/services/firebase/config'
     import { useAuthStore } from '@/stores/auth'
+    import { useLanguageStore } from '@/stores/language'
 
     import CTAButton from '@/components/ui/CTAButton.vue'
 
     const auth = initAuth()
     const router = useRouter()
     const authStore = useAuthStore()
+    const languageStore = useLanguageStore()
 
     const email = ref('')
     const password = ref('')
     const errorMessage = ref('')
+
+    const { locale, t } = useI18n()
+    const selectedLanguage = ref(locale.value)
 
     const login = async () => {
         try {
@@ -33,12 +39,40 @@
             }
         }
     }
+
+    const changeLanguage = () => {
+        locale.value = selectedLanguage.value
+        languageStore.setLanguage(selectedLanguage.value)
+        localStorage.setItem('language', selectedLanguage.value)
+    }
+
+    onMounted(() => {
+        const savedLanguage = localStorage.getItem('language')
+        if (savedLanguage) {
+            locale.value = savedLanguage
+            selectedLanguage.value = savedLanguage
+        } else {
+            locale.value = navigator.language.split('-')[0] || 'en'
+            selectedLanguage.value = locale.value
+        }
+    })
 </script>
 
 <template>
     <div
         class="min-h-screen flex items-center justify-center bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100"
     >
+        <div class="absolute top-4 right-4 z-10 bg-white p-2 rounded-lg shadow-md">
+            <select
+                v-model="selectedLanguage"
+                @change="changeLanguage"
+                class="bg-white border border-gray-300 text-gray-700 py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-bookmind-500 focus:border-bookmind-500"
+            >
+                <option value="en">English</option>
+                <option value="it">Italiano</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
         <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
             <div class="flex flex-col items-center space-y-4">
                 <img
@@ -74,7 +108,7 @@
                 </div>
 
                 <div>
-                    <CTAButton type="submit">Accedi</CTAButton>
+                    <CTAButton type="submit">{{ t('login') }}</CTAButton>
                 </div>
             </form>
             <div v-if="errorMessage" class="mt-3 text-sm text-red-600">
@@ -94,3 +128,11 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    .language-selector {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
