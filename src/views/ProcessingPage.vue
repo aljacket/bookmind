@@ -19,10 +19,10 @@
                 ></path>
             </svg>
             <h2 class="text-2xl font-bold text-bookmind-800 mb-2">
-                Processando le tue preferenze...
+                {{ t('processing_recommendations') }}
             </h2>
             <p class="text-bookmind-600">
-                Stiamo preparando le tue raccomandazioni personalizzate.
+                {{ t('processing_recommendations_message') }}
             </p>
         </div>
     </div>
@@ -31,7 +31,9 @@
 <script setup lang="ts">
     import { onMounted } from 'vue'
     import { useRouter } from 'vue-router'
+    import { useI18n } from 'vue-i18n'
 
+    const { t } = useI18n()
     const router = useRouter()
 
     onMounted(() => {

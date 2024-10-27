@@ -4,7 +4,9 @@ import it from '@/locales/it.json'
 import es from '@/locales/es.json'
 
 const i18n = createI18n({
-    locale: navigator.language.split('-')[0] || 'en', // Imposta la lingua del dispositivo o inglese
+    legacy: false, // Use Composition API
+    globalInjection: true, // Inject $t, $d, etc. globally
+    locale: localStorage.getItem('language') || navigator.language.split('-')[0] || 'en',
     fallbackLocale: 'en',
     messages: {
         en,

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref } from 'vue'
     import { useRouter } from 'vue-router'
     import { signInWithEmailAndPassword } from 'firebase/auth'
     import { useI18n } from 'vue-i18n'
-
     import { initAuth } from '@/services/firebase/config'
     import { useAuthStore } from '@/stores/auth'
     import { useLanguageStore } from '@/stores/language'
-
+    import type { SupportedLocale } from '@/types/userPreferences'
     import CTAButton from '@/components/ui/CTAButton.vue'
 
+    const { t, locale } = useI18n()
     const auth = initAuth()
     const router = useRouter()
     const authStore = useAuthStore()
@@ -18,9 +18,7 @@
     const email = ref('')
     const password = ref('')
     const errorMessage = ref('')
-
-    const { locale, t } = useI18n()
-    const selectedLanguage = ref(locale.value)
+    const selectedLanguage = ref<SupportedLocale>(languageStore.selectedLanguage)
 
     const login = async () => {
         try {
@@ -41,21 +39,9 @@
     }
 
     const changeLanguage = () => {
-        locale.value = selectedLanguage.value
         languageStore.setLanguage(selectedLanguage.value)
-        localStorage.setItem('language', selectedLanguage.value)
+        locale.value = selectedLanguage.value
     }
-
-    onMounted(() => {
-        const savedLanguage = localStorage.getItem('language')
-        if (savedLanguage) {
-            locale.value = savedLanguage
-            selectedLanguage.value = savedLanguage
-        } else {
-            locale.value = navigator.language.split('-')[0] || 'en'
-            selectedLanguage.value = locale.value
-        }
-    })
 </script>
 
 <template>
@@ -95,7 +81,7 @@
                         />
                     </div>
                     <div>
-                        <label for="password" class="sr-only">Password</label>
+                        <label for="password" class="sr-only">{{ t('password') }}</label>
                         <input
                             id="password"
                             v-model="password"
@@ -116,13 +102,13 @@
             </div>
             <div class="flex items-center justify-between mt-4 text-sm">
                 <a href="#" class="font-medium text-bookmind-600 hover:text-bookmind-500">
-                    Password dimenticata?
+                    {{ t('forgot_password') }}
                 </a>
                 <router-link
                     to="/register"
                     class="font-medium text-bookmind-600 hover:text-bookmind-500"
                 >
-                    Registrati
+                    {{ t('register') }}
                 </router-link>
             </div>
         </div>

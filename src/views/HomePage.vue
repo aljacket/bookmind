@@ -6,34 +6,40 @@
         <main class="container mx-auto p-6 mt-8">
             <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 mb-12">
                 <h2 v-if="authStore.user" class="text-3xl font-bold text-bookmind-800 mb-4">
-                    Benvenuto, {{ authStore.user.displayName || authStore.user.email }}
+                    {{
+                        t('welcome_user', {
+                            user: authStore.user.displayName || authStore.user.email
+                        })
+                    }}
                 </h2>
                 <p class="text-lg text-bookmind-600 mb-6">
-                    Pronto per un nuovo viaggio letterario?
+                    {{ t('ready_for_a_new_literary_journey') }}
                 </p>
-                <CTAButton @click="$router.push('/preferences')"> Scopri Nuovi Libri </CTAButton>
+                <CTAButton @click="$router.push('/preferences')">
+                    {{ t('discover_new_books') }}
+                </CTAButton>
             </div>
 
             <WarningAlert
                 v-if="showRemainingCallsWarning"
-                message="Ti rimane solo una possibilità di ottenere raccomandazioni oggi."
+                :message="t('remaining_calls_warning')"
                 class="mb-6"
             />
 
             <ErrorAlert
                 v-if="showNoMoreCallsWarning"
-                title="Limite raggiunto!"
-                message="Hai esaurito le possibilità di ottenere raccomandazioni per oggi. Riprova tra 24 ore."
+                :title="t('limit_reached')"
+                :message="t('no_more_calls_message')"
                 class="mb-6"
             />
 
             <div v-if="isLoading" class="my-4 text-center text-bookmind-600">
-                Sto elaborando le tue raccomandazioni...
+                {{ t('processing_recommendations') }}
             </div>
 
             <div v-if="recommendations.length > 0" class="mt-12">
                 <h2 class="text-2xl font-semibold mb-6 text-bookmind-800">
-                    I Tuoi Libri Consigliati
+                    {{ t('your_recommended_books') }}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div
@@ -77,9 +83,9 @@
                                         alt="Amazon"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center font-medium"
-                                        >Acquista su Amazon</span
-                                    >
+                                    <span class="flex-grow text-center font-medium">
+                                        {{ t('buy_on_amazon') }}
+                                    </span>
                                 </a>
                                 <a
                                     v-if="recommendation.iberLibroLink"
@@ -92,9 +98,9 @@
                                         alt="IberLibro"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center font-medium"
-                                        >Acquista su IberLibro</span
-                                    >
+                                    <span class="flex-grow text-center font-medium">
+                                        {{ t('buy_on_iberlibro') }}
+                                    </span>
                                 </a>
                                 <a
                                     v-if="recommendation.googleBooksLink"
@@ -107,9 +113,9 @@
                                         alt="Google Books"
                                         class="w-6 h-6 mr-4"
                                     />
-                                    <span class="flex-grow text-center font-medium"
-                                        >Acquista su Google Books</span
-                                    >
+                                    <span class="flex-grow text-center font-medium">
+                                        {{ t('buy_on_google_books') }}
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -136,11 +142,10 @@
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-bookmind-800 mb-2">
-                        Nessun libro consigliato
+                        {{ t('no_recommended_books') }}
                     </h3>
                     <p class="text-bookmind-600 mb-6">
-                        Sembra che tu non abbia ancora ricevuto consigli di lettura. Inizia il tuo
-                        viaggio letterario!
+                        {{ t('no_recommended_books_message') }}
                     </p>
                 </div>
             </div>
@@ -166,6 +171,7 @@
     } from '@/services/indexedDB/userPreferences'
     import type { BookRecommendation } from '@/types/userPreferences'
     import { useRoute } from 'vue-router'
+    import { useI18n } from 'vue-i18n'
 
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
@@ -181,6 +187,7 @@
     const showRemainingCallsWarning = ref(false)
     const showNoMoreCallsWarning = ref(false)
     const bookDetailsCache = new Map<string, any>()
+    const { t } = useI18n()
 
     onMounted(async () => {
         if (authStore.user) {
@@ -213,7 +220,7 @@
             await checkRemainingCalls()
         } catch (err) {
             console.error('Error loading recommendations:', err)
-            error.value = 'Errore nel caricamento delle raccomandazioni'
+            error.value = t('error_loading_recommendations')
         } finally {
             isLoading.value = false
         }

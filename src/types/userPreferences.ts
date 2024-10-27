@@ -32,3 +32,5 @@ export function isValidUserPreferences(obj: any): obj is UserPreferences {
         typeof obj.learningGoal === 'string'
     )
 }
+
+export type SupportedLocale = 'en' | 'it' | 'es'

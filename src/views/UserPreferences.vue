@@ -8,80 +8,83 @@
             <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="p-6 bg-bookmind-600 text-white">
                     <h2 class="text-2xl font-bold mb-2">
-                        Personalizza la Tua Avventura Letteraria
+                        {{ t('customize_your_literary_adventure') }}
                     </h2>
                     <p class="text-bookmind-100">
-                        Scegli le tue preferenze e lascia che BookMind ti guidi verso nuovi mondi di
-                        carta.
+                        {{
+                            t(
+                                'choose_your_preferences_and_let_bookmind_guide_you_to_new_literary_worlds'
+                            )
+                        }}
                     </p>
                 </div>
 
                 <form @submit.prevent="savePreferences" class="p-6 space-y-6">
                     <div class="preference-group">
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Genere preferito</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{
+                            t('favorite_genre')
+                        }}</label>
                         <select v-model="preferences.genre" class="form-select block w-full">
-                            <option value="Fantasy">Fantasy</option>
-                            <option value="Sci-Fi">Sci-Fi</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Mystery">Mystery</option>
-                            <option value="Non-Fiction">Non-Fiction</option>
-                            <option value="Self-Help">Self-Help</option>
-                            <option value="Business">Business</option>
-                            <option value="Programming">Programming</option>
-                            <option value="Language Learning">Language Learning</option>
-                            <option value="Science">Science</option>
-                            <option value="History">History</option>
-                            <option value="Biography">Biography</option>
-                            <option value="Travel">Travel</option>
+                            <option value="Fantasy">{{ t('fantasy') }}</option>
+                            <option value="Sci-Fi">{{ t('sci_fi') }}</option>
+                            <option value="Romance">{{ t('romance') }}</option>
+                            <option value="Mystery">{{ t('mystery') }}</option>
+                            <option value="Non-Fiction">{{ t('non_fiction') }}</option>
+                            <option value="Self-Help">{{ t('self_help') }}</option>
+                            <option value="Business">{{ t('business') }}</option>
+                            <option value="Programming">{{ t('programming') }}</option>
+                            <option value="Language Learning">{{ t('language_learning') }}</option>
+                            <option value="Science">{{ t('science') }}</option>
+                            <option value="History">{{ t('history') }}</option>
+                            <option value="Biography">{{ t('biography') }}</option>
+                            <option value="Travel">{{ t('travel') }}</option>
                         </select>
                     </div>
 
                     <div class="preference-group">
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Lunghezza preferita del libro</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{
+                            t('preferred_book_length')
+                        }}</label>
                         <select v-model="preferences.bookLength" class="form-select block w-full">
-                            <option value="short">Breve (meno di 200 pagine)</option>
-                            <option value="medium">Medio (200-400 pagine)</option>
-                            <option value="long">Lungo (più di 400 pagine)</option>
+                            <option value="short">{{ t('short') }}</option>
+                            <option value="medium">{{ t('medium') }}</option>
+                            <option value="long">{{ t('long') }}</option>
                         </select>
                     </div>
 
                     <div class="preference-group">
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Periodo storico</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{
+                            t('historical_period')
+                        }}</label>
                         <select v-model="preferences.period" class="form-select block w-full">
-                            <option value="contemporary">Contemporaneo</option>
-                            <option value="20th_century">XX secolo</option>
-                            <option value="pre_20th_century">Prima del XX secolo</option>
-                            <option value="any">Qualsiasi</option>
+                            <option value="contemporary">{{ t('contemporary') }}</option>
+                            <option value="20th_century">{{ t('20th_century') }}</option>
+                            <option value="pre_20th_century">{{ t('pre_20th_century') }}</option>
+                            <option value="any">{{ t('any') }}</option>
                         </select>
                     </div>
 
                     <div class="preference-group">
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Complessità</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{
+                            t('complexity')
+                        }}</label>
                         <select v-model="preferences.complexity" class="form-select block w-full">
-                            <option value="easy">Lettura leggera</option>
-                            <option value="medium">Moderatamente impegnativo</option>
-                            <option value="hard">Molto impegnativo</option>
+                            <option value="easy">{{ t('easy') }}</option>
+                            <option value="medium">{{ t('medium') }}</option>
+                            <option value="hard">{{ t('hard') }}</option>
                         </select>
                     </div>
 
                     <div class="preference-group">
-                        <label class="block text-sm font-medium text-gray-700 mb-2"
-                            >Scopo della lettura</label
-                        >
+                        <label class="block text-sm font-medium text-gray-700 mb-2">{{
+                            t('purpose_of_reading')
+                        }}</label>
                         <select v-model="preferences.purpose" class="form-select block w-full">
-                            <option value="entertainment">Intrattenimento</option>
-                            <option value="learning">Apprendimento</option>
-                            <option value="personal_growth">Crescita personale</option>
-                            <option value="inspiration">Ispirazione</option>
-                            <option value="skill_development">Sviluppo di competenze</option>
+                            <option value="entertainment">{{ t('entertainment') }}</option>
+                            <option value="learning">{{ t('learning') }}</option>
+                            <option value="personal_growth">{{ t('personal_growth') }}</option>
+                            <option value="inspiration">{{ t('inspiration') }}</option>
+                            <option value="skill_development">{{ t('skill_development') }}</option>
                         </select>
                     </div>
 
@@ -93,14 +96,14 @@
                         class="preference-group"
                     >
                         <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Cosa vuoi imparare? (max 40 caratteri)
+                            {{ t('what_do_you_want_to_learn') }} ({{ t('max_40_characters') }})
                         </label>
                         <input
                             v-model="preferences.learningGoal"
                             type="text"
                             maxlength="40"
                             class="form-input block w-full"
-                            placeholder="Es: Programmare in Python e sviluppo web"
+                            :placeholder="t('what_do_you_want_to_learn_placeholder')"
                         />
                     </div>
 
@@ -127,7 +130,7 @@
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                                 ></path>
                             </svg>
-                            <span>Scopri Nuovi Mondi Letterari</span>
+                            <span>{{ t('discover_new_literary_worlds') }}</span>
                         </CTAButton>
                     </div>
                 </form>
@@ -147,10 +150,12 @@
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendations } from '@/services/openai/bookRecommendation'
     import type { UserPreferences } from '@/types/userPreferences'
+    import { useI18n } from 'vue-i18n'
 
     import Header from '@/components/layout/Header.vue'
     import CTAButton from '@/components/ui/CTAButton.vue'
 
+    const { t } = useI18n()
     const router = useRouter()
     const authStore = useAuthStore()
     const error = ref('')
@@ -174,7 +179,7 @@
                 }
             } catch (err) {
                 console.error('Error loading preferences:', err)
-                error.value = 'Errore nel caricamento delle preferenze'
+                error.value = t('error_loading_preferences')
             }
         }
     })
@@ -185,7 +190,7 @@
                 await saveUserPreferences(authStore.user.uid, preferences.value)
                 const canMakeCall = await incrementApiCallCount(authStore.user.uid)
                 if (!canMakeCall) {
-                    error.value = 'Hai raggiunto il limite di chiamate per oggi'
+                    error.value = t('api_call_limit_reached')
                     return
                 }
                 const newRecommendations = await getBookRecommendations(preferences.value)
@@ -193,11 +198,10 @@
                 router.push({ name: 'Processing' })
             } catch (err) {
                 console.error('Error saving preferences or getting recommendations:', err)
-                error.value =
-                    'Errore nel salvataggio delle preferenze o nel recupero delle raccomandazioni'
+                error.value = t('error_saving_preferences_or_getting_recommendations')
             }
         } else {
-            error.value = 'Utente non autenticato'
+            error.value = t('user_not_authenticated')
         }
     }
 </script>

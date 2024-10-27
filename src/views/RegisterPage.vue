@@ -5,13 +5,13 @@
         <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
             <div class="flex flex-col items-center space-y-4">
                 <h2 class="text-3xl font-extrabold text-bookmind-800 text-center">
-                    Registrati a BookMind
+                    {{ t('register_to_bookmind') }}
                 </h2>
             </div>
             <form @submit.prevent="register" class="mt-8 space-y-6">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label for="name" class="sr-only">Nome</label>
+                        <label for="name" class="sr-only">{{ t('name') }}</label>
                         <input
                             id="name"
                             v-model="name"
@@ -22,7 +22,7 @@
                         />
                     </div>
                     <div>
-                        <label for="email" class="sr-only">Email</label>
+                        <label for="email" class="sr-only">{{ t('email') }}</label>
                         <input
                             id="email"
                             v-model="email"
@@ -33,7 +33,7 @@
                         />
                     </div>
                     <div>
-                        <label for="password" class="sr-only">Password</label>
+                        <label for="password" class="sr-only">{{ t('password') }}</label>
                         <input
                             id="password"
                             v-model="password"
@@ -46,7 +46,7 @@
                 </div>
 
                 <div>
-                    <CTAButton type="submit">Crea Account</CTAButton>
+                    <CTAButton type="submit">{{ t('create_account') }}</CTAButton>
                 </div>
             </form>
             <div v-if="error" class="mt-3 text-sm text-red-600">
@@ -57,7 +57,7 @@
                     @click="goBack"
                     class="font-medium text-bookmind-600 hover:text-bookmind-500"
                 >
-                    Torna al Login
+                    {{ t('go_back_to_login') }}
                 </button>
             </div>
         </div>
@@ -71,7 +71,9 @@
     import { initAuth } from '@/services/firebase/config'
     import { useAuthStore } from '@/stores/auth'
     import CTAButton from '@/components/ui/CTAButton.vue'
+    import { useI18n } from 'vue-i18n'
 
+    const { t } = useI18n()
     const router = useRouter()
     const auth = initAuth()
     const authStore = useAuthStore()

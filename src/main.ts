@@ -1,10 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import { initAuth } from '@/services/firebase/config'
 import { useAuthStore } from '@/stores/auth'
+import { useLanguageStore } from '@/stores/language'
 import { onAuthStateChanged } from 'firebase/auth'
-
 import App from './App.vue'
 import router from './router'
 import i18n from './plugins/i18n'
@@ -16,10 +15,14 @@ const pinia = createPinia()
 
 app.use(pinia)
 app.use(i18n)
-// app.use(router)
 
+// Initialize stores
 const auth = initAuth()
 const authStore = useAuthStore()
+const languageStore = useLanguageStore()
+
+// Initialize language before mounting
+languageStore.initializeLanguage()
 
 let appMounted = false
 
