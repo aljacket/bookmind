@@ -4,7 +4,7 @@ export interface UserPreferences {
     period: string
     complexity: string
     purpose: string
-    learningGoal?: string // Opzionale
+    learningGoal?: string
 }
 
 export interface BookRecommendation {
@@ -19,6 +19,7 @@ export interface BookRecommendation {
     amazonLink?: string
     iberLibroLink?: string
     googleBooksLink?: string
+    googleBooksId?: string // Aggiunto questo campo
 }
 
 export function isValidUserPreferences(obj: any): obj is UserPreferences {
@@ -29,7 +30,7 @@ export function isValidUserPreferences(obj: any): obj is UserPreferences {
         typeof obj.period === 'string' &&
         typeof obj.complexity === 'string' &&
         typeof obj.purpose === 'string' &&
-        typeof obj.learningGoal === 'string'
+        (obj.learningGoal === undefined || typeof obj.learningGoal === 'string')
     )
 }
 

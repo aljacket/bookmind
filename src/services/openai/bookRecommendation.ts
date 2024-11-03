@@ -1,14 +1,12 @@
-// src/services/openai/bookRecommendation.ts
-
 import openai from './config'
 import { incrementUsage } from './usageMonitor'
 import type { UserPreferences } from '@/types/userPreferences'
-import { useI18n } from 'vue-i18n'
+import i18n from '@/plugins/i18n'
 
 export async function getBookRecommendations(preferences: UserPreferences) {
-    const { t } = useI18n()
-
-    const systemMessage = t('you_are_a_book_expert_recommend_3_books_based_on_preferences')
+    const systemMessage = i18n.global.t(
+        'you_are_a_book_expert_recommend_3_books_based_on_preferences'
+    )
     const prompt = `3 libri: g:${preferences.genre},l:${preferences.bookLength},p:${preferences.period},c:${preferences.complexity},s:${preferences.purpose}${preferences.learningGoal ? `,o:${preferences.learningGoal}` : ''}. Solo JSON:{b:[{t,a}]}`
 
     try {

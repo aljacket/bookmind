@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">bookmind</string>
+    <string name="title_activity_main">bookmind</string>
+    <string name="package_name">com.bookmind.app</string>
+    <string name="custom_url_scheme">com.bookmind.app</string>
+</resources>

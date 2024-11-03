@@ -6,8 +6,10 @@
         "src/**/*",
         "src/**/*.vue",
         "src/**/*.ts",
+        "src/**/*.tsx",
         "src/services/**/*",
-        "src/components/**/*"
+        "src/components/**/*",
+        "src/utils/**/*"
     ],
     "compilerOptions": {
         "composite": true,
