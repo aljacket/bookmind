@@ -30,3 +30,7 @@ coverage
 *.tsbuildinfo
 
 cursor
+
+#backend
+bookmind-server/.env
+.grit
