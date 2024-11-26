@@ -31,4 +31,8 @@ coverage
 
 cursor
 
+# backend
 bookmind-server/.env
+bookmind-server/venv
+bookmind-server/__pycache__
+
