@@ -19,38 +19,61 @@ BookMind is a sophisticated web application designed to provide users with perso
 -   **OpenAI API**: Powers the AI-driven book recommendation engine.
 -   **Vite**: A fast build tool and development server for modern web projects.
 
-## Project Scaffolding
+## Backend
 
-The project is organized into a modular structure to enhance maintainability and scalability:
+-   **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.7+.
+-   **Uvicorn**: A lightning-fast ASGI server implementation, using `uvloop` and `httptools`.
 
-```
-bookmind/
-├── android/                # Android-specific files for Capacitor
-├── ios/                    # iOS-specific files for Capacitor
-├── public/                 # Static assets
-├── src/                    # Source files
-│   ├── assets/             # Images, fonts, etc.
-│   ├── components/         # Vue components
-│   │   └── layout/         # Layout components like Header, Footer
-│   ├── locales/            # Localization files
-│   ├── plugins/            # Vue plugins
-│   ├── router/             # Vue Router configuration
-│   ├── services/           # API services and Firebase configuration
-│   ├── stores/             # Pinia stores
-│   ├── styles/             # Global styles and Tailwind configuration
-│   ├── types/              # TypeScript interfaces and types
-│   ├── views/              # Vue views/pages
-│   ├── App.vue             # Main Vue component
-│   └── main.ts             # Entry point for the application
-├── .env.example            # Example environment variables
-├── .eslintrc.cjs           # ESLint configuration
-├── .gitignore              # Git ignore file
-├── .prettierrc.json        # Prettier configuration
-├── index.html              # Main HTML file
-├── package.json            # NPM package configuration
-├── README.md               # Project documentation
-└── vite.config.ts          # Vite configuration
-```
+### Backend Setup
+
+1. **Navigate to the Backend Directory**:
+
+    ```sh
+    cd bookmind-server
+    ```
+
+2. **Create a Virtual Environment**:
+
+    ```sh
+    python -m venv venv
+    ```
+
+3. **Activate the Virtual Environment**:
+
+    - On macOS/Linux:
+        ```sh
+        source venv/bin/activate
+        ```
+    - On Windows:
+        ```sh
+        venv\Scripts\activate
+        ```
+
+4. **Install Backend Dependencies**:
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+5. **Environment Configuration**:
+
+    - Create a `.env` file in the `bookmind-server` directory.
+    - Add your OpenAI API credentials:
+        ```
+        OPENAI_API_KEY=your_openai_api_key
+        ```
+
+6. **Run the FastAPI Server**:
+
+    ```sh
+    uvicorn main:app --reload
+    ```
+
+    The server will be running at `http://127.0.0.1:8000`.
+
+### Backend API Endpoints
+
+-   **/recommendations**: POST endpoint to get book recommendations based on user preferences.
 
 ## Development Workflow
 
