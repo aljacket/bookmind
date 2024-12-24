@@ -1,4 +1,4 @@
-#!/Users/alfonsocavalieri/Documents/Projects/bookmind/bookmind-server/venv/bin/python3.12
+#!/Users/alfonsocavalieri/Documents/Projects/bookmind/bookmind-server/venv/bin/python3.13
 # -*- coding: utf-8 -*-
 import re
 import sys
