@@ -167,19 +167,15 @@
         period: 'any',
         complexity: 'medium',
         purpose: 'entertainment',
-        learningGoal: ''
+        learningGoal: '',
+        lang: 'en'
     })
 
     onMounted(async () => {
         if (authStore.user) {
-            try {
-                const savedPreferences = await getUserPreferences(authStore.user.uid)
-                if (savedPreferences) {
-                    preferences.value = savedPreferences
-                }
-            } catch (err) {
-                console.error('Error loading preferences:', err)
-                error.value = t('error_loading_preferences')
+            const savedPreferences = await getUserPreferences(authStore.user.uid)
+            if (savedPreferences) {
+                preferences.value = { ...savedPreferences, lang: preferences.value.lang }
             }
         }
     })

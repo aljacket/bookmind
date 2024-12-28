@@ -5,6 +5,7 @@ export interface UserPreferences {
     complexity: string
     purpose: string
     learningGoal?: string
+    lang: 'en' | 'es' | 'it'
 }
 
 export interface BookRecommendation {
@@ -17,9 +18,8 @@ export interface BookRecommendation {
     publishedDate?: string
     thumbnailUrl?: string
     amazonLink?: string
-    iberLibroLink?: string
     googleBooksLink?: string
-    googleBooksId?: string // Aggiunto questo campo
+    googleBooksId?: string
 }
 
 export function isValidUserPreferences(obj: any): obj is UserPreferences {

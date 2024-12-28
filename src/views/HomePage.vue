@@ -88,21 +88,6 @@
                                     </span>
                                 </a>
                                 <a
-                                    v-if="recommendation.iberLibroLink"
-                                    :href="recommendation.iberLibroLink"
-                                    target="_blank"
-                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
-                                >
-                                    <img
-                                        src="/src/assets/images/iberlibro_icon.png"
-                                        alt="IberLibro"
-                                        class="w-6 h-6 mr-4"
-                                    />
-                                    <span class="flex-grow text-center font-medium">
-                                        {{ t('buy_on_iberlibro') }}
-                                    </span>
-                                </a>
-                                <a
                                     v-if="recommendation.googleBooksLink"
                                     :href="recommendation.googleBooksLink"
                                     target="_blank"
@@ -196,7 +181,7 @@
     })
 
     async function loadRecommendations() {
-        if (recommendations.value.length) return // Evita di ricaricare se già abbiamo raccomandazioni
+        if (recommendations.value.length) return
 
         try {
             isLoading.value = true
@@ -250,9 +235,6 @@
                     ...bookDetails,
                     fullRecommendation: JSON.stringify(rec),
                     amazonLink: bookDetails?.isbn13 ? generateAmazonLink(bookDetails.isbn13) : '',
-                    iberLibroLink: bookDetails?.isbn13
-                        ? `https://www.iberlibro.com/servlet/SearchResults?kn=${bookDetails.isbn13}`
-                        : '',
                     googleBooksLink: bookDetails?.googleBooksLink || ''
                 }
             })
