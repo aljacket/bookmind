@@ -45,14 +45,22 @@
                     <div
                         v-for="(recommendation, index) in recommendations"
                         :key="index"
-                        class="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
+                        class="group bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
                     >
-                        <img
-                            v-if="recommendation.thumbnailUrl"
-                            :src="recommendation.thumbnailUrl"
-                            :alt="recommendation.title"
-                            class="w-full h-64 object-cover"
-                        />
+                        <div class="relative h-64 bg-bookmind-100 overflow-hidden py-4">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <img
+                                    v-if="recommendation.thumbnailUrl"
+                                    :src="recommendation.thumbnailUrl"
+                                    :alt="`Cover image for ${recommendation.title}`"
+                                    class="h-[calc(100%-2rem)] max-w-[180px] object-contain drop-shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
+                                    loading="lazy"
+                                    @error="(e) => (e.target.src = '/path/to/fallback-image.jpg')"
+                                />
+                            </div>
+                            <!-- Subtle hover overlay -->
+                            <div class="absolute inset-0 bg-bookmind-500/0 transition-colors duration-300 group-hover:bg-bookmind-500/5" />
+                        </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2 text-bookmind-800">
                                 {{ recommendation.title }}
@@ -62,13 +70,13 @@
                                 v-if="recommendation.pageCount"
                                 class="text-sm text-bookmind-500 mb-2"
                             >
-                                Pagine: {{ recommendation.pageCount }}
+                                {{ t('pages') }}: {{ recommendation.pageCount }}
                             </p>
                             <p
                                 v-if="recommendation.publishedDate"
                                 class="text-sm text-bookmind-500 mb-4"
                             >
-                                Pubblicato: {{ recommendation.publishedDate }}
+                                {{ t('published') }}: {{ formatDate(recommendation.publishedDate) }}
                             </p>
 
                             <div class="flex flex-col space-y-2">
@@ -172,7 +180,7 @@
     const showRemainingCallsWarning = ref(false)
     const showNoMoreCallsWarning = ref(false)
     const bookDetailsCache = new Map<string, any>()
-    const { t } = useI18n()
+    const { t, locale } = useI18n()
 
     onMounted(async () => {
         if (authStore.user) {
@@ -194,7 +202,7 @@
                 if (lastRecommendations && lastRecommendations.length > 0) {
                     recommendations.value = lastRecommendations
                     await checkRemainingCalls()
-                    return // Usiamo direttamente le raccomandazioni salvate senza riprocessarle
+                    return // Use the saved recommendations directly without reprocessing
                 }
             }
 
@@ -256,5 +264,19 @@
                 showNoMoreCallsWarning.value = true
             }
         }
+    }
+
+    /**
+     * Formats a date string based on the current locale.
+     * @param dateStr - The date string to format.
+     * @returns Formatted date string.
+     */
+    function formatDate(dateStr: string): string {
+        const date = new Date(dateStr)
+        return new Intl.DateTimeFormat(locale.value, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }).format(date)
     }
 </script>
