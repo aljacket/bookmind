@@ -73,5 +73,7 @@
     "skill_development": "Sviluppo delle abilità",
     "programming": "Programmazione",
     "language_learning": "Apprendimento di lingue",
-    "discover_new_literary_worlds": "Scopri nuovi mondi letterari"
+    "discover_new_literary_worlds": "Scopri nuovi mondi letterari",
+    "email_placeholder": "Indirizzo Email",
+    "password_placeholder": "Password"
 }

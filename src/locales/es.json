@@ -7,7 +7,7 @@
     "ready_for_a_new_literary_journey": "¿Listo para un nuevo viaje literario?",
     "discover_new_books": "Descubre nuevos libros",
     "remaining_calls_warning": "Te queda solo una posibilidad para obtener recomendaciones hoy.",
-    "limit_reached": "Límite alcanzado!",
+    "limit_reached": "¡Límite alcanzado!",
     "no_more_calls_message": "Has agotado tus posibilidades para obtener recomendaciones hoy. Intenta de nuevo en 24 horas.",
     "processing_recommendations": "Procesando tus recomendaciones...",
     "your_recommended_books": "Tus libros recomendados",
@@ -73,5 +73,7 @@
     "skill_development": "Desarrollo de habilidades",
     "programming": "Programación",
     "language_learning": "Aprendizaje de idiomas",
-    "discover_new_literary_worlds": "Descubre nuevos mundos literarios"
+    "discover_new_literary_worlds": "Descubre nuevos mundos literarios",
+    "email_placeholder": "Dirección de Email",
+    "password_placeholder": "Contraseña"
 }

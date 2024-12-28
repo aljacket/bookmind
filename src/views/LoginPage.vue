@@ -29,7 +29,7 @@
             )
             authStore.setUser(userCredential.user)
             router.push('/')
-        } catch (error) {
+        } catch (error: any) {
             if (error instanceof Error) {
                 errorMessage.value = error.message
             } else {
@@ -77,7 +77,7 @@
                             type="email"
                             required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-t-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            placeholder="Indirizzo email"
+                            :placeholder="t('email_placeholder')"
                         />
                     </div>
                     <div>
@@ -88,7 +88,7 @@
                             type="password"
                             required
                             class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-b-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            placeholder="Password"
+                            :placeholder="t('password_placeholder')"
                         />
                     </div>
                 </div>
