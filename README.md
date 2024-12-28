@@ -37,7 +37,7 @@ cd bookmind-server
 Create a Python virtual environment to manage project dependencies.
 
 ```sh
-python -m venv venv
+python3 -m venv venv
 ```
 
 ### 3. Activate the Virtual Environment
