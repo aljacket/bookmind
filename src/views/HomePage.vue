@@ -55,7 +55,6 @@
                                     :alt="`Cover image for ${recommendation.title}`"
                                     class="h-[calc(100%-2rem)] max-w-[180px] object-contain drop-shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
                                     loading="lazy"
-                                    @error="(e) => (e.target.src = '/path/to/fallback-image.jpg')"
                                 />
                             </div>
                             <!-- Subtle hover overlay -->

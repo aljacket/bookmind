@@ -34,6 +34,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/ProcessingPage.vue'),
         meta: { requiresAuth: true },
         props: true
+    },
+    {
+        path: '/forgot-password',
+        name: 'ForgotPassword',
+        component: () => import('@/views/ForgotPasswordPage.vue'),
+        meta: { guestOnly: true }
     }
     // Other routes can be added here
 ]

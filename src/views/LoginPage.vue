@@ -42,6 +42,10 @@
         languageStore.setLanguage(selectedLanguage.value)
         locale.value = selectedLanguage.value
     }
+
+    const navigateToForgotPassword = () => {
+        router.push('/forgot-password')
+    }
 </script>
 
 <template>
@@ -101,7 +105,7 @@
                 {{ errorMessage }}
             </div>
             <div class="flex items-center justify-between mt-4 text-sm">
-                <a href="#" class="font-medium text-bookmind-600 hover:text-bookmind-500">
+                <a href="#" class="font-medium text-bookmind-600 hover:text-bookmind-500" @click.prevent="navigateToForgotPassword">
                     {{ t('forgot_password') }}
                 </a>
                 <router-link
