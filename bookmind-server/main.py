@@ -19,7 +19,12 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Allow your frontend's origin
+    allow_origins=[
+        "http://localhost:5173",
+        "https://localhost",
+        "capacitor://localhost",
+        "http://192.168.1.94:8000",  # Replace with your computer's IP
+    ],
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
