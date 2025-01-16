@@ -21,13 +21,14 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://localhost",
+        "http://localhost:3000",
+        "http://localhost",
         "capacitor://localhost",
-        "http://192.168.1.94:8000",  # Replace with your computer's IP
+        "*"  # During development only - remove in production
     ],
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class SupportedLanguage(str, Enum):
