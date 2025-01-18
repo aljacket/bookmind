@@ -84,5 +84,6 @@
     "reset_link_sent": "A password reset link has been sent to your email.",
     "user_not_found": "User not found.",
     "invalid_email": "Invalid email address.",
-    "unexpected_error": "An unexpected error occurred. Please try again later."
+    "unexpected_error": "An unexpected error occurred. Please try again later.",
+    "error_saving_preferences_or_getting_recommendations": "An error occurred while processing your preferences. Please try again."
 }
