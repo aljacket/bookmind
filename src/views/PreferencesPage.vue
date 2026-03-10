@@ -116,21 +116,20 @@
 
                     <div class="mt-8">
                         <CTAButton type="submit">
+                            <span>{{ t('get_recommendations') }}</span>
                             <svg
-                                class="w-5 h-5 mr-2"
+                                class="w-4 h-4 ml-2"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                     stroke-width="2"
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
                                 ></path>
                             </svg>
-                            <span>{{ t('discover_new_literary_worlds') }}</span>
                         </CTAButton>
                     </div>
                 </form>
@@ -144,8 +143,7 @@
     import { useRouter } from 'vue-router'
     import {
         saveUserPreferences,
-        getUserPreferences,
-        incrementApiCallCount
+        getUserPreferences
     } from '@/services/indexedDB/userPreferences'
     import { useAuthStore } from '@/stores/auth'
     import { getBookRecommendations } from '@/services/recommendations/bookRecommendation'
@@ -184,11 +182,6 @@
         if (authStore.user) {
             try {
                 await saveUserPreferences(authStore.user.uid, preferences.value)
-                const canMakeCall = await incrementApiCallCount(authStore.user.uid)
-                if (!canMakeCall) {
-                    error.value = t('api_call_limit_reached')
-                    return
-                }
                 const newRecommendations = await getBookRecommendations(preferences.value)
                 localStorage.setItem('newRecommendations', JSON.stringify(newRecommendations))
                 router.push({ name: 'Processing' })

@@ -23,20 +23,6 @@
                 </div>
             </div>
 
-            <!-- Alerts -->
-            <WarningAlert
-                v-if="showRemainingCallsWarning"
-                :message="t('remaining_calls_warning')"
-                class="mb-6"
-            />
-
-            <ErrorAlert
-                v-if="showNoMoreCallsWarning"
-                :title="t('limit_reached')"
-                :message="t('no_more_calls_message')"
-                class="mb-6"
-            />
-
             <!-- Loading State -->
             <div v-if="isLoading" class="text-center text-ink-500">
                 {{ t('processing_recommendations') }}
@@ -178,7 +164,6 @@
     import {
         saveLastRecommendations,
         getLastRecommendations,
-        getRemainingCalls
     } from '@/services/indexedDB/userPreferences'
     import type { BookRecommendation } from '@/types/userPreferences'
     import { useRoute } from 'vue-router'
@@ -186,8 +171,6 @@
 
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
-    import WarningAlert from '@/components/alert/WarningAlert.vue'
-    import ErrorAlert from '@/components/alert/ErrorAlert.vue'
     import CTAButton from '@/components/ui/CTAButton.vue'
 
     const authStore = useAuthStore()
@@ -195,8 +178,6 @@
     const recommendations = ref<BookRecommendation[]>([])
     const isLoading = ref(false)
     const error = ref('')
-    const showRemainingCallsWarning = ref(false)
-    const showNoMoreCallsWarning = ref(false)
     const bookDetailsCache = new Map<string, any>()
     const { t, locale } = useI18n()
 
@@ -219,7 +200,6 @@
                 const lastRecommendations = await getLastRecommendations(authStore.user!.uid)
                 if (lastRecommendations && lastRecommendations.length > 0) {
                     recommendations.value = lastRecommendations
-                    await checkRemainingCalls()
                     return // Use the saved recommendations directly without reprocessing
                 }
             }
@@ -228,7 +208,6 @@
                 recommendations.value = await processRecommendations(recommendationsToProcess)
             }
 
-            await checkRemainingCalls()
         } catch (err) {
             console.error('Error loading recommendations:', err)
             error.value = t('error_loading_recommendations')
@@ -267,17 +246,6 @@
         }
 
         return processedRecommendations
-    }
-
-    async function checkRemainingCalls() {
-        if (authStore.user) {
-            const callsLeft = await getRemainingCalls(authStore.user.uid)
-            if (callsLeft === 1) {
-                showRemainingCallsWarning.value = true
-            } else if (callsLeft === 0) {
-                showNoMoreCallsWarning.value = true
-            }
-        }
     }
 
     /**
