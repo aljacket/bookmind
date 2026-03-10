@@ -88,5 +88,11 @@
     "user_not_found": "User not found.",
     "invalid_email": "Invalid email address.",
     "unexpected_error": "An unexpected error occurred. Please try again later.",
-    "error_saving_preferences_or_getting_recommendations": "An error occurred while processing your preferences. Please try again."
+    "error_saving_preferences_or_getting_recommendations": "An error occurred while processing your preferences. Please try again.",
+    "reading_list": "Reading List",
+    "your_reading_list": "Your Reading List",
+    "add_to_reading_list": "Add to Reading List",
+    "remove_from_reading_list": "Remove from Reading List",
+    "empty_reading_list": "Your Reading List is Empty",
+    "empty_reading_list_message": "Save books you want to read by tapping the heart icon on any recommendation."
 }

@@ -11,6 +11,7 @@ export interface UserPreferences {
 export interface BookRecommendation {
     title: string
     author: string
+    reason?: string
     fullRecommendation?: string
     isbn10?: string
     isbn13?: string

@@ -63,6 +63,27 @@
                             </svg>
                             {{ t('preferences') }}
                         </button>
+
+                        <button
+                            @click="goToReadingList"
+                            class="w-full flex items-center text-left py-2 px-4 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 mr-2"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                />
+                            </svg>
+                            {{ t('reading_list') }}
+                        </button>
                     </div>
                 </div>
 
@@ -136,6 +157,11 @@
 
     const goToPreferences = () => {
         router.push('/preferences')
+        isOpen.value = false
+    }
+
+    const goToReadingList = () => {
+        router.push('/reading-list')
         isOpen.value = false
     }
 </script>

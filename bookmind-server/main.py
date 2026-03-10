@@ -53,6 +53,7 @@ class UserPreferences(BaseModel):
 class BookRecommendation(BaseModel):
     title: str
     author: str
+    reason: str = ""
 
 @app.post("/recommendations")
 async def get_recommendations(preferences: UserPreferences) -> List[BookRecommendation]:
@@ -76,7 +77,7 @@ async def get_recommendations(preferences: UserPreferences) -> List[BookRecommen
         )
         if preferences.learningGoal and preferences.purpose in ["learning", "skill_development"]:
             prompt += f"\nGoal: {preferences.learningGoal}"
-        prompt += "\nReturn 3: {\"b\":[{\"t\":\"title\",\"a\":\"author\"}]}"
+        prompt += "\nReturn 3: {\"b\":[{\"t\":\"title\",\"a\":\"author\",\"r\":\"1-sentence reason\"}]}"
     elif preferences.lang == "es":
         prompt = (
             f"3 Libros que coincidan:\n"
@@ -88,7 +89,7 @@ async def get_recommendations(preferences: UserPreferences) -> List[BookRecommen
         )
         if preferences.learningGoal and preferences.purpose in ["learning", "skill_development"]:
             prompt += f"\nMeta: {preferences.learningGoal}"
-        prompt += "\nDevolver 3: {\"b\":[{\"t\":\"título\",\"a\":\"autor\"}]}"
+        prompt += "\nDevolver 3: {\"b\":[{\"t\":\"título\",\"a\":\"autor\",\"r\":\"razón en 1 frase\"}]}"
     elif preferences.lang == "it":
         prompt = (
             f"3 Libri corrispondenti:\n"
@@ -100,7 +101,7 @@ async def get_recommendations(preferences: UserPreferences) -> List[BookRecommen
         )
         if preferences.learningGoal and preferences.purpose in ["learning", "skill_development"]:
             prompt += f"\nObiettivo: {preferences.learningGoal}"
-        prompt += "\nRitorna 3: {\"b\":[{\"t\":\"titolo\",\"a\":\"autore\"}]}"
+        prompt += "\nRitorna 3: {\"b\":[{\"t\":\"titolo\",\"a\":\"autore\",\"r\":\"motivazione in 1 frase\"}]}"
     
     
     try:
@@ -110,12 +111,12 @@ async def get_recommendations(preferences: UserPreferences) -> List[BookRecommen
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a book recommendation expert. For learning-related requests, focus on educational and practical books that match the specific learning goal. Always return recommendations in the exact JSON format requested."
+                    "content": "You are a book recommendation expert. For learning-related requests, focus on educational and practical books that match the specific learning goal. Always return recommendations in the exact JSON format requested. Each reason should be a single concise sentence."
                 },
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
-            max_tokens=150
+            max_tokens=300
         )
         
         # Get the response content
@@ -137,8 +138,9 @@ async def get_recommendations(preferences: UserPreferences) -> List[BookRecommen
             for rec in recommendations:
                 title = rec.get('t')
                 author = rec.get('a')
+                reason = rec.get('r', '')
                 if title and author:
-                    validated_recommendations.append(BookRecommendation(title=title, author=author))
+                    validated_recommendations.append(BookRecommendation(title=title, author=author, reason=reason))
             
             if not validated_recommendations:
                 raise HTTPException(

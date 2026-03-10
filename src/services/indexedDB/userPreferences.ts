@@ -6,11 +6,12 @@ import type { BookRecommendation } from '@/types/userPreferences'
 
 const DB_NAME = 'BookMindDB'
 const STORE_NAME = 'userPreferences'
-const DB_VERSION = 2
+const DB_VERSION = 3
 
 const USER_PREFERENCES_STORE = 'userPreferences'
 const LAST_RECOMMENDATIONS_KEY = 'lastRecommendations'
 const API_CALLS_STORE = 'apiCalls'
+const READING_LIST_STORE = 'readingList'
 
 function openDB(): Promise<IDBDatabase> {
     return new Promise((resolve, reject) => {
@@ -28,6 +29,10 @@ function openDB(): Promise<IDBDatabase> {
 
             if (!db.objectStoreNames.contains(API_CALLS_STORE)) {
                 db.createObjectStore(API_CALLS_STORE)
+            }
+
+            if (!db.objectStoreNames.contains(READING_LIST_STORE)) {
+                db.createObjectStore(READING_LIST_STORE)
             }
         }
     })
@@ -143,6 +148,61 @@ export async function incrementApiCallCount(userId: string): Promise<boolean> {
         }
         getRequest.onerror = () => reject('Error retrieving API call count')
     })
+}
+
+export async function getReadingList(userId: string): Promise<BookRecommendation[]> {
+    const db = await openDB()
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(READING_LIST_STORE, 'readonly')
+        const store = transaction.objectStore(READING_LIST_STORE)
+        const request = store.get(`${userId}_readingList`)
+
+        request.onerror = () => reject('Error retrieving reading list')
+        request.onsuccess = () => resolve(request.result ? request.result : [])
+    })
+}
+
+export async function saveReadingList(
+    userId: string,
+    books: BookRecommendation[]
+): Promise<void> {
+    const db = await openDB()
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(READING_LIST_STORE, 'readwrite')
+        const store = transaction.objectStore(READING_LIST_STORE)
+        const request = store.put(
+            JSON.parse(JSON.stringify(books)),
+            `${userId}_readingList`
+        )
+
+        request.onerror = () => reject('Error saving reading list')
+        request.onsuccess = () => resolve()
+    })
+}
+
+export async function addToReadingList(
+    userId: string,
+    book: BookRecommendation
+): Promise<void> {
+    const currentList = await getReadingList(userId)
+    const alreadyExists = currentList.some(
+        (b) => b.title === book.title && b.author === book.author
+    )
+    if (!alreadyExists) {
+        currentList.push(book)
+        await saveReadingList(userId, currentList)
+    }
+}
+
+export async function removeFromReadingList(
+    userId: string,
+    book: BookRecommendation
+): Promise<void> {
+    const currentList = await getReadingList(userId)
+    const filtered = currentList.filter(
+        (b) => !(b.title === book.title && b.author === book.author)
+    )
+    await saveReadingList(userId, filtered)
 }
 
 export async function getRemainingCalls(userId: string): Promise<number> {

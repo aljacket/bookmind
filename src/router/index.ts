@@ -36,12 +36,17 @@ const routes: Array<RouteRecordRaw> = [
         props: true
     },
     {
+        path: '/reading-list',
+        name: 'ReadingList',
+        component: () => import('@/views/ReadingListPage.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
         path: '/forgot-password',
         name: 'ForgotPassword',
         component: () => import('@/views/ForgotPasswordPage.vue'),
         meta: { guestOnly: true }
     }
-    // Other routes can be added here
 ]
 
 const router = createRouter({

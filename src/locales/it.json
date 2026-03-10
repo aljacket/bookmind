@@ -87,5 +87,11 @@
     "reset_link_sent": "Un link per il reset della password è stato inviato alla tua email.",
     "user_not_found": "Utente non trovato.",
     "invalid_email": "Indirizzo email non valido.",
-    "unexpected_error": "Si è verificato un errore inaspettato. Per favore riprova più tardi."
+    "unexpected_error": "Si è verificato un errore inaspettato. Per favore riprova più tardi.",
+    "reading_list": "Lista di Lettura",
+    "your_reading_list": "La Tua Lista di Lettura",
+    "add_to_reading_list": "Aggiungi alla Lista di Lettura",
+    "remove_from_reading_list": "Rimuovi dalla Lista di Lettura",
+    "empty_reading_list": "La Tua Lista di Lettura è Vuota",
+    "empty_reading_list_message": "Salva i libri che vuoi leggere toccando l'icona del cuore su qualsiasi raccomandazione."
 }

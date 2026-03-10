@@ -23,9 +23,12 @@
                 </div>
             </div>
 
-            <!-- Loading State -->
-            <div v-if="isLoading" class="text-center text-ink-500">
-                {{ t('processing_recommendations') }}
+            <!-- Loading Skeleton State -->
+            <div v-if="isLoading" class="mt-8">
+                <div class="h-7 bg-ink-200 rounded w-64 mb-8 animate-pulse-soft"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <SkeletonCard v-for="i in 3" :key="i" />
+                </div>
             </div>
 
             <!-- Recommendations Grid -->
@@ -53,11 +56,45 @@
 
                         <!-- Card Content -->
                         <div class="p-6">
+                            <!-- Bookmark Button -->
+                            <div class="flex justify-end mb-2">
+                                <button
+                                    @click.stop="toggleReadingList(recommendation)"
+                                    class="text-ink-400 hover:text-accent-500 transition-colors duration-200"
+                                    :title="isInReadingList(recommendation)
+                                        ? t('remove_from_reading_list')
+                                        : t('add_to_reading_list')"
+                                >
+                                    <svg v-if="isInReadingList(recommendation)"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         class="w-5 h-5 text-accent-500"
+                                         viewBox="0 0 24 24"
+                                         fill="currentColor">
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    </svg>
+                                    <svg v-else
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         class="w-5 h-5"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                </button>
+                            </div>
+
                             <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
                                 {{ recommendation.title }}
                             </h3>
                             <p class="text-sm text-ink-500 mb-4 font-light">
                                 {{ recommendation.author }}
+                            </p>
+
+                            <!-- Recommendation Reason -->
+                            <p v-if="recommendation.reason"
+                               class="text-sm text-ink-600 italic mb-4 leading-relaxed">
+                                {{ recommendation.reason }}
                             </p>
 
                             <!-- Metadata Row -->
@@ -164,6 +201,9 @@
     import {
         saveLastRecommendations,
         getLastRecommendations,
+        getReadingList,
+        addToReadingList,
+        removeFromReadingList
     } from '@/services/indexedDB/userPreferences'
     import type { BookRecommendation } from '@/types/userPreferences'
     import { useRoute } from 'vue-router'
@@ -172,18 +212,21 @@
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
     import CTAButton from '@/components/ui/CTAButton.vue'
+    import SkeletonCard from '@/components/ui/SkeletonCard.vue'
 
     const authStore = useAuthStore()
     const route = useRoute()
     const recommendations = ref<BookRecommendation[]>([])
     const isLoading = ref(false)
     const error = ref('')
+    const readingList = ref<BookRecommendation[]>([])
     const bookDetailsCache = new Map<string, any>()
     const { t, locale } = useI18n()
 
     onMounted(async () => {
         if (authStore.user) {
             await loadRecommendations()
+            readingList.value = await getReadingList(authStore.user.uid)
         }
     })
 
@@ -234,6 +277,7 @@
                 return {
                     ...rec,
                     ...bookDetails,
+                    reason: rec.reason,
                     fullRecommendation: JSON.stringify(rec),
                     amazonLink: bookDetails?.isbn13 ? generateAmazonLink(bookDetails.isbn13) : '',
                     googleBooksLink: bookDetails?.googleBooksLink || ''
@@ -260,5 +304,21 @@
             month: 'long',
             day: 'numeric'
         }).format(date)
+    }
+
+    function isInReadingList(book: BookRecommendation): boolean {
+        return readingList.value.some(
+            (b) => b.title === book.title && b.author === book.author
+        )
+    }
+
+    async function toggleReadingList(book: BookRecommendation) {
+        if (!authStore.user) return
+        if (isInReadingList(book)) {
+            await removeFromReadingList(authStore.user.uid, book)
+        } else {
+            await addToReadingList(authStore.user.uid, book)
+        }
+        readingList.value = await getReadingList(authStore.user.uid)
     }
 </script>
