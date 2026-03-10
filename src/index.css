@@ -5,14 +5,46 @@
 @layer base {
     html {
         font-family: Inter, system-ui, sans-serif;
+        color: #3d3831;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', Georgia, serif;
+        color: #2a2520;
+    }
+
+    body {
+        background-color: #faf9f7;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #d4cfc5;
+        border-radius: 3px;
     }
 }
 
 @layer components {
-    .btn-primary {
-        @apply bg-bookmind-600 hover:bg-bookmind-700 text-white font-bold py-2 px-4 rounded;
+    .form-input {
+        @apply w-full px-4 py-3 bg-white border border-ink-200 rounded-lg
+               text-ink-700 placeholder-ink-400
+               focus:outline-none focus:ring-2 focus:ring-accent-400/30 focus:border-accent-400
+               transition-all duration-200;
     }
-    .btn-secondary {
-        @apply bg-bookmind-purple hover:bg-bookmind-purple-700 text-white font-bold py-2 px-4 rounded;
+
+    .form-select {
+        @apply w-full px-4 py-3 bg-white border border-ink-200 rounded-lg
+               text-ink-700 appearance-none cursor-pointer
+               focus:outline-none focus:ring-2 focus:ring-accent-400/30 focus:border-accent-400
+               transition-all duration-200;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237c7568' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
     }
 }

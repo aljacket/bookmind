@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/preferences',
         name: 'Preferences',
-        component: () => import('@/views/UserPreferences.vue'),
+        component: () => import('@/views/PreferencesPage.vue'),
         meta: { requiresAuth: true }
     },
     {

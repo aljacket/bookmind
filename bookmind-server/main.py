@@ -23,10 +23,14 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:3000",
         "http://localhost",
+        "https://localhost",
         "capacitor://localhost",
-        "*"  # During development only - remove in production
+        "http://10.0.2.2:8000",
+        "https://10.0.2.2:8000",
+        "http://10.0.2.2",
+        "https://10.0.2.2",
+        # Add production origins here
     ],
-
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

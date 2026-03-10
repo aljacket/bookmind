@@ -85,7 +85,7 @@ export async function saveLastRecommendations(
             `${userId}_${LAST_RECOMMENDATIONS_KEY}`
         )
 
-        request.onerror = () => reject('Errore nel salvataggio delle ultime raccomandazioni')
+        request.onerror = () => reject('Error saving last recommendations')
         request.onsuccess = () => resolve()
     })
 }
@@ -97,7 +97,7 @@ export async function getLastRecommendations(userId: string): Promise<BookRecomm
         const store = transaction.objectStore(STORE_NAME)
         const request = store.get(`${userId}_${LAST_RECOMMENDATIONS_KEY}`)
 
-        request.onerror = () => reject('Errore nel recupero delle ultime raccomandazioni')
+        request.onerror = () => reject('Error retrieving last recommendations')
         request.onsuccess = () => {
             const result = request.result
             resolve(result ? result : null)
@@ -120,28 +120,28 @@ export async function incrementApiCallCount(userId: string): Promise<boolean> {
             let currentCallsData = getRequest.result
 
             if (!currentCallsData) {
-                // Primo accesso del giorno, inizializza il contatore
+                // First access today, initialize counter
                 currentCallsData = { count: 0, lastReset: now.getTime() }
             } else {
-                // Controlla se sono passate 24 ore dall'ultimo reset
+                // Check if 24 hours have passed since last reset
                 const hoursSinceLastReset =
                     (now.getTime() - currentCallsData.lastReset) / (1000 * 60 * 60)
                 if (hoursSinceLastReset >= 24) {
-                    // Resetta il contatore se sono passate 24 ore
+                    // Reset counter after 24 hours
                     currentCallsData = { count: 0, lastReset: now.getTime() }
                 }
             }
 
             if (currentCallsData.count >= 2) {
-                resolve(false) // Limite giornaliero raggiunto
+                resolve(false) // Daily limit reached
             } else {
                 currentCallsData.count++
                 const putRequest = store.put(currentCallsData, key)
                 putRequest.onsuccess = () => resolve(true)
-                putRequest.onerror = () => reject("Errore nell'incremento delle chiamate API")
+                putRequest.onerror = () => reject('Error incrementing API call count')
             }
         }
-        getRequest.onerror = () => reject('Errore nel recupero delle chiamate API')
+        getRequest.onerror = () => reject('Error retrieving API call count')
     })
 }
 
@@ -159,17 +159,17 @@ export async function getRemainingCalls(userId: string): Promise<number> {
         getRequest.onsuccess = () => {
             const currentCallsData = getRequest.result
             if (!currentCallsData) {
-                resolve(2) // Nessuna chiamata fatta oggi
+                resolve(2) // No calls made today
             } else {
                 const hoursSinceLastReset =
                     (now.getTime() - currentCallsData.lastReset) / (1000 * 60 * 60)
                 if (hoursSinceLastReset >= 24) {
-                    resolve(2) // Sono passate 24 ore, reset
+                    resolve(2) // 24 hours passed, reset
                 } else {
                     resolve(2 - currentCallsData.count)
                 }
             }
         }
-        getRequest.onerror = () => reject('Errore nel recupero delle chiamate API')
+        getRequest.onerror = () => reject('Error retrieving API call count')
     })
 }

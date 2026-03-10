@@ -49,68 +49,81 @@
 </script>
 
 <template>
-    <div
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100"
-    >
-        <div class="absolute top-4 right-4 z-10 bg-white p-2 rounded-lg shadow-md">
+    <div class="min-h-screen flex items-center justify-center bg-ink-50 px-4">
+        <!-- Language selector -->
+        <div class="absolute top-6 right-6">
             <select
                 v-model="selectedLanguage"
                 @change="changeLanguage"
-                class="bg-white border border-gray-300 text-gray-700 py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-bookmind-500 focus:border-bookmind-500"
+                class="form-select"
             >
                 <option value="en">English</option>
                 <option value="it">Italiano</option>
                 <option value="es">Español</option>
             </select>
         </div>
-        <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
-            <div class="flex flex-col items-center space-y-4">
+
+        <!-- Login card -->
+        <div class="max-w-md w-full bg-white border border-ink-200 shadow-sm rounded-2xl p-10">
+            <!-- Logo -->
+            <div class="flex justify-center mb-8">
                 <img
                     src="@/assets/images/bookmind-logo-tp.png"
                     alt="BookMind Logo"
                     class="w-full h-42"
                 />
             </div>
-            <form @submit.prevent="login" class="mt-8 space-y-6">
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="email" class="sr-only">Email</label>
-                        <input
-                            id="email"
-                            v-model="email"
-                            type="email"
-                            required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-t-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            :placeholder="t('email_placeholder')"
-                        />
-                    </div>
-                    <div>
-                        <label for="password" class="sr-only">{{ t('password') }}</label>
-                        <input
-                            id="password"
-                            v-model="password"
-                            type="password"
-                            required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-b-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            :placeholder="t('password_placeholder')"
-                        />
-                    </div>
+
+            <!-- Form -->
+            <form @submit.prevent="login" class="space-y-4">
+                <div>
+                    <label for="email" class="sr-only">Email</label>
+                    <input
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        required
+                        class="form-input"
+                        :placeholder="t('email_placeholder')"
+                    />
                 </div>
 
                 <div>
-                    <CTAButton type="submit">{{ t('login') }}</CTAButton>
+                    <label for="password" class="sr-only">{{ t('password') }}</label>
+                    <input
+                        id="password"
+                        v-model="password"
+                        type="password"
+                        required
+                        class="form-input"
+                        :placeholder="t('password_placeholder')"
+                    />
+                </div>
+
+                <div class="pt-2">
+                    <CTAButton type="submit" variant="primary">
+                        {{ t('login') }}
+                    </CTAButton>
                 </div>
             </form>
-            <div v-if="errorMessage" class="mt-3 text-sm text-red-600">
+
+            <!-- Error message -->
+            <div v-if="errorMessage" class="mt-4 text-sm text-red-600 font-sans">
                 {{ errorMessage }}
             </div>
-            <div class="flex items-center justify-between mt-4 text-sm">
-                <a href="#" class="font-medium text-bookmind-600 hover:text-bookmind-500" @click.prevent="navigateToForgotPassword">
+
+            <!-- Links -->
+            <div class="flex items-center justify-between mt-6 text-sm font-sans">
+                <a
+                    href="#"
+                    class="text-accent-600 hover:text-accent-700 transition-colors"
+                    @click.prevent="navigateToForgotPassword"
+                >
                     {{ t('forgot_password') }}
                 </a>
                 <router-link
                     to="/register"
-                    class="font-medium text-bookmind-600 hover:text-bookmind-500"
+                    class="text-accent-600 hover:text-accent-700 transition-colors"
                 >
                     {{ t('register') }}
                 </router-link>
@@ -118,11 +131,3 @@
         </div>
     </div>
 </template>
-
-<style scoped>
-    .language-selector {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-</style>

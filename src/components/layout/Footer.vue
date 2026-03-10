@@ -1,16 +1,13 @@
 <template>
-    <footer class="mt-16 py-6 bg-gray-100">
+    <footer class="border-t border-ink-200 py-8 mt-auto">
         <div class="container mx-auto text-center">
-            <p class="text-gray-600">
-                Made with
-                <span class="text-red-500">&hearts;</span>
-                by
-                <span class="font-semibold text-gray-800">BookMind Team</span>
+            <p class="text-xs text-ink-400 tracking-wide uppercase font-sans">
+                BookMind &mdash; AI-Powered Book Discovery
             </p>
         </div>
     </footer>
 </template>
 
 <script setup lang="ts">
-    // Non è necessario alcun codice JavaScript per questo componente
+    // No JavaScript needed for this component
 </script>

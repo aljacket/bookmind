@@ -3,7 +3,7 @@
         <!-- Hamburger button -->
         <button
             @click="toggleMenu"
-            class="text-bookmind-600 hover:text-bookmind-800 z-50 relative py-4 pr-4 transition-all duration-300 ease-in-out"
+            class="text-ink-600 hover:text-ink-800 z-50 relative py-4 pr-4 transition-all duration-300 ease-in-out"
             aria-label="Toggle menu"
         >
             <div class="w-6 h-6 flex items-center justify-center">
@@ -15,20 +15,20 @@
         <Transition name="fade">
             <div
                 v-if="isOpen"
-                class="fixed inset-0 bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100 z-40 flex flex-col items-center justify-between py-16"
+                class="fixed inset-0 bg-ink-50 z-40 flex flex-col items-center justify-between py-16"
             >
                 <!-- Top section with menu items -->
                 <div class="w-full max-w-sm px-4">
                     <div class="bg-white rounded-xl shadow-lg p-8 space-y-6">
                         <!-- Language Selector -->
                         <div class="space-y-2">
-                            <label class="block text-sm font-medium text-bookmind-600">
+                            <label class="block text-sm font-medium text-ink-600">
                                 {{ t('select_language') }}
                             </label>
                             <select
                                 v-model="selectedLanguage"
                                 @change="changeLanguage"
-                                class="w-full bg-white border border-bookmind-300 text-bookmind-700 py-2 px-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-bookmind-500 focus:border-bookmind-500 transition duration-200"
+                                class="form-select w-full"
                             >
                                 <option value="en">English</option>
                                 <option value="it">Italiano</option>
@@ -39,7 +39,7 @@
                         <!-- Other menu items can go here -->
                         <button
                             @click="goToPreferences"
-                            class="w-full flex items-center text-left py-2 px-4 rounded-md transition-colors duration-300 hover:bg-bookmind-100 text-bookmind-600 hover:text-bookmind-800"
+                            class="w-full flex items-center text-left py-2 px-4 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@
                     <div class="bg-white rounded-xl shadow-lg">
                         <button
                             @click="logout"
-                            class="w-full flex items-center text-left py-4 px-6 rounded-md transition-colors duration-300 hover:bg-bookmind-100 text-bookmind-600 hover:text-bookmind-800"
+                            class="w-full flex items-center text-left py-4 px-6 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

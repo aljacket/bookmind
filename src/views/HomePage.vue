@@ -1,25 +1,29 @@
 <!-- src/views/HomePage.vue -->
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100">
-        <Header title="BookMind" class="bg-white shadow-md" />
+    <div class="bg-ink-50 min-h-screen">
+        <Header title="BookMind" />
 
-        <main class="container mx-auto p-6 mt-8">
-            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8 mb-12">
-                <h2 v-if="authStore.user" class="text-3xl font-bold text-bookmind-800 mb-4">
+        <main class="container mx-auto px-6 pt-4 pb-12">
+            <!-- Hero Section -->
+            <div class="max-w-2xl mx-auto text-center py-12">
+                <h2 v-if="authStore.user" class="text-4xl font-serif font-medium text-ink-800 mb-3">
                     {{
                         t('welcome_user', {
                             user: authStore.user.displayName || authStore.user.email
                         })
                     }}
                 </h2>
-                <p class="text-lg text-bookmind-600 mb-6">
+                <p class="text-lg text-ink-500 font-light mb-8">
                     {{ t('ready_for_a_new_literary_journey') }}
                 </p>
-                <CTAButton @click="$router.push('/preferences')">
-                    {{ t('discover_new_books') }}
-                </CTAButton>
+                <div class="max-w-xs mx-auto">
+                    <CTAButton @click="$router.push('/preferences')">
+                        {{ t('discover_new_books') }}
+                    </CTAButton>
+                </div>
             </div>
 
+            <!-- Alerts -->
             <WarningAlert
                 v-if="showRemainingCallsWarning"
                 :message="t('remaining_calls_warning')"
@@ -33,64 +37,67 @@
                 class="mb-6"
             />
 
-            <div v-if="isLoading" class="my-4 text-center text-bookmind-600">
+            <!-- Loading State -->
+            <div v-if="isLoading" class="text-center text-ink-500">
                 {{ t('processing_recommendations') }}
             </div>
 
-            <div v-if="recommendations.length > 0" class="mt-12">
-                <h2 class="text-2xl font-semibold mb-6 text-bookmind-800">
+            <!-- Recommendations Grid -->
+            <div v-if="recommendations.length > 0" class="mt-8">
+                <h2 class="text-2xl font-serif font-semibold text-ink-800 mb-8">
                     {{ t('your_recommended_books') }}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div
                         v-for="(recommendation, index) in recommendations"
                         :key="index"
-                        class="group bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
+                        class="group bg-white rounded-lg border border-ink-200 overflow-hidden transition-all duration-500 hover:shadow-lg hover:border-ink-300 hover:-translate-y-1 animate-fade-in"
+                        :style="{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }"
                     >
-                        <div class="relative h-64 bg-bookmind-100 overflow-hidden py-4">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <img
-                                    v-if="recommendation.thumbnailUrl"
-                                    :src="recommendation.thumbnailUrl"
-                                    :alt="`Cover image for ${recommendation.title}`"
-                                    class="h-[calc(100%-2rem)] max-w-[180px] object-contain drop-shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:brightness-105"
-                                    loading="lazy"
-                                />
-                            </div>
-                            <!-- Subtle hover overlay -->
-                            <div class="absolute inset-0 bg-bookmind-500/0 transition-colors duration-300 group-hover:bg-bookmind-500/5" />
+                        <!-- Cover Area -->
+                        <div class="h-72 bg-ink-100 flex items-center justify-center p-6">
+                            <img
+                                v-if="recommendation.thumbnailUrl"
+                                :src="recommendation.thumbnailUrl"
+                                :alt="`Cover image for ${recommendation.title}`"
+                                class="max-h-full max-w-[160px] object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                            />
                         </div>
+
+                        <!-- Card Content -->
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-bookmind-800">
+                            <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
                                 {{ recommendation.title }}
                             </h3>
-                            <p class="text-bookmind-600 mb-4">{{ recommendation.author }}</p>
-                            <p
-                                v-if="recommendation.pageCount"
-                                class="text-sm text-bookmind-500 mb-2"
-                            >
-                                {{ t('pages') }}: {{ recommendation.pageCount }}
-                            </p>
-                            <p
-                                v-if="recommendation.publishedDate"
-                                class="text-sm text-bookmind-500 mb-4"
-                            >
-                                {{ t('published') }}: {{ formatDate(recommendation.publishedDate) }}
+                            <p class="text-sm text-ink-500 mb-4 font-light">
+                                {{ recommendation.author }}
                             </p>
 
+                            <!-- Metadata Row -->
+                            <div class="flex items-center gap-4 text-xs text-ink-400 mb-5">
+                                <span v-if="recommendation.pageCount">
+                                    {{ t('pages') }}: {{ recommendation.pageCount }}
+                                </span>
+                                <span v-if="recommendation.publishedDate">
+                                    {{ t('published') }}: {{ formatDate(recommendation.publishedDate) }}
+                                </span>
+                            </div>
+
+                            <!-- Purchase Links -->
                             <div class="flex flex-col space-y-2">
                                 <a
                                     v-if="recommendation.amazonLink"
                                     :href="recommendation.amazonLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
+                                    class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200"
                                 >
                                     <img
-                                        src="/src/assets/images/amazon_icon.png"
+                                        src="/images/amazon_icon.png"
                                         alt="Amazon"
-                                        class="w-6 h-6 mr-4"
+                                        class="w-5 h-5"
                                     />
-                                    <span class="flex-grow text-center font-medium">
+                                    <span class="font-medium">
                                         {{ t('buy_on_amazon') }}
                                     </span>
                                 </a>
@@ -98,14 +105,14 @@
                                     v-if="recommendation.googleBooksLink"
                                     :href="recommendation.googleBooksLink"
                                     target="_blank"
-                                    class="flex items-center justify-start bg-bookmind-100 text-bookmind-800 px-4 py-2 rounded-full hover:bg-bookmind-200 transition duration-300 w-full border border-bookmind-300"
+                                    class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200"
                                 >
                                     <img
-                                        src="/src/assets/images/googleBooks_icon.png"
+                                        src="/images/googleBooks_icon.png"
                                         alt="Google Books"
-                                        class="w-6 h-6 mr-4"
+                                        class="w-5 h-5"
                                     />
-                                    <span class="flex-grow text-center font-medium">
+                                    <span class="font-medium">
                                         {{ t('buy_on_google_books') }}
                                     </span>
                                 </a>
@@ -115,39 +122,51 @@
                 </div>
             </div>
 
-            <div v-if="recommendations.length === 0 && !isLoading" class="mt-12 text-center">
-                <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
-                    <div class="mb-6">
-                        <svg
-                            class="w-32 h-32 mx-auto text-bookmind-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                            ></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-bookmind-800 mb-2">
-                        {{ t('no_recommended_books') }}
-                    </h3>
-                    <p class="text-bookmind-600 mb-6">
-                        {{ t('no_recommended_books_message') }}
-                    </p>
+            <!-- Empty State -->
+            <div v-if="recommendations.length === 0 && !isLoading" class="max-w-md mx-auto text-center py-16">
+                <div class="mb-8 text-ink-300">
+                    <svg
+                        class="w-24 h-24 mx-auto"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1"
+                            d="M12 3v18M9 3a2 2 0 00-2 2v14a2 2 0 002 2h9a2 2 0 002-2V5a2 2 0 00-2-2H9z"
+                        ></path>
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1"
+                            d="M9 3a2 2 0 00-2 2v14a2 2 0 002 2"
+                        ></path>
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1"
+                            d="M12 7h5M12 11h5M12 15h3"
+                        ></path>
+                    </svg>
                 </div>
+                <h3 class="text-2xl font-serif text-ink-700 mb-3">
+                    {{ t('no_recommended_books') }}
+                </h3>
+                <p class="text-ink-500 font-light leading-relaxed max-w-sm mx-auto">
+                    {{ t('no_recommended_books_message') }}
+                </p>
             </div>
 
-            <div v-if="error" class="mt-4 p-4 bg-red-100 text-red-700 rounded w-full max-w-md">
+            <!-- Error State -->
+            <div v-if="error" class="mt-4 p-4 bg-red-50 text-red-700 border border-red-200 rounded-lg max-w-md mx-auto">
                 {{ error }}
             </div>
         </main>
 
-        <Footer class="bg-white shadow-md mt-12" />
+        <Footer class="mb-6" />
     </div>
 </template>
 
@@ -221,22 +240,18 @@
     async function processRecommendations(
         newRecommendations: BookRecommendation[]
     ): Promise<BookRecommendation[]> {
-        console.log('Processing recommendations:', newRecommendations)
         const processedRecommendations = await Promise.all(
             newRecommendations.map(async (rec) => {
                 const cacheKey = `${rec.title}-${rec.author}`
                 let bookDetails
 
                 if (bookDetailsCache.has(cacheKey)) {
-                    console.log('Using cached details for:', rec.title, rec.author)
                     bookDetails = bookDetailsCache.get(cacheKey)
                 } else {
-                    console.log('Getting details for:', rec.title, rec.author)
                     bookDetails = await getBookDetails(rec.title, rec.author)
                     bookDetailsCache.set(cacheKey, bookDetails)
                 }
 
-                console.log('Book details:', bookDetails)
                 return {
                     ...rec,
                     ...bookDetails,

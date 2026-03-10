@@ -1,6 +1,6 @@
 <!-- src/components/alert/ErrorAlert.vue -->
 <template>
-    <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg shadow-md">
+    <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-lg shadow-md">
         <div class="flex items-center">
             <svg
                 class="w-6 h-6 text-red-400 mr-3"

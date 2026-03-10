@@ -15,7 +15,7 @@ export const useLanguageStore = defineStore('language', () => {
     function setLanguage(newLanguage: SupportedLocale) {
         selectedLanguage.value = newLanguage
         localStorage.setItem('language', newLanguage)
-        // Aggiorna la lingua in i18n
+        // Update the i18n locale
         i18n.global.locale.value = newLanguage
     }
 

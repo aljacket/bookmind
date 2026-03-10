@@ -1,69 +1,3 @@
-<template>
-    <div
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-bookmind-cyan-50 to-bookmind-cyan-100"
-    >
-        <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
-            <div class="flex flex-col items-center space-y-4">
-                <h2 class="text-3xl font-extrabold text-bookmind-800 text-center">
-                    {{ t('register_to_bookmind') }}
-                </h2>
-            </div>
-            <form @submit.prevent="register" class="mt-8 space-y-6">
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="name" class="sr-only">{{ t('name') }}</label>
-                        <input
-                            id="name"
-                            v-model="name"
-                            type="text"
-                            required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-t-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            placeholder="Nome completo"
-                        />
-                    </div>
-                    <div>
-                        <label for="email" class="sr-only">{{ t('email') }}</label>
-                        <input
-                            id="email"
-                            v-model="email"
-                            type="email"
-                            required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            placeholder="Indirizzo email"
-                        />
-                    </div>
-                    <div>
-                        <label for="password" class="sr-only">{{ t('password') }}</label>
-                        <input
-                            id="password"
-                            v-model="password"
-                            type="password"
-                            required
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-bookmind-300 placeholder-bookmind-500 text-bookmind-900 rounded-b-md focus:outline-none focus:ring-bookmind-500 focus:border-bookmind-500 focus:z-10 sm:text-sm"
-                            placeholder="Password"
-                        />
-                    </div>
-                </div>
-
-                <div>
-                    <CTAButton type="submit">{{ t('create_account') }}</CTAButton>
-                </div>
-            </form>
-            <div v-if="error" class="mt-3 text-sm text-red-600">
-                {{ error }}
-            </div>
-            <div class="flex items-center justify-center mt-4 text-sm">
-                <button
-                    @click="goBack"
-                    class="font-medium text-bookmind-600 hover:text-bookmind-500"
-                >
-                    {{ t('go_back_to_login') }}
-                </button>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script setup lang="ts">
     import { ref } from 'vue'
     import { useRouter } from 'vue-router'
@@ -106,3 +40,77 @@
         router.push('/login')
     }
 </script>
+
+<template>
+    <div class="min-h-screen flex items-center justify-center bg-ink-50 px-4">
+        <!-- Register card -->
+        <div class="max-w-md w-full bg-white border border-ink-200 shadow-sm rounded-2xl p-10">
+            <!-- Title -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-serif text-ink-900">
+                    {{ t('register_to_bookmind') }}
+                </h2>
+            </div>
+
+            <!-- Form -->
+            <form @submit.prevent="register" class="space-y-4">
+                <div>
+                    <label for="name" class="sr-only">{{ t('name') }}</label>
+                    <input
+                        id="name"
+                        v-model="name"
+                        type="text"
+                        required
+                        class="form-input"
+                        :placeholder="t('name_placeholder')"
+                    />
+                </div>
+
+                <div>
+                    <label for="email" class="sr-only">{{ t('email') }}</label>
+                    <input
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        required
+                        class="form-input"
+                        :placeholder="t('email_placeholder')"
+                    />
+                </div>
+
+                <div>
+                    <label for="password" class="sr-only">{{ t('password') }}</label>
+                    <input
+                        id="password"
+                        v-model="password"
+                        type="password"
+                        required
+                        class="form-input"
+                        :placeholder="t('password_placeholder')"
+                    />
+                </div>
+
+                <div class="pt-2">
+                    <CTAButton type="submit" variant="primary">
+                        {{ t('create_account') }}
+                    </CTAButton>
+                </div>
+            </form>
+
+            <!-- Error message -->
+            <div v-if="error" class="mt-4 text-sm text-red-600 font-sans">
+                {{ error }}
+            </div>
+
+            <!-- Back to login -->
+            <div class="flex items-center justify-center mt-6 text-sm font-sans">
+                <button
+                    @click="goBack"
+                    class="text-accent-600 hover:text-accent-700 transition-colors"
+                >
+                    {{ t('go_back_to_login') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,6 +1,6 @@
 export function convertISBN13ToISBN10(isbn13: string): string {
     if (isbn13.length !== 13 || !isbn13.startsWith('978')) {
-        return isbn13 // Ritorna l'ISBN originale se non è un ISBN-13 valido
+        return isbn13 // Return original ISBN if not a valid ISBN-13
     }
 
     const isbn10 = isbn13.slice(3, 12)
@@ -18,10 +18,7 @@ export function convertISBN13ToISBN10(isbn13: string): string {
 
 export function generateAmazonLink(isbn: string | undefined): string {
     if (!isbn) {
-        console.warn('ISBN non disponibile per generare il link Amazon')
         return ''
     }
-    // const isbn10 = isbn.length > 10 ? convertISBN13ToISBN10(isbn) : isbn
-    // return `https://www.amazon.com/dp/${isbn10}/`
     return `https://www.amazon.com/s?k=${isbn}`
 }
