@@ -1,16 +1,15 @@
 import api from '@/services/api/axios'
-import type { UserPreferences } from '@/types/userPreferences'
 import { useLanguageStore } from '@/stores/language'
+import type { BookRecommendation, Transcript } from '@/types/userPreferences'
 
-export async function getBookRecommendations(preferences: UserPreferences) {
-    const languageStore = useLanguageStore()
-    const lang = languageStore.selectedLanguage
+export async function fetchClarifier(transcript: Transcript): Promise<{ question: string }> {
+    const lang = useLanguageStore().selectedLanguage
+    const { data } = await api.post('/recommendations/clarify', { lang, transcript })
+    return data
+}
 
-    const payload = {
-        ...preferences,
-        lang
-    }
-
-    const response = await api.post('/recommendations', payload)
-    return response.data
+export async function fetchRecommendations(transcript: Transcript): Promise<BookRecommendation[]> {
+    const lang = useLanguageStore().selectedLanguage
+    const { data } = await api.post('/recommendations', { lang, transcript })
+    return data
 }

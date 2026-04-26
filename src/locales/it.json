@@ -93,5 +93,28 @@
     "add_to_reading_list": "Aggiungi alla Lista di Lettura",
     "remove_from_reading_list": "Rimuovi dalla Lista di Lettura",
     "empty_reading_list": "La Tua Lista di Lettura è Vuota",
-    "empty_reading_list_message": "Salva i libri che vuoi leggere toccando l'icona del cuore su qualsiasi raccomandazione."
+    "empty_reading_list_message": "Salva i libri che vuoi leggere toccando l'icona del cuore su qualsiasi raccomandazione.",
+    "chat_openers": [
+        "Allora… cosa cerchi in un libro adesso?",
+        "Che umore hai per leggere oggi?",
+        "Da dove partiamo — c'è qualcosa che vorresti che un libro ti facesse sentire?",
+        "Cosa ti farebbe bene leggere in questo momento?",
+        "Dimmi — che tipo di lettura ti chiama in questo periodo?"
+    ],
+    "chat_anchors": [
+        "Raccontami l'ultimo libro che ti ha lasciato qualcosa — in bene o in male.",
+        "C'è un libro che hai amato (o odiato) di recente? Dimmi cosa ti è rimasto.",
+        "Pensa a un libro che hai consigliato a qualcuno — cosa lo rendeva speciale?",
+        "Qual è l'ultimo libro che hai divorato — o uno che vorresti non aver iniziato?",
+        "Dimmi un libro che ti ha sorpreso ultimamente, nel bene o nel male."
+    ],
+    "chat_input_placeholder": "Scrivi quello che ti va…",
+    "chat_send": "Invia",
+    "chat_skip_clarifier": "Vai dritto ai libri",
+    "chat_thinking": "Ci sto pensando un attimo…",
+    "chat_input_required": "Mi serve qualcosa — scrivi due righe?",
+    "chat_input_too_long": "Calma — proviamo a stare sotto i 500 caratteri.",
+    "chat_error": "Qualcosa è andato storto da parte mia. Riproviamo?",
+    "user_not_authenticated": "Devi prima accedere per ricevere consigli.",
+    "ai_transparency": "Solo questa chat va a OpenAI — niente profilo, nulla memorizzato. I tuoi gusti restano tuoi."
 }

@@ -94,5 +94,28 @@
     "add_to_reading_list": "Add to Reading List",
     "remove_from_reading_list": "Remove from Reading List",
     "empty_reading_list": "Your Reading List is Empty",
-    "empty_reading_list_message": "Save books you want to read by tapping the heart icon on any recommendation."
+    "empty_reading_list_message": "Save books you want to read by tapping the heart icon on any recommendation.",
+    "chat_openers": [
+        "So… what are you in the mood to read?",
+        "What kind of book would hit the spot right now?",
+        "Where would you want a book to take you today?",
+        "If a book could give you one feeling right now, what would it be?",
+        "What's pulling at you — what do you want to read about?"
+    ],
+    "chat_anchors": [
+        "Tell me a book that's stayed with you recently — and what stuck.",
+        "What's the last book you really loved (or really didn't)?",
+        "Name a book you couldn't put down — or one you wish you hadn't started.",
+        "Think of a book you've recommended to someone — what made it special?",
+        "What's a book that surprised you lately, for better or worse?"
+    ],
+    "chat_input_placeholder": "Write whatever feels right…",
+    "chat_send": "Send",
+    "chat_skip_clarifier": "Just show me the books",
+    "chat_thinking": "Hmm, thinking it over…",
+    "chat_input_required": "Need something to work with — write a few words?",
+    "chat_input_too_long": "Whoa — try to keep it under 500 characters.",
+    "chat_error": "Something glitched on my end. Mind trying again?",
+    "user_not_authenticated": "You'll need to sign in to get recommendations.",
+    "ai_transparency": "Only this chat goes to OpenAI — no profile, nothing stored. Your reading taste stays yours."
 }
