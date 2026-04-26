@@ -5,7 +5,19 @@ import axios from 'axios'
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY
 const BASE_URL = 'https://www.googleapis.com/books/v1/volumes'
 
-export async function getBookDetails(title: string, author: string) {
+export interface GoogleBookDetails {
+    isbn10: string
+    isbn13: string
+    pageCount?: number
+    publishedDate?: string
+    thumbnailUrl?: string
+    googleBooksId: string
+}
+
+export async function getBookDetails(
+    title: string,
+    author: string
+): Promise<GoogleBookDetails | null> {
     try {
         if (!API_KEY) {
             console.error('Google Books API key is not configured')
@@ -20,14 +32,19 @@ export async function getBookDetails(title: string, author: string) {
         })
 
         if (response.data.items && response.data.items.length > 0) {
-            const book = response.data.items[0].volumeInfo
+            const item = response.data.items[0]
+            const book = item.volumeInfo
             return {
-                isbn10: book.industryIdentifiers?.find((id: any) => id.type === 'ISBN_10')?.identifier || '',
-                isbn13: book.industryIdentifiers?.find((id: any) => id.type === 'ISBN_13')?.identifier || '',
+                isbn10:
+                    book.industryIdentifiers?.find((id: any) => id.type === 'ISBN_10')
+                        ?.identifier || '',
+                isbn13:
+                    book.industryIdentifiers?.find((id: any) => id.type === 'ISBN_13')
+                        ?.identifier || '',
                 pageCount: book.pageCount,
                 publishedDate: book.publishedDate,
                 thumbnailUrl: book.imageLinks?.thumbnail,
-                googleBooksLink: book.infoLink || ''
+                googleBooksId: item.id || ''
             }
         }
 

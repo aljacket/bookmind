@@ -138,15 +138,15 @@
 
                             <!-- Purchase Links -->
                             <div class="flex flex-col space-y-2">
-                                <a v-if="book.amazonLink"
-                                   :href="book.amazonLink"
+                                <a v-if="amazonLinkFor(book)"
+                                   :href="amazonLinkFor(book)"
                                    target="_blank"
                                    class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200">
                                     <img src="/images/amazon_icon.png" alt="Amazon" class="w-5 h-5" />
                                     <span class="font-medium">{{ t('buy_on_amazon') }}</span>
                                 </a>
-                                <a v-if="book.googleBooksLink"
-                                   :href="book.googleBooksLink"
+                                <a v-if="googleBooksLinkFor(book)"
+                                   :href="googleBooksLinkFor(book)"
                                    target="_blank"
                                    class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200">
                                     <img src="/images/googleBooks_icon.png" alt="Google Books" class="w-5 h-5" />
@@ -181,8 +181,9 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref, computed, onMounted } from 'vue'
     import { useAuthStore } from '@/stores/auth'
+    import { useLanguageStore } from '@/stores/language'
     import { useI18n } from 'vue-i18n'
     import {
         getReadingList,
@@ -191,13 +192,25 @@
         setReadingListItemLiked
     } from '@/services/indexedDB/userPreferences'
     import type { BookRecommendation, ReadStatus } from '@/types/userPreferences'
+    import { detectStoreCountry } from '@/utils/storeRegion'
+    import { buildAmazonLink, buildGoogleBooksLink } from '@/utils/bookLinks'
 
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
 
     const authStore = useAuthStore()
     const { t, locale } = useI18n()
+    const languageStore = useLanguageStore()
     const readingList = ref<BookRecommendation[]>([])
+    const storeCountry = computed(() => detectStoreCountry(languageStore.selectedLanguage))
+
+    function amazonLinkFor(book: BookRecommendation): string {
+        return buildAmazonLink(book, storeCountry.value)
+    }
+
+    function googleBooksLinkFor(book: BookRecommendation): string {
+        return buildGoogleBooksLink(book, languageStore.selectedLanguage)
+    }
 
     onMounted(async () => {
         if (authStore.user) {

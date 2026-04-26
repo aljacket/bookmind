@@ -110,8 +110,8 @@
                             <!-- Purchase Links -->
                             <div class="flex flex-col space-y-2">
                                 <a
-                                    v-if="recommendation.amazonLink"
-                                    :href="recommendation.amazonLink"
+                                    v-if="amazonLinkFor(recommendation)"
+                                    :href="amazonLinkFor(recommendation)"
                                     target="_blank"
                                     class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200"
                                 >
@@ -125,8 +125,8 @@
                                     </span>
                                 </a>
                                 <a
-                                    v-if="recommendation.googleBooksLink"
-                                    :href="recommendation.googleBooksLink"
+                                    v-if="googleBooksLinkFor(recommendation)"
+                                    :href="googleBooksLinkFor(recommendation)"
                                     target="_blank"
                                     class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-ink-200 text-sm text-ink-600 hover:bg-ink-50 hover:border-ink-300 transition-all duration-200"
                                 >
@@ -194,9 +194,9 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref, computed, onMounted } from 'vue'
     import { useAuthStore } from '@/stores/auth'
-    import { generateAmazonLink } from '@/utils/isbnUtils'
+    import { useLanguageStore } from '@/stores/language'
     import { getBookDetails } from '@/services/googleBooks/googleBooksApi'
     import {
         saveLastRecommendations,
@@ -206,6 +206,8 @@
         removeFromReadingList
     } from '@/services/indexedDB/userPreferences'
     import type { BookRecommendation } from '@/types/userPreferences'
+    import { detectStoreCountry } from '@/utils/storeRegion'
+    import { buildAmazonLink, buildGoogleBooksLink } from '@/utils/bookLinks'
     import { useRoute } from 'vue-router'
     import { useI18n } from 'vue-i18n'
 
@@ -222,6 +224,16 @@
     const readingList = ref<BookRecommendation[]>([])
     const bookDetailsCache = new Map<string, any>()
     const { t, locale } = useI18n()
+    const languageStore = useLanguageStore()
+    const storeCountry = computed(() => detectStoreCountry(languageStore.selectedLanguage))
+
+    function amazonLinkFor(book: BookRecommendation): string {
+        return buildAmazonLink(book, storeCountry.value)
+    }
+
+    function googleBooksLinkFor(book: BookRecommendation): string {
+        return buildGoogleBooksLink(book, languageStore.selectedLanguage)
+    }
 
     onMounted(async () => {
         if (authStore.user) {
@@ -278,9 +290,7 @@
                     ...rec,
                     ...bookDetails,
                     reason: rec.reason,
-                    fullRecommendation: JSON.stringify(rec),
-                    amazonLink: bookDetails?.isbn13 ? generateAmazonLink(bookDetails.isbn13) : '',
-                    googleBooksLink: bookDetails?.googleBooksLink || ''
+                    fullRecommendation: JSON.stringify(rec)
                 }
             })
         )

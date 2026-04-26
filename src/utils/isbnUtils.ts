@@ -15,10 +15,3 @@ export function convertISBN13ToISBN10(isbn13: string): string {
 
     return isbn10 + lastChar
 }
-
-export function generateAmazonLink(isbn: string | undefined): string {
-    if (!isbn) {
-        return ''
-    }
-    return `https://www.amazon.com/s?k=${isbn}`
-}

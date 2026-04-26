@@ -10,9 +10,10 @@ export interface BookRecommendation {
     pageCount?: number
     publishedDate?: string
     thumbnailUrl?: string
-    amazonLink?: string
-    googleBooksLink?: string
     googleBooksId?: string
+    // Note: legacy records may still carry `amazonLink` / `googleBooksLink` JSON keys
+    // from prior versions. They are no longer typed — link URLs are derived at render
+    // time from the persisted identifiers (isbn10/isbn13/googleBooksId) + current locale.
     status?: ReadStatus
     liked?: boolean
     savedAt?: number
