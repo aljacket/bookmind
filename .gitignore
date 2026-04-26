@@ -39,4 +39,10 @@ bookmind-server/.env
 bookmind-server/venv
 bookmind-server/__pycache__
 
+# secrets / certificates
+*.pem
+
+# Claude Code local config
+.claude/
+
 
