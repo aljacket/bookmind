@@ -1,3 +1,5 @@
+export type ReadStatus = 'to-read' | 'read'
+
 export interface BookRecommendation {
     title: string
     author: string
@@ -11,6 +13,9 @@ export interface BookRecommendation {
     amazonLink?: string
     googleBooksLink?: string
     googleBooksId?: string
+    status?: ReadStatus
+    liked?: boolean
+    savedAt?: number
 }
 
 export type SupportedLocale = 'en' | 'it' | 'es'

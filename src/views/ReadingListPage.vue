@@ -28,20 +28,89 @@
 
                         <!-- Card Content -->
                         <div class="p-6">
-                            <!-- Remove Button -->
-                            <div class="flex justify-end mb-2">
+                            <!-- Top Action Row: status toggle + like (if read) + remove -->
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <!-- Status Pill Toggle -->
                                 <button
-                                    @click="removeBook(book)"
-                                    class="text-accent-500 hover:text-red-500 transition-colors duration-200"
-                                    :title="t('remove_from_reading_list')"
+                                    type="button"
+                                    @click="toggleStatus(book)"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border transition-colors duration-200"
+                                    :class="book.status === 'read'
+                                        ? 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100'
+                                        : 'bg-ink-50 border-ink-200 text-ink-600 hover:bg-ink-100'"
+                                    :title="book.status === 'read' ? t('mark_as_to_read') : t('mark_as_read')"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         class="w-5 h-5"
-                                         viewBox="0 0 24 24"
-                                         fill="currentColor">
-                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    <svg
+                                        v-if="book.status === 'read'"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-3.5 h-3.5"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.5"
+                                    >
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                     </svg>
+                                    <svg
+                                        v-else
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-3.5 h-3.5"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <circle cx="12" cy="12" r="9" />
+                                    </svg>
+                                    <span>{{ book.status === 'read' ? t('status_read') : t('status_to_read') }}</span>
                                 </button>
+
+                                <div class="flex items-center gap-2">
+                                    <!-- Like Star (only when read) -->
+                                    <button
+                                        v-if="book.status === 'read'"
+                                        type="button"
+                                        @click="toggleLiked(book)"
+                                        class="transition-colors duration-200"
+                                        :class="book.liked ? 'text-amber-500 hover:text-amber-600' : 'text-ink-300 hover:text-amber-500'"
+                                        :title="book.liked ? t('unlike_book') : t('like_book')"
+                                    >
+                                        <svg
+                                            v-if="book.liked"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                        </svg>
+                                        <svg
+                                            v-else
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                        >
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Remove Button (heart, matches Home page save affordance) -->
+                                    <button
+                                        @click="removeBook(book)"
+                                        class="text-accent-500 hover:text-red-500 transition-colors duration-200"
+                                        :title="t('remove_from_reading_list')"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="w-5 h-5"
+                                             viewBox="0 0 24 24"
+                                             fill="currentColor">
+                                            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
                             <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
@@ -117,9 +186,11 @@
     import { useI18n } from 'vue-i18n'
     import {
         getReadingList,
-        removeFromReadingList
+        removeFromReadingList,
+        setReadingListItemStatus,
+        setReadingListItemLiked
     } from '@/services/indexedDB/userPreferences'
-    import type { BookRecommendation } from '@/types/userPreferences'
+    import type { BookRecommendation, ReadStatus } from '@/types/userPreferences'
 
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
@@ -134,10 +205,46 @@
         }
     })
 
+    async function reload() {
+        if (!authStore.user) return
+        readingList.value = await getReadingList(authStore.user.uid)
+    }
+
     async function removeBook(book: BookRecommendation) {
         if (!authStore.user) return
         await removeFromReadingList(authStore.user.uid, book)
-        readingList.value = await getReadingList(authStore.user.uid)
+        await reload()
+    }
+
+    async function toggleStatus(book: BookRecommendation) {
+        if (!authStore.user) return
+        const next: ReadStatus = book.status === 'read' ? 'to-read' : 'read'
+        // Optimistic update
+        const prev = { status: book.status, liked: book.liked }
+        book.status = next
+        if (next === 'to-read') book.liked = false
+        try {
+            await setReadingListItemStatus(authStore.user.uid, book, next)
+        } catch (err) {
+            console.error('Failed to update status; rolling back', err)
+            book.status = prev.status
+            book.liked = prev.liked
+            await reload()
+        }
+    }
+
+    async function toggleLiked(book: BookRecommendation) {
+        if (!authStore.user || book.status !== 'read') return
+        const next = !book.liked
+        const prev = book.liked
+        book.liked = next
+        try {
+            await setReadingListItemLiked(authStore.user.uid, book, next)
+        } catch (err) {
+            console.error('Failed to update liked; rolling back', err)
+            book.liked = prev
+            await reload()
+        }
     }
 
     function formatDate(dateStr: string): string {

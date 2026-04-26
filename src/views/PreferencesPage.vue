@@ -236,7 +236,7 @@
         isAwaiting.value = true
         scrollToBottom()
         try {
-            const recs = await fetchRecommendations(buildTranscript())
+            const recs = await fetchRecommendations(buildTranscript(), authStore.user.uid)
             localStorage.setItem('newRecommendations', JSON.stringify(recs))
             router.push({ name: 'Processing' })
         } catch (err) {

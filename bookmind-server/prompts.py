@@ -4,11 +4,15 @@ Two LLM calls per session:
 - clarifier: given (T1=opener answer, T2=anchor answer), return one focused follow-up question
 - recommendation: given the full transcript (2 or 3 turns), return 3 books with grounded reasons
 
+The recommendation prompt may also include an optional list of books the reader has previously
+loved (read + liked). When present, they're rendered as a labelled section before the transcript
+so the model can ground a reason against either source.
+
 The LLM only sees user-authored content rendered as labeled lines. Role metadata on the
 TranscriptTurn is reserved for forward-compat but not currently used in prompt assembly.
 """
 
-from typing import Literal
+from typing import Literal, Optional
 
 SupportedLang = Literal["en", "es", "it"]
 
@@ -29,9 +33,12 @@ CLARIFIER_SYSTEM_PROMPT = (
 
 RECOMMENDATION_SYSTEM_PROMPT = (
     "You are a book recommendation expert. You will receive a short transcript of a reader "
-    "describing what they want to read. Recommend exactly 3 real, published books that match "
-    "the transcript. Each `reason` MUST cite or paraphrase a specific phrase the reader used "
-    "— never a generic blurb. Reasons are one sentence, in the requested language. "
+    "describing what they want to read, and OPTIONALLY a list of books the reader has previously "
+    "loved. Recommend exactly 3 real, published books that match the transcript. Each `reason` "
+    "MUST cite or paraphrase a specific phrase the reader used in the transcript, OR reference "
+    "a book from the loved-books list (e.g., \"since you loved X, try Y\") — never a generic blurb. "
+    "Use the loved-books list as a taste signal, not a strict template: the current transcript is "
+    "the primary input. Reasons are one sentence, in the requested language. "
     "Only recommend books — if the transcript is off-topic, redirect by recommending 3 "
     "widely-loved books and saying so in the reasons. Always return the exact JSON format requested."
 )
@@ -41,6 +48,7 @@ _LANG_LABELS: dict[SupportedLang, dict[str, str]] = {
         "opener_label": "Reader's mood",
         "anchor_label": "A book they loved or hated and what stuck with them",
         "clarifier_label": "Their answer to the follow-up",
+        "loved_books_label": "Books the reader has previously loved",
         "instruction_clarifier": "Ask one focused follow-up question in English.",
         "instruction_recommend": (
             "Return exactly 3 books in this JSON shape: "
@@ -52,6 +60,7 @@ _LANG_LABELS: dict[SupportedLang, dict[str, str]] = {
         "opener_label": "Estado de ánimo del lector",
         "anchor_label": "Un libro que amó u odió y qué se le quedó",
         "clarifier_label": "Su respuesta al seguimiento",
+        "loved_books_label": "Libros que el lector ha amado anteriormente",
         "instruction_clarifier": "Haz una pregunta de seguimiento concreta en español.",
         "instruction_recommend": (
             "Devuelve exactamente 3 libros con esta forma JSON: "
@@ -63,6 +72,7 @@ _LANG_LABELS: dict[SupportedLang, dict[str, str]] = {
         "opener_label": "Stato d'animo del lettore",
         "anchor_label": "Un libro amato o odiato e cosa gli è rimasto",
         "clarifier_label": "La sua risposta al follow-up",
+        "loved_books_label": "Libri che il lettore ha amato in passato",
         "instruction_clarifier": "Fai una domanda di follow-up mirata in italiano.",
         "instruction_recommend": (
             "Ritorna esattamente 3 libri in questa forma JSON: "
@@ -84,6 +94,12 @@ def _format_body(lang: SupportedLang, user_messages: list[str]) -> str:
     return "\n".join(lines)
 
 
+def _format_loved_books(lang: SupportedLang, liked_books: list[dict]) -> str:
+    label = _LANG_LABELS[lang]["loved_books_label"]
+    bullets = "\n".join(f"- {b['title']} — {b['author']}" for b in liked_books)
+    return f"{label}:\n{bullets}"
+
+
 def build_clarifier_prompt(lang: SupportedLang, user_messages: list[str]) -> str:
     """Build the user-message content for the clarifier LLM call. Expects exactly 2 user messages."""
     if len(user_messages) != 2:
@@ -93,10 +109,22 @@ def build_clarifier_prompt(lang: SupportedLang, user_messages: list[str]) -> str
     return f"{body}\n\n{instruction}"
 
 
-def build_recommendation_prompt(lang: SupportedLang, user_messages: list[str]) -> str:
-    """Build the user-message content for the recommendation LLM call. Expects 2 or 3 user messages."""
+def build_recommendation_prompt(
+    lang: SupportedLang,
+    user_messages: list[str],
+    liked_books: Optional[list[dict]] = None,
+) -> str:
+    """Build the user-message content for the recommendation LLM call. Expects 2 or 3 user messages.
+
+    When `liked_books` is non-empty, a "Books the reader has previously loved" section is rendered
+    before the transcript. When empty/None, the output is byte-identical to the version without
+    the parameter.
+    """
     if not 2 <= len(user_messages) <= 3:
         raise ValueError("recommendation expects 2 or 3 user messages")
     body = _format_body(lang, user_messages)
     instruction = _LANG_LABELS[lang]["instruction_recommend"]
+    if liked_books:
+        loved = _format_loved_books(lang, liked_books)
+        return f"{loved}\n\n{body}\n\n{instruction}"
     return f"{body}\n\n{instruction}"

@@ -1,6 +1,22 @@
 // src/services/indexedDB/userPreferences.ts
 
-import type { BookRecommendation } from '@/types/userPreferences'
+import type { BookRecommendation, ReadStatus } from '@/types/userPreferences'
+
+function normalizeSavedBook(book: BookRecommendation): BookRecommendation {
+    return {
+        ...book,
+        status: book.status ?? 'to-read',
+        liked: book.liked ?? false,
+        savedAt: book.savedAt ?? 0
+    }
+}
+
+function bookIdentityMatches(
+    a: Pick<BookRecommendation, 'title' | 'author'>,
+    b: Pick<BookRecommendation, 'title' | 'author'>
+): boolean {
+    return a.title === b.title && a.author === b.author
+}
 
 const DB_NAME = 'BookMindDB'
 const STORE_NAME = 'userPreferences'
@@ -118,7 +134,10 @@ export async function getReadingList(userId: string): Promise<BookRecommendation
         const request = store.get(`${userId}_readingList`)
 
         request.onerror = () => reject('Error retrieving reading list')
-        request.onsuccess = () => resolve(request.result ? request.result : [])
+        request.onsuccess = () => {
+            const raw = (request.result as BookRecommendation[] | undefined) ?? []
+            resolve(raw.map(normalizeSavedBook))
+        }
     })
 }
 
@@ -145,11 +164,14 @@ export async function addToReadingList(
     book: BookRecommendation
 ): Promise<void> {
     const currentList = await getReadingList(userId)
-    const alreadyExists = currentList.some(
-        (b) => b.title === book.title && b.author === book.author
-    )
+    const alreadyExists = currentList.some((b) => bookIdentityMatches(b, book))
     if (!alreadyExists) {
-        currentList.push(book)
+        currentList.push({
+            ...book,
+            status: 'to-read',
+            liked: false,
+            savedAt: Date.now()
+        })
         await saveReadingList(userId, currentList)
     }
 }
@@ -159,10 +181,45 @@ export async function removeFromReadingList(
     book: BookRecommendation
 ): Promise<void> {
     const currentList = await getReadingList(userId)
-    const filtered = currentList.filter(
-        (b) => !(b.title === book.title && b.author === book.author)
-    )
+    const filtered = currentList.filter((b) => !bookIdentityMatches(b, book))
     await saveReadingList(userId, filtered)
+}
+
+export async function setReadingListItemStatus(
+    userId: string,
+    book: Pick<BookRecommendation, 'title' | 'author'>,
+    status: ReadStatus
+): Promise<void> {
+    const currentList = await getReadingList(userId)
+    const updated = currentList.map((b) => {
+        if (!bookIdentityMatches(b, book)) return b
+        return {
+            ...b,
+            status,
+            liked: status === 'to-read' ? false : (b.liked ?? false)
+        }
+    })
+    await saveReadingList(userId, updated)
+}
+
+export async function setReadingListItemLiked(
+    userId: string,
+    book: Pick<BookRecommendation, 'title' | 'author'>,
+    liked: boolean
+): Promise<void> {
+    const currentList = await getReadingList(userId)
+    const target = currentList.find((b) => bookIdentityMatches(b, book))
+    if (!target) return
+    if (target.status !== 'read') {
+        console.warn(
+            `setReadingListItemLiked no-op: book "${book.title}" is not in 'read' status`
+        )
+        return
+    }
+    const updated = currentList.map((b) =>
+        bookIdentityMatches(b, book) ? { ...b, liked } : b
+    )
+    await saveReadingList(userId, updated)
 }
 
 export async function getRemainingCalls(userId: string): Promise<number> {

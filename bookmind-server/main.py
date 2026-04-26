@@ -60,9 +60,15 @@ class ClarifyResponse(BaseModel):
     question: str
 
 
+class LikedBook(BaseModel):
+    title: str = Field(..., min_length=1, max_length=200)
+    author: str = Field(..., min_length=1, max_length=200)
+
+
 class RecommendationRequest(BaseModel):
     lang: SupportedLanguage
     transcript: List[TranscriptTurn] = Field(..., min_length=2, max_length=3)
+    liked_books: List[LikedBook] | None = Field(default=None, max_length=20)
 
 
 class BookRecommendation(BaseModel):
@@ -100,8 +106,15 @@ async def clarify(request: ClarifyRequest) -> ClarifyResponse:
 
 @app.post("/recommendations", response_model=List[BookRecommendation])
 async def get_recommendations(request: RecommendationRequest) -> List[BookRecommendation]:
+    liked_books_payload = (
+        [{"title": lb.title, "author": lb.author} for lb in request.liked_books]
+        if request.liked_books
+        else None
+    )
     user_prompt = build_recommendation_prompt(
-        request.lang.value, _user_messages(request.transcript)
+        request.lang.value,
+        _user_messages(request.transcript),
+        liked_books=liked_books_payload,
     )
     try:
         response = client.chat.completions.create(
