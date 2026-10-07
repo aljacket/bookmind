@@ -1,0 +1,4 @@
+- [Operator decisions 2026-10-07](project_operator_decisions_2026-10-07.md) — #50 Android only, iOS→#55 with SPM, no Play extension, back→#45, D3 ios/ handling
+- [Mac toolchain](project_mac_toolchain.md) — Node 22, JDK 17 on PATH vs JBR 21 for Capacitor 7+, AS 2026.2, SDK 34/36, AVDs, no Xcode
+- [External requirements](reference_external_requirements.md) — Play API 36, Apple Xcode 26, Capacitor migration guides, Android 15/16 (verified 2026-10-07)
+- [OpenSpec & board tools](reference_openspec_and_board_tools.md) — CLI commands, delta format, trello script limits
