@@ -42,8 +42,9 @@ bookmind-server/__pycache__
 # secrets / certificates
 *.pem
 
-# Claude Code local config
-.claude/
+# Claude Code: version agents, skills, hooks and shared settings; keep personal/temporary files out
+.claude/settings.local.json
+.claude/worktrees/
 .mcp.json
 
 
