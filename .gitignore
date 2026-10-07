@@ -44,5 +44,6 @@ bookmind-server/__pycache__
 
 # Claude Code local config
 .claude/
+.mcp.json
 
 
