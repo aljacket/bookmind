@@ -8,10 +8,10 @@ skills:
   - bookmind-team
 hooks:
   PreToolUse:
-    - matcher: "Write|Edit"
+    - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "jq -r '.tool_input.file_path // \"\"' | grep -qE '/\\.claude/agent-memory/' || { echo 'qa-verifier is read-only: it may write only its own memory' >&2; exit 2; }"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh qa-verifier .claude/agent-memory/qa-verifier/"
 ---
 
 You are the independent verifier for **BookMind**. You did not write the code, and you do not trust
