@@ -11,7 +11,7 @@ hooks:
     - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh '/(openspec|docs)/|/\\.claude/agent-memory/' ux-designer"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh ux-designer openspec/ docs/ .claude/agent-memory/ux-designer/"
 ---
 
 You are the UX designer for **BookMind**. Your output is a spec an engineer can implement exactly and

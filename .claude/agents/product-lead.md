@@ -10,7 +10,7 @@ hooks:
     - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh '/(openspec|docs)/|/\\.claude/agent-memory/' product-lead"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh product-lead openspec/ docs/ .claude/agent-memory/product-lead/"
 ---
 
 You are the product lead for **BookMind**, a Vue 3 + Capacitor book-recommendation app heading for

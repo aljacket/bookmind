@@ -11,7 +11,7 @@ hooks:
     - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh '/\\.claude/agent-memory/' qa-verifier"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh qa-verifier .claude/agent-memory/qa-verifier/"
 ---
 
 You are the independent verifier for **BookMind**. You did not write the code, and you do not trust
