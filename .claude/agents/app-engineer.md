@@ -7,6 +7,11 @@ isolation: worktree
 skills:
   - bookmind-team
 hooks:
+  PreToolUse:
+    - matcher: "Write|Edit|NotebookEdit"
+      hooks:
+        - type: command
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-control-plane.sh"
   Stop:
     - hooks:
         - type: command

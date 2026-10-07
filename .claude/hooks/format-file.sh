@@ -3,6 +3,8 @@
 # Never blocks: formatting problems are reported, not enforced.
 f=$(jq -r '.tool_response.filePath // .tool_input.file_path // empty')
 [ -n "$f" ] && [ -f "$f" ] || exit 0
+# Only files inside the project (agent worktrees live under .claude/worktrees/).
+case "$(realpath "$f")" in "$(realpath "$CLAUDE_PROJECT_DIR")"/*) ;; *) exit 0 ;; esac
 bin="$CLAUDE_PROJECT_DIR/node_modules/.bin"
 case "$f" in
   */node_modules/*|*/dist/*|*/android/*|*/ios/*) exit 0 ;;

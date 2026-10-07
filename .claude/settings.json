@@ -1,19 +1,8 @@
 {
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rm -f ~/.trello-mcp/config.json"
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
-        "matcher": "Write|Edit",
+        "matcher": "Write|Edit|NotebookEdit",
         "hooks": [
           {
             "type": "command",

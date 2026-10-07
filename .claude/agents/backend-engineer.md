@@ -6,6 +6,12 @@ memory: project
 isolation: worktree
 skills:
   - bookmind-team
+hooks:
+  PreToolUse:
+    - matcher: "Write|Edit|NotebookEdit"
+      hooks:
+        - type: command
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-control-plane.sh"
 ---
 
 You are the backend engineer for **BookMind**: Python FastAPI in `bookmind-server/`, Firebase
