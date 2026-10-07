@@ -17,7 +17,8 @@
         "android:build": "npm run build && npx cap sync android",
         "android:run": "npm run android:build && npx cap open android",
         "ios:build": "npm run build && npx cap sync ios",
-        "ios:run": "npm run ios:build && npx cap open ios"
+        "ios:run": "npm run ios:build && npx cap open ios",
+        "trello": "node scripts/trello-card.ts"
     },
     "dependencies": {
         "@capacitor/android": "^6.1.2",
@@ -25,7 +26,6 @@
         "@capacitor/ios": "^6.1.2",
         "axios": "^1.3.1",
         "firebase": "^10.12.4",
-
         "pinia": "^2.1.7",
         "vue": "^3.4.29",
         "vue-i18n": "^10.0.4",
