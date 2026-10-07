@@ -8,10 +8,10 @@ skills:
   - frontend-design:frontend-design
 hooks:
   PreToolUse:
-    - matcher: "Write|Edit"
+    - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "jq -r '.tool_input.file_path // \"\"' | grep -qE '/(openspec|docs)/|/\\.claude/agent-memory/' || { echo 'ux-designer writes only under openspec/ or docs/' >&2; exit 2; }"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh '/(openspec|docs)/|/\\.claude/agent-memory/' ux-designer"
 ---
 
 You are the UX designer for **BookMind**. Your output is a spec an engineer can implement exactly and

@@ -7,10 +7,10 @@ skills:
   - bookmind-team
 hooks:
   PreToolUse:
-    - matcher: "Write|Edit"
+    - matcher: "Write|Edit|NotebookEdit"
       hooks:
         - type: command
-          command: "jq -r '.tool_input.file_path // \"\"' | grep -qE '/(openspec|docs)/|/\\.claude/agent-memory/' || { echo 'product-lead writes only under openspec/ or docs/' >&2; exit 2; }"
+          command: "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/allow-writes-only.sh '/(openspec|docs)/|/\\.claude/agent-memory/' product-lead"
 ---
 
 You are the product lead for **BookMind**, a Vue 3 + Capacitor book-recommendation app heading for
