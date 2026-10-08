@@ -1,7 +1,7 @@
 <!-- src/components/layout/Header.vue -->
 <template>
     <header
-        class="bg-white border-b border-ink-200 px-6 py-4 flex items-center justify-between"
+        class="bg-white border-b border-ink-200 pb-4 pt-[calc(1rem+var(--bm-safe-top))] pl-[calc(1.5rem+var(--bm-safe-left))] pr-[calc(1.5rem+var(--bm-safe-right))] flex items-center justify-between"
     >
         <div class="w-6 mr-4">
             <router-link
