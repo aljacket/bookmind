@@ -1,7 +1,12 @@
-import { describe, it, expect, vi } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { createRouter, createWebHistory } from 'vue-router'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { mount, flushPromises } from '@vue/test-utils'
+import { createRouter, createMemoryHistory } from 'vue-router'
+import { createPinia } from 'pinia'
+import { createI18n } from 'vue-i18n'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import en from '@/locales/en.json'
+import it_ from '@/locales/it.json'
+import es from '@/locales/es.json'
 import LoginPage from '../LoginPage.vue'
 
 // Mock Firebase auth
@@ -11,38 +16,56 @@ vi.mock('firebase/auth', () => ({
 
 // Mock Firebase config
 vi.mock('@/services/firebase/config', () => ({
-    auth: {}
+    initAuth: () => ({})
 }))
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes: [{ path: '/home', component: { template: '<div>Home</div>' } }]
-})
+const stub = { template: '<div />' }
+
+const mountLoginPage = () => {
+    const router = createRouter({
+        history: createMemoryHistory(),
+        routes: [
+            { path: '/', component: stub },
+            { path: '/register', component: stub },
+            { path: '/forgot-password', component: stub }
+        ]
+    })
+    const i18n = createI18n({
+        legacy: false,
+        locale: 'en',
+        fallbackLocale: 'en',
+        messages: { en, it: it_, es }
+    })
+
+    return mount(LoginPage, {
+        global: {
+            plugins: [router, createPinia(), i18n]
+        }
+    })
+}
 
 describe('LoginPage', () => {
+    beforeEach(() => {
+        vi.mocked(signInWithEmailAndPassword).mockReset()
+    })
+
     it('renders correctly', () => {
-        const wrapper = mount(LoginPage, {
-            global: {
-                plugins: [router]
-            }
-        })
-        expect(wrapper.find('h1').text()).toBe('BookMind')
-        expect(wrapper.find('input[type="email"]').exists()).toBe(true)
+        const wrapper = mountLoginPage()
+
+        expect(wrapper.find('img[alt="BookMind Logo"]').exists()).toBe(true)
+        expect(wrapper.find('input[type="email"]').attributes('placeholder')).toBe('Email Address')
         expect(wrapper.find('input[type="password"]').exists()).toBe(true)
-        expect(wrapper.find('button').text()).toBe('Login')
+        expect(wrapper.find('button[type="submit"]').text()).toBe('Login')
     })
 
     it('shows error message on login failure', async () => {
-        const wrapper = mount(LoginPage, {
-            global: {
-                plugins: [router]
-            }
-        })
-        const mockSignIn = vi.mocked(signInWithEmailAndPassword)
-        mockSignIn.mockRejectedValue(new Error('Invalid credentials'))
+        vi.mocked(signInWithEmailAndPassword).mockRejectedValue(new Error('Invalid credentials'))
+        const wrapper = mountLoginPage()
 
         await wrapper.find('form').trigger('submit')
+        await flushPromises()
 
-        expect(wrapper.find('.error-message').text()).toBe('Invalid credentials')
+        expect(signInWithEmailAndPassword).toHaveBeenCalledOnce()
+        expect(wrapper.find('.text-red-600').text()).toBe('Invalid credentials')
     })
 })
