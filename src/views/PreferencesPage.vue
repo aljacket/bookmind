@@ -61,8 +61,11 @@
                 </div>
 
                 <!-- Error -->
-                <div v-if="error" class="px-5">
+                <!-- The live region stays mounted so screen readers announce the text
+                     whenever it appears. -->
+                <div role="alert" class="px-5">
                     <div
+                        v-if="error"
                         class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm"
                     >
                         {{ error }}
@@ -204,17 +207,26 @@
             return
         }
 
-        if (userTurnCount.value === 2) {
-            await requestClarifier()
-            return
-        }
-
-        if (userTurnCount.value === 3) {
-            await requestRecommendations()
+        const succeeded =
+            userTurnCount.value === 2 ? await requestClarifier() : await requestRecommendations()
+        if (!succeeded) {
+            rollbackFailedTurn(trimmed)
         }
     }
 
-    async function requestClarifier() {
+    // A failed request cancels the turn that triggered it: the message leaves the
+    // log and the transcript, the counter goes back, and the text returns to the
+    // textarea. Sending again then repeats the same request with the same transcript,
+    // which always stays within the backend limits (/clarify: 2 turns, /recommendations: 2-3).
+    function rollbackFailedTurn(text: string) {
+        chat.value.pop()
+        userMessages.value.pop()
+        userTurnCount.value--
+        inputValue.value = text
+        focusInput()
+    }
+
+    async function requestClarifier(): Promise<boolean> {
         isAwaiting.value = true
         scrollToBottom()
         try {
@@ -222,18 +234,20 @@
             chat.value.push({ role: 'assistant', text: question })
             scrollToBottom()
             focusInput()
+            return true
         } catch (err) {
             console.error('clarifier failed', err)
             error.value = t('chat_error')
+            return false
         } finally {
             isAwaiting.value = false
         }
     }
 
-    async function requestRecommendations() {
+    async function requestRecommendations(): Promise<boolean> {
         if (!authStore.user) {
             error.value = t('user_not_authenticated')
-            return
+            return false
         }
         isAwaiting.value = true
         scrollToBottom()
@@ -241,10 +255,12 @@
             const recs = await fetchRecommendations(buildTranscript(), authStore.user.uid)
             localStorage.setItem('newRecommendations', JSON.stringify(recs))
             router.push({ name: 'Processing' })
+            return true
         } catch (err) {
             console.error('recommendations failed', err)
             error.value = t('chat_error')
             isAwaiting.value = false
+            return false
         }
     }
 
