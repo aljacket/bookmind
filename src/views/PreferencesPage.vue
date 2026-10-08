@@ -1,6 +1,6 @@
 <template>
     <div class="bg-ink-50 min-h-screen flex flex-col">
-        <Header :title="t('preferences')" :showBackButton="true" />
+        <Header :title="t('preferences')" :show-back-button="true" />
 
         <main class="flex-1 container mx-auto px-4 py-6 flex flex-col">
             <div
@@ -68,10 +68,7 @@
                 </div>
 
                 <!-- Input area -->
-                <form
-                    @submit.prevent="handleSubmit"
-                    class="border-t border-ink-200 p-4 space-y-3"
-                >
+                <form class="border-t border-ink-200 p-4 space-y-3" @submit.prevent="handleSubmit">
                     <textarea
                         ref="inputEl"
                         v-model="inputValue"
@@ -83,18 +80,15 @@
                         @keydown.enter.exact.prevent="handleSubmit"
                     />
                     <div class="flex items-center gap-2">
-                        <CTAButton
-                            type="submit"
-                            :disabled="isAwaiting || !inputValue.trim()"
-                        >
+                        <CTAButton type="submit" :disabled="isAwaiting || !inputValue.trim()">
                             {{ t('chat_send') }}
                         </CTAButton>
                         <button
                             v-if="userTurnCount === 2"
                             type="button"
-                            @click="handleSkipClarifier"
                             :disabled="isAwaiting"
                             class="whitespace-nowrap text-sm text-ink-500 hover:text-ink-800 underline underline-offset-2 transition-colors px-2 disabled:opacity-50"
+                            @click="handleSkipClarifier"
                         >
                             {{ t('chat_skip_clarifier') }}
                         </button>

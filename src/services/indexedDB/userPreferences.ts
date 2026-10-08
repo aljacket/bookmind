@@ -141,28 +141,19 @@ export async function getReadingList(userId: string): Promise<BookRecommendation
     })
 }
 
-export async function saveReadingList(
-    userId: string,
-    books: BookRecommendation[]
-): Promise<void> {
+export async function saveReadingList(userId: string, books: BookRecommendation[]): Promise<void> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
         const transaction = db.transaction(READING_LIST_STORE, 'readwrite')
         const store = transaction.objectStore(READING_LIST_STORE)
-        const request = store.put(
-            JSON.parse(JSON.stringify(books)),
-            `${userId}_readingList`
-        )
+        const request = store.put(JSON.parse(JSON.stringify(books)), `${userId}_readingList`)
 
         request.onerror = () => reject('Error saving reading list')
         request.onsuccess = () => resolve()
     })
 }
 
-export async function addToReadingList(
-    userId: string,
-    book: BookRecommendation
-): Promise<void> {
+export async function addToReadingList(userId: string, book: BookRecommendation): Promise<void> {
     const currentList = await getReadingList(userId)
     const alreadyExists = currentList.some((b) => bookIdentityMatches(b, book))
     if (!alreadyExists) {
@@ -211,14 +202,10 @@ export async function setReadingListItemLiked(
     const target = currentList.find((b) => bookIdentityMatches(b, book))
     if (!target) return
     if (target.status !== 'read') {
-        console.warn(
-            `setReadingListItemLiked no-op: book "${book.title}" is not in 'read' status`
-        )
+        console.warn(`setReadingListItemLiked no-op: book "${book.title}" is not in 'read' status`)
         return
     }
-    const updated = currentList.map((b) =>
-        bookIdentityMatches(b, book) ? { ...b, liked } : b
-    )
+    const updated = currentList.map((b) => (bookIdentityMatches(b, book) ? { ...b, liked } : b))
     await saveReadingList(userId, updated)
 }
 

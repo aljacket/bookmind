@@ -3,9 +3,18 @@
         <div class="text-center max-w-md mx-auto px-6">
             <div class="mb-8">
                 <div class="flex justify-center gap-1.5">
-                    <span class="w-2 h-2 bg-ink-400 rounded-full animate-pulse" style="animation-delay: 0ms"></span>
-                    <span class="w-2 h-2 bg-ink-400 rounded-full animate-pulse" style="animation-delay: 150ms"></span>
-                    <span class="w-2 h-2 bg-ink-400 rounded-full animate-pulse" style="animation-delay: 300ms"></span>
+                    <span
+                        class="w-2 h-2 bg-ink-400 rounded-full animate-pulse"
+                        style="animation-delay: 0ms"
+                    ></span>
+                    <span
+                        class="w-2 h-2 bg-ink-400 rounded-full animate-pulse"
+                        style="animation-delay: 150ms"
+                    ></span>
+                    <span
+                        class="w-2 h-2 bg-ink-400 rounded-full animate-pulse"
+                        style="animation-delay: 300ms"
+                    ></span>
                 </div>
             </div>
             <h2 class="text-2xl font-serif text-ink-800 mb-3">

@@ -10,7 +10,7 @@
                 ? 'bg-ink-200 text-ink-400 cursor-not-allowed'
                 : variant === 'secondary'
                   ? 'bg-transparent text-ink-700 border border-ink-300 hover:border-ink-500 hover:text-ink-900'
-                  : 'bg-ink-900 text-ink-50 hover:bg-ink-800 active:bg-ink-700 shadow-sm hover:shadow-md',
+                  : 'bg-ink-900 text-ink-50 hover:bg-ink-800 active:bg-ink-700 shadow-sm hover:shadow-md'
         ]"
     >
         <slot></slot>

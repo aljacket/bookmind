@@ -48,7 +48,7 @@
             </div>
 
             <!-- Form -->
-            <form @submit.prevent="recoverPassword" class="space-y-4">
+            <form class="space-y-4" @submit.prevent="recoverPassword">
                 <div>
                     <label for="email" class="sr-only">{{ t('email') }}</label>
                     <input
@@ -81,8 +81,8 @@
             <!-- Back to login -->
             <div class="flex items-center justify-center mt-6 text-sm font-sans">
                 <button
-                    @click="goBack"
                     class="text-accent-600 hover:text-accent-700 transition-colors"
+                    @click="goBack"
                 >
                     {{ t('go_back_to_login') }}
                 </button>

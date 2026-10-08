@@ -10,9 +10,7 @@ interface LikedBookPayload {
     author: string
 }
 
-export async function getLikedBooksForRecommendation(
-    userId: string
-): Promise<LikedBookPayload[]> {
+export async function getLikedBooksForRecommendation(userId: string): Promise<LikedBookPayload[]> {
     const list = await getReadingList(userId)
     return list
         .filter((b) => b.status === 'read' && b.liked === true)

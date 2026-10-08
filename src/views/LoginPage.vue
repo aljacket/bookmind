@@ -52,11 +52,7 @@
     <div class="min-h-screen flex items-center justify-center bg-ink-50 px-4">
         <!-- Language selector -->
         <div class="absolute top-6 right-6">
-            <select
-                v-model="selectedLanguage"
-                @change="changeLanguage"
-                class="form-select"
-            >
+            <select v-model="selectedLanguage" class="form-select" @change="changeLanguage">
                 <option value="en">English</option>
                 <option value="it">Italiano</option>
                 <option value="es">Español</option>
@@ -75,7 +71,7 @@
             </div>
 
             <!-- Form -->
-            <form @submit.prevent="login" class="space-y-4">
+            <form class="space-y-4" @submit.prevent="login">
                 <div>
                     <label for="email" class="sr-only">Email</label>
                     <input

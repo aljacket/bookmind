@@ -2,9 +2,9 @@
     <div class="flex items-center h-full">
         <!-- Hamburger button -->
         <button
-            @click="toggleMenu"
             class="text-ink-600 hover:text-ink-800 z-50 relative py-4 pr-4 transition-all duration-300 ease-in-out"
             aria-label="Toggle menu"
+            @click="toggleMenu"
         >
             <div class="w-6 h-6 flex items-center justify-center">
                 <span class="hamburger-icon" :class="{ open: isOpen }"></span>
@@ -27,8 +27,8 @@
                             </label>
                             <select
                                 v-model="selectedLanguage"
-                                @change="changeLanguage"
                                 class="form-select w-full"
+                                @change="changeLanguage"
                             >
                                 <option value="en">English</option>
                                 <option value="it">Italiano</option>
@@ -38,8 +38,8 @@
 
                         <!-- Other menu items can go here -->
                         <button
-                            @click="goToPreferences"
                             class="w-full flex items-center text-left py-2 px-4 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
+                            @click="goToPreferences"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +65,8 @@
                         </button>
 
                         <button
-                            @click="goToReadingList"
                             class="w-full flex items-center text-left py-2 px-4 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
+                            @click="goToReadingList"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +91,8 @@
                 <div class="w-full max-w-sm px-4">
                     <div class="bg-white rounded-xl shadow-lg">
                         <button
-                            @click="logout"
                             class="w-full flex items-center text-left py-4 px-6 rounded-md transition-colors duration-300 hover:bg-ink-100 text-ink-600 hover:text-ink-800"
+                            @click="logout"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

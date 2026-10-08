@@ -41,7 +41,10 @@
                         v-for="(recommendation, index) in recommendations"
                         :key="index"
                         class="group bg-white rounded-lg border border-ink-200 overflow-hidden transition-all duration-500 hover:shadow-lg hover:border-ink-300 hover:-translate-y-1 animate-fade-in"
-                        :style="{ animationDelay: `${index * 100}ms`, animationFillMode: 'backwards' }"
+                        :style="{
+                            animationDelay: `${index * 100}ms`,
+                            animationFillMode: 'backwards'
+                        }"
                     >
                         <!-- Cover Area -->
                         <div class="h-72 bg-ink-100 flex items-center justify-center p-6">
@@ -59,32 +62,46 @@
                             <!-- Bookmark Button -->
                             <div class="flex justify-end mb-2">
                                 <button
-                                    @click.stop="toggleReadingList(recommendation)"
                                     class="text-ink-400 hover:text-accent-500 transition-colors duration-200"
-                                    :title="isInReadingList(recommendation)
-                                        ? t('remove_from_reading_list')
-                                        : t('add_to_reading_list')"
+                                    :title="
+                                        isInReadingList(recommendation)
+                                            ? t('remove_from_reading_list')
+                                            : t('add_to_reading_list')
+                                    "
+                                    @click.stop="toggleReadingList(recommendation)"
                                 >
-                                    <svg v-if="isInReadingList(recommendation)"
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         class="w-5 h-5 text-accent-500"
-                                         viewBox="0 0 24 24"
-                                         fill="currentColor">
-                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    <svg
+                                        v-if="isInReadingList(recommendation)"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 text-accent-500"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"
+                                        />
                                     </svg>
-                                    <svg v-else
-                                         xmlns="http://www.w3.org/2000/svg"
-                                         class="w-5 h-5"
-                                         viewBox="0 0 24 24"
-                                         fill="none"
-                                         stroke="currentColor"
-                                         stroke-width="1.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    <svg
+                                        v-else
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                                        />
                                     </svg>
                                 </button>
                             </div>
 
-                            <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
+                            <h3
+                                class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight"
+                            >
                                 {{ recommendation.title }}
                             </h3>
                             <p class="text-sm text-ink-500 mb-4 font-light">
@@ -92,8 +109,10 @@
                             </p>
 
                             <!-- Recommendation Reason -->
-                            <p v-if="recommendation.reason"
-                               class="text-sm text-ink-600 italic mb-4 leading-relaxed">
+                            <p
+                                v-if="recommendation.reason"
+                                class="text-sm text-ink-600 italic mb-4 leading-relaxed"
+                            >
                                 {{ recommendation.reason }}
                             </p>
 
@@ -103,7 +122,8 @@
                                     {{ t('pages') }}: {{ recommendation.pageCount }}
                                 </span>
                                 <span v-if="recommendation.publishedDate">
-                                    {{ t('published') }}: {{ formatDate(recommendation.publishedDate) }}
+                                    {{ t('published') }}:
+                                    {{ formatDate(recommendation.publishedDate) }}
                                 </span>
                             </div>
 
@@ -146,7 +166,10 @@
             </div>
 
             <!-- Empty State -->
-            <div v-if="recommendations.length === 0 && !isLoading" class="max-w-md mx-auto text-center py-16">
+            <div
+                v-if="recommendations.length === 0 && !isLoading"
+                class="max-w-md mx-auto text-center py-16"
+            >
                 <div class="mb-8 text-ink-300">
                     <svg
                         class="w-24 h-24 mx-auto"
@@ -184,7 +207,10 @@
             </div>
 
             <!-- Error State -->
-            <div v-if="error" class="mt-4 p-4 bg-red-50 text-red-700 border border-red-200 rounded-lg max-w-md mx-auto">
+            <div
+                v-if="error"
+                class="mt-4 p-4 bg-red-50 text-red-700 border border-red-200 rounded-lg max-w-md mx-auto"
+            >
                 {{ error }}
             </div>
         </main>
@@ -262,7 +288,6 @@
             if (recommendationsToProcess.length > 0) {
                 recommendations.value = await processRecommendations(recommendationsToProcess)
             }
-
         } catch (err) {
             console.error('Error loading recommendations:', err)
             error.value = t('error_loading_recommendations')
@@ -317,9 +342,7 @@
     }
 
     function isInReadingList(book: BookRecommendation): boolean {
-        return readingList.value.some(
-            (b) => b.title === book.title && b.author === book.author
-        )
+        return readingList.value.some((b) => b.title === book.title && b.author === book.author)
     }
 
     async function toggleReadingList(book: BookRecommendation) {

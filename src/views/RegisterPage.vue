@@ -53,7 +53,7 @@
             </div>
 
             <!-- Form -->
-            <form @submit.prevent="register" class="space-y-4">
+            <form class="space-y-4" @submit.prevent="register">
                 <div>
                     <label for="name" class="sr-only">{{ t('name') }}</label>
                     <input
@@ -105,8 +105,8 @@
             <!-- Back to login -->
             <div class="flex items-center justify-center mt-6 text-sm font-sans">
                 <button
-                    @click="goBack"
                     class="text-accent-600 hover:text-accent-700 transition-colors"
+                    @click="goBack"
                 >
                     {{ t('go_back_to_login') }}
                 </button>

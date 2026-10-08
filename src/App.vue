@@ -17,7 +17,9 @@
 <style>
     .page-enter-active,
     .page-leave-active {
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
     }
     .page-enter-from {
         opacity: 0;
