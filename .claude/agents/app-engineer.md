@@ -53,6 +53,10 @@ is yours — record the reasoning in the PR.
    npm run type-check && npm run lint && npx vitest run && npm run build-only
    ```
 
+   `npm run lint` only checks: it never modifies files and exits non-zero on errors. Do not run
+   `npm run lint:fix` on the whole repo inside a feature PR: it would rewrite files unrelated to the
+   card. The files you write are already formatted one by one by the `format-file.sh` hook.
+
    When native config changed, also `npx cap sync` and build the affected platform
    (`cd android && ./gradlew assembleDebug`; iOS via Xcode/simulator). The JDK on PATH is
    Temurin 17 (SDKMAN), too old for Capacitor 7+: use Android Studio's bundled JDK 21,

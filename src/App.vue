@@ -1,9 +1,3 @@
-<script setup lang="ts">
-    import { useAuthStore } from '@/stores/auth'
-
-    const authStore = useAuthStore()
-</script>
-
 <template>
     <div id="app">
         <!-- Solid scrim under the status bar so scrolled content never renders behind the clock/icons.
