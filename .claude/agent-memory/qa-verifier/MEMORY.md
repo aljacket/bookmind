@@ -1,3 +1,4 @@
 -   [Android QA environment](reference_android_qa_environment.md) — JDK 21, ANDROID_HOME, 8 GB RAM/Gradle daemons, AVDs, CDP harness, fake user, mocks, iframe size matrix
--   [Preferences composer findings](project_preexisting_issues.md) — pre-existing vs regression (h-dvh clipping in landscape/200%), ESLint no-fix command
+-   [Preferences composer findings](project_preexisting_issues.md) — pre-existing vs regression (h-dvh clipping, 200% header overflow), #59 retry fixed, lint status
 -   [Tooling QA recipe](reference_tooling_qa_recipe.md) — lint/script PRs: ESLint JSON tally, exclusion probes, non-mutation proof, throwaway copy for --fix
+-   [Evidence harness](reference_evidence_harness.md) — saved screenshots/network via headless Chrome CDP, backend stub, Android Fetch interception, Trello REST attachments
