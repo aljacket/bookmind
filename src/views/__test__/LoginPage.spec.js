@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import LoginPage from '../LoginPage.vue'
 
 // Mock Firebase auth
@@ -37,7 +38,7 @@ describe('LoginPage', () => {
                 plugins: [router]
             }
         })
-        const mockSignIn = vi.mocked(require('firebase/auth').signInWithEmailAndPassword)
+        const mockSignIn = vi.mocked(signInWithEmailAndPassword)
         mockSignIn.mockRejectedValue(new Error('Invalid credentials'))
 
         await wrapper.find('form').trigger('submit')
