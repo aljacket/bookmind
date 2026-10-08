@@ -1,5 +1,7 @@
 Owner: `app-engineer` (worktree), except where marked **Operator**. Scope is Android only; iOS is card #55. Card #50 checklist items are noted as `[card N]`. Every tick needs evidence in the PR (command output, a screenshot, or a file/line).
 
+> The "evidence NN" screenshots referenced below were removed before merge (operator decision); they remain in git history at `dce041f` under `openspec/changes/capacitor-8-upgrade/evidence/`.
+
 Standing rule for every section (design.md D3): never run `npx cap sync ios`, `npx cap add ios`, `npm run ios:build`, `npm run ios:run` or a platform-less `npx cap sync`. Always use `npx cap sync android`.
 
 ## 0. Prerequisites (Operator)
