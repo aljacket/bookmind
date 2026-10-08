@@ -53,8 +53,8 @@ Standing rule for every section (design.md D3): never run `npx cap sync ios`, `n
 ## 7. Quality gates `[card 7]`
 
 -   [x] 7.1 `npm run type-check` passes. *(Pass.)*
--   [ ] 7.2 `npm run lint` passes and leaves no unrelated diff. *(NOT DONE: lint is broken on main (see 1.2).)*
--   [ ] 7.3 `npx vitest run` passes. *(NOT DONE: the only spec fails on main (see 1.2); same 2 failures before and after.)*
+-   [x] 7.2 `npm run lint` passes and leaves no unrelated diff. *(After merging origin/main (PR #8 dropped airbnb-base): `eslint . --ext ... --ignore-path .gitignore` without --fix, excluding android/ ios/ openspec/: 0 errors, 452 warnings (all pre-existing style warnings; 0 in capacitor.config.ts, Header, Footer). `npm run lint` itself runs --fix and was not committed.)*
+-   [x] 7.3 `npx vitest run` passes. *(After merging origin/main (PR #7 fixed LoginPage.spec.js): 1 file, 2/2 tests passed.)*
 -   [x] 7.4 `npm run build` and `npx cap sync android` pass. *(`npm run build` and `npx cap sync android` pass.)*
 -   [x] 7.5 `ios/` unchanged on the final branch: `git diff --exit-code <base> -- ios` exits 0 (design.md D3). *(`git diff --exit-code 11f9720 -- ios` exits 0.)*
 -   [x] 7.6 No secrets in the diff: no `.env`, certs, keystores or `google-services.json`. The PR description separates hand-written files from regenerated ones, states the exact Capacitor version and the Android Studio version used, and says that `ios/` is intentionally left on Capacitor 6 and not buildable until card #55 (use `npm run android:build`, not `ios:*` or a platform-less `cap sync`).
