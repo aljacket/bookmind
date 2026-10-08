@@ -1,6 +1,6 @@
 ---
 name: external-requirements
-description: Store and platform requirements verified on 2026-10-07 with official URLs (Play target API, Apple Xcode, Capacitor migrations, Android 15/16)
+description: Store, platform and tooling requirements verified 2026-10-07/08 with official URLs (Play target API, Apple Xcode, Capacitor migrations, Android 15/16, ESLint support)
 metadata:
   type: reference
 ---
@@ -14,4 +14,6 @@ All verified 2026-10-07:
 - CocoaPods trunk read-only from 2026-12-02 — https://blog.cocoapods.org/CocoaPods-Specs-Repo/
 - Android 15 https://developer.android.com/about/versions/15/behavior-changes-15 · Android 16 https://developer.android.com/about/versions/16/behavior-changes-16
 
-Related: [[operator-decisions-2026-10-07]].
+- ESLint (verified 2026-10-08): v8 EOL 2024-10-05, v9 EOL 2026-08-06, v10 is Current and drops eslintrc, needs Node >= 20.19 — https://eslint.org/version-support/ · https://eslint.org/docs/latest/use/migrate-to-10.0.0 · in v8, --ignore-path replaces .eslintignore — https://eslint.org/docs/v8.x/use/configure/ignore · v8 CLI --max-warnings (exit 1 above threshold, default -1) — https://eslint.org/docs/v8.x/use/command-line-interface
+
+Related: [[operator-decisions-2026-10-07]], [[card57-lint]].

@@ -1,0 +1,1 @@
+-   [Android/Capacitor environment gotchas](env_android_capacitor_gotchas.md) — JDK 21 path, cap migrate vs ios/, hook quirks, emulator and WebView driving tips
