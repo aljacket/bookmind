@@ -15,7 +15,7 @@
         <Transition name="fade">
             <div
                 v-if="isOpen"
-                class="fixed inset-0 bg-ink-50 z-40 flex flex-col items-center justify-between py-16"
+                class="fixed inset-0 bg-ink-50 z-40 flex flex-col items-center justify-between overflow-y-auto pt-[calc(4rem+var(--bm-safe-top))] pb-[calc(4rem+var(--bm-safe-bottom))] pl-[var(--bm-safe-left)] pr-[var(--bm-safe-right)]"
             >
                 <!-- Top section with menu items -->
                 <div class="w-full max-w-sm px-4">

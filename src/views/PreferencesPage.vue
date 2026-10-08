@@ -1,10 +1,12 @@
 <template>
-    <div class="bg-ink-50 min-h-screen flex flex-col">
+    <div class="bg-ink-50 min-h-dvh flex flex-col">
         <Header :title="t('preferences')" :showBackButton="true" />
 
-        <main class="flex-1 container mx-auto px-4 py-6 flex flex-col">
+        <main
+            class="flex-1 container mx-auto px-4 pt-6 pb-[calc(1.5rem+var(--bm-safe-bottom))] flex flex-col"
+        >
             <div
-                class="max-w-2xl w-full mx-auto bg-white rounded-2xl border border-ink-200 shadow-sm flex flex-col flex-1 overflow-hidden"
+                class="max-w-2xl w-full mx-auto bg-white rounded-2xl border border-ink-200 shadow-sm flex flex-col grow shrink-0 overflow-hidden"
             >
                 <!-- Transparency disclosure -->
                 <div class="px-5 pt-5">
@@ -14,7 +16,7 @@
                 <!-- Chat log -->
                 <div
                     ref="chatScroll"
-                    class="flex-1 overflow-y-auto px-5 py-4 space-y-4"
+                    class="grow basis-0 min-h-[7rem] overflow-y-auto px-5 py-4 space-y-4"
                     aria-live="polite"
                 >
                     <div
