@@ -1,2 +1,3 @@
 -   [Backend testing recipes](project_backend_testing_recipes.md) — no emulators here; fake gapic Firestore, Auth-emulator stub, 503 without ADC, sandbox quirks
 -   [Deploy runbook facts (#61)](project_deploy_runbook_facts.md) — Docker daemon, .gcloudignore vs .dockerignore, doc gaps, concurrency-check script
+-   [LLM eval facts (#71)](project_llm_eval_facts.md) — new-model API quirks, OpenRouter pin slugs, HF token trap, guard words (eval/git), no REPORT.md
