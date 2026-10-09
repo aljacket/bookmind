@@ -5,3 +5,4 @@
 - [Card #56 tablet keyboard](project_card56_tablet_keyboard.md) — pre-existing tablet-landscape keyboard defect split from #50; starts after #50 merge
 - [Card #57 lint](project_card57_lint.md) — non-mutating lint + android/ios ignore; D1/D2 yes → card #58; agents can't edit .claude/
 - [Card #59 chat retry](project_card59_chat_retry.md) — retry after /recommendations error dead; decision: roll back failed turn; backend 2-3 turn limit
+- [/login QA findings 09/10](project_login_qa_findings_2026-10-09.md) — #51 findings filed: contrast+link targets → #47, select/main/logo → #46; SEO items left out
