@@ -1,0 +1,1 @@
+-   [Backend testing recipes](project_backend_testing_recipes.md) — no emulators here; fake gapic Firestore, Auth-emulator stub, 503 without ADC, sandbox quirks
