@@ -34,5 +34,13 @@ All verified 2026-10-07:
   - OpenAI API retention 30 days, ZDR: https://developers.openai.com/api/docs/guides/your-data
   - gpt-4o-mini not deprecated: https://developers.openai.com/api/docs/deprecations
   - cloud.google.com/run/pricing did not render in WebFetch; use the free-tier page instead.
+- LLM providers and launch ops (verified 2026-10-09; full table in the change's design.md "Sources"):
+  - OpenAI pricing: gpt-4o-mini $0.15/$0.60 per 1M tokens. Regional endpoints +10% for models released on or after 2026-03-05. https://developers.openai.com/api/docs/pricing
+  - OpenRouter: `provider.{only,allow_fallbacks,data_collection,zdr,require_parameters}` https://openrouter.ai/docs/features/provider-routing · OpenRouter keeps no prompts unless you opt in https://openrouter.ai/docs/features/zdr · no inference markup, 5.5% Stripe credit fee, metadata only https://openrouter.ai/docs/faq
+  - HF Inference Providers: OpenAI-compatible router.huggingface.co/v1, `model:provider` suffix https://huggingface.co/docs/inference-providers/index · bodies not stored, 30-day logs https://huggingface.co/docs/inference-providers/en/security · free users have no credits, PRO $2/mo https://huggingface.co/docs/inference-providers/pricing
+  - Firestore europe-west1 is supported and the location is permanent https://firebase.google.com/docs/firestore/locations
+  - Cloud Run `--min` (default 0) and `--max` https://docs.cloud.google.com/run/docs/configuring/min-instances · .../max-instances
+  - Budgets are alerts only. Spend caps (which do support Cloud Run) are a separate feature; at the cap, Cloud Run serves 5xx https://docs.cloud.google.com/billing/docs/how-to/budgets · .../budgets-spend-caps
+  - Play countries: testing tracks are synced with production by default; internal testing is not country-targeted https://support.google.com/googleplay/android-developer/answer/7550024 · listing graphics fall back to the default language https://support.google.com/googleplay/android-developer/answer/9844778 · Data safety is one global form per package (answer/10787469)
 
 Related: [[operator-decisions-2026-10-07]], [[card44-launch-change]], [[card57-lint]].
