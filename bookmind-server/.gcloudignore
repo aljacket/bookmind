@@ -1,0 +1,32 @@
+# What `gcloud run deploy --source .` uploads to Cloud Build. Same exclusions as .dockerignore:
+# gcloud reads this file, not .dockerignore. Check with: gcloud meta list-files-for-upload
+.gcloudignore
+.git
+.gitignore
+
+# secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*service-account*.json
+*serviceAccount*.json
+*credentials*.json
+
+# local environments and caches
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# not needed to build the image
+tests/
+pytest.ini
+requirements-dev.txt
+README.md
+DEPLOY.md
+scripts/
+*.log
+.DS_Store

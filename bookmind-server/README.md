@@ -28,19 +28,30 @@ python -m pytest
 
 The tests never call Firebase, Firestore or an LLM: token verification, the quota store and the provider are simulated. They never touch a real Firebase project.
 
+## Container and deployment
+
+The `Dockerfile` builds the production image (Python 3.13, non-root, listens on `$PORT`, default 8080). Only the application modules are copied; `.env`, `venv`, `*.pem` and `tests/` are excluded by `.dockerignore`.
+
+```bash
+docker build -t bookmind-server bookmind-server
+docker run --rm -p 8080:8080 bookmind-server        # POST /recommendations without a token answers 401
+```
+
+Production deployment (Cloud Run, Firestore, Secret Manager, budget alert, Hosting, smoke test) is in [`DEPLOY.md`](DEPLOY.md), the operator runbook. `scripts/check_quota_concurrency.py` is the real-Firestore concurrency check described there.
+
 ## Environment variables
 
-| Variable | Default | Meaning |
-| --- | --- | --- |
-| `OPENAI_API_KEY` | none | API key for OpenAI. Used when `LLM_API_KEY` is not set. |
-| `LLM_API_KEY` | `OPENAI_API_KEY` | API key for the LLM provider. |
-| `LLM_BASE_URL` | unset (OpenAI) | OpenAI-compatible base URL, for example an OpenRouter or Hugging Face endpoint. |
-| `LLM_MODEL` | `gpt-4o-mini` | Model name sent to the provider. |
-| `LLM_EXTRA_BODY` | unset | Optional JSON object merged into every request body (router options such as provider pinning). |
-| `DAILY_LLM_CALL_LIMIT` | `10` | LLM calls allowed per user per UTC day (`/recommendations/clarify` and `/recommendations` share it). Changing it is a configuration change (a new Cloud Run revision), not a code release. |
-| `CORS_ALLOWED_ORIGINS` | local dev list | Comma-separated allowed origins. See "CORS". |
-| `FIREBASE_PROJECT_ID` | `GOOGLE_CLOUD_PROJECT`, then the credentials | Firebase project whose ID tokens are accepted and whose Firestore holds the quota. |
-| `GOOGLE_APPLICATION_CREDENTIALS` | none | Local only: path to a service-account file. On Cloud Run the service account is used. |
+| Variable                         | Default                                      | Meaning                                                                                                                                                                                    |
+| -------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `OPENAI_API_KEY`                 | none                                         | API key for OpenAI. Used when `LLM_API_KEY` is not set.                                                                                                                                    |
+| `LLM_API_KEY`                    | `OPENAI_API_KEY`                             | API key for the LLM provider.                                                                                                                                                              |
+| `LLM_BASE_URL`                   | unset (OpenAI)                               | OpenAI-compatible base URL, for example an OpenRouter or Hugging Face endpoint.                                                                                                            |
+| `LLM_MODEL`                      | `gpt-4o-mini`                                | Model name sent to the provider.                                                                                                                                                           |
+| `LLM_EXTRA_BODY`                 | unset                                        | Optional JSON object merged into every request body (router options such as provider pinning).                                                                                             |
+| `DAILY_LLM_CALL_LIMIT`           | `10`                                         | LLM calls allowed per user per UTC day (`/recommendations/clarify` and `/recommendations` share it). Changing it is a configuration change (a new Cloud Run revision), not a code release. |
+| `CORS_ALLOWED_ORIGINS`           | local dev list                               | Comma-separated allowed origins. See "CORS".                                                                                                                                               |
+| `FIREBASE_PROJECT_ID`            | `GOOGLE_CLOUD_PROJECT`, then the credentials | Firebase project whose ID tokens are accepted and whose Firestore holds the quota.                                                                                                         |
+| `GOOGLE_APPLICATION_CREDENTIALS` | none                                         | Local only: path to a service-account file. On Cloud Run the service account is used.                                                                                                      |
 
 Never commit `.env` or a service-account file.
 
@@ -105,23 +116,23 @@ Authorization: Bearer <Firebase ID token>
 
 The token is the one the app gets from `auth.currentUser.getIdToken()`. It is verified with `firebase_admin.auth.verify_id_token(..., check_revoked=True)`, so a token of a deleted or disabled user is rejected even before it expires. Application Default Credentials are used (the service account on Cloud Run).
 
-| Status | When |
-| --- | --- |
-| `401` | No `Authorization` header, not `Bearer <token>`, or a token that is invalid, expired or revoked, or belongs to a deleted or disabled user. The LLM is not called and nothing is counted. |
-| `429` | The user has already made `DAILY_LLM_CALL_LIMIT` calls today (UTC). Carries a `Retry-After` header (seconds to the next UTC midnight). The LLM is not called. |
-| `503` | Firebase Auth or Firestore cannot be reached or is misconfigured. The request fails closed: the LLM is not called. |
-| `422` | Invalid body (checked after authentication, and not counted against the quota). |
-| `502` | The model answered with an empty or unusable reply. |
-| `500` | Any other failure while calling the LLM. The body is a generic message; the details are only in the server log. |
+| Status | When                                                                                                                                                                                     |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `401`  | No `Authorization` header, not `Bearer <token>`, or a token that is invalid, expired or revoked, or belongs to a deleted or disabled user. The LLM is not called and nothing is counted. |
+| `429`  | The user has already made `DAILY_LLM_CALL_LIMIT` calls today (UTC). Carries a `Retry-After` header (seconds to the next UTC midnight). The LLM is not called.                            |
+| `503`  | Firebase Auth or Firestore cannot be reached or is misconfigured. The request fails closed: the LLM is not called.                                                                       |
+| `422`  | Invalid body (checked after authentication, and not counted against the quota).                                                                                                          |
+| `502`  | The model answered with an empty or unusable reply.                                                                                                                                      |
+| `500`  | Any other failure while calling the LLM. The body is a generic message; the details are only in the server log.                                                                          |
 
 ## Daily quota
 
 Every call to `/recommendations/clarify` and `/recommendations` is counted per Firebase UID per UTC day in Firestore, in a transaction, **before** the LLM is called. A full chat costs 2 calls. A failed LLM call is not refunded.
 
-- Document: `llmQuota/{uid}_{YYYY-MM-DD}` (UTC day) with `count` and `expireAt`.
-- `expireAt` is the start of the next UTC day plus 24 hours. These documents are the only server-side records keyed by user.
-- **One-time operator step:** enable a Firestore TTL policy on the `expireAt` field of the collection group `llmQuota`, otherwise the documents are never deleted. Firestore TTL: https://firebase.google.com/docs/firestore/ttl
-- Firestore must exist in the project (decision: `europe-west1`) and the service account needs the Cloud Datastore User role (`roles/datastore.user`, checked 2026-10-09 at https://docs.cloud.google.com/firestore/docs/security/iam).
+-   Document: `llmQuota/{uid}_{YYYY-MM-DD}` (UTC day) with `count` and `expireAt`.
+-   `expireAt` is the start of the next UTC day plus 24 hours. These documents are the only server-side records keyed by user.
+-   **One-time operator step:** enable a Firestore TTL policy on the `expireAt` field of the collection group `llmQuota`, otherwise the documents are never deleted. Firestore TTL: https://firebase.google.com/docs/firestore/ttl
+-   Firestore must exist in the project (decision: `europe-west1`) and the service account needs the Cloud Datastore User role (`roles/datastore.user`, checked 2026-10-09 at https://docs.cloud.google.com/firestore/docs/security/iam).
 
 ## LLM provider
 
