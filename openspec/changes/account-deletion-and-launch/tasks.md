@@ -92,9 +92,9 @@ This section starts after the #71 provider decision (design Decision 10). Task 6
 
 ## 7. Backend: `POST /reports` (card #66, `backend-engineer`)
 
--   [ ] 7.1 Authenticated endpoint. Pydantic model accepts only `kind`, `lang`, `content` (≤1000) and `reason`. Returns 204.
--   [ ] 7.2 One structured log entry with no UID and no transcript. `DAILY_REPORT_LIMIT` (default 20) through the quota module.
--   [ ] 7.3 Tests: 401, 204 plus the captured log, 422, 429. README: Logs Explorer filter.
+-   [x] 7.1 Authenticated endpoint. Pydantic model accepts only `kind`, `lang`, `content` (≤1000) and `reason`. Returns 204.
+-   [x] 7.2 One structured log entry with no UID and no transcript. `DAILY_REPORT_LIMIT` (default 20) through the quota module.
+-   [x] 7.3 Tests: 401, 204 plus the captured log, 422, 429. README: Logs Explorer filter.
 
 ## 8. App: report AI content (card #67, `ux-designer` → `app-engineer`)
 

@@ -4,7 +4,8 @@
 #   docker run --rm -p 8080:8080 bookmind-server
 #
 # Nothing secret is baked in: LLM_API_KEY, LLM_BASE_URL, LLM_MODEL, CORS_ALLOWED_ORIGINS,
-# DAILY_LLM_CALL_LIMIT and FIREBASE_PROJECT_ID are injected at run time (see DEPLOY.md).
+# DAILY_LLM_CALL_LIMIT, DAILY_REPORT_LIMIT and FIREBASE_PROJECT_ID are injected at run time
+# (see DEPLOY.md).
 FROM python:3.13-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -20,7 +21,7 @@ RUN pip install -r requirements.txt
 
 # Only the application modules are copied. tests/, .env, venv and the rest are never in the image,
 # and .dockerignore (an allowlist) keeps everything else out of the build context too.
-COPY main.py auth.py quota.py llm.py prompts.py ./
+COPY main.py auth.py quota.py reports.py llm.py prompts.py ./
 
 # Run as an unprivileged user.
 RUN useradd --system --no-create-home --uid 10001 bookmind
