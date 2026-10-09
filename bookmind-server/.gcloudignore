@@ -9,5 +9,6 @@
 !main.py
 !auth.py
 !quota.py
+!reports.py
 !llm.py
 !prompts.py

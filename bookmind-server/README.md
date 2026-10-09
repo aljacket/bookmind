@@ -49,6 +49,8 @@ Production deployment (Cloud Run, Firestore, Secret Manager, budget alert, Hosti
 | `LLM_MODEL`                      | `gpt-4o-mini`                                | Model name sent to the provider.                                                                                                                                                           |
 | `LLM_EXTRA_BODY`                 | unset                                        | Optional JSON object merged into every request body (router options such as provider pinning).                                                                                             |
 | `DAILY_LLM_CALL_LIMIT`           | `10`                                         | LLM calls allowed per user per UTC day (`/recommendations/clarify` and `/recommendations` share it). Changing it is a configuration change (a new Cloud Run revision), not a code release. |
+| `DAILY_REPORT_LIMIT`             | `20`                                         | Reports allowed per user per UTC day on `POST /reports`. Separate from the LLM limit: a report never uses LLM quota. |
+| `REPORT_LOG_DESTINATION`         | unset (Cloud Logging)                        | Local development only: `stdout` prints each report as one JSON line instead of calling Cloud Logging. Never set it in production. |
 | `CORS_ALLOWED_ORIGINS`           | local dev list                               | Comma-separated allowed origins. See "CORS".                                                                                                                                               |
 | `FIREBASE_PROJECT_ID`            | `GOOGLE_CLOUD_PROJECT`, then the credentials | Firebase project whose ID tokens are accepted and whose Firestore holds the quota.                                                                                                         |
 | `GOOGLE_APPLICATION_CREDENTIALS` | none                                         | Local only: path to a service-account file. On Cloud Run the service account is used.                                                                                                      |
@@ -57,7 +59,7 @@ Never commit `.env` or a service-account file.
 
 ## Endpoints
 
-Both endpoints require a Firebase ID token (see "Authentication") and take `lang` (one of `en`, `es`, `it`) plus a `transcript` of user messages from the in-app chat. Transcripts are **not** persisted — each request stands alone.
+The two recommendation endpoints require a Firebase ID token (see "Authentication") and take `lang` (one of `en`, `es`, `it`) plus a `transcript` of user messages from the in-app chat. Transcripts are **not** persisted — each request stands alone.
 
 ### `POST /recommendations/clarify`
 
@@ -100,6 +102,47 @@ Given a transcript of length 2 or 3, returns 3 book recommendations whose `reaso
 ]
 ```
 
+### `POST /reports`
+
+Lets a user report offensive, inaccurate or other problematic AI-generated text (Google Play "AI-Generated Content" policy). Requires a Firebase ID token (see "Authentication"). The body accepts **only** these fields and rejects any other with `422`:
+
+```jsonc
+// request
+{
+  "kind": "recommendation",   // "clarifier" | "recommendation"
+  "lang": "en",               // "en" | "es" | "it"
+  "content": "...",           // the AI-generated text only, 1 to 1000 characters
+  "reason": "offensive"       // "offensive" | "inaccurate" | "other"
+}
+// response: 204, no body
+```
+
+| Status | When                                                                                                                                         |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `204`  | The report was written to the log.                                                                                                           |
+| `401`  | Missing, invalid, expired or revoked token (as above).                                                                                       |
+| `422`  | Unknown or missing field, a value outside the allowed sets, or `content` empty or longer than 1000 characters. Nothing is logged or counted. |
+| `429`  | The user already sent `DAILY_REPORT_LIMIT` reports today (UTC). Carries `Retry-After`.                                                       |
+| `503`  | Firebase Auth, Firestore (the counter) or Cloud Logging cannot be reached. Nothing is reported as received.                                  |
+
+What is stored: one structured Cloud Logging entry, severity `WARNING`, in the log `ai-content-report`, with exactly `kind`, `lang`, `content` and `reason`. **No user id, no transcript, no IP or token** is written by the endpoint, and nothing is saved in Firestore or any other datastore. The only per-user record is the counter `llmQuota/{uid}_{YYYY-MM-DD}_reports` (a number and `expireAt`, deleted by the same TTL policy as the LLM counter), which is not linked to any entry. `content` is the text the AI produced: a recommendation `reason` can paraphrase what the user typed, so treat the log as sensitive and do not export it.
+
+The entry is written through the Cloud Logging API, so the service account needs `roles/logging.logWriter` (`DEPLOY.md`, section 5).
+
+## Reports of AI content
+
+Reports are read by the operator in **Google Cloud console > Logging > Logs Explorer**, with this query (replace `PROJECT_ID`):
+
+```
+logName="projects/PROJECT_ID/logs/ai-content-report"
+```
+
+Add `severity=WARNING` or a text filter such as `jsonPayload.reason="offensive"` to narrow it down. The same query works with the CLI: `gcloud logging read 'logName="projects/PROJECT_ID/logs/ai-content-report"' --project PROJECT_ID --freshness=30d --limit=50` (a project Owner can read logs).
+
+-   **Retention:** entries live in the `_Default` log bucket, whose default retention is 30 days ( https://docs.cloud.google.com/logging/quotas , checked 2026-10-09). After that a report is gone and nothing needs to be deleted. Nobody can look up the reports of one user, because no entry carries a user id, so a deleted account leaves nothing to remove from this log.
+-   **No alert is configured.** Nothing tells you when a report arrives: open Logs Explorer periodically (and before each store release). Creating a log-based alert is an operator decision and is not part of this service.
+-   If the retention of `_Default` was changed in the project, the entries live as long as that setting says.
+
 ## Prompts
 
 System prompts and the per-language label/instruction strings live in `prompts.py`, separated from the route handlers so adding a fourth language is a single-file change.
@@ -108,7 +151,7 @@ The clarifier runs at `temperature=0.3, max_tokens=80`; the recommendation call 
 
 ## Authentication
 
-`POST /recommendations/clarify` and `POST /recommendations` need the header
+`POST /recommendations/clarify`, `POST /recommendations` and `POST /reports` need the header
 
 ```
 Authorization: Bearer <Firebase ID token>
@@ -127,9 +170,10 @@ The token is the one the app gets from `auth.currentUser.getIdToken()`. It is ve
 
 ## Daily quota
 
-Every call to `/recommendations/clarify` and `/recommendations` is counted per Firebase UID per UTC day in Firestore, in a transaction, **before** the LLM is called. A full chat costs 2 calls. A failed LLM call is not refunded.
+Every call to `/recommendations/clarify` and `/recommendations` is counted per Firebase UID per UTC day in Firestore, in a transaction, **before** the LLM is called. A full chat costs 2 calls. A failed LLM call is not refunded. `POST /reports` has its own counter (`DAILY_REPORT_LIMIT`), so reports never use up the LLM quota and the LLM quota never blocks a report.
 
 -   Document: `llmQuota/{uid}_{YYYY-MM-DD}` (UTC day) with `count` and `expireAt`.
+-   Report counter: `llmQuota/{uid}_{YYYY-MM-DD}_reports`, same fields, same collection, so the same TTL policy deletes it (no extra operator step). An LLM id always ends with a date and a report id with `_reports`, so they cannot collide.
 -   `expireAt` is the start of the next UTC day plus 24 hours. These documents are the only server-side records keyed by user.
 -   **One-time operator step:** enable a Firestore TTL policy on the `expireAt` field of the collection group `llmQuota`, otherwise the documents are never deleted. Firestore TTL: https://firebase.google.com/docs/firestore/ttl
 -   Firestore must exist in the project (decision: `europe-west1`) and the service account needs the Cloud Datastore User role (`roles/datastore.user`, checked 2026-10-09 at https://docs.cloud.google.com/firestore/docs/security/iam).

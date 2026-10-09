@@ -2,15 +2,16 @@ import json
 import logging
 import os
 from enum import Enum
-from typing import List, Literal
+from typing import Annotated, List, Literal
 
 from dotenv import load_dotenv
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 import llm
 import quota
+import reports
 from auth import get_current_uid
 from prompts import (
     CLARIFIER_SYSTEM_PROMPT,
@@ -90,6 +91,24 @@ class BookRecommendation(BaseModel):
     title: str
     author: str
     reason: str = ""
+
+
+REPORT_CONTENT_MAX_LENGTH = 1000
+
+
+class ReportRequest(BaseModel):
+    """A report of AI-generated text. Nothing else is accepted: no transcript, no identifiers."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    kind: Literal["clarifier", "recommendation"]
+    lang: SupportedLanguage
+    # Only the AI-generated text being reported.
+    content: Annotated[
+        str,
+        StringConstraints(strip_whitespace=True, min_length=1, max_length=REPORT_CONTENT_MAX_LENGTH),
+    ]
+    reason: Literal["offensive", "inaccurate", "other"]
 
 
 def _user_messages(transcript: List[TranscriptTurn]) -> List[str]:
@@ -173,3 +192,29 @@ def get_recommendations(
         # Log the error class only: provider errors can echo parts of the request or the key.
         logger.error("LLM call failed: %s", type(e).__name__)
         raise HTTPException(status_code=500, detail="Recommendation service error")
+
+
+@app.post("/reports", status_code=204, response_class=Response)
+def report_content(
+    request: ReportRequest,
+    uid: str = Depends(get_current_uid),
+    quota_store: quota.QuotaStore = Depends(quota.get_quota_store),
+    sink: reports.ReportSink = Depends(reports.get_report_sink),
+) -> Response:
+    # The UID is used for authentication and the per-user daily limit only. It is never put in the
+    # log entry, and nothing else about the caller is written.
+    quota.consume_report(quota_store, uid)
+    try:
+        sink.write(
+            {
+                "kind": request.kind,
+                "lang": request.lang.value,
+                "content": request.content,
+                "reason": request.reason,
+            }
+        )
+    except Exception as e:
+        # Error class only: never the report text, never the credentials.
+        logger.error("Report log unavailable: %s", type(e).__name__)
+        raise HTTPException(status_code=503, detail="Report service unavailable")
+    return Response(status_code=204)

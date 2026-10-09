@@ -3,22 +3,24 @@
 import pytest
 
 import auth
-from tests.conftest import CLARIFY_BODY, RECOMMEND_BODY, bearer
+from tests.conftest import CLARIFY_BODY, RECOMMEND_BODY, REPORT_BODY, bearer
 
 ENDPOINTS = [
     ("/recommendations/clarify", CLARIFY_BODY),
     ("/recommendations", RECOMMEND_BODY),
+    ("/reports", REPORT_BODY),
 ]
 
 fb = auth.firebase_auth
 
 
 @pytest.mark.parametrize("path,body", ENDPOINTS)
-def test_missing_authorization_header_is_401(client, fake_llm, quota_store, path, body):
+def test_missing_authorization_header_is_401(client, fake_llm, quota_store, report_sink, path, body):
     response = client.post(path, json=body)
     assert response.status_code == 401
     assert response.headers["www-authenticate"] == "Bearer"
     assert fake_llm.calls == []
+    assert report_sink.entries == []
     assert quota_store.docs == {}
 
 
@@ -75,8 +77,9 @@ def test_firebase_outage_fails_closed_with_503(client, fake_auth, fake_llm, path
     assert fake_llm.calls == []
 
 
-def test_unauthenticated_request_is_rejected_before_body_validation(client, fake_llm):
-    response = client.post("/recommendations", json={"lang": "en"})
+@pytest.mark.parametrize("path", [path for path, _ in ENDPOINTS])
+def test_unauthenticated_request_is_rejected_before_body_validation(client, fake_llm, path):
+    response = client.post(path, json={"lang": "en"})
     assert response.status_code == 401
     assert fake_llm.calls == []
 
