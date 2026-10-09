@@ -11,16 +11,16 @@
 
 ### Requirement: Privacy policy link inside the app
 
-The app SHALL show a "Privacy policy" link on the Login and Register screens and in the menu. On Android and iOS, the link SHALL open the policy and the user SHALL be able to return to the app in the same state.
+The app SHALL show a "Privacy policy" link on the Login and Register screens and in the menu. The link SHALL open the Italian policy when the UI language is `it` and the English policy otherwise. On Android and iOS, the link SHALL open the policy and the user SHALL be able to return to the app in the same state.
 
 #### Scenario: Link from Login on Android
 
 -   **WHEN** the user taps "Privacy policy" on the Login screen on the Android emulator
 -   **THEN** the policy opens and system back returns to the Login screen
 
-### Requirement: Explicit consent before sending data to OpenAI
+### Requirement: Explicit consent before sending data to the AI provider
 
-Before the first chat message is sent, the app SHALL show a disclosure stating what is sent (the chat messages and the titles and authors of liked books), to whom (OpenAI, United States), why, and the retention, with a link to the privacy policy. It SHALL require an affirmative "accept" action. No request to `/recommendations/clarify` or `/recommendations` SHALL be made while consent is not granted for the current user on this device. Navigating away SHALL NOT count as consent.
+Before the first chat message is sent, the app SHALL show a disclosure stating what is sent (the chat messages and the titles and authors of liked books), to whom (the LLM provider configured in production, by name and by the country where it processes the data; with a router, both the router and the pinned upstream provider), why, and the retention, with a link to the privacy policy. The named recipients SHALL be the same as the third-party AI recipients listed in the privacy policy. It SHALL require an affirmative "accept" action. No request to `/recommendations/clarify` or `/recommendations` SHALL be made while consent is not granted for the current user on this device. Navigating away SHALL NOT count as consent.
 
 #### Scenario: First chat
 

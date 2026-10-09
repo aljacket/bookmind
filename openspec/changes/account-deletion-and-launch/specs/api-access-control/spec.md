@@ -2,17 +2,17 @@
 
 ### Requirement: Recommendation API requires a Firebase ID token
 
-`POST /recommendations/clarify`, `POST /recommendations` and `POST /reports` SHALL require an `Authorization: Bearer <Firebase ID token>` header verified with `firebase-admin` with revocation checking enabled (`check_revoked=True`). A missing, malformed, expired or revoked token, or a token of a deleted or disabled user, SHALL return HTTP 401 before any OpenAI call is made.
+`POST /recommendations/clarify`, `POST /recommendations` and `POST /reports` SHALL require an `Authorization: Bearer <Firebase ID token>` header verified with `firebase-admin` with revocation checking enabled (`check_revoked=True`). A missing, malformed, expired or revoked token, or a token of a deleted or disabled user, SHALL return HTTP 401 before the LLM provider is called.
 
 #### Scenario: No token
 
 -   **WHEN** a client posts a valid body to `/recommendations` without an `Authorization` header
--   **THEN** the response is 401 and OpenAI is not called
+-   **THEN** the response is 401 and the LLM provider is not called
 
 #### Scenario: Token of a deleted user
 
 -   **WHEN** a client posts with an unexpired ID token whose Firebase user has been deleted
--   **THEN** the response is 401 and OpenAI is not called
+-   **THEN** the response is 401 and the LLM provider is not called
 
 #### Scenario: Valid token
 
@@ -21,12 +21,12 @@
 
 ### Requirement: Daily per-user quota on LLM calls
 
-The backend SHALL count every call to `/recommendations/clarify` and `/recommendations` per UID per UTC day in Firestore, and SHALL increment the count before calling OpenAI. When the count has reached `DAILY_LLM_CALL_LIMIT` (environment variable, default 10), the request SHALL return HTTP 429 without calling OpenAI.
+The backend SHALL count every call to `/recommendations/clarify` and `/recommendations` per UID per UTC day in Firestore, and SHALL increment the count before calling the LLM provider. When the count has reached `DAILY_LLM_CALL_LIMIT` (environment variable, default 10), the request SHALL return HTTP 429 without calling the LLM provider.
 
 #### Scenario: Limit reached
 
 -   **WHEN** a user who has already made `DAILY_LLM_CALL_LIMIT` calls today sends another one
--   **THEN** the response is 429 and OpenAI is not called
+-   **THEN** the response is 429 and the LLM provider is not called
 
 #### Scenario: New UTC day
 

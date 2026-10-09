@@ -45,7 +45,7 @@ After reauthentication, the system SHALL delete the Firebase Auth user first. It
 #### Scenario: Old token is rejected after deletion
 
 -   **WHEN** a request is sent to the recommendation API with an ID token issued before the deletion, after the deletion completed
--   **THEN** the API returns 401 and OpenAI is not called
+-   **THEN** the API returns 401 and the LLM provider is not called
 
 ### Requirement: Interrupted deletion heals at next launch
 
