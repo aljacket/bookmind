@@ -3,3 +3,4 @@
 -   [Tooling QA recipe](reference_tooling_qa_recipe.md) — lint/script PRs: ESLint JSON tally, exclusion probes, non-mutation proof, throwaway copy for --fix
 -   [Evidence harness](reference_evidence_harness.md) — saved screenshots/network via headless Chrome CDP, backend stub, Android Fetch interception, Trello REST attachments
 -   [Lighthouse via MCP](reference_lighthouse_mcp.md) — lighthouse_audit lacks Performance; throttled trace + FCP/TBT probe; path limits; /login baseline
+-   [Backend QA recipe](reference_backend_qa_recipe.md) — bookmind-server PRs: auth emulator + non-emulator RS256 stub, fake Firestore gRPC, LLM stub, main compare, zsh/python3 traps
