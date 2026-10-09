@@ -1,0 +1,582 @@
+# Books that no catalogue found, with the manual review label (per candidate)
+
+
+## openai-gpt-4o-mini (92)
+
+- A caccia di un padre — Mario Desiati
+- Cervello. La storia di un organo — David Eagleman
+- Come si cambia una gomma bucata — Giovanni B.
+- Come si cambia una gomma bucata — Giovanni Rossi
+- El café de la mañana — José Luis Sampedro
+- El husar — Joaquín Gallego
+- El viajero del siglo — María Dueñas
+- Guida pratica alla manutenzione della bicicletta — Luca Verdi
+- Guida pratica per ciclisti — Marco R.
+- I racconti delle fate di Oscar Wilde — Oscar Wilde
+- Il cervello e la coscienza — Antonio Damasio
+- Il cervello e la mente — David Eagleman
+- Il cervello e la sua storia — David Eagleman
+- Il cervello imperfetto — Dean Burnett
+- Il cervello infinito — David Eagleman
+- Il cervello: una biografia — David Eagleman
+- Il commissario Brunetti e il mistero del cielo — Donna Leon
+- Il commissario Montalbano. La forma dell'acqua — Andrea Camilleri
+- Il fidanzato di mia sorella — Samantha Downing
+- Il giardino delle api — Giorgio Fontana
+- Il gioco del silenzio — Samantha Downing
+- Il gioco del silenzio — Valentina D'Urso
+- Il gioco del sospetto — Shari Lapena
+- Il grande libro della bicicletta — Francesco Rossi
+- Il ladro di merendine — Giovanni Floris
+- Il mio viaggio in bicicletta — Anna Bianchi
+- Il mistero del Ponte di Tollund — Francesco D'Adamo
+- Il mistero del treno azzurro — Giorgio Scerbanenco
+- Il mondo di Sofie — Jostein Gaarder
+- Il nostro anno di meraviglie — Sarah Perry
+- Il nostro caro desiderio — Cecilia Ahern
+- Il segreto del lago — Holly Seddon
+- Il segreto del vino — Marco Malvaldi
+- Il viaggio di Arlo — Daniela Rinaldi
+- Intelligenza artificiale — Un'utopia in divenire — Hans Moravec
+- L'Intelligenza Artificiale e il Futuro dell'Umanità — Kathy O'Neill
+- L'Intelligenza Artificiale e il Futuro dell'umanità — Tiziano Terzani
+- L'agenzia — Tade Thompson
+- L'arte della pizza — Francesco De Marco
+- L'arte di ascoltare i battiti d'ali — Marco Malvaldi
+- L'arte di essere fragili — Andrea Marcolongo
+- L'era dell'intelligenza artificiale — Jared Cohen
+- L'era dell'intelligenza artificiale — Kai-Fu Lee
+- La banda dei brocchi — Marco Malvaldi
+- La bicicletta verde — Giorgio Faletti
+- La casa dei doganieri — Dino Buzzati
+- La casa del tempo sospeso — Mario Giordano
+- La casa della paura — Mauro Corona
+- La casa delle belle addormentate — Yasushi Inoue
+- La casa delle onde — Cecilia Ekbäck
+- La casa delle onde — Samantha Chase
+- La casa delle ragazze — Lisa Jewell
+- La casa delle ragazze — Sophie McKenzie
+- La città dei mostri — Lorenzo Ait
+- La donna del giovedì — Tess Gerritsen
+- La donna della mia vita — Margherita Oggero
+- La donna della pioggia — Giorgio Faletti
+- La donna della tempesta — Gianrico Carofiglio
+- La donna in cabina 10 — Ruth Ware
+- La famiglia Aubrey — Emma Tennant
+- La felicidad es un té contigo — Mihail Afanasiev
+- La guida del camperista — Marco Gallo
+- La lluvia amarilla — Julián Sánchez
+- La lluvia antes de caer — Julián Barnes
+- La lluvia de fuego — Javier Cercas
+- La lluvia en los zapatos — Javier Marías
+- La lunga strada verso un piccolo arrabbiato pianeta — Becky Chambers
+- La mente in evoluzione — Robert Wright
+- La mente in poche parole — Vikram Patel
+- La misura del mondo — Fabrizio Silei
+- La ragazza che sognava un sogno di fuoco — Anders de la Motte
+- La ragazza con all'ombra — Marina e Valerio Massimo Manfredi
+- La ragazza con tutti i doni — M.R. Carey
+- La saga di Broken Earth — N.K. Jemisin
+- La saga di Earthsea — Ursula K. Le Guin
+- La sombra de los otros — José Carlos Somoza
+- La strada dei re — Brandon Sanderson
+- La trilogia del Mar Grigio — V. E. Schwab
+- La trilogia di Earthsea — Ursula K. Le Guin
+- La vita in bicicletta — Luca T.
+- Le ossa della principessa — Cristina Rava
+- Los ojos del hermano eterno — Julio Ramón Ribeyro
+- L’agenzia dei sogni — Francesco Verso
+- Muchacha de fuego — José Carlos Somoza
+- Pensare veloce, pensare lento — Daniel Kahneman
+- Pensare, veloce e lento — Daniel Kahneman
+- Pizzerie d'Italia — Giovanni Verdi
+- Ritratto di un artista da giovane — James Joyce
+- The Cotswold Mysteries — Rebecca Tope
+- The Cotswold Mysteries: The Case of the Missing Men — Rebecca Tope
+- Un anno con te — Katherine Center
+- Un giorno in più — Gioia Marchegiani
+
+## openai-gpt-6-luna-noreason (54)
+
+- Come riparare la bicicletta — Todd Downs
+- Europa in treno — Nicky Gardner e Susanne Kries
+- Il cervello. Istruzioni per l'uso — David Eagleman
+- Il cervello. Istruzioni per l’uso — John J. Ratey
+- Il cervello. Istruzioni per l’uso — Norman Doidge
+- Il cervello. La nostra storia — David Eagleman
+- Il cervello. Manuale dell’utente — Marco Magrini
+- Il club dei ricordi perduti — Ann Hood
+- Il libro di Joan — Lidia Yuknavitch
+- Il manuale del ciclista urbano — Chris Sidwells
+- Il robot che sembrava me — Alastair Reynolds
+- Il robot che sembrava me — Ian McEwan
+- Incognito. La vita segreta della mente — David Eagleman
+- L'arte della manutenzione della motocicletta — Robert M. Pirsig
+- L'arte di riparare una bicicletta — Robert M. Pirsig
+- La biblioteca dei giusti consigli — Sara Nisha Adams
+- La biblioteca dei nuovi inizi — Michiko Aoyama
+- La biblioteca dei sussurri — Michiko Aoyama
+- La bicicletta — H. G. Wells
+- La coppia perfetta — Ruth Ware
+- La gemella silenziosa — S. K. Tremayne
+- La lama stessa — Joe Abercrombie
+- La manutenzione della bicicletta e del ciclista — Rob van der Plas
+- La misura del tempo — Matt Haig
+- La pallina assassina — Marco Malvaldi
+- La pizza. Una storia globale — Carol Helstosky
+- La scienza della pizza — Dario Bressanini
+- La storia di Elsa Morante — Elsa Morante
+- La storia di Peter Pan — J. M. Barrie
+- La storia di Ulisse e Argo — Mino Milani
+- La trilogia dei Lungavista — Robin Hobb
+- La trilogia dei Lungavista. L'apprendista assassino — Robin Hobb
+- La trilogia dei Lungavista. Libro primo: L'apprendista assassino — Robin Hobb
+- La trilogia dei Lungavista: L'apprendista assassino — Robin Hobb
+- La trilogia dei Lungavista: L’apprendista assassino — Robin Hobb
+- La trilogia della Prima Legge — Joe Abercrombie
+- La trilogia di Earthsea — Ursula K. Le Guin
+- La vita degli androidi è difficile — Becky Chambers
+- La vita degli oggetti — Ted Chiang
+- La vita perfetta — B. A. Paris
+- La vita perfetta — Ruth Ware
+- Parigi è sempre una festa — Ernest Hemingway
+- Roma. Guida gastronomica alle migliori pizzerie — Luca Cesari
+- Roma. Guida gastronomica — Luca Cesari
+- Seda — Alessandro Baricco
+- The Curious Incident of the Dog in the Night-Time — Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.
+- Un uomo a pezzi — Martha Wells
+- Un uomo chiamato Ove — Fredrik Backman
+- Una mamma per amica — Ann Napolitano
+- Una mamma per amica — Debbie Macomber
+- Una mamma per amica. Il libro — Amy Sherman-Palladino e Helen Pai
+- Una mamma per amica. Il romanzo — Catherine Clark
+- Una vita come tante cose — Elizabeth Strout
+- Una vita come tante cose — Fredrik Backman
+
+## openai-gpt-6-luna (0)
+
+
+## openai-gpt-6-sol-noreason (10)
+
+- A Murder to Remember — Bryn Turnbull
+- Il segreto di mio marito — Liane Moriarty
+- L'incredibile viaggio di Harold Fry — Rachel Joyce
+- La coscienza e il cervello — Stanislas Dehaene
+- La libreria dei nuovi inizi — Jenny Colgan
+- La lunga via per un piccolo pianeta arrabbiato — Becky Chambers
+- La vita che volevi — Jojo Moyes
+- La vita che volevo — Jojo Moyes
+- Seda — Alessandro Baricco
+- Un salmo per il robot — Becky Chambers
+
+## or-claude-haiku-5.5-bedrock-eu-noreason (112)
+
+- Ardor — Ana María Matute
+- El Lejano Oeste — Eduardo Mendoza
+- Fuga dal Pianeta Sconosciuto — Jeff Kinney
+- Gli Spiriti di Dove? — Lemony Snicket
+- Il Ciclo di Ilrin: La Sfera del Dragone — Ryk Brown
+- Il Circo della Farfalla — Dino Buzzati
+- Il Grande Sigillo — Ted Chiang
+- Il Libro dei Mostri — Patrick Ness
+- Il Libro dei Nomi — Vox Day
+- Il Mago Stregato — Tanith Lee
+- Il Mago dei Mari — Ursula K. Le Guin
+- Il Mistero del Lupo Nero — Lisa Thompson
+- Il Mondo Nuovo degli androidi — Philip K. Dick
+- Il Mondo Nuovo — Ray Bradbury
+- Il Nome del Vento: La paura del saggio — Patrick Rothfuss
+- Il Ragazzo che Sapeva Cantare — Stefano Benni
+- Il Ragazzo che Sapeva Volare — Gianni Rodari
+- Il Vento che Ruggisce — Erin Morgenstern
+- Il Viaggio di Nathan — Ruth Vande Pol Kessler
+- Il cervello che cambia se stesso — Norman Doidge
+- Il cervello che cambia — Norman Doidge
+- Il cervello di Hugo — Lorenzo Pinna
+- Il cervello di Hume — Giorgio Vallortigara
+- Il cervello e il mondo — Oliver Sacks
+- Il cervello e l'anima — Ruth Feldman
+- Il cervello e l'universo mentale — Stanislas Dehaene
+- Il cervello e la mente — Mario Ammaniti
+- Il cervello e la sua mente — Gerald M. Edelman
+- Il cervello errante — Rita Levi-Montalcini
+- Il ciclista — Ricardo Cutrera
+- Il ciclo di Malazan: I giardini della luna — Steven Erikson
+- Il ciclo di Murderbot — Starter Kit (Ciclo di Murderbot) — Martha Wells
+- Il cielo di Bodrum — Gaetano Sini
+- Il coraggio di essere felici — Lucia Accardo
+- Il diario di Greg — Jeff Kinney
+- Il diritto di sognare — Philip K. Dick
+- Il gatto nero — Giorgio Scerbanenco
+- Il giro di boa — Donato Carrisi
+- Il giro di boa — Gianrico Carofiglio
+- Il giro di boa — Marco Vichi
+- Il libro dei viaggi — Bruce Chatwin
+- Il libro di Sapiens — Daniel Kahneman
+- Il manuale del ciclista urbano — Ivan Lauri
+- Il metodo Catalanotti — Maurizio de Giovanni
+- Il mio nome è Legione — Becky Chambers
+- Il mistero della coscienza — Giulio Tononi e Marcello Massimini
+- Il mito della mente e del cervello — Gerald M. Edelman
+- Il paradosso dell'uomo — Oliver Sacks
+- Il pianeta degli alberi di Dio — Ursula K. Le Guin
+- Il pianeta degli alberi di Natale — Ted Chiang
+- Il pianeta dei Tre Soli — Cixin Liu
+- Il rumore delle cose — Julie Clark
+- Il segreto di Sarah — Ruth Ware
+- Il segreto di Verity — Colleen Hoover
+- Il segreto di Verity — Michelle Frances
+- Il sistema Martin — Becky Chambers
+- Il sé della mente — Antonio Damasio
+- Il tempo che ci vuole per essere felici — Francesca Giannone
+- Il tempo che ci vuole per essere felici — Lynn Rhodes
+- Il tempo che ci vuole per tornare a casa — Ruth Hogan
+- Il viaggiatore incantato — Dino Buzzati
+- Il vicequestore Rocco Schiavone: Pietro Caruso — Antonio Manzini
+- In bicicletta — Ivan Cerri
+- In viaggio con Charley — John Steinbeck
+- La Mafia uccide solo d'estate — Pif (Pierfrancesco Diliberto)
+- La Trilogia della Terra Fantasma — N. K. Jemisin
+- La danza delle libellule — Gianrico Carofiglio
+- La donna nella finestra — A. J. Finn
+- La rossa di Via Chiaia — Maurizio de Giovanni
+- La sabiduría del corazón — Jorge Bucay
+- La sabiduría del fuego — Antoine de Saint-Exupéry
+- La scimmia pensante — Robert M. Sapolsky
+- Las leyes de la frontera — Luis Landero
+- Le Cronache di Marte — Ray Bradbury
+- Le cronache di Fitzchivalry: L'assassino di corte — Robin Hobb
+- Le inchieste del commissario Ricciardi — Maurizio de Giovanni
+- Le ore piccole — Sophie Kinsella
+- Le ragazze di Lankhmar — Ai giorni nostri consoli
+- Little Life di Anna Gavalda — Anna Gavalda
+- Lo Strato dei Sogni — Ursula K. Le Guin
+- Lo specchio di Ombre — Brandon Sanderson
+- Mi regalo de tiempo — Thich Nhat Hanh
+- Mientras la guerra avanza, cien años de historia española — Arturo Pérez-Reverte
+- Mientras la guerra explota — Javier Cercas
+- Mrs. Pollifax Solves a Murder — Dorothy Gilman
+- Nada es nuestro — Ana Cristina Herreros
+- Non ti fidare di me — Lucy Foley
+- Non ti fidare di me — Samantha Downing
+- Non ti lascio mai — Mary Kubica
+- Non è un paese per vecchi — Irene Gough
+- Pequeñas cosas como esta — Claire Keegan
+- Percy Jackson e il Ladro di Fulmini — Rick Riordan
+- Piccole storie di Harry Potter o Sherlock Holmes per ragazzi: Il mistero del cane dei Baskerville — Arthur Conan Doyle
+- Premios Nobel de la Armada — Miguel Delibes
+- Scomparsa — Gillian Flynn
+- Se niente è reale. Il grande libro della fisica quantistica — Carlo Rovelli
+- Se questo è amore — Primo Levi
+- Sei mesi a Venezia — Liza Leonelli
+- Sei mesi ancora — Clare Mackintosh
+- Sei mesi di nebbia — Shari Lapena
+- Sei mesi di noi — Mhairi McFarlane
+- Sei mesi fa — Ruth Ware
+- Sei sempre stata qui — Ana Johnson
+- Sei una brava ragazza — Karen Hunter
+- Sia fatta la tua volontà — Ruth Ware
+- Sono una brava ragazza — Christina Lauren
+- Sorelle — Ruth Ware
+- Te llamaré Tambor — Juan Marsé
+- The Cat Who Went Into the Oven — Unknown
+- The Dispatcher — Richard Osman
+- Tutto il resto è pioggia — Lorenzo Marone
+- Una corsa tutta sbagliata — Martha Wells
+
+## or-claude-haiku-5.5-bedrock-eu (0)
+
+
+## or-claude-sonnet-5.5-vertex-eu (0)
+
+
+## or-gemini-3.1-flash-lite-vertex-eu (77)
+
+- A casa di Annabel — Emma Straub
+- Ancora una volta, stelle — Mary Robinette Kowal
+- Assassinio al faro — Alice Basso
+- Assassinio al faro — Marco Malvaldi
+- Come il cervello crea la nostra realtà — Anil Seth
+- Come il cervello crea la nostra realtà — David Eagleman
+- Come pensa il cervello — Vilayanur S. Ramachandran
+- Death at the Vicarage — Agatha Christie
+- Delitti in alto mare — Marco Malvaldi
+- Delitti in forma di sonetto — Marco Malvaldi
+- Guida alle pizzerie di Roma — Gambero Rosso
+- Il Ciclo di Earthsea — Ursula K. Le Guin
+- Il Signore del Tempo — Louise Cooper
+- Il club dei lettori solitari — Lavinia Petti
+- Il club dei libri segreti — Lyssa Kay Adams
+- Il diario di un automa guastafeste — Martha Wells
+- Il grande libro della bicicletta — AA.VV.
+- Il libro cimitero — Neil Gaiman
+- Il libro del cimitero — Neil Gaiman
+- Il lungo viaggio su un piccolo pianeta irrequieto — Becky Chambers
+- Il lungo viaggio su un piccolo pianeta — Becky Chambers
+- Il lungo viaggio verso un piccolo pianeta arrabbiato — Becky Chambers
+- Il metodo del dottor Fonseca — Marco Malvaldi
+- Il metodo del dottor Fonseca — Marco Vichi
+- Il mistero della casa stregata — John Bellairs
+- Il mistero di villa del pino — Marco Malvaldi
+- Il mondo di Graal: Il castello di Montségur — Luigi Malerba
+- Il mondo di Percy Jackson: Percy Jackson e gli dei dell'Olimpo - La battaglia del labirinto — Rick Riordan
+- Il morto nella piazza — Antonio Manzini
+- Incognito: La vita segreta della mente — David Eagleman
+- L'albergo delle storie sospese — Eowyn Ivey
+- L'albero delle storie perdute — Antonio G. Iturbe
+- L'albero delle storie — Jojo Moyes
+- L'albero delle storie — Katherine Rundell
+- L'arte della manutenzione della bicicletta — Rob van der Plas
+- L'assassino reale — Robin Hobb
+- L'invito — Lucy Foley
+- La banda dei notturni — Jonathan Auxier
+- La biblioteca dei cuori solitari — Katarina Bivald
+- La biblioteca dei cuori sospesi — Catarina Sobral
+- La biblioteca dei cuori sospesi — Caterina Bonvicini
+- La biblioteca dei cuori sospesi — Cathy Bonidan
+- La biblioteca dei cuori sospesi — Sara Nisha Adams
+- La casa nella cerulea onda — TJ Klune
+- La casa nella cerulean sea — TJ Klune
+- La casa nella collina dei ciliegi — 乔凡娜·加尔贝利
+- La casa nella mare ceruleo — TJ Klune
+- La coppia dell'interno 2B — Shari Lapena
+- La coppia dell'interno 9 — B.A. Paris
+- La coppia perfetta — B.A. Paris
+- La libreria dei desideri — Desy Icardi
+- La lunga strada per un piccolo pianeta arrabbiato — Becky Chambers
+- La porta dell'eternità — Greg Egan
+- La saga della Torre Nera — Stephen King
+- La solitudine del lupo — Marco Vichi
+- La trilogia dei Lungavista — Robin Hobb
+- Le neuroscienze della felicità — Richard J. Davidson
+- Manuale di meccanica per biciclette — Chris Sidwells
+- Non ti addormentare — S.J. Watson
+- Parigi. Con cartina — Lonely Planet
+- Parigi. Guida pratica — AA.VV.
+- Parigi. Lonely Planet — AA.VV.
+- Percy Jackson: La sfida degli dei — Rick Riordan
+- Pizza a Roma — Luciana Squadrilli
+- Roma. Guida gastronomica — AA.VV.
+- Roma. Le migliori pizzerie — Luciana Squadrilli
+- Roma: le migliori pizzerie — AA.VV.
+- Skandar e il furto dell'unicorno — A.F. Steadman
+- Skandar e il ladro dell'unicorno — A.F. Steadman
+- Un caso di coscienza — Antonio Manzini
+- Un caso per il commissario Soneri — Valerio Varesi
+- Un caso per il maresciallo Casati — Alessandro Robecchi
+- Un delitto fatto in casa — Antonio Manzini
+- Una casa per due — Beth O'Leary
+- Una casa piena di gente — Emma Straub
+- Una casa piena di libri — Anne Fadiman
+- Una cosa divertente che non farò mai più — Fredrik Backman
+
+## or-gemini-3.8-flash-vertex (0)
+
+
+## or-mistral-large-2512-eu (20)
+
+- Il cervello che cura — Lisa Feldman Barrett
+- Il cervello che cura — Stanislas Dehaene
+- Il ciclo di Luna - Luna: Nuova Luna — Ian McDonald
+- Il metodo del cocodrillo — Massimo Carlotto
+- Il metodo del commissario Ricciardi — Maurizio De Giovanni
+- Il mistero della casa del tempo — John Bellairs
+- Il mistero della città di smeraldo — L. Frank Baum
+- L'ospite perfetta — Rosie Walsh
+- L'ospite perfetta — Ruth Ware
+- L'uomo che piegò il tempo — Robert J. Sawyer
+- La Biblioteca della Mezzanotte — Matt Haig
+- La Ruota del Tempo (serie completa) — Robert Jordan e Brandon Sanderson
+- La casa dei sogni — Donato Carrisi
+- La gamba di legno di Joe Petrosino — Giuseppe Pederiali
+- La goccia che scava — Gianrico Carofiglio
+- La moglie tra le ombre — Jane Corry
+- La moglie tra le righe — Greer Hendricks e Sarah Pekkanen
+- Sotto il sole di Roma — Carlo Levi
+- Un caso complicato per il commissario Bordelli — Marco Vichi
+- Una brutta storia — Carlo Lucarelli
+
+## or-mistral-small-2603-eu (67)
+
+- Autofocus — Lars Kepler
+- Autofocus — Paolo Bacigalupi
+- Bohumil — Romano Bilenchi
+- Breve storia della mente — Luigi Anolli
+- Breve storia della mente — Matthieu Ricard
+- Brevi risposte a grandi domande — Stephen Hawking
+- Crimine imperfetto — Gianrico Carofiglio
+- El caminante — Antonio Machado
+- El pequeño libro de la vida — Jostein Gaarder
+- Il caso Battiston — Federico Bacone
+- Il caso Tosatti — Luca D'Andrea
+- Il caso del cane nero — Conor Fitzgerald
+- Il cervello: La scatola nera della mente umana — Lisa Feldman Barrett
+- Il cervello: Una biografia — David Eagleman
+- Il cervello: Una introduzione a scienza, cultura e società — David Eagleman
+- Il ciclo dell'Assassinio — Robin Hobb
+- Il ciclo dell'infinito — Julian May
+- Il circolo chiuso — Dave Eggers
+- Il club delle promesse del tè — Mary Ann Shaffer e Annie Barrows
+- Il commissario Montalbano e il figlio del re — Andrea Camilleri
+- Il disagio della civiltà — Roberto Calasso
+- Il gene. Il libro che racconta la storia della specie umana — Siddhartha Mukherjee
+- Il gene. Il racconto dell'umanità, tra Darwin e Dna — Siddhartha Mukherjee
+- Il genio non esiste (e a volte è meglio così) — Benjamin Rapoport, Scott Barry Kaufman
+- Il giardino delle illusioni perdute — Marie-Hélène Lafon
+- Il giovane Sherlock Holmes - Corde d'argento — Andrew Lane
+- Il giovane Sherlock Holmes - Magia nera — Andrew Lane
+- Il ladro di libri — Markus Zusak
+- Il manuale delle donne di servizio — Luciana Littizzetto
+- Il mio nome è Asher — Neal Stephenson
+- Il museo della giovinezza — Chabon
+- Il passaggio — Connie Willis
+- Il primo impero — Brandon Sanderson
+- Il risveglio dei morti — Peter Watts
+- Il talento di Mr. Clevax — Alfred Bester
+- L'errore di Cartesio. Emozione, razionalità e cervello umano — Antonio Damasio
+- L'estate del commissario Ricciardi — Maurizio de Giovanni
+- L'istinto — Tana French
+- La Memoria del Mondo — Brandon Sanderson
+- La Prima Legge — poiché ti è piaciuta "la musica usata come magia", questo ciclo offre una magia unica e una narrazione avvincente che non ti deluderà.
+- La bambina che nutriva i dati — Tanenbaum
+- La bicicletta degli ineluttabili — Paolo Giordano
+- La bicicletta di Bartali — Matteo Matteini
+- La domestica — Nita Prose
+- La donna della finestra — A.J. Finn
+- La donna della luna — Becky Chambers
+- La donna nella finestra — A.J. Finn
+- La mano sinistra del buio — Ursula K. Le Guin
+- La moglie silenziosa — Alice Feeney
+- La moglie — Alison Espach
+- La ragazza della curva — Federica Iacobelli
+- La reina sin espejo — Carmen Domingo
+- Le guide del tramonto — Robinette
+- Le regole della vita — Jojo Moyes
+- L’arte di aggiustare le cose rotte — Wolfgang Bergendorff
+- Manuale pratico di sopravvivenza in bicicletta urbana — Marco Giardino
+- Morte in mare aperto — Maurizio De Giovanni
+- Non mi abbandonerai mai — Shari Lapena
+- Non mi lasci più — Lisa Jewell
+- Pensare. Velocemente e lentamente — Daniel Kahneman
+- Percy Jackson e il ladro di fulmini — Rick Riordan
+- Pezzi di vetro — Dario Crapanzano
+- Prima che tu vada — Lisa Jewell
+- Prima di andarmene — Gin Phillips
+- The Python Book: A Complete Introduction for Beginners — John Paul Mueller, Luca Massaron
+- The Python Book: A Complete Introduction to the Python Language — David J. Eck
+- The Saturday Murder Club — Richard Osman
+
+## proxy-gpt-oss-120b-via-openrouter (43)
+
+- All Good Things — Andrew Mayne
+- Alliances of Light — Catherine L. Simms
+- Atomic Habits of Leadership — James Clear
+- El Principito para adultos — Ana Alcolea
+- El arte de la fuga — Michele Trentin
+- El libro de los abrazos — Alain de Botton
+- El libro de los abrazos — Luis Sepúlveda
+- El principito para adultos — Ana María Shua
+- El principito para adultos — Jorge Luis Lira
+- Giro d'Italia in cucina: Le migliori pizzerie d'Italia — Maria Rossi
+- Il cervello e la coscienza. Una guida introduttiva — Christof Koch
+- Il cervello emotivo — Antonio Damasio
+- Il cervello. Come funziona la nostra mente — David Eagleman
+- Il cervello. La storia di un organo — David Eagleman
+- Il cervello: Come funziona la nostra mente — David Eagleman
+- Il ciclista e l'arte di riparare: Guide pratiche per ogni strada — Luca Bianchi
+- Il club dei bonsai — Michele Mari
+- Il club dei cuochi di strada — Anthony Bourdain
+- Il fuoco di Londra — Carlo Emilio Gadda
+- Il fuoco greco — Giorgio Bassani
+- Il giardino segreto di Emily — Liane Moriarty
+- Il giardino segreto di casa mia — Alessia Gazzola
+- Il grande albero di Natale — Jodi Picoult
+- Il mare dove non sei — Michela Murgia
+- La trilogia di Artemis Fowl: Artemis Fowl, l'arconte — Eoin Colfer
+- La trilogia di Mistborn — Brandon Sanderson
+- La vita è facile, amico mio — Marcin Szczygielski
+- La vita è una cosa meravigliosa — Jenny Offill
+- Le luci di maggio — Paolo Giordano
+- Percy Jackson - Il ladro di fulmini — Rick Riordan
+- Percy Jackson e gli Olympiani: Il ladro di fulmini — Rick Riordan
+- Percy Jackson e i Ladri di Fulmini — Rick Riordan
+- Percy Jackson – Il ladro di fulmini — Rick Riordan
+- The Complete Guide to Australia: History, Culture, and Travel — Megan O'Donnell
+- The Cotswold Mysteries: The Cotswold Mystery — Rebecca Tope
+- The Quiche of Death (The Miss Marple Series) — Mavis Doriel Hay
+- The Weather Book: An Easy-to-Understand Guide to the Science of Weather — Jack Williams
+- The Weather Makers: How Climate Change Is Shaping Our Future — Tim Flannery
+- Una vita come tante — Liane Moriarty
+- Una vita da guardare — Francesca Cavallo
+- Una vita da madre — Megan O'Grady
+- Viaggi in treno: Storie e tariffe da Parigi a tutto il mondo — Giovanni Verdi
+- Viaggio in Treno verso Parigi — John Steinbeck
+
+## proxy-llama-3.3-70b-via-openrouter (66)
+
+- Bella del Señor — Alberto Morales
+- El jardín de las delicias — Dolores Medio
+- El laberinto de agua — Federico García Lorca
+- El laberinto de las aceitunas — Juan Gómez-Jurado
+- El laberinto del fauno — no es un libro, así que te recomiendo
+- El pequeño príncipe de Antoine de Saint-Exupéry para adultos: El poder del ahora — Eckhart Tolle
+- Eleanor Oliphant è completamente sola — Gail Honeyman
+- Guida ai ristoranti di Roma — Gambero Rosso
+- Guida ai viaggi in treno in Europa — Thomas Cook
+- Guida alle pizzerie di Roma — Gabriele Bonci
+- Guida alle pizzerie di Roma — Luca Maroni
+- Guida alle pizzerie di Roma — varii
+- Il Primo Legame — Brandon Sanderson
+- Il Primo Legame — Robin Hobb
+- Il Principe dei Ladri — Scott Lynch
+- Il caso Van Baghen — Augusto De Angelis
+- Il caso Vanetta — Augusto De Angelis
+- Il caso del lago di Garda — Francesco Recami
+- Il cervello che apprende — James E. Zull
+- Il ciclista — Paul Fournel
+- Il cuore dei giorni — Cristina Comencini
+- Il diario di un ragazzino fifone — Jeff Kinney
+- Il gioco dei lupi — Holly Webb
+- Il grande libro della bicicletta — Giorgio De Ponti
+- Il grande libro della bicicletta — Vittorio Brumotti
+- Il grande viaggio — Friedrich Nietzsche
+- Il grande viaggio — Jack London
+- Il mondo di Araldi — Garth Nix
+- Il silenzio degli innocenti — Tess Gerritsen
+- Il silenzio delle ragazze — Laura Purcell
+- L'amore bugiardo — Eleanor Oliphant
+- L'amore bugiardo — Elena Ferrante
+- L'arte di essere felice — Giovanni D'Agata
+- L'ultima cosa che vedo — Fiona Barton
+- L'ultima moglie — Amy Lloyd
+- L'ultima notte a Montecarlo — Emily St. John Mandel
+- La Trilogia di Gelo e Fuoco — George R.R. Martin
+- La colina de los fusilados — Eduardo Mendoza
+- La coscienza in coma — Guilio Tononi
+- La cucina italiana — Ada Boni
+- La donna nella finestra — A.J. Finn
+- La gang dei monelli — Enid Blyton
+- La gang dei monelli — Louis Sachar
+- La gang del bosco — Enid Blyton
+- La mente nuova del re — Roger Penrose
+- La pequeña princesa — Frances Hodgson Burnett
+- La pequeña princesa — Jean-Pierre Giraudoux
+- La pequeña princesa — Jean-Pierre Jeunet y Guillaume Laurent
+- La ragazza con il cuore di pietra — Maurizio de Giovanni
+- La ragazza con il cuore di vetro — Marco Malvaldi
+- La ragazza con la Leica — Helga Schneider
+- La ragazza con la pistola — Marcello D'Orta
+- La ragazza scomparsa — Clare Mackintosh
+- La ragazza scomparsa — Gillian Flynn
+- La ragazza sul treno — Paula Hawkins
+- La ragazza sulla collina — Nicola Lagioia
+- La ragazza sulla nave — Morgan McCarthy
+- La sencilla verdad — Thomas Merton
+- La silla roja — Ángeles Mastretta
+- Manuale del ciclista — Vittorio Brumotti
+- Manutenzione della bicicletta — Rob van der Plas
+- The Weather Makers — Tim Flannery
+- Treni e viaggi in Europa — Enrico Pastore
+- Treni e viaggi in Europa — Thomas Cook
+- Treni e viaggiatori — Paul Theroux
+- Un delitto per Natale — Giancarlo De Cataldo
