@@ -19,7 +19,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Only the application modules are copied. tests/, .env, venv and the rest are never in the image,
-# and .dockerignore keeps them out of the build context too.
+# and .dockerignore (an allowlist) keeps everything else out of the build context too.
 COPY main.py auth.py quota.py llm.py prompts.py ./
 
 # Run as an unprivileged user.

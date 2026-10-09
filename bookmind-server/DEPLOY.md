@@ -8,7 +8,7 @@ What you end up with: the backend on **Cloud Run (`europe-west1`)**, Firestore i
 
 | Resource                        | Setting                                                              | Why it is (almost) free                                                                                                   |
 | ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Cloud Run                       | `--min-instances 0`, `--max-instances 2`, 512 MiB, 1 vCPU            | Nothing runs while idle. Free tier: 2 M requests, 180 000 vCPU-s, 360 000 GiB-s per month.                                |
+| Cloud Run                       | service-level `--min 0` and `--max 2`, 512 MiB, 1 vCPU            | Nothing runs while idle. Free tier: 2 M requests, 180 000 vCPU-s, 360 000 GiB-s per month.                                |
 | Firestore                       | one database, one collection (`llmQuota`), TTL deletes old documents | Free tier: 1 GiB, 50 000 reads / 20 000 writes per day.                                                                   |
 | Secret Manager                  | one secret, one version                                              | Free tier: 6 active versions, 10 000 accesses per month.                                                                  |
 | Cloud Build + Artifact Registry | used by `gcloud run deploy --source`                                 | Free tier: 2 500 build-minutes, 0.5 GB of images. Each deploy leaves an image: delete old ones now and then (section 10). |
@@ -16,7 +16,7 @@ What you end up with: the backend on **Cloud Run (`europe-west1`)**, Firestore i
 
 Free-tier numbers: https://docs.cloud.google.com/free/docs/free-cloud-features (a billing account is required). That page does not say whether `europe-west1` is covered by the Cloud Run free tier, so the budget alert in section 2 is the safety net, not an assumption. Cloud Run and Secret Manager need the Firebase **Blaze** plan: https://firebase.google.com/pricing
 
-**Not created, on purpose:** no `--min-instances`, no load balancer, no VPC connector, no Cloud NAT, no paid monitoring or alerting, no custom domain, no second environment, no Cloud Armor. If a step asks for any of these, stop.
+**Not created, on purpose:** no minimum instances (`--min` stays 0), no load balancer, no VPC connector, no Cloud NAT, no paid monitoring or alerting, no custom domain, no second environment, no Cloud Armor. If a step asks for any of these, stop.
 
 ## 1. Tools, project and variables
 
@@ -27,16 +27,22 @@ gcloud auth login
 firebase login
 ```
 
-Fill the values once and keep the same shell for the rest of the runbook (run this block from the repo root, so `REPO_ROOT` is right):
+**How to run the blocks.** Every block below works when pasted into an interactive `zsh` (the macOS default, where `#` comments are not allowed on the command line) or `bash`: the blocks contain no `# comments`, the explanations are in the text around them. Guards that must stop a block (placeholders still in place, unexpected upload list) are `if ... else ... fi`, so they stop the block without closing your terminal. Keep the same shell for the whole runbook, because the variables below are used throughout.
+
+Fill the values once. `PROJECT_ID` is the Firebase project id, which is also the GCP project id. Run this block from the repo root, so that `REPO_ROOT` is right:
 
 ```bash
 export REPO_ROOT="$(pwd)"
-export PROJECT_ID=REPLACE_WITH_FIREBASE_PROJECT_ID     # the Firebase project id, also the GCP project id
+export PROJECT_ID=REPLACE_WITH_FIREBASE_PROJECT_ID
 export REGION=europe-west1
 export SERVICE=bookmind-server
 export SA_NAME=bookmind-api
 export SA_EMAIL="${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
-gcloud config set project "$PROJECT_ID"
+if [ "${PROJECT_ID#REPLACE}" != "$PROJECT_ID" ]; then
+  echo "STOP: set PROJECT_ID to your real project id, then run this block again."
+else
+  gcloud config set project "$PROJECT_ID"
+fi
 ```
 
 Put the same project id in `.firebaserc` (it ships with `REPLACE_WITH_FIREBASE_PROJECT_ID`).
@@ -48,21 +54,29 @@ Put the same project id in `.firebaserc` (it ships with `REPLACE_WITH_FIREBASE_P
 
 ```bash
 gcloud billing accounts list
-export BILLING_ACCOUNT_ID=REPLACE_WITH_BILLING_ACCOUNT_ID     # e.g. 0X0X0X-0X0X0X-0X0X0X
+```
 
-gcloud billing budgets create \
-  --billing-account="$BILLING_ACCOUNT_ID" \
-  --display-name="bookmind-10-eur-per-month" \
-  --budget-amount=10EUR \
-  --threshold-rule=percent=0.5 \
-  --threshold-rule=percent=0.9 \
-  --threshold-rule=percent=1.0 \
-  --filter-projects="projects/${PROJECT_ID}"
+Copy the billing account id (it looks like `0X0X0X-0X0X0X-0X0X0X`) into the next block:
+
+```bash
+export BILLING_ACCOUNT_ID=REPLACE_WITH_BILLING_ACCOUNT_ID
+if [ "${BILLING_ACCOUNT_ID#REPLACE}" != "$BILLING_ACCOUNT_ID" ]; then
+  echo "STOP: set BILLING_ACCOUNT_ID, then run this block again."
+else
+  gcloud billing budgets create \
+    --billing-account="$BILLING_ACCOUNT_ID" \
+    --display-name="bookmind-10-eur-per-month" \
+    --budget-amount=10EUR \
+    --threshold-rule=percent=0.5 \
+    --threshold-rule=percent=0.9 \
+    --threshold-rule=percent=1.0 \
+    --filter-projects="projects/${PROJECT_ID}"
+fi
 ```
 
 -   Reference: https://docs.cloud.google.com/sdk/gcloud/reference/billing/budgets/create (the currency suffix must match the billing account's currency; if it is not EUR, drop `EUR` and set the number you consider equivalent). Needs the Billing Account Costs Manager or Administrator role: https://docs.cloud.google.com/billing/docs/how-to/budgets
 -   If gcloud offers to enable the Cloud Billing Budget API, answer yes.
--   **A budget only sends alerts. It never stops spending.** Spend is bounded by `--max-instances 2` and by the per-user daily quota, not by this budget. Check in Billing > Budgets that the budget exists and that your email is among the recipients.
+-   **A budget only sends alerts. It never stops spending.** Spend is bounded by the service-level `--max 2` and by the per-user daily quota, not by this budget. Check in Billing > Budgets that the budget exists and that your email is among the recipients.
 
 ## 3. Enable the APIs (enabling is free)
 
@@ -83,11 +97,11 @@ gcloud firestore databases create --location=europe-west1 --type=firestore-nativ
 
 Reference: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create . Choose the location carefully: it cannot be changed later. If a `(default)` database already exists (for example created from the Firebase console), check its location in the console before running the command: the command fails on an existing database, and a wrong location is permanent.
 
-**TTL policy** (without it the `llmQuota` documents are never deleted):
+**TTL policy** (without it the `llmQuota` documents are never deleted). The `list` command must show `expireAt` for the collection group `llmQuota`:
 
 ```bash
 gcloud firestore fields ttls update expireAt --collection-group=llmQuota --enable-ttl
-gcloud firestore fields ttls list        # llmQuota / expireAt must be listed
+gcloud firestore fields ttls list
 ```
 
 References: https://firebase.google.com/docs/firestore/ttl and https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update . Firestore deletes expired documents "typically within 24 hours" after expiry, so a counter lives at most about 72 h. Each collection group has one TTL field.
@@ -106,16 +120,14 @@ The service runs as its own service account, never as the default Compute Engine
 ```bash
 gcloud iam service-accounts create "$SA_NAME" --display-name="BookMind API (Cloud Run)"
 
-# Firestore read/write for the quota counters
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" --role="roles/datastore.user"
 
-# Firebase Auth lookup done by verify_id_token(check_revoked=True)
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" --role="roles/firebaseauth.viewer"
 ```
 
-(The secret-level role is granted in section 6, after the secret exists.)
+The first binding (`roles/datastore.user`) is for the quota counters, the second (`roles/firebaseauth.viewer`) for the lookup done by `verify_id_token(check_revoked=True)`. The secret-level role is granted in section 6, after the secret exists.
 
 | Role                                 | Granted on                    | Needed for                                                                                                                                                                                                                                                                                                           | Official source                                                                                                                                    |
 | ------------------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -163,30 +175,56 @@ LLM_MODEL: "REPLACE_WITH_MODEL_NAME"
 EOF
 ```
 
-If the provider needs router options, add `LLM_EXTRA_BODY` as a JSON string (see `README.md`, "LLM provider"). Then, from `bookmind-server/`:
+Open that file and fill `LLM_BASE_URL` and `LLM_MODEL` (for OpenAI directly, delete the `LLM_BASE_URL` line). If the provider needs router options, add `LLM_EXTRA_BODY` as a JSON string (see `README.md`, "LLM provider").
+
+The next block deploys only if all of these hold, and otherwise prints why it stopped and does nothing:
+
+-   `PROJECT_ID` is set to a real value;
+-   the env file exists and has no `REPLACE_` value left;
+-   the source upload is **exactly** these seven files: `Dockerfile`, `auth.py`, `llm.py`, `main.py`, `prompts.py`, `quota.py`, `requirements.txt`. `bookmind-server/.gcloudignore` is an allowlist (everything is ignored except these files), so a credential file dropped into that folder under any name is never uploaded. `gcloud meta list-files-for-upload` shows what gcloud would send.
 
 ```bash
 cd "$REPO_ROOT/bookmind-server"
-grep -n REPLACE "$HOME/bookmind-prod-env.yaml" && echo "FILL THE LINES ABOVE FIRST (delete LLM_BASE_URL for OpenAI)"
-gcloud meta list-files-for-upload      # must NOT list .env, venv, *.pem, tests
-
-gcloud run deploy "$SERVICE" \
-  --source . \
-  --region "$REGION" \
-  --service-account "$SA_EMAIL" \
-  --min-instances 0 \
-  --max-instances 2 \
-  --memory 512Mi --cpu 1 --timeout 60 \
-  --env-vars-file "$HOME/bookmind-prod-env.yaml" \
-  --set-secrets LLM_API_KEY=LLM_API_KEY:1 \
-  --allow-unauthenticated
+export ENV_FILE="$HOME/bookmind-prod-env.yaml"
+UPLOAD_LIST=$(gcloud meta list-files-for-upload | LC_ALL=C sort)
+EXPECTED_LIST=$(printf '%s\n' Dockerfile auth.py llm.py main.py prompts.py quota.py requirements.txt | LC_ALL=C sort)
+if [ "${PROJECT_ID#REPLACE}" != "$PROJECT_ID" ] || [ -z "$PROJECT_ID" ]; then
+  echo "STOP: PROJECT_ID is not set (section 1). Nothing was deployed."
+elif [ ! -f "$ENV_FILE" ]; then
+  echo "STOP: $ENV_FILE does not exist (previous block). Nothing was deployed."
+elif grep -n REPLACE_ "$ENV_FILE"; then
+  echo "STOP: fill the lines listed above in $ENV_FILE. Nothing was deployed."
+elif [ "$UPLOAD_LIST" != "$EXPECTED_LIST" ]; then
+  echo "STOP: the source upload would contain these files, not the expected seven:"
+  echo "$UPLOAD_LIST"
+else
+  gcloud run deploy "$SERVICE" \
+    --source . \
+    --region "$REGION" \
+    --service-account "$SA_EMAIL" \
+    --min 0 \
+    --max 2 \
+    --memory 512Mi --cpu 1 --timeout 60 \
+    --env-vars-file "$ENV_FILE" \
+    --set-secrets LLM_API_KEY=LLM_API_KEY:1 \
+    --allow-unauthenticated
+fi
 ```
 
 -   `--allow-unauthenticated` is deliberate: the app calls the API from a phone with no Google identity. Protection is the Firebase ID token check plus the daily quota, both inside the service (`auth.py`, `quota.py`). If the command is refused by an organisation policy, stop and ask; do not work around it.
--   `--min-instances 0` means the first request after idle pays a cold start (seconds). Accepted by the operator on 2026-10-09.
--   `--max-instances 2` caps parallel instances and so the cost of a traffic spike.
+-   `--min 0` is the **service-level** minimum: the first request after idle pays a cold start (seconds). Accepted by the operator on 2026-10-09.
+-   `--max 2` is the **service-level** maximum: it caps parallel instances and so the cost of a traffic spike. Do not use the revision-level flags `--min-instances` / `--max-instances` here: Google recommends the service-level setting for capping a service, and says revision-level scaling "is only available for services that previously had the feature configured" ( https://docs.cloud.google.com/run/docs/configuring/max-instances , https://docs.cloud.google.com/run/docs/configuring/min-instances ).
 -   The build uses the `Dockerfile` in `bookmind-server/` (Cloud Build builds for the right CPU type; if you ever build the image on an Apple-silicon Mac for Cloud Run, add `--platform linux/amd64`).
 -   Flag reference: https://docs.cloud.google.com/sdk/gcloud/reference/run/deploy , container contract (port 8080): https://docs.cloud.google.com/run/docs/container-contract
+
+**Read the cap back.** The deploy block can have succeeded without the spend cap being in place, so check it. This reads the service as Cloud Run stores it and fails visibly unless the service-level annotations are `maxScale` 2 and `minScale` 0 or unset (and no revision-level setting undoes them):
+
+```bash
+cd "$REPO_ROOT/bookmind-server"
+gcloud run services describe "$SERVICE" --region "$REGION" --format export | python3 scripts/check_cloud_run_scaling.py
+```
+
+The last line must be `OK: service-level scaling is min 0 / max 2`. On a `FAIL` line, run `gcloud run services update "$SERVICE" --region "$REGION" --min 0 --max 2` and read the cap back again. The human-readable cross-check is `gcloud run services describe "$SERVICE" --region "$REGION"`, which shows `Scaling: Auto (Min: 0, Max: 2)` ( https://docs.cloud.google.com/run/docs/configuring/max-instances ). If that line is right and only the script complains, the script could not read the export: report it, do not skip the check.
 
 Record the service URL (it is also printed at the end of the deploy). `VITE_API_BASE_URL` of the production app build must be this URL:
 
@@ -203,17 +241,17 @@ gcloud run services update "$SERVICE" --region "$REGION" --update-env-vars DAILY
 
 ## 8. Post-deploy checks
 
+(Section 7 already ended with the scaling read-back: do not continue if it said `FAIL`.)
+
 ### 8.1 Smoke test: 401, 200, 429, CORS
 
-Create a **dedicated test user** in Firebase console > Authentication > Add user (email and password). Do not use the store reviewers' account: this test uses up its daily quota. The Web API key is the `VITE_FIREBASE_API_KEY` of the app (Firebase console > Project settings > General).
+Create a **dedicated test user** in Firebase console > Authentication > Add user (email and password). Do not use the store reviewers' account: this test uses up its daily quota. The Web API key is the `VITE_FIREBASE_API_KEY` of the app (Firebase console > Project settings > General). The block below signs in with the Firebase Auth REST API ("Sign in with email / password", https://firebase.google.com/docs/reference/rest/auth ) and keeps the ID token in memory only (valid for about an hour).
 
 ```bash
 export FIREBASE_WEB_API_KEY=REPLACE_WITH_WEB_API_KEY
 printf 'Test user email: '; read -r SMOKE_EMAIL; export SMOKE_EMAIL
 printf 'Test user password (hidden): '; read -rs SMOKE_PASSWORD; export SMOKE_PASSWORD; echo
 
-# Sign in with the Firebase Auth REST API and keep the ID token in memory (valid for about an hour).
-# https://firebase.google.com/docs/reference/rest/auth  ("Sign in with email / password")
 ID_TOKEN=$(python3 - <<'PY'
 import json, os, urllib.request
 req = urllib.request.Request(
@@ -269,11 +307,11 @@ Card #60's tests ran the quota transaction against a fake Firestore, so they cou
 
 ```bash
 cd "$REPO_ROOT/bookmind-server"
-gcloud auth application-default login      # your own account, once; it needs Firestore access (Owner has it)
+gcloud auth application-default login
 venv/bin/python scripts/check_quota_concurrency.py --project "$PROJECT_ID"
 ```
 
-(`venv` is the backend virtualenv with `requirements.txt` installed; see `README.md`. If Google complains about a missing quota project, run `gcloud auth application-default set-quota-project "$PROJECT_ID"` and retry.)
+(`application-default login` is a one-time sign-in with your own account, which needs Firestore access; a project Owner has it. `venv` is the backend virtualenv with `requirements.txt` installed; see `README.md`. If Google complains about a missing quota project, run `gcloud auth application-default set-quota-project "$PROJECT_ID"` and retry.)
 
 What it does: 5 rounds in which **two simultaneous requests** from the same user compete for a limit of 1 (exactly one must win each round), then 20 simultaneous requests against a limit of 5 (at most 5 may win and the stored count must equal the number allowed). Expected end of output:
 
@@ -292,24 +330,28 @@ Exit code `0` is PASS, `1` is FAIL. **A FAIL means the quota lets extra calls th
 -   `REPLACE_WITH_IUBENDA_IT_POLICY_URL` in the `/privacy` redirect;
 -   `REPLACE_WITH_IUBENDA_EN_POLICY_URL` in the `/privacy/en` redirect.
 
-Check that nothing is left, build the app against the production API, and deploy:
+The production `.env` (repo root) must have `VITE_API_BASE_URL=<the Cloud Run URL>` and the `VITE_FIREBASE_*` values. The next block builds and deploys only if `PROJECT_ID` is set and no `REPLACE_WITH` is left in `firebase.json` or `.firebaserc`; otherwise it lists the offending lines and does nothing, so a pasted block can never publish a redirect to a placeholder.
 
 ```bash
 cd "$REPO_ROOT"
-grep -n "REPLACE_WITH" firebase.json .firebaserc && echo "FILL THE PLACEHOLDERS ABOVE FIRST"
-
-# the production .env must have VITE_API_BASE_URL=<the Cloud Run URL> and the VITE_FIREBASE_* values
-npm run build
-firebase deploy --only hosting --project "$PROJECT_ID"
+if [ "${PROJECT_ID#REPLACE}" != "$PROJECT_ID" ] || [ -z "$PROJECT_ID" ]; then
+  echo "STOP: PROJECT_ID is not set (section 1). Nothing was deployed."
+elif grep -n REPLACE_WITH firebase.json .firebaserc; then
+  echo "STOP: fill the placeholders listed above. Nothing was deployed."
+else
+  npm run build && firebase deploy --only hosting --project "$PROJECT_ID"
+fi
 ```
 
-(`grep` printing nothing means every placeholder is filled.) Then, in a private browser window:
+Then check the three URLs (also open them in a private browser window):
 
 ```bash
-curl -sI "https://${PROJECT_ID}.web.app/privacy"    | grep -iE '^HTTP|^location'     # 301 -> Iubenda IT
-curl -sI "https://${PROJECT_ID}.web.app/privacy/en" | grep -iE '^HTTP|^location'     # 301 -> Iubenda EN
-curl -s -o /dev/null -w '%{http_code}\n' "https://${PROJECT_ID}.web.app/delete-account"   # 200 (SPA rewrite)
+curl -sI "https://${PROJECT_ID}.web.app/privacy" | grep -iE '^HTTP|^location'
+curl -sI "https://${PROJECT_ID}.web.app/privacy/en" | grep -iE '^HTTP|^location'
+curl -s -o /dev/null -w '%{http_code}\n' "https://${PROJECT_ID}.web.app/delete-account"
 ```
+
+Expected: the first two print `301` and a `location:` header with the Italian and the English Iubenda policy URL respectively; the third prints `200` (the SPA rewrite).
 
 How Hosting resolves this (https://firebase.google.com/docs/hosting/full-config ): redirects are checked first, then files, then rewrites; a `source` of `/privacy` does not match `/privacy/en`, which is why both are listed explicitly. The URL for Play Console and App Store Connect is `https://<project-id>.web.app/privacy`. If Iubenda is ever dropped, only the redirect destinations change. The privacy URLs can go live later than the backend: this step does not block sections 1 to 8.
 
@@ -320,7 +362,8 @@ How Hosting resolves this (https://firebase.google.com/docs/hosting/full-config 
 -   Old images: `gcloud run deploy --source` stores each build in Artifact Registry (repository `cloud-run-source-deploy`). The free tier is 0.5 GB. List with `gcloud artifacts docker images list ${REGION}-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy` and delete old ones in the console (Artifact Registry) when you pass about 0.3 GB.
 -   Logs: written by Cloud Run to Cloud Logging (first 50 GiB per month free, default retention at no cost). They never contain the key or tokens: the code logs error class names only.
 -   Take the API offline (it cannot spend anything while gone): `gcloud run services delete "$SERVICE" --region "$REGION"`. `llmQuota` documents expire by themselves.
--   Back to a previous revision: Cloud Run console > Revisions > Manage traffic.
+-   Back to a previous Cloud Run revision: Cloud Run console > Revisions > Manage traffic. Moving traffic to another revision does not change the service-level `--max 2`.
+-   Roll Hosting back to the previous release (for example after a wrong redirect): Firebase console > Hosting & Serverless > Hosting > Release history, hover over the previous release, click the three-dot menu and choose **Roll back**. It creates a new release that serves the earlier version. Source: https://firebase.google.com/docs/hosting/manage-hosting-resources (the page documents no CLI rollback command).
 
 ## Placeholders you must fill (nothing here is guessed)
 

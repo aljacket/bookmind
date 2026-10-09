@@ -30,14 +30,14 @@ The tests never call Firebase, Firestore or an LLM: token verification, the quot
 
 ## Container and deployment
 
-The `Dockerfile` builds the production image (Python 3.13, non-root, listens on `$PORT`, default 8080). Only the application modules are copied; `.env`, `venv`, `*.pem` and `tests/` are excluded by `.dockerignore`.
+The `Dockerfile` builds the production image (Python 3.13, non-root, listens on `$PORT`, default 8080). Only the application modules are copied; `.dockerignore` and `.gcloudignore` are allowlists (everything is ignored except those modules, `requirements.txt` and the `Dockerfile`), so a credential file dropped in this folder under any name never reaches the build context or the `gcloud run deploy --source` upload. If you add a module the app imports, add it to the `Dockerfile` `COPY` line and to both ignore files.
 
 ```bash
 docker build -t bookmind-server bookmind-server
 docker run --rm -p 8080:8080 bookmind-server        # POST /recommendations without a token answers 401
 ```
 
-Production deployment (Cloud Run, Firestore, Secret Manager, budget alert, Hosting, smoke test) is in [`DEPLOY.md`](DEPLOY.md), the operator runbook. `scripts/check_quota_concurrency.py` is the real-Firestore concurrency check described there.
+Production deployment (Cloud Run, Firestore, Secret Manager, budget alert, Hosting, smoke test) is in [`DEPLOY.md`](DEPLOY.md), the operator runbook. `scripts/check_quota_concurrency.py` (real-Firestore concurrency check) and `scripts/check_cloud_run_scaling.py` (reads back the service-level `--min 0 --max 2` cap) are the operator checks described there.
 
 ## Environment variables
 

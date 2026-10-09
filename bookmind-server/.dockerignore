@@ -1,35 +1,11 @@
-# Keep secrets, local environments and everything that is not the app out of the build context.
-# The Dockerfile also copies only the application modules by name.
-
-# secrets
-.env
-.env.*
-*.pem
-*.key
-*.p12
-*service-account*.json
-*serviceAccount*.json
-*credentials*.json
-
-# local environments and caches
-venv/
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# not needed at run time
-tests/
-pytest.ini
-requirements-dev.txt
-Dockerfile
-.dockerignore
-README.md
-DEPLOY.md
-scripts/
-.git
-.gitignore
-*.log
-.DS_Store
+# ALLOWLIST. The Docker build context holds only what the Dockerfile copies. Everything else
+# (.env, service-account keys, venv, tests, any file somebody drops here) is ignored first.
+# Keep in sync with .gcloudignore, which is what `gcloud run deploy --source` reads.
+*
+!Dockerfile
+!requirements.txt
+!main.py
+!auth.py
+!quota.py
+!llm.py
+!prompts.py

@@ -1,32 +1,13 @@
-# What `gcloud run deploy --source .` uploads to Cloud Build. Same exclusions as .dockerignore:
-# gcloud reads this file, not .dockerignore. Check with: gcloud meta list-files-for-upload
-.gcloudignore
-.git
-.gitignore
-
-# secrets
-.env
-.env.*
-*.pem
-*.key
-*.p12
-*service-account*.json
-*serviceAccount*.json
-*credentials*.json
-
-# local environments and caches
-venv/
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# not needed to build the image
-tests/
-pytest.ini
-requirements-dev.txt
-README.md
-DEPLOY.md
-scripts/
-*.log
-.DS_Store
+# ALLOWLIST. What `gcloud run deploy --source .` uploads to Cloud Build: only the files below.
+# A denylist cannot know the name of every credential file somebody drops here (key.json,
+# *-firebase-adminsdk-*.json, id_rsa, secrets.yaml, google-services.json, ...), so everything is
+# ignored first and only what the image build needs is let back in. gcloud reads this file, not
+# .dockerignore: keep the two in sync. Check with: gcloud meta list-files-for-upload
+*
+!Dockerfile
+!requirements.txt
+!main.py
+!auth.py
+!quota.py
+!llm.py
+!prompts.py
