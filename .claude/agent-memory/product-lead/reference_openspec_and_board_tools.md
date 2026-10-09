@@ -9,7 +9,7 @@ metadata:
 - Delta format: `## ADDED|MODIFIED|REMOVED Requirements` → `### Requirement:` with SHALL → `#### Scenario:` with WHEN/THEN.
 - Archive path: `openspec/changes/archive/YYYY-MM-DD-<name>/`. Do not put temporary constraints in spec deltas.
 - A PostToolUse hook runs prettier on .md after Write/Edit (rewrites checkboxes harmlessly).
-- `npm run trello` cannot rename checklist items; the main session can via the Trello REST API.
+- `npm run trello` cannot rename checklist items or card titles. On 2026-10-09 (#60/#61/#64/#65/#70) I did both from a throwaway scratchpad node script: PUT `/cards/<shortLink>/checkItem/<itemId>?name=`, PUT `/cards/<shortLink>?name=`, POST `/checklists/<id>/checkItems` with `pos` set between existing items. Creds come from `.mcp.json`. Deleted afterwards. Pass every argument through a shell function (`T(){ node script "$@"; }`), not `$VAR args`: zsh does not word-split.
 - `npm run trello` has no attachment support. Attachments work with a throwaway node script in the scratchpad: multipart POST to `/1/cards/<shortLink>/attachments`, credentials read from `.mcp.json` (`mcpServers.trello.env`) and never printed. Delete the script afterwards. Done for #56 on 2026-10-08.
 - The product-lead Write/Edit hook blocks paths outside openspec/, docs/ and agent memory, scratchpad included. Write temp card files (desc, checklist) with a Bash heredoc in the scratchpad.
 - Idee cards carry no OpenSpec change (e.g. #53, #56). The change is written when the card is promoted to Pronto.
