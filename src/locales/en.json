@@ -81,6 +81,9 @@
     "chat_input_required": "Need something to work with — write a few words?",
     "chat_input_too_long": "Whoa — try to keep it under 500 characters.",
     "chat_error": "Something glitched on my end. Mind trying again?",
+    "chat_error_quota": "That's today's limit of book chats. Your message is still here, so you can send it tomorrow.",
+    "chat_error_session": "Your session has expired. Sign in again to keep going.",
+    "chat_error_session_action": "Sign in again",
     "user_not_authenticated": "You'll need to sign in to get recommendations.",
     "ai_transparency": "Only this chat and your liked books go to OpenAI — no profile, nothing stored. Your reading taste stays yours."
 }
