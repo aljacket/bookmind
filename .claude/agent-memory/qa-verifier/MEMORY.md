@@ -5,3 +5,4 @@
 -   [Lighthouse via MCP](reference_lighthouse_mcp.md) — lighthouse_audit lacks Performance; throttled trace + FCP/TBT probe; path limits; /login baseline
 -   [Backend QA recipe](reference_backend_qa_recipe.md) — bookmind-server PRs: auth emulator + non-emulator RS256 stub, fake Firestore gRPC, LLM stub, main compare, zsh/python3 traps
 -   [Deploy-config QA recipe](reference_deploy_config_qa_recipe.md) — Docker context decoys, .gcloudignore via git, fake ADC 401/503, smoke replay, zsh interactivecomments trap
+-   [Runbook replay harness](reference_runbook_replay_harness.md) — expect + bracketed paste + stub CLIs in zsh -f -i; guard scenarios; Cloud Run scaling annotations; #61 PASS
