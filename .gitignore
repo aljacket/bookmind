@@ -38,6 +38,10 @@ cursor
 bookmind-server/.env
 bookmind-server/venv
 bookmind-server/__pycache__
+bookmind-server/scripts/__pycache__
+
+# Firebase CLI deploy cache
+.firebase/
 
 # secrets / certificates
 *.pem

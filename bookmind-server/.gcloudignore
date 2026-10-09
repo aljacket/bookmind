@@ -1,0 +1,13 @@
+# ALLOWLIST. What `gcloud run deploy --source .` uploads to Cloud Build: only the files below.
+# A denylist cannot know the name of every credential file somebody drops here (key.json,
+# *-firebase-adminsdk-*.json, id_rsa, secrets.yaml, google-services.json, ...), so everything is
+# ignored first and only what the image build needs is let back in. gcloud reads this file, not
+# .dockerignore: keep the two in sync. Check with: gcloud meta list-files-for-upload
+*
+!Dockerfile
+!requirements.txt
+!main.py
+!auth.py
+!quota.py
+!llm.py
+!prompts.py
