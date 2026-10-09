@@ -1,8 +1,9 @@
 - [Operator decisions 2026-10-07](project_operator_decisions_2026-10-07.md) — #50 Android only, iOS→#55 with SPM, no Play extension, back→#45, D3 ios/ handling
 - [Mac toolchain](project_mac_toolchain.md) — Node 22, JDK 17 on PATH vs JBR 21 for Capacitor 7+, AS 2026.2, SDK 34/36, AVDs, no Xcode
-- [External requirements](reference_external_requirements.md) — Play API 36, Apple Xcode 26, Capacitor migration guides, Android 15/16, ESLint EOL/v10 (verified 2026-10-07/08)
+- [External requirements](reference_external_requirements.md) — Play API 36, Apple Xcode 26, Capacitor, ESLint, store/launch, LLM routers & GCP ops (verified 2026-10-07/09)
 - [OpenSpec & board tools](reference_openspec_and_board_tools.md) — CLI commands, delta format, trello script limits
 - [Card #56 tablet keyboard](project_card56_tablet_keyboard.md) — pre-existing tablet-landscape keyboard defect split from #50; starts after #50 merge
 - [Card #57 lint](project_card57_lint.md) — non-mutating lint + android/ios ignore; D1/D2 yes → card #58; agents can't edit .claude/
 - [Card #59 chat retry](project_card59_chat_retry.md) — retry after /recommendations error dead; decision: roll back failed turn; backend 2-3 turn limit
 - [/login QA findings 09/10](project_login_qa_findings_2026-10-09.md) — #51 findings filed: contrast+link targets → #47, select/main/logo → #46; SEO items left out
+- [Card #44 launch change](project_card44_launch_change.md) — PR #16, cards #60-#71, decisions 09/10 (10/day, europe-west1, Italy-only, IT+EN), provider eval #71
