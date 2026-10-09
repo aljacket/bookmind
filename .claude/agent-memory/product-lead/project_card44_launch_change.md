@@ -14,7 +14,7 @@ Findings recorded in design.md R1-R10:
 -   `/privacy` became a Hosting redirect; quota counters got a TTL; `check_revoked=True`.
 -   2026 additions: Apple 5.1.2(i) AI consent and Play AI-content reporting.
 
-Cards in Idee: #60 backend token/quota/CORS + `llm.py`, #61 Dockerfile/DEPLOY.md/firebase.json, #62 app token + 401/429, #63 in-app deletion, #64 /delete-account + privacy links, #65 AI consent, #66 POST /reports, #67 report UI, #68 icon/splash, #69 signed AAB, #70 store listing, #71 LLM provider evaluation.
+Cards in Idee: #60 backend token/quota/CORS + `llm.py`, #61 Dockerfile/DEPLOY.md/firebase.json, #62 app token + 401/429, #63 in-app deletion, #64 /delete-account + privacy links, #65 AI consent, #66 POST /reports, #67 report UI, #68 icon/splash, #69 signed AAB, #70 store listing, #71 LLM provider evaluation. Later: #72 data export (Idee, from #63 decisions).
 
 Operator decisions, 2026-10-09 (design.md "Operator decisions (resolved 2026-10-09)"):
 

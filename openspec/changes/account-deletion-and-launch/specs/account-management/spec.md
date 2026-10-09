@@ -16,7 +16,7 @@ A signed-in user SHALL be able to start permanent deletion of their account from
 
 ### Requirement: Deletion requires reauthentication
 
-Deletion SHALL be confirmed with the account password through Firebase `reauthenticateWithCredential`. The dialog SHALL offer a link to the password-reset flow.
+Deletion SHALL be confirmed with the account password through Firebase `reauthenticateWithCredential`. The dialog SHALL offer a "Forgot password?" action that sends the Firebase password-reset email to the signed-in account's address from inside the dialog, without navigating away.
 
 #### Scenario: Wrong password
 
@@ -25,8 +25,13 @@ Deletion SHALL be confirmed with the account password through Firebase `reauthen
 
 #### Scenario: Forgotten password
 
--   **WHEN** the user taps "Forgot password?" in the dialog
--   **THEN** the existing password-reset flow opens
+-   **WHEN** the signed-in user taps "Forgot password?" in the deletion dialog while online
+-   **THEN** the password-reset email is sent to the account's address, a localized confirmation naming that address is shown in the dialog, the dialog stays open, and nothing is deleted
+
+#### Scenario: Password-reset email cannot be sent
+
+-   **WHEN** the user taps "Forgot password?" in the deletion dialog while offline, or the reset request fails
+-   **THEN** a localized error is shown in the dialog, the dialog stays open, and nothing is deleted
 
 ### Requirement: Cloud-first deletion order
 
