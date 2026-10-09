@@ -16,4 +16,23 @@ All verified 2026-10-07:
 
 - ESLint (verified 2026-10-08): v8 EOL 2024-10-05, v9 EOL 2026-08-06, v10 is Current and drops eslintrc, needs Node >= 20.19 — https://eslint.org/version-support/ · https://eslint.org/docs/latest/use/migrate-to-10.0.0 · in v8, --ignore-path replaces .eslintignore — https://eslint.org/docs/v8.x/use/configure/ignore · v8 CLI --max-warnings (exit 1 above threshold, default -1) — https://eslint.org/docs/v8.x/use/command-line-interface
 
-Related: [[operator-decisions-2026-10-07]], [[card57-lint]].
+- Store/launch (verified 2026-10-09, full table in openspec/changes/account-deletion-and-launch/design.md "Sources"):
+  - Play account deletion: https://support.google.com/googleplay/android-developer/answer/13327111
+  - Data safety: https://support.google.com/googleplay/android-developer/answer/10787469
+  - User Data (policy link in Console and in the app, no PDF): https://support.google.com/googleplay/android-developer/answer/10144311
+  - AI-Generated Content (in-app reporting): https://support.google.com/googleplay/android-developer/answer/13985936
+  - App access: https://support.google.com/googleplay/android-developer/answer/15748846
+  - Personal accounts created after 2023-11-13 need 12 testers for 14 days: https://support.google.com/googleplay/android-developer/answer/14151465
+  - Listing assets (512 icon, 1024x500 feature graphic, >=2 screenshots): https://support.google.com/googleplay/android-developer/answer/9866151
+  - AAB required since Aug 2021: https://developer.android.com/guide/app-bundle
+  - Apple 5.1.1(i)/(v), 5.1.2(i) (third-party AI consent), 4.8, 2.4.1: https://developer.apple.com/app-store/review/guidelines/
+  - Apple account deletion: https://developer.apple.com/support/offering-account-deletion-in-your-app/
+  - GCP free tier (needs a billing account): https://docs.cloud.google.com/free/docs/free-cloud-features
+  - Blaze is needed for Cloud Run and Secret Manager: https://firebase.google.com/pricing
+  - Firestore TTL (~24h after expiry): https://firebase.google.com/docs/firestore/ttl
+  - Logging _Default retention 30 days: https://docs.cloud.google.com/logging/quotas
+  - OpenAI API retention 30 days, ZDR: https://developers.openai.com/api/docs/guides/your-data
+  - gpt-4o-mini not deprecated: https://developers.openai.com/api/docs/deprecations
+  - cloud.google.com/run/pricing did not render in WebFetch; use the free-tier page instead.
+
+Related: [[operator-decisions-2026-10-07]], [[card44-launch-change]], [[card57-lint]].
