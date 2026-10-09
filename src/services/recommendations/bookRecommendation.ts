@@ -1,4 +1,4 @@
-import api from '@/services/api/axios'
+import api, { RECOMMENDATION_TIMEOUT_MS } from '@/services/api/axios'
 import { useLanguageStore } from '@/stores/language'
 import { getReadingList } from '@/services/indexedDB/userPreferences'
 import type { BookRecommendation, Transcript } from '@/types/userPreferences'
@@ -10,9 +10,7 @@ interface LikedBookPayload {
     author: string
 }
 
-export async function getLikedBooksForRecommendation(
-    userId: string
-): Promise<LikedBookPayload[]> {
+export async function getLikedBooksForRecommendation(userId: string): Promise<LikedBookPayload[]> {
     const list = await getReadingList(userId)
     return list
         .filter((b) => b.status === 'read' && b.liked === true)
@@ -23,7 +21,11 @@ export async function getLikedBooksForRecommendation(
 
 export async function fetchClarifier(transcript: Transcript): Promise<{ question: string }> {
     const lang = useLanguageStore().selectedLanguage
-    const { data } = await api.post('/recommendations/clarify', { lang, transcript })
+    const { data } = await api.post(
+        '/recommendations/clarify',
+        { lang, transcript },
+        { timeout: RECOMMENDATION_TIMEOUT_MS }
+    )
     return data
 }
 
@@ -42,6 +44,8 @@ export async function fetchRecommendations(
             payload.liked_books = liked
         }
     }
-    const { data } = await api.post('/recommendations', payload)
+    const { data } = await api.post('/recommendations', payload, {
+        timeout: RECOMMENDATION_TIMEOUT_MS
+    })
     return data
 }

@@ -80,6 +80,9 @@
     "chat_input_required": "Necesito algo — ¿escribes unas palabras?",
     "chat_input_too_long": "Calma — intenta mantenerlo bajo 500 caracteres.",
     "chat_error": "Algo falló de mi lado. ¿Lo intentamos de nuevo?",
+    "chat_error_quota": "Hoy has alcanzado el límite de conversaciones. Tu mensaje sigue aquí: podrás enviarlo mañana.",
+    "chat_error_session": "Tu sesión ha caducado. Inicia sesión de nuevo para continuar.",
+    "chat_error_session_action": "Iniciar sesión de nuevo",
     "user_not_authenticated": "Necesitas iniciar sesión para recibir recomendaciones.",
     "ai_transparency": "Solo esta conversación y tus libros favoritos van a OpenAI — sin perfil, nada guardado. Tus gustos siguen siendo tuyos."
 }

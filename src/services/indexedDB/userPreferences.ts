@@ -86,46 +86,6 @@ export async function getLastRecommendations(userId: string): Promise<BookRecomm
     })
 }
 
-export async function incrementApiCallCount(userId: string): Promise<boolean> {
-    const db = await openDB()
-    const now = new Date()
-    const today = now.toISOString().split('T')[0]
-    const key = `${userId}_${today}`
-
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(API_CALLS_STORE, 'readwrite')
-        const store = transaction.objectStore(API_CALLS_STORE)
-        const getRequest = store.get(key)
-
-        getRequest.onsuccess = () => {
-            let currentCallsData = getRequest.result
-
-            if (!currentCallsData) {
-                // First access today, initialize counter
-                currentCallsData = { count: 0, lastReset: now.getTime() }
-            } else {
-                // Check if 24 hours have passed since last reset
-                const hoursSinceLastReset =
-                    (now.getTime() - currentCallsData.lastReset) / (1000 * 60 * 60)
-                if (hoursSinceLastReset >= 24) {
-                    // Reset counter after 24 hours
-                    currentCallsData = { count: 0, lastReset: now.getTime() }
-                }
-            }
-
-            if (currentCallsData.count >= 2) {
-                resolve(false) // Daily limit reached
-            } else {
-                currentCallsData.count++
-                const putRequest = store.put(currentCallsData, key)
-                putRequest.onsuccess = () => resolve(true)
-                putRequest.onerror = () => reject('Error incrementing API call count')
-            }
-        }
-        getRequest.onerror = () => reject('Error retrieving API call count')
-    })
-}
-
 export async function getReadingList(userId: string): Promise<BookRecommendation[]> {
     const db = await openDB()
     return new Promise((resolve, reject) => {
@@ -220,33 +180,4 @@ export async function setReadingListItemLiked(
         bookIdentityMatches(b, book) ? { ...b, liked } : b
     )
     await saveReadingList(userId, updated)
-}
-
-export async function getRemainingCalls(userId: string): Promise<number> {
-    const db = await openDB()
-    const now = new Date()
-    const today = now.toISOString().split('T')[0]
-    const key = `${userId}_${today}`
-
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(API_CALLS_STORE, 'readonly')
-        const store = transaction.objectStore(API_CALLS_STORE)
-        const getRequest = store.get(key)
-
-        getRequest.onsuccess = () => {
-            const currentCallsData = getRequest.result
-            if (!currentCallsData) {
-                resolve(2) // No calls made today
-            } else {
-                const hoursSinceLastReset =
-                    (now.getTime() - currentCallsData.lastReset) / (1000 * 60 * 60)
-                if (hoursSinceLastReset >= 24) {
-                    resolve(2) // 24 hours passed, reset
-                } else {
-                    resolve(2 - currentCallsData.count)
-                }
-            }
-        }
-        getRequest.onerror = () => reject('Error retrieving API call count')
-    })
 }

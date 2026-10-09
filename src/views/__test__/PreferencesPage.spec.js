@@ -3,6 +3,8 @@ import { mount, flushPromises } from '@vue/test-utils'
 import { createRouter, createMemoryHistory } from 'vue-router'
 import { createPinia, setActivePinia } from 'pinia'
 import { createI18n } from 'vue-i18n'
+import { AxiosError } from 'axios'
+import { signOut } from 'firebase/auth'
 import en from '@/locales/en.json'
 import it_ from '@/locales/it.json'
 import es from '@/locales/es.json'
@@ -15,9 +17,20 @@ vi.mock('@/services/recommendations/bookRecommendation', () => ({
     fetchRecommendations: vi.fn()
 }))
 
+vi.mock('@/services/firebase/config', () => ({ auth: { currentUser: null } }))
+vi.mock('firebase/auth', () => ({ signOut: vi.fn().mockResolvedValue(undefined) }))
+
+const httpError = (status) =>
+    new AxiosError('failed', 'ERR_BAD_REQUEST', undefined, undefined, {
+        status,
+        data: {},
+        headers: {},
+        config: {}
+    })
+
 const stub = { template: '<div />' }
 
-const mountPage = async () => {
+const mountPage = async (locale = 'en') => {
     const pinia = createPinia()
     setActivePinia(pinia)
     useAuthStore().setUser({ uid: 'test-uid' })
@@ -26,13 +39,14 @@ const mountPage = async () => {
         history: createMemoryHistory(),
         routes: [
             { path: '/', component: stub },
-            { path: '/processing', name: 'Processing', component: stub }
+            { path: '/processing', name: 'Processing', component: stub },
+            { path: '/login', name: 'Login', component: stub }
         ]
     })
     const pushSpy = vi.spyOn(router, 'push')
     const i18n = createI18n({
         legacy: false,
-        locale: 'en',
+        locale,
         fallbackLocale: 'en',
         messages: { en, it: it_, es }
     })
@@ -63,6 +77,7 @@ describe('PreferencesPage send failures', () => {
         vi.mocked(fetchClarifier).mockReset()
         vi.mocked(fetchRecommendations).mockReset()
         localStorage.clear()
+        vi.mocked(signOut).mockClear()
     })
 
     it('resends the same transcript to /recommendations after a failure', async () => {
@@ -156,6 +171,88 @@ describe('PreferencesPage send failures', () => {
             expect(transcriptOf(call)).toEqual(['cozy', 'small towns'])
         }
         expect(pushSpy).toHaveBeenCalledWith({ name: 'Processing' })
+        wrapper.unmount()
+    })
+
+    it.each([
+        ['en', en],
+        ['it', it_],
+        ['es', es]
+    ])('explains a 429 on /recommendations in %s and restores the turn', async (locale, messages) => {
+        vi.mocked(fetchClarifier).mockResolvedValue({ question: 'Long or short?' })
+        vi.mocked(fetchRecommendations).mockRejectedValue(httpError(429))
+        vi.spyOn(console, 'error').mockImplementation(() => {})
+
+        const { wrapper } = await mountPage(locale)
+        await send(wrapper, 'cozy')
+        await send(wrapper, 'small towns')
+        await send(wrapper, 'long ones')
+
+        expect(wrapper.find('[role="alert"]').text()).toBe(messages.chat_error_quota)
+        expect(messages.chat_error_quota).not.toBe(messages.chat_error)
+        // Turn rolled back: the text is in the textarea, not in the log, and no sign-in action.
+        expect(wrapper.find('textarea').element.value).toBe('long ones')
+        expect(userBubbles(wrapper)).toEqual(['cozy', 'small towns'])
+        expect(wrapper.find('[role="alert"] button').exists()).toBe(false)
+        wrapper.unmount()
+    })
+
+    it('explains a 429 on /clarify and keeps the turn counter at 1', async () => {
+        vi.mocked(fetchClarifier).mockRejectedValue(httpError(429))
+        vi.spyOn(console, 'error').mockImplementation(() => {})
+
+        const { wrapper } = await mountPage()
+        await send(wrapper, 'cozy')
+        await send(wrapper, 'small towns')
+
+        expect(wrapper.find('[role="alert"]').text()).toBe(en.chat_error_quota)
+        expect(wrapper.find('textarea').element.value).toBe('small towns')
+        expect(userBubbles(wrapper)).toEqual(['cozy'])
+        expect(wrapper.text()).not.toContain(en.chat_skip_clarifier)
+        wrapper.unmount()
+    })
+
+    it.each([
+        ['en', en],
+        ['it', it_],
+        ['es', es]
+    ])('explains a 401 in %s, offers to sign in again and restores the turn', async (locale, messages) => {
+        vi.mocked(fetchClarifier).mockRejectedValue(httpError(401))
+        vi.spyOn(console, 'error').mockImplementation(() => {})
+
+        const { wrapper, pushSpy } = await mountPage(locale)
+        await send(wrapper, 'cozy')
+        await send(wrapper, 'small towns')
+
+        const alert = wrapper.find('[role="alert"]')
+        expect(alert.text()).toContain(messages.chat_error_session)
+        expect(wrapper.find('textarea').element.value).toBe('small towns')
+        expect(userBubbles(wrapper)).toEqual(['cozy'])
+
+        const action = alert.find('button')
+        expect(action.text()).toBe(messages.chat_error_session_action)
+        await action.trigger('click')
+        await flushPromises()
+        expect(signOut).toHaveBeenCalledTimes(1)
+        expect(useAuthStore().user).toBeNull()
+        expect(pushSpy).toHaveBeenCalledWith('/login')
+        wrapper.unmount()
+    })
+
+    it('keeps the generic message for 503 and for non-HTTP failures', async () => {
+        vi.mocked(fetchClarifier)
+            .mockRejectedValueOnce(httpError(503))
+            .mockRejectedValueOnce(new Error('timeout'))
+        vi.spyOn(console, 'error').mockImplementation(() => {})
+
+        const { wrapper } = await mountPage()
+        await send(wrapper, 'cozy')
+        await send(wrapper, 'small towns')
+        expect(wrapper.find('[role="alert"]').text()).toBe(en.chat_error)
+        await wrapper.find('form').trigger('submit')
+        await flushPromises()
+        expect(wrapper.find('[role="alert"]').text()).toBe(en.chat_error)
+        expect(wrapper.find('[role="alert"] button').exists()).toBe(false)
         wrapper.unmount()
     })
 })

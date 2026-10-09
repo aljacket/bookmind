@@ -69,14 +69,19 @@
                         class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm"
                     >
                         {{ error }}
+                        <button
+                            v-if="sessionExpired"
+                            type="button"
+                            @click="handleSignInAgain"
+                            class="mt-1 inline-flex min-h-11 items-center font-medium underline underline-offset-2"
+                        >
+                            {{ t('chat_error_session_action') }}
+                        </button>
                     </div>
                 </div>
 
                 <!-- Input area -->
-                <form
-                    @submit.prevent="handleSubmit"
-                    class="border-t border-ink-200 p-4 space-y-3"
-                >
+                <form @submit.prevent="handleSubmit" class="border-t border-ink-200 p-4 space-y-3">
                     <textarea
                         ref="inputEl"
                         v-model="inputValue"
@@ -88,10 +93,7 @@
                         @keydown.enter.exact.prevent="handleSubmit"
                     />
                     <div class="flex items-center gap-2">
-                        <CTAButton
-                            type="submit"
-                            :disabled="isAwaiting || !inputValue.trim()"
-                        >
+                        <CTAButton type="submit" :disabled="isAwaiting || !inputValue.trim()">
                             {{ t('chat_send') }}
                         </CTAButton>
                         <button
@@ -114,7 +116,10 @@
     import { ref, nextTick, onMounted } from 'vue'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
+    import { signOut } from 'firebase/auth'
     import { useAuthStore } from '@/stores/auth'
+    import { auth } from '@/services/firebase/config'
+    import { classifyApiError } from '@/services/api/axios'
     import {
         fetchClarifier,
         fetchRecommendations
@@ -136,6 +141,7 @@
     const inputValue = ref('')
     const isAwaiting = ref(false)
     const error = ref('')
+    const sessionExpired = ref(false)
     const chatScroll = ref<HTMLElement | null>(null)
     const inputEl = ref<HTMLTextAreaElement | null>(null)
 
@@ -192,7 +198,7 @@
             error.value = t('chat_input_too_long')
             return
         }
-        error.value = ''
+        clearError()
 
         chat.value.push({ role: 'user', text: trimmed })
         userMessages.value.push(trimmed)
@@ -226,6 +232,37 @@
         focusInput()
     }
 
+    function clearError() {
+        error.value = ''
+        sessionExpired.value = false
+    }
+
+    // 429 (daily limit) and 401 (session) get their own message; anything else is generic.
+    // The caller still rolls the turn back, so the text is back in the textarea in every case.
+    function showApiError(err: unknown) {
+        const kind = classifyApiError(err)
+        sessionExpired.value = kind === 'session'
+        error.value = t(
+            kind === 'quota'
+                ? 'chat_error_quota'
+                : kind === 'session'
+                  ? 'chat_error_session'
+                  : 'chat_error'
+        )
+    }
+
+    // The session cannot be recovered silently: sign out and go to the login screen,
+    // which the router only shows to guests.
+    async function handleSignInAgain() {
+        try {
+            await signOut(auth)
+            authStore.clearUser()
+            router.push('/login')
+        } catch (err) {
+            console.error('Sign out failed', err)
+        }
+    }
+
     async function requestClarifier(): Promise<boolean> {
         isAwaiting.value = true
         scrollToBottom()
@@ -237,7 +274,7 @@
             return true
         } catch (err) {
             console.error('clarifier failed', err)
-            error.value = t('chat_error')
+            showApiError(err)
             return false
         } finally {
             isAwaiting.value = false
@@ -258,7 +295,7 @@
             return true
         } catch (err) {
             console.error('recommendations failed', err)
-            error.value = t('chat_error')
+            showApiError(err)
             isAwaiting.value = false
             return false
         }
