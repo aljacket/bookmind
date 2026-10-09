@@ -1,13 +1,17 @@
-from fastapi import FastAPI, HTTPException
+import json
+import logging
+import os
+from enum import Enum
+from typing import List, Literal
+
+from dotenv import load_dotenv
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from typing import List, Literal
-from openai import OpenAI
-import os
-from dotenv import load_dotenv
-import json
-from enum import Enum
 
+import llm
+import quota
+from auth import get_current_uid
 from prompts import (
     CLARIFIER_SYSTEM_PROMPT,
     RECOMMENDATION_SYSTEM_PROMPT,
@@ -17,26 +21,37 @@ from prompts import (
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+logger = logging.getLogger("bookmind.api")
+
+# Local development origins. Production sets CORS_ALLOWED_ORIGINS and must not include these.
+DEFAULT_CORS_ORIGINS = (
+    "http://localhost:5173,"
+    "http://localhost:3000,"
+    "http://localhost,"
+    "https://localhost,"
+    "capacitor://localhost,"
+    "http://10.0.2.2:8000,"
+    "https://10.0.2.2:8000,"
+    "http://10.0.2.2,"
+    "https://10.0.2.2"
+)
+
+
+def get_cors_origins() -> List[str]:
+    raw = os.getenv("CORS_ALLOWED_ORIGINS")
+    if raw is None or not raw.strip():
+        raw = DEFAULT_CORS_ORIGINS
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://localhost",
-        "https://localhost",
-        "capacitor://localhost",
-        "http://10.0.2.2:8000",
-        "https://10.0.2.2:8000",
-        "http://10.0.2.2",
-        "https://10.0.2.2",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=get_cors_origins(),
+    allow_credentials=False,  # auth is a bearer header, never a cookie
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 
@@ -82,30 +97,40 @@ def _user_messages(transcript: List[TranscriptTurn]) -> List[str]:
 
 
 @app.post("/recommendations/clarify", response_model=ClarifyResponse)
-async def clarify(request: ClarifyRequest) -> ClarifyResponse:
+def clarify(
+    request: ClarifyRequest,
+    uid: str = Depends(get_current_uid),
+    quota_store: quota.QuotaStore = Depends(quota.get_quota_store),
+) -> ClarifyResponse:
+    quota.consume_llm_call(quota_store, uid)
     user_prompt = build_clarifier_prompt(request.lang.value, _user_messages(request.transcript))
     try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
+        question = llm.chat(
+            [
                 {"role": "system", "content": CLARIFIER_SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
             ],
             temperature=0.3,
             max_tokens=80,
         )
-        question = (response.choices[0].message.content or "").strip()
         if not question:
             raise HTTPException(status_code=502, detail="Empty clarifier response from model")
         return ClarifyResponse(question=question)
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Log the error class only: provider errors can echo parts of the request or the key.
+        logger.error("LLM call failed: %s", type(e).__name__)
+        raise HTTPException(status_code=500, detail="Recommendation service error")
 
 
 @app.post("/recommendations", response_model=List[BookRecommendation])
-async def get_recommendations(request: RecommendationRequest) -> List[BookRecommendation]:
+def get_recommendations(
+    request: RecommendationRequest,
+    uid: str = Depends(get_current_uid),
+    quota_store: quota.QuotaStore = Depends(quota.get_quota_store),
+) -> List[BookRecommendation]:
+    quota.consume_llm_call(quota_store, uid)
     liked_books_payload = (
         [{"title": lb.title, "author": lb.author} for lb in request.liked_books]
         if request.liked_books
@@ -117,16 +142,14 @@ async def get_recommendations(request: RecommendationRequest) -> List[BookRecomm
         liked_books=liked_books_payload,
     )
     try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
+        content = llm.chat(
+            [
                 {"role": "system", "content": RECOMMENDATION_SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
             ],
             temperature=0.7,
             max_tokens=400,
         )
-        content = (response.choices[0].message.content or "").strip()
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
@@ -147,4 +170,6 @@ async def get_recommendations(request: RecommendationRequest) -> List[BookRecomm
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Log the error class only: provider errors can echo parts of the request or the key.
+        logger.error("LLM call failed: %s", type(e).__name__)
+        raise HTTPException(status_code=500, detail="Recommendation service error")
