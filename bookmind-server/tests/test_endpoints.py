@@ -29,6 +29,7 @@ def test_clarify_response_and_provider_request_are_unchanged(client, fake_llm):
             ],
             "temperature": 0.3,
             "max_tokens": 80,
+            "json_object": False,
         }
     ]
 
@@ -55,6 +56,7 @@ def test_recommendations_response_and_provider_request_are_unchanged(client, fak
             ],
             "temperature": 0.7,
             "max_tokens": 400,
+            "json_object": True,
         }
     ]
 

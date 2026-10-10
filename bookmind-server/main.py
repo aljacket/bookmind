@@ -168,6 +168,7 @@ def get_recommendations(
             ],
             temperature=0.7,
             max_tokens=400,
+            json_object=True,
         )
         try:
             data = json.loads(content)

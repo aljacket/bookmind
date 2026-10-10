@@ -115,7 +115,7 @@ def test_quota_store_failure_fails_closed_with_503(client, fake_llm, quota_store
 def test_quota_is_counted_before_the_llm_call_and_not_refunded_on_failure(
     client, fake_llm, quota_store, monkeypatch
 ):
-    def failing_llm(messages, *, temperature, max_tokens):
+    def failing_llm(messages, *, temperature, max_tokens, json_object=False):
         raise RuntimeError("provider exploded with secret sk-123")
 
     monkeypatch.setattr("main.llm.chat", failing_llm)

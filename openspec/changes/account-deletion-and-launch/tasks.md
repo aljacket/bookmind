@@ -118,8 +118,8 @@ The #71 provider decision was taken on 2026-10-10: OpenAI (design Decision 10, o
 
 ## 11. Backend: `gpt-6-luna` support in `llm.py` (card #73, `backend-engineer`; after PR #24 merges)
 
--   [ ] 11.1 `LLM_TOKEN_LIMIT_PARAM` (`max_tokens` by default, or `max_completion_tokens`) sends the existing limits (80 clarify, 400 recommendations) under the configured name only. An invalid value raises `LLMConfigError`.
--   [ ] 11.2 A per-call `response_format` option in `llm.chat()`. `/recommendations` asks for `json_object` when `LLM_JSON_MODE` is on (the default). `/recommendations/clarify` never does.
--   [ ] 11.3 Tests on the request bodies for 11.1 and 11.2, for `reasoning_effort` passed through `LLM_EXTRA_BODY`, and for the default configuration. There is no list of model names and no automatic retry.
--   [ ] 11.4 `DEPLOY.md` production env file: `LLM_MODEL=gpt-6-luna`, `LLM_TOKEN_LIMIT_PARAM=max_completion_tokens`, `LLM_EXTRA_BODY={"reasoning_effort":"none"}`, no `LLM_BASE_URL`. README and `.env.example` show the same values. The code default stays `gpt-4o-mini`.
--   [ ] 11.5 Re-run the #71 harness through the new `llm.py`, within a $0.05 cap: `gpt-6-luna` on 14 cases × 1 run, plus a `gpt-4o-mini` smoke test on 3 cases. Expected: 0 HTTP errors, 100 % of recommendations parsed, clarifier passing in at least 13 of 14 cases, p95 ≤ 15 s.
+-   [x] 11.1 `LLM_TOKEN_LIMIT_PARAM` (`max_tokens` by default, or `max_completion_tokens`) sends the existing limits (80 clarify, 400 recommendations) under the configured name only. An invalid value raises `LLMConfigError`.
+-   [x] 11.2 A per-call `response_format` option in `llm.chat()`. `/recommendations` asks for `json_object` when `LLM_JSON_MODE` is on (the default). `/recommendations/clarify` never does.
+-   [x] 11.3 Tests on the request bodies for 11.1 and 11.2, for `reasoning_effort` passed through `LLM_EXTRA_BODY`, and for the default configuration. There is no list of model names and no automatic retry.
+-   [x] 11.4 `DEPLOY.md` production env file: `LLM_MODEL=gpt-6-luna`, `LLM_TOKEN_LIMIT_PARAM=max_completion_tokens`, `LLM_EXTRA_BODY={"reasoning_effort":"none"}`, no `LLM_BASE_URL`. README and `.env.example` show the same values. The code default stays `gpt-4o-mini`.
+-   [x] 11.5 Re-run the #71 harness through the new `llm.py`, within a $0.05 cap: `gpt-6-luna` on 14 cases × 1 run, plus a `gpt-4o-mini` smoke test on 3 cases. Expected: 0 HTTP errors, 100 % of recommendations parsed, clarifier passing in at least 13 of 14 cases, p95 ≤ 15 s.

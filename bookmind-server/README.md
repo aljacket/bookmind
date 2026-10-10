@@ -47,10 +47,12 @@ Production deployment (Cloud Run, Firestore, Secret Manager, budget alert, Hosti
 | `LLM_API_KEY`                    | `OPENAI_API_KEY`                             | API key for the LLM provider.                                                                                                                                                              |
 | `LLM_BASE_URL`                   | unset (OpenAI)                               | OpenAI-compatible base URL, for example an OpenRouter or Hugging Face endpoint.                                                                                                            |
 | `LLM_MODEL`                      | `gpt-4o-mini`                                | Model name sent to the provider.                                                                                                                                                           |
-| `LLM_EXTRA_BODY`                 | unset                                        | Optional JSON object merged into every request body (router options such as provider pinning).                                                                                             |
+| `LLM_EXTRA_BODY`                 | unset                                        | Optional JSON object merged into every request body (router options such as provider pinning, or model options such as `{"reasoning_effort":"none"}`).                                     |
+| `LLM_TOKEN_LIMIT_PARAM`          | `max_tokens`                                 | Name under which the output token limit is sent: `max_tokens` or `max_completion_tokens` (OpenAI's newest models reject `max_tokens`). Any other value is a configuration error.           |
+| `LLM_JSON_MODE`                  | `true`                                       | `true`: `/recommendations` asks for a JSON object response (`response_format`). `false`: no call does. `/recommendations/clarify` never does, whatever the value.                          |
 | `DAILY_LLM_CALL_LIMIT`           | `10`                                         | LLM calls allowed per user per UTC day (`/recommendations/clarify` and `/recommendations` share it). Changing it is a configuration change (a new Cloud Run revision), not a code release. |
-| `DAILY_REPORT_LIMIT`             | `20`                                         | Reports allowed per user per UTC day on `POST /reports`. Separate from the LLM limit: a report never uses LLM quota. |
-| `REPORT_LOG_DESTINATION`         | unset (Cloud Logging)                        | Local development only: `stdout` prints each report as one JSON line instead of calling Cloud Logging. Never set it in production. |
+| `DAILY_REPORT_LIMIT`             | `20`                                         | Reports allowed per user per UTC day on `POST /reports`. Separate from the LLM limit: a report never uses LLM quota.                                                                       |
+| `REPORT_LOG_DESTINATION`         | unset (Cloud Logging)                        | Local development only: `stdout` prints each report as one JSON line instead of calling Cloud Logging. Never set it in production.                                                         |
 | `CORS_ALLOWED_ORIGINS`           | local dev list                               | Comma-separated allowed origins. See "CORS".                                                                                                                                               |
 | `FIREBASE_PROJECT_ID`            | `GOOGLE_CLOUD_PROJECT`, then the credentials | Firebase project whose ID tokens are accepted and whose Firestore holds the quota.                                                                                                         |
 | `GOOGLE_APPLICATION_CREDENTIALS` | none                                         | Local only: path to a service-account file. On Cloud Run the service account is used.                                                                                                      |
@@ -109,11 +111,13 @@ Lets a user report offensive, inaccurate or other problematic AI-generated text 
 ```jsonc
 // request
 {
-  "kind": "recommendation",   // "clarifier" | "recommendation"
-  "lang": "en",               // "en" | "es" | "it"
-  "content": "...",           // the AI-generated text only, 1 to 1000 characters
-  "reason": "offensive"       // "offensive" | "inaccurate" | "other"
+    "kind": "recommendation", // "clarifier" | "recommendation"
+    "lang": "en", // "en" | "es" | "it"
+    "content": "...", // the AI-generated text only, 1 to 1000 characters
+    "reason": "offensive" // "offensive" | "inaccurate" | "other"
 }
+
+
 // response: 204, no body
 ```
 
@@ -147,7 +151,7 @@ Add `severity=WARNING` or a text filter such as `jsonPayload.reason="offensive"`
 
 System prompts and the per-language label/instruction strings live in `prompts.py`, separated from the route handlers so adding a fourth language is a single-file change.
 
-The clarifier runs at `temperature=0.3, max_tokens=80`; the recommendation call runs at `temperature=0.7, max_tokens=400`. Per-session cost on `gpt-4o-mini` stays around $0.001.
+The clarifier runs at `temperature=0.3` with an output limit of 80 tokens; the recommendation call runs at `temperature=0.7` with a limit of 400 tokens. The limit is sent as `max_tokens` unless `LLM_TOKEN_LIMIT_PARAM` says `max_completion_tokens`. Measured cost per chat (clarify plus recommendations, about 585 input and 175 output tokens): about $0.0002 on `gpt-4o-mini` and on `gpt-6-luna` (card #71 and #73).
 
 ## Authentication
 
@@ -180,7 +184,17 @@ Every call to `/recommendations/clarify` and `/recommendations` is counted per F
 
 ## LLM provider
 
-Every LLM call goes through `llm.py`, the only module that imports the `openai` SDK. The provider is chosen with `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` and `LLM_EXTRA_BODY` (table above), so switching to another OpenAI-compatible provider is an environment change, not a code change. With only `OPENAI_API_KEY` set the service calls OpenAI `gpt-4o-mini`, as before.
+Every LLM call goes through `llm.py`, the only module that imports the `openai` SDK. The provider and the model are chosen with `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY`, `LLM_EXTRA_BODY`, `LLM_TOKEN_LIMIT_PARAM` and `LLM_JSON_MODE` (table above), so switching to another OpenAI-compatible provider or model is an environment change, not a code change. `llm.py` holds no list of model names and never retries a rejected request with other parameters.
+
+**Code default vs production.** With only `OPENAI_API_KEY` set the service calls OpenAI `gpt-4o-mini` with `max_tokens`, as before (plus `response_format` of type `json_object` on `/recommendations` only). Production runs `gpt-6-luna` with reasoning off (decision 10 of the OpenSpec change `account-deletion-and-launch`). The code default stays `gpt-4o-mini` on purpose: `gpt-6-luna` needs three settings that only work together, so a different default would make anyone who sets `LLM_MODEL` alone (OpenRouter, local development) get an HTTP 400. The production values are in the env file of `DEPLOY.md`; to use the same model locally, put them in `bookmind-server/.env`:
+
+```bash
+LLM_MODEL=gpt-6-luna
+LLM_TOKEN_LIMIT_PARAM=max_completion_tokens
+LLM_EXTRA_BODY='{"reasoning_effort":"none"}'
+```
+
+Why each one (measured in card #71, not documented by OpenAI): `gpt-6-luna` answers HTTP 400 to `max_tokens`; with reasoning on it refuses any `temperature` other than 1, and with `reasoning_effort` `none` it accepts the temperatures the prompts use; `response_format` `json_object` made 42 of 42 `/recommendations` answers parse (one in 42 failed without it), but on `/recommendations/clarify` it is an HTTP 400 on OpenAI, hence `LLM_JSON_MODE` is applied per call.
 
 Example (OpenRouter, pinned provider; replace the values):
 
