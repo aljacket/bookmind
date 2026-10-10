@@ -15,6 +15,7 @@ import auth
 import llm
 import main
 import quota
+import reports
 
 CONFIG_ENV_VARS = [
     "LLM_BASE_URL",
@@ -24,6 +25,8 @@ CONFIG_ENV_VARS = [
     "OPENAI_BASE_URL",
     "LLM_EXTRA_BODY",
     "DAILY_LLM_CALL_LIMIT",
+    "DAILY_REPORT_LIMIT",
+    "REPORT_LOG_DESTINATION",
     "CORS_ALLOWED_ORIGINS",
 ]
 
@@ -45,6 +48,13 @@ RECOMMEND_BODY = {
         {"role": "user", "content": "Something short"},
     ],
     "liked_books": [{"title": "Sapiens", "author": "Yuval Noah Harari"}],
+}
+
+REPORT_BODY = {
+    "kind": "recommendation",
+    "lang": "en",
+    "content": "An AI-generated reason that the user finds offensive.",
+    "reason": "offensive",
 }
 
 LLM_RECOMMENDATIONS_JSON = json.dumps(
@@ -92,6 +102,19 @@ class InMemoryQuotaStore:
         return True
 
 
+class RecordingReportSink:
+    """Replaces the Cloud Logging sink: records every entry that would have been logged."""
+
+    def __init__(self) -> None:
+        self.entries: List[dict] = []
+        self.error: Optional[Exception] = None
+
+    def write(self, entry: dict) -> None:
+        if self.error is not None:
+            raise self.error
+        self.entries.append(entry)
+
+
 class FakeFirebaseAuth:
     """Replaces `firebase_admin.auth.verify_id_token`: maps a token string to a UID or an error."""
 
@@ -130,6 +153,11 @@ def quota_store() -> InMemoryQuotaStore:
 
 
 @pytest.fixture
+def report_sink() -> RecordingReportSink:
+    return RecordingReportSink()
+
+
+@pytest.fixture
 def now(monkeypatch):
     """A controllable UTC clock for the quota module."""
     state = {"now": datetime(2026, 10, 9, 10, 0, tzinfo=timezone.utc)}
@@ -138,8 +166,9 @@ def now(monkeypatch):
 
 
 @pytest.fixture
-def client(fake_auth, fake_llm, quota_store, now) -> TestClient:
+def client(fake_auth, fake_llm, quota_store, report_sink, now) -> TestClient:
     main.app.dependency_overrides[quota.get_quota_store] = lambda: quota_store
+    main.app.dependency_overrides[reports.get_report_sink] = lambda: report_sink
     yield TestClient(main.app)
     main.app.dependency_overrides.clear()
 

@@ -66,9 +66,9 @@ Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 5
 -   [ ] 4.1 **ux-designer**: menu entry and dialog spec (all states, phone and tablet), appended to this `design.md`.
 -   [ ] 4.2 `wipeUserData(uid)` in `userPreferences.ts` with unit tests.
 -   [ ] 4.3 `src/services/account/deleteAccount.ts`: reauthenticate → marker → `deleteUser` → wipe → sign out → `/login?deleted=1`.
--   [ ] 4.4 `src/components/account/DeleteAccountDialog.vue` and the `Menu.vue` entry, with the "Forgot password?" link.
+-   [ ] 4.4 `src/components/account/DeleteAccountDialog.vue` and the `Menu.vue` entry, with the in-dialog "Forgot password?" reset email (UX spec section 5).
 -   [ ] 4.5 Startup sweep in `main.ts` driven by the `bookmind.pendingDeletion` marker. Unit tests prove a plain logout keeps the reading list.
--   [ ] 4.6 i18n en/it/es, with the deletion and retention text approved by the operator.
+-   [ ] 4.6 i18n en/it/es, with the deletion and retention text approved by the operator on 2026-10-09 (UX spec section 12).
 -   [ ] 4.7 Emulator verification on phone and tablet, using the operator's test account or the #54 emulators.
 
 ## 5. App: public `/delete-account` and privacy links (card #64, `ux-designer` → `app-engineer`)
@@ -92,9 +92,9 @@ This section starts after the #71 provider decision (design Decision 10). Task 6
 
 ## 7. Backend: `POST /reports` (card #66, `backend-engineer`)
 
--   [ ] 7.1 Authenticated endpoint. Pydantic model accepts only `kind`, `lang`, `content` (≤1000) and `reason`. Returns 204.
--   [ ] 7.2 One structured log entry with no UID and no transcript. `DAILY_REPORT_LIMIT` (default 20) through the quota module.
--   [ ] 7.3 Tests: 401, 204 plus the captured log, 422, 429. README: Logs Explorer filter.
+-   [x] 7.1 Authenticated endpoint. Pydantic model accepts only `kind`, `lang`, `content` (≤1000) and `reason`. Returns 204.
+-   [x] 7.2 One structured log entry with no UID and no transcript. `DAILY_REPORT_LIMIT` (default 20) through the quota module.
+-   [x] 7.3 Tests: 401, 204 plus the captured log, 422, 429. README: Logs Explorer filter.
 
 ## 8. App: report AI content (card #67, `ux-designer` → `app-engineer`)
 

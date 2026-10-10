@@ -9,6 +9,12 @@ One document per user per UTC day: ``llmQuota/{uid}_{YYYY-MM-DD}`` with
 When ``count`` has already reached ``DAILY_LLM_CALL_LIMIT`` (default 10) the request is refused
 with 429 and the LLM is not called. A failed LLM call is not refunded. If Firestore cannot be
 reached the request is refused with 503 (fail closed): without a counter there is no budget cap.
+
+``POST /reports`` has its own counter, independent of the LLM one (a report never consumes LLM
+quota): ``llmQuota/{uid}_{YYYY-MM-DD}_reports``, limited by ``DAILY_REPORT_LIMIT`` (default 20).
+It lives in the same collection, so the same TTL policy deletes it and the operator has nothing
+more to enable. The two id shapes cannot collide: an LLM id always ends with a date, a report id
+always ends with ``_reports``.
 """
 
 import logging
@@ -27,22 +33,33 @@ logger = logging.getLogger("bookmind.quota")
 
 COLLECTION = "llmQuota"
 DEFAULT_DAILY_LIMIT = 10
+DEFAULT_DAILY_REPORT_LIMIT = 20
+
+
+def _limit_from_env(name: str, default: int) -> int:
+    """A non-negative integer from the environment. Unset or invalid values use `default`."""
+    raw = os.getenv(name)
+    if raw is None or not raw.strip():
+        return default
+    try:
+        value = int(raw.strip())
+    except ValueError:
+        logger.warning("%s is not an integer, using %d", name, default)
+        return default
+    if value < 0:
+        logger.warning("%s is negative, using %d", name, default)
+        return default
+    return value
 
 
 def get_daily_limit() -> int:
     """DAILY_LLM_CALL_LIMIT from the environment (default 10). Invalid values use the default."""
-    raw = os.getenv("DAILY_LLM_CALL_LIMIT")
-    if raw is None or not raw.strip():
-        return DEFAULT_DAILY_LIMIT
-    try:
-        value = int(raw.strip())
-    except ValueError:
-        logger.warning("DAILY_LLM_CALL_LIMIT is not an integer, using %d", DEFAULT_DAILY_LIMIT)
-        return DEFAULT_DAILY_LIMIT
-    if value < 0:
-        logger.warning("DAILY_LLM_CALL_LIMIT is negative, using %d", DEFAULT_DAILY_LIMIT)
-        return DEFAULT_DAILY_LIMIT
-    return value
+    return _limit_from_env("DAILY_LLM_CALL_LIMIT", DEFAULT_DAILY_LIMIT)
+
+
+def get_daily_report_limit() -> int:
+    """DAILY_REPORT_LIMIT from the environment (default 20). Invalid values use the default."""
+    return _limit_from_env("DAILY_REPORT_LIMIT", DEFAULT_DAILY_REPORT_LIMIT)
 
 
 def _utcnow() -> datetime:
@@ -51,6 +68,10 @@ def _utcnow() -> datetime:
 
 def quota_document_id(uid: str, now: datetime) -> str:
     return f"{uid}_{now.astimezone(timezone.utc).strftime('%Y-%m-%d')}"
+
+
+def report_quota_document_id(uid: str, now: datetime) -> str:
+    return f"{quota_document_id(uid, now)}_reports"
 
 
 def quota_expire_at(now: datetime) -> datetime:
@@ -113,13 +134,9 @@ def get_quota_store() -> QuotaStore:
         return _store
 
 
-def consume_llm_call(store: QuotaStore, uid: str) -> None:
-    """Count one LLM call for `uid` today. Raise 429 over the limit, 503 if the store fails."""
-    now = _utcnow()
+def _consume(store: QuotaStore, doc_id: str, limit: int, now: datetime, detail: str) -> None:
     try:
-        allowed = store.try_consume(
-            quota_document_id(uid, now), get_daily_limit(), quota_expire_at(now)
-        )
+        allowed = store.try_consume(doc_id, limit, quota_expire_at(now))
     except Exception as exc:
         logger.error("Quota store unavailable: %s", type(exc).__name__)
         raise HTTPException(
@@ -129,6 +146,24 @@ def consume_llm_call(store: QuotaStore, uid: str) -> None:
     if not allowed:
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
-            detail="Daily limit reached",
+            detail=detail,
             headers={"Retry-After": str(_seconds_until_next_utc_day(now))},
         )
+
+
+def consume_llm_call(store: QuotaStore, uid: str) -> None:
+    """Count one LLM call for `uid` today. Raise 429 over the limit, 503 if the store fails."""
+    now = _utcnow()
+    _consume(store, quota_document_id(uid, now), get_daily_limit(), now, "Daily limit reached")
+
+
+def consume_report(store: QuotaStore, uid: str) -> None:
+    """Count one report for `uid` today, apart from the LLM counter. Raise 429 / 503 like above."""
+    now = _utcnow()
+    _consume(
+        store,
+        report_quota_document_id(uid, now),
+        get_daily_report_limit(),
+        now,
+        "Daily report limit reached",
+    )

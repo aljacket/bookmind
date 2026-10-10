@@ -9,7 +9,7 @@ What you end up with: the backend on **Cloud Run (`europe-west1`)**, Firestore i
 | Resource                        | Setting                                                              | Why it is (almost) free                                                                                                   |
 | ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | Cloud Run                       | service-level `--min 0` and `--max 2`, 512 MiB, 1 vCPU            | Nothing runs while idle. Free tier: 2 M requests, 180 000 vCPU-s, 360 000 GiB-s per month.                                |
-| Firestore                       | one database, one collection (`llmQuota`), TTL deletes old documents | Free tier: 1 GiB, 50 000 reads / 20 000 writes per day.                                                                   |
+| Firestore                       | one database, one collection (`llmQuota`, LLM and report counters), TTL deletes old documents | Free tier: 1 GiB, 50 000 reads / 20 000 writes per day.                                                                   |
 | Secret Manager                  | one secret, one version                                              | Free tier: 6 active versions, 10 000 accesses per month.                                                                  |
 | Cloud Build + Artifact Registry | used by `gcloud run deploy --source`                                 | Free tier: 2 500 build-minutes, 0.5 GB of images. Each deploy leaves an image: delete old ones now and then (section 10). |
 | Firebase Hosting                | default domain                                                       | Spark-level product; no custom domain (card #18 is postponed).                                                            |
@@ -125,19 +125,23 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
 
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" --role="roles/firebaseauth.viewer"
+
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+  --member="serviceAccount:${SA_EMAIL}" --role="roles/logging.logWriter"
 ```
 
-The first binding (`roles/datastore.user`) is for the quota counters, the second (`roles/firebaseauth.viewer`) for the lookup done by `verify_id_token(check_revoked=True)`. The secret-level role is granted in section 6, after the secret exists.
+The first binding (`roles/datastore.user`) is for the quota counters, the second (`roles/firebaseauth.viewer`) for the lookup done by `verify_id_token(check_revoked=True)`, the third (`roles/logging.logWriter`) for `POST /reports` (card #66), which writes each report to its own Cloud Logging log through the API. **If the service is already deployed, run the third binding before you deploy the version with `/reports`**; without it every report answers `503 Report service unavailable`. The secret-level role is granted in section 6, after the secret exists.
 
 | Role                                 | Granted on                    | Needed for                                                                                                                                                                                                                                                                                                           | Official source                                                                                                                                    |
 | ------------------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `roles/datastore.user`               | project                       | read and write the `llmQuota` documents, including transactions. "Read/write access to data in a Firestore database. Intended for application developers and service accounts."                                                                                                                                      | https://docs.cloud.google.com/firestore/docs/security/iam                                                                                          |
 | `roles/secretmanager.secretAccessor` | the secret `LLM_API_KEY` only | Cloud Run reads the key at instance start.                                                                                                                                                                                                                                                                           | https://docs.cloud.google.com/run/docs/configuring/services/secrets and https://docs.cloud.google.com/secret-manager/docs/manage-access-to-secrets |
+| `roles/logging.logWriter`            | project                       | `POST /reports` writes one entry per report to the log `ai-content-report` with the Cloud Logging API. "Provides the permissions to write log entries." (permission `logging.logEntries.create`, checked 2026-10-09). The role grants no read access. | https://docs.cloud.google.com/logging/docs/access-control                                                                                          |
 | `roles/firebaseauth.viewer`          | project                       | `check_revoked=True` asks the Firebase Auth backend for the user's status ( https://firebase.google.com/docs/auth/admin/manage-sessions ). The role is "Read-only access to Authentication resources" and holds `firebaseauth.users.get` ( https://firebase.google.com/docs/projects/iam/roles-predefined-product ). | see the caveat below                                                                                                                               |
 
 **Caveat on `roles/firebaseauth.viewer`:** the docs list the role and its permission, but none of the pages says in so many words that the revocation lookup needs exactly `firebaseauth.users.get`. The smoke test (section 8) proves it: a valid token must return `200`. If it returns `503` and the Cloud Run log says `Token verification unavailable: <ErrorName>`, this role is the first thing to re-check. Do not "fix" it by granting Editor or Owner.
 
-Signature verification of ID tokens uses Google's public keys and needs no role. Cloud Run's own logs need no role from this service account.
+Signature verification of ID tokens uses Google's public keys and needs no role. Cloud Run's own request and stdout logs are written by the platform and need no role from this service account; only the `ai-content-report` entries (written through the API) need `roles/logging.logWriter`.
 
 The person deploying needs permission to deploy and to act as this service account: `roles/run.admin` (or `roles/run.sourceDeveloper`), `roles/iam.serviceAccountUser` on it, and `roles/serviceusage.serviceUsageConsumer` ( https://docs.cloud.google.com/run/docs/deploying-source-code ). A project Owner already has all of that. If the source build fails with a permission error on Cloud Build, the same page tells you to grant `roles/run.builder` to the Compute Engine default service account.
 
@@ -166,6 +170,7 @@ Create the non-secret configuration in a file **outside the repo** (the key is n
 cat > "$HOME/bookmind-prod-env.yaml" <<EOF
 FIREBASE_PROJECT_ID: "${PROJECT_ID}"
 DAILY_LLM_CALL_LIMIT: "10"
+DAILY_REPORT_LIMIT: "20"
 # Production origins only: Firebase Hosting (both default domains) and the Capacitor app origins
 # (Android WebView https://localhost, iOS capacitor://localhost). Never http://localhost* or 10.0.2.2.
 CORS_ALLOWED_ORIGINS: "https://${PROJECT_ID}.web.app,https://${PROJECT_ID}.firebaseapp.com,https://localhost,capacitor://localhost"
@@ -181,13 +186,13 @@ The next block deploys only if all of these hold, and otherwise prints why it st
 
 -   `PROJECT_ID` is set to a real value;
 -   the env file exists and has no `REPLACE_` value left;
--   the source upload is **exactly** these seven files: `Dockerfile`, `auth.py`, `llm.py`, `main.py`, `prompts.py`, `quota.py`, `requirements.txt`. `bookmind-server/.gcloudignore` is an allowlist (everything is ignored except these files), so a credential file dropped into that folder under any name is never uploaded. `gcloud meta list-files-for-upload` shows what gcloud would send.
+-   the source upload is **exactly** these eight files: `Dockerfile`, `auth.py`, `llm.py`, `main.py`, `prompts.py`, `quota.py`, `reports.py`, `requirements.txt`. `bookmind-server/.gcloudignore` is an allowlist (everything is ignored except these files), so a credential file dropped into that folder under any name is never uploaded. `gcloud meta list-files-for-upload` shows what gcloud would send.
 
 ```bash
 cd "$REPO_ROOT/bookmind-server"
 export ENV_FILE="$HOME/bookmind-prod-env.yaml"
 UPLOAD_LIST=$(gcloud meta list-files-for-upload | LC_ALL=C sort)
-EXPECTED_LIST=$(printf '%s\n' Dockerfile auth.py llm.py main.py prompts.py quota.py requirements.txt | LC_ALL=C sort)
+EXPECTED_LIST=$(printf '%s\n' Dockerfile auth.py llm.py main.py prompts.py quota.py reports.py requirements.txt | LC_ALL=C sort)
 if [ "${PROJECT_ID#REPLACE}" != "$PROJECT_ID" ] || [ -z "$PROJECT_ID" ]; then
   echo "STOP: PROJECT_ID is not set (section 1). Nothing was deployed."
 elif [ ! -f "$ENV_FILE" ]; then
@@ -195,7 +200,7 @@ elif [ ! -f "$ENV_FILE" ]; then
 elif grep -n REPLACE_ "$ENV_FILE"; then
   echo "STOP: fill the lines listed above in $ENV_FILE. Nothing was deployed."
 elif [ "$UPLOAD_LIST" != "$EXPECTED_LIST" ]; then
-  echo "STOP: the source upload would contain these files, not the expected seven:"
+  echo "STOP: the source upload would contain these files, not the expected eight:"
   echo "$UPLOAD_LIST"
 else
   gcloud run deploy "$SERVICE" \
@@ -238,6 +243,8 @@ Change a setting without a code release, for example the limit:
 ```bash
 gcloud run services update "$SERVICE" --region "$REGION" --update-env-vars DAILY_LLM_CALL_LIMIT=20
 ```
+
+`DAILY_REPORT_LIMIT` (reports per user per UTC day, default 20) is changed the same way.
 
 ## 8. Post-deploy checks
 
@@ -287,6 +294,17 @@ done
 ```
 
 Expected: `200` for the first nine, `429` for the tenth (the 11th call of the day). Read the headers of a refused call: `curl -si -X POST ... | head -n 12` shows `429`, `retry-after: <seconds to UTC midnight>` and `{"detail":"Daily limit reached"}`. (If the test user already called today, the `429` comes earlier. The counter resets at 00:00 UTC.) In the Firestore console, `llmQuota/<uid>_<YYYY-MM-DD>` must show `count: 10` and an `expireAt` of the day after tomorrow, 00:00 UTC.
+
+Reports (card #66). `POST /reports` has its own counter, so it works even when the LLM limit above is used up. Send one report, then look for it in Logs Explorer:
+
+```bash
+curl -si -X POST "$API_URL/reports" -H "Authorization: Bearer $ID_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"kind":"clarifier","lang":"en","content":"Smoke test, please ignore","reason":"other"}' | head -n 1
+curl -s -o /dev/null -w '%{http_code}\n' -X POST "$API_URL/reports" -H "Authorization: Bearer $ID_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"kind":"clarifier","lang":"en","content":"x","reason":"other","uid":"someone"}'
+```
+
+Expected: `HTTP/2 204`, then `422` (a field that is not allowed). In Google Cloud console > Logging > Logs Explorer, the query `logName="projects/PROJECT_ID/logs/ai-content-report"` (replace `PROJECT_ID`) shows one `WARNING` entry with `kind`, `lang`, `content` and `reason` and nothing else (no user id). If the first call answers `503 Report service unavailable`, the Cloud Run log says `Report log unavailable: <ErrorName>`: re-check `roles/logging.logWriter` (section 5) first. There is nothing to clean up: the entry expires with the log retention.
 
 CORS: the Hosting origin is allowed, localhost is not (the first answer carries `access-control-allow-origin`, the second does not):
 
@@ -360,7 +378,7 @@ How Hosting resolves this (https://firebase.google.com/docs/hosting/full-config 
 ## 10. Housekeeping and rollback
 
 -   Old images: `gcloud run deploy --source` stores each build in Artifact Registry (repository `cloud-run-source-deploy`). The free tier is 0.5 GB. List with `gcloud artifacts docker images list ${REGION}-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy` and delete old ones in the console (Artifact Registry) when you pass about 0.3 GB.
--   Logs: written by Cloud Run to Cloud Logging (first 50 GiB per month free, default retention at no cost). They never contain the key or tokens: the code logs error class names only.
+-   Logs: written by Cloud Run to Cloud Logging (first 50 GiB per month free, default retention at no cost). They never contain the key or tokens: the code logs error class names only. The one exception by design is the log `ai-content-report`: it holds the AI text that users reported (at most 1000 characters each) and a reason, with no user id. It stays in the `_Default` bucket for its 30-day retention (https://docs.cloud.google.com/logging/quotas , checked 2026-10-09) and is read in Logs Explorer (`README.md`, "Reports of AI content").
 -   Take the API offline (it cannot spend anything while gone): `gcloud run services delete "$SERVICE" --region "$REGION"`. `llmQuota` documents expire by themselves.
 -   Back to a previous Cloud Run revision: Cloud Run console > Revisions > Manage traffic. Moving traffic to another revision does not change the service-level `--max 2`.
 -   Roll Hosting back to the previous release (for example after a wrong redirect): Firebase console > Hosting & Serverless > Hosting > Release history, hover over the previous release, click the three-dot menu and choose **Roll back**. It creates a new release that serves the earlier version. Source: https://firebase.google.com/docs/hosting/manage-hosting-resources (the page documents no CLI rollback command).
