@@ -181,3 +181,34 @@ export async function setReadingListItemLiked(
     )
     await saveReadingList(userId, updated)
 }
+
+/**
+ * Removes every key that belongs to `uid` (the `${uid}_` prefix) from all three BookMindDB stores
+ * (reading list, last recommendations, call counters, consent flag) in a single transaction.
+ * Keys of any other uid are never touched.
+ */
+export async function wipeUserData(uid: string): Promise<void> {
+    // An empty uid would turn the prefix into a bare "_" and could match another account's keys.
+    if (!uid) throw new Error('wipeUserData requires a uid')
+
+    const db = await openDB()
+    const prefix = `${uid}_`
+    const range = IDBKeyRange.bound(prefix, `${prefix}￿`)
+    try {
+        await new Promise<void>((resolve, reject) => {
+            const transaction = db.transaction(
+                [USER_PREFERENCES_STORE, API_CALLS_STORE, READING_LIST_STORE],
+                'readwrite'
+            )
+            transaction.objectStore(USER_PREFERENCES_STORE).delete(range)
+            transaction.objectStore(API_CALLS_STORE).delete(range)
+            transaction.objectStore(READING_LIST_STORE).delete(range)
+
+            transaction.oncomplete = () => resolve()
+            transaction.onerror = () => reject(transaction.error ?? 'Error wiping user data')
+            transaction.onabort = () => reject(transaction.error ?? 'Wiping user data was aborted')
+        })
+    } finally {
+        db.close()
+    }
+}
