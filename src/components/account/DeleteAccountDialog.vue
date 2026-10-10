@@ -319,6 +319,7 @@
         sendAccountPasswordReset
     } from '@/services/account/deleteAccount'
     import { useAuthStore } from '@/stores/auth'
+    import { useBackButton } from '@/composables/useBackButton'
 
     const emit = defineEmits<{
         /** The user left the dialog without deleting anything (Cancel, x, Escape, scrim). */
@@ -433,6 +434,10 @@
         releaseApp()
         emit('close')
     }
+
+    // Android Back: closes the dialog like Escape when idle, is ignored while the deletion runs.
+    // Scoped to the dialog's lifetime, so Back behaves as before once it is gone.
+    useBackButton(requestClose)
 
     function onScrimClick() {
         // The scrim only exists in the centred presentation.

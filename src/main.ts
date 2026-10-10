@@ -4,6 +4,7 @@ import { initAuth } from '@/services/firebase/config'
 import { useAuthStore } from '@/stores/auth'
 import { useLanguageStore } from '@/stores/language'
 import { runStartupSweep } from '@/services/account/startupSweep'
+import { installBackButtonHandling } from '@/services/backButton'
 import { onAuthStateChanged } from 'firebase/auth'
 import App from './App.vue'
 import router from './router'
@@ -24,6 +25,9 @@ const languageStore = useLanguageStore()
 
 // Initialize language before mounting
 languageStore.initializeLanguage()
+
+// Android Back: one listener for the whole app (see services/backButton.ts). No-op elsewhere.
+installBackButtonHandling()
 
 let appMounted = false
 
