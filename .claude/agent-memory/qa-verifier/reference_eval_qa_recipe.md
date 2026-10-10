@@ -29,4 +29,12 @@ Card #71 (PR #24) took about 1 h. The verdict was FAIL because REPORT.md was mis
 - `score.py` is deterministic and needs no network once `books_cache.json` is complete. Re-run it on a scratch copy of `eval/`, then `cmp` its outputs against the committed results.
 - Catalogue hits override the manual labels, because `status()` checks the cache first. When a new catalogue source is added, count the overrides of **every** label type (I, U and T), not only the ones the engineer reports. On #71, OPAC SBN silently overrode 11 T labels.
 
-Related: [[backend-qa-recipe]], [[api-auth-qa-recipe]]
+**LLM-config re-run card #73 (PR #27, PASS on 2026-10-10), about 35 min**
+
+- **Block the network for `score.py`:** set `http_proxy` and `https_proxy` to `127.0.0.1:9`, then `cmp` the outputs. This proves both that the #71 raw data is untouched and that the score is deterministic.
+- **Mutation copies:** they need `scripts/` and `eval/` next to `tests/`, otherwise there are 3 collection errors.
+- **"Did the re-run use the new config?":** a 200 from gpt-6-luna with no harness rename proves `max_completion_tokens` was sent, and temperature != 1 with 0 reasoning tokens proves `reasoning_effort` none. The raw files do not record request bodies.
+- **OpenAI JSON mode:** the Structured Outputs guide (developers.openai.com/api/docs/guides/structured-outputs; quote at text offset ~100k, so WebFetch with offset 100000) says the API errors if the string "JSON" is not in the context. In the #71 raw data, `rfall` on the clarifier gave 500 on 42 of 42 calls, which is consistent with that rule.
+- **Spend:** `run_eval.py` writes in `w` mode unless `--append`, so earlier paid attempts disappear from the files. The billed total is only checkable in the OpenAI dashboard.
+
+Related: [[backend-qa-recipe]], [[api-auth-qa-recipe]], [[runbook-replay-harness]]

@@ -31,4 +31,13 @@ Card #61 round 2 (head eb7818b, 2026-10-09): PASS, moved to Review & Merge. Roun
     -   the human-readable cross-check is `Scaling: Auto (Min, Max)` in `services describe`.
 -   **Open observation (not blocking)**: the setup blocks without a guard pass no `--project`, so they act on whatever project gcloud currently has selected if the operator ignores the STOP in section 1.
 
+**Reused on #73 (2026-10-10).** Write a minimal version in about 5 minutes:
+
+- extract the blocks with awk;
+- `gen.py` writes the `.exp` file, pasting the exports, the env heredoc and the guarded deploy;
+- the only stub is `gcloud`;
+- the scenarios are placeholder, filled and stale `REPLACE_`.
+
+Then parse the generated YAML with `yaml.safe_load`. A run takes about 2 minutes, so put it in the background.
+
 Related: [[deploy-config-qa-recipe]], [[backend-qa-recipe]]
