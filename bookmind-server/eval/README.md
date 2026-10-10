@@ -12,8 +12,24 @@ folder.
 FastAPI's `TestClient`, with the unchanged `prompts.py`, `llm.py` and parser, configured through
 `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` and `LLM_EXTRA_BODY`. Only auth and quota are stubbed. One
 process runs one candidate from `candidates.json` over the 14 synthetic cases of `cases.json`.
-Variants: `plain` (production request), `rf` (`response_format: json_object` on `/recommendations`
-only), `rfall` (on both endpoints, which is what `LLM_EXTRA_BODY` alone can do).
+Variants: `plain` (no `response_format` anywhere, `LLM_JSON_MODE=false`: the request before card #73),
+`rf` (`llm.py` default, `json_object` on `/recommendations` only; only that endpoint is run), `prod`
+(the same configuration as `rf`, with both endpoints run: the production request since card #73),
+`rfall` (`json_object` on both endpoints, forced through `LLM_EXTRA_BODY`). A candidate with
+`"token_limit_param": "max_completion_tokens"` in `candidates.json` runs with
+`LLM_TOKEN_LIMIT_PARAM` set, exactly as in production. The raw files of #71 were recorded when this
+was a rename inside the harness (the old `llm.py` could not do it); they stay as they are.
+
+`check_rerun.py` checks a `--variants prod` run against the acceptance criteria of card #73 (0 HTTP
+errors, 100 % of `/recommendations` accepted by the parser, clarifier passing in at least 13 of 14
+cases, p95 <= 15 s) and prints the spend; `--smoke` is for a few-case run. The card #73 re-run is in
+`results/rerun-73/`:
+
+```bash
+$PY eval/run_eval.py --candidate openai-gpt-6-luna-noreason --runs 1 --variants prod --out eval/results/rerun-73 --max-usd 0.03 --global-cap-usd 0.05
+$PY eval/run_eval.py --candidate openai-gpt-4o-mini --runs 1 --variants prod --cases it-giallo,en-cozy,es-corto --out eval/results/rerun-73 --max-usd 0.01 --global-cap-usd 0.05
+$PY eval/check_rerun.py --raw eval/results/rerun-73 --candidate openai-gpt-6-luna-noreason
+```
 
 `score.py` reads `results/raw/*.jsonl` and writes `results/summary.md`, `results/summary.json` and
 `results/unverified_books.md`: quality checks (`checks.py`), book existence (`books.py` and

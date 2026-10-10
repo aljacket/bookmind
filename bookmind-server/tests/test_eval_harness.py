@@ -105,8 +105,18 @@ def test_redact_removes_keys_and_bearer_tokens():
     run_eval._LITERAL_SECRETS.remove("literal-secret-value")
 
 
+LLM_VARIABLES = (
+    "LLM_BASE_URL",
+    "LLM_MODEL",
+    "LLM_API_KEY",
+    "LLM_EXTRA_BODY",
+    "LLM_TOKEN_LIMIT_PARAM",
+    "LLM_JSON_MODE",
+)
+
+
 def test_configure_env_uses_the_production_variables(monkeypatch):
-    for name in ("LLM_BASE_URL", "LLM_MODEL", "LLM_API_KEY", "LLM_EXTRA_BODY"):
+    for name in LLM_VARIABLES:
         monkeypatch.delenv(name, raising=False)
     cand = {
         "key_env": "OPENROUTER_KEY",
@@ -118,13 +128,77 @@ def test_configure_env_uses_the_production_variables(monkeypatch):
     assert os.environ["LLM_MODEL"] == "m/x"
     assert os.environ["LLM_BASE_URL"] == "https://openrouter.ai/api/v1"
     assert os.environ["LLM_API_KEY"] == "test-key"
-    body = json.loads(os.environ["LLM_EXTRA_BODY"])
-    assert body["provider"]["only"] == ["p"] and body["response_format"] == {"type": "json_object"}
+    # json_object on /recommendations now comes from llm.py itself, not from LLM_EXTRA_BODY.
+    assert json.loads(os.environ["LLM_EXTRA_BODY"]) == cand["extra_body"]
+    assert "LLM_JSON_MODE" not in os.environ and "LLM_TOKEN_LIMIT_PARAM" not in os.environ
     run_eval.configure_env(cand, {"OPENROUTER_KEY": "test-key"}, "plain")
-    assert "response_format" not in json.loads(os.environ["LLM_EXTRA_BODY"])
+    assert os.environ["LLM_JSON_MODE"] == "false"
+    run_eval.configure_env(cand, {"OPENROUTER_KEY": "test-key"}, "rfall")
+    assert json.loads(os.environ["LLM_EXTRA_BODY"])["response_format"] == {"type": "json_object"}
+    assert "LLM_JSON_MODE" not in os.environ
     with pytest.raises(SystemExit):
         run_eval.configure_env(cand, {"OPENROUTER_KEY": ""}, "plain")
     run_eval._LITERAL_SECRETS.clear()
+
+
+def test_prod_variant_is_the_new_production_configuration(monkeypatch):
+    for name in LLM_VARIABLES:
+        monkeypatch.delenv(name, raising=False)
+    candidates = {c["id"]: c for c in json.loads((EVAL_DIR / "candidates.json").read_text(encoding="utf-8"))["candidates"]}
+    run_eval.configure_env(candidates["openai-gpt-6-luna-noreason"], {"OPENAI_API_KEY": "test-key"}, "prod")
+    assert os.environ["LLM_MODEL"] == "gpt-6-luna"
+    assert os.environ["LLM_TOKEN_LIMIT_PARAM"] == "max_completion_tokens"
+    assert json.loads(os.environ["LLM_EXTRA_BODY"]) == {"reasoning_effort": "none"}
+    assert "LLM_BASE_URL" not in os.environ and "LLM_JSON_MODE" not in os.environ
+    run_eval.configure_env(candidates["openai-gpt-4o-mini"], {"OPENAI_API_KEY": "test-key"}, "prod")
+    assert os.environ["LLM_MODEL"] == "gpt-4o-mini"
+    assert "LLM_TOKEN_LIMIT_PARAM" not in os.environ and "LLM_EXTRA_BODY" not in os.environ
+    assert run_eval.BOTH_ENDPOINTS == ("plain", "prod", "rfall")
+    run_eval._LITERAL_SECRETS.clear()
+
+
+def test_the_sdk_recorder_no_longer_renames_the_token_limit():
+    import inspect
+
+    assert "kwargs.pop" not in inspect.getsource(run_eval.install_sdk_recorder)
+    assert list(inspect.signature(run_eval.install_sdk_recorder).parameters) == ["recorder"]
+
+
+def _row(endpoint, case, status=200, response=None, latency=1.0, tokens=(100, 50), finish="stop"):
+    return {
+        "endpoint": endpoint,
+        "case": case,
+        "http_status": status,
+        "response": response,
+        "endpoint_latency_s": latency,
+        "variant": "prod",
+        "llm": {"usage": {"prompt_tokens": tokens[0], "completion_tokens": tokens[1]}, "finish_reason": finish, "served_model": "m"},
+    }
+
+
+def test_check_rerun_applies_the_card_73_criteria():
+    import check_rerun
+
+    cases = {c["id"]: c for c in json.loads((EVAL_DIR / "cases.json").read_text(encoding="utf-8"))["cases"]}
+    case = next(c for c in cases.values() if c["lang"] == "en" and not c["off_topic"])
+    cand = {"id": "c", "model": "m", "price_in": 0.1, "price_out": 0.5}
+    good_books = [{"title": f"T{i}", "author": "A", "reason": "A hopeful read for you"} for i in range(3)]
+    rows = [
+        _row("clarify", case["id"], response={"question": "Do you want something short?"}),
+        _row("recommend", case["id"], response=good_books),
+    ]
+    result = check_rerun.evaluate(rows, cases, cand)
+    assert result["http_errors"] == 0 and result["recommend_accepted"] == 1
+    assert result["spend_usd"] == pytest.approx(2 * (100 * 0.1 + 50 * 0.5) / 1e6)
+    # Only the clarifier count (1 of 14 cases) misses the criteria in this tiny sample.
+    failed = [name for name, ok in result["criteria"].items() if not ok]
+    assert failed == ["clarifier passes all checks in >= 13 of 14 cases"]
+
+    bad = rows + [_row("recommend", case["id"], status=502, response={"detail": "x"}, latency=20.0)]
+    result = check_rerun.evaluate(bad, cases, cand)
+    assert result["http_errors"] == 1
+    assert result["criteria"]["0 HTTP errors"] is False
+    assert result["criteria"]["100% of /recommendations accepted by the parser"] is False
 
 
 def test_book_review_overrides_decide_the_status(tmp_path):

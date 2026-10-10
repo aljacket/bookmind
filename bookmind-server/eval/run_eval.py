@@ -2,7 +2,8 @@
 
 It drives the REAL FastAPI endpoints (`/recommendations/clarify` and `/recommendations`) through
 FastAPI's TestClient, so the unchanged `prompts.py`, the unchanged `llm.py` configuration path
-(`LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY`, `LLM_EXTRA_BODY`) and the unchanged response parser of
+(`LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY`, `LLM_EXTRA_BODY`, `LLM_TOKEN_LIMIT_PARAM`,
+`LLM_JSON_MODE`) and the unchanged response parser of
 `main.py` are exercised exactly as in production. Only auth and quota are stubbed (no Firebase, no
 Firestore). A recorder around the OpenAI SDK's `create()` captures token usage, the served model and
 provider, and the raw text; it changes nothing except a per-call timeout that protects the budget.
@@ -32,6 +33,7 @@ sys.path.insert(0, str(SERVER_DIR))
 from dotenv import dotenv_values  # noqa: E402
 
 CALL_TIMEOUT_S = 90.0  # protects the budget; the app's own client timeout is 30 s
+BOTH_ENDPOINTS = ("plain", "prod", "rfall")  # variants that call clarify and recommend
 DEFAULT_MAX_USD = 0.40  # per candidate process
 DEFAULT_GLOBAL_CAP_USD = 1.50  # across every raw file in the results directory
 SECRET_PATTERNS = [
@@ -86,18 +88,16 @@ class Recorder:
         self.calls: List[Dict[str, Any]] = []
 
 
-def install_sdk_recorder(recorder: Recorder, rename_max_tokens: bool = False) -> None:
-    """Wrap the SDK call. `rename_max_tokens` is a stand-in for a future `llm.py` change: OpenAI's
-    newest models reject `max_tokens` and want `max_completion_tokens`. It is only switched on for
-    the candidates that need it, and the report says so."""
+def install_sdk_recorder(recorder: Recorder) -> None:
+    """Wrap the SDK call to record usage, latency and raw text, and to add a per-call timeout. It
+    changes no request parameter: the token-limit name and `response_format` come from `llm.py`
+    (`LLM_TOKEN_LIMIT_PARAM`, `LLM_JSON_MODE`), exactly as in production (card #73)."""
     import openai.resources.chat.completions as completions
 
     original = completions.Completions.create
 
     def patched(self, *args, **kwargs):  # noqa: ANN001
         kwargs.setdefault("timeout", CALL_TIMEOUT_S)
-        if rename_max_tokens and "max_tokens" in kwargs:
-            kwargs["max_completion_tokens"] = kwargs.pop("max_tokens")
         started = time.perf_counter()
         try:
             response = original(self, *args, **kwargs)
@@ -138,8 +138,24 @@ def install_sdk_recorder(recorder: Recorder, rename_max_tokens: bool = False) ->
 
 
 def configure_env(candidate: Dict[str, Any], env: Dict[str, Optional[str]], variant: str) -> None:
-    """Set the production environment variables for this candidate and variant."""
-    for name in ("LLM_BASE_URL", "LLM_MODEL", "LLM_API_KEY", "LLM_EXTRA_BODY", "OPENAI_BASE_URL"):
+    """Set the production environment variables for this candidate and variant.
+
+    Variants (what `/recommendations` and `/recommendations/clarify` send):
+    - `plain`: no `response_format` anywhere (`LLM_JSON_MODE=false`), the request before card #73;
+    - `rf`: `llm.py`'s default, `json_object` on `/recommendations` only (recommendations only run);
+    - `prod`: the same configuration as `rf`, but both endpoints are exercised (card #73 re-run);
+    - `rfall`: `json_object` on both endpoints, forced through `LLM_EXTRA_BODY` (what the #71
+      report called the clarifier failure).
+    """
+    for name in (
+        "LLM_BASE_URL",
+        "LLM_MODEL",
+        "LLM_API_KEY",
+        "LLM_EXTRA_BODY",
+        "LLM_TOKEN_LIMIT_PARAM",
+        "LLM_JSON_MODE",
+        "OPENAI_BASE_URL",
+    ):
         os.environ.pop(name, None)
     key = (env.get(candidate["key_env"]) or "").strip()
     if not key:
@@ -149,8 +165,12 @@ def configure_env(candidate: Dict[str, Any], env: Dict[str, Optional[str]], vari
     os.environ["LLM_MODEL"] = candidate["model"]
     if candidate.get("base_url"):
         os.environ["LLM_BASE_URL"] = candidate["base_url"]
+    if candidate.get("token_limit_param"):
+        os.environ["LLM_TOKEN_LIMIT_PARAM"] = candidate["token_limit_param"]
+    if variant == "plain":
+        os.environ["LLM_JSON_MODE"] = "false"
     body: Dict[str, Any] = dict(candidate.get("extra_body") or {})
-    if variant in ("rf", "rfall"):
+    if variant == "rfall":
         body["response_format"] = {"type": "json_object"}
     if body:
         os.environ["LLM_EXTRA_BODY"] = json.dumps(body)
@@ -172,7 +192,7 @@ def run_candidate(args: argparse.Namespace) -> None:
     out_path = out_dir / f"{candidate['id']}.jsonl"
 
     per_call_estimate = 0.0004  # rough upper bound used only for --dry-run
-    n_calls = len(cases) * args.runs * (2 * ("plain" in variants) + 1 * ("rf" in variants) + 2 * ("rfall" in variants))
+    n_calls = len(cases) * args.runs * sum(2 if v in BOTH_ENDPOINTS else 1 for v in variants)
     if args.dry_run:
         print(f"{candidate['id']}: {n_calls} calls, <= ~${n_calls * per_call_estimate:.3f} (rough)")
         return
@@ -185,7 +205,7 @@ def run_candidate(args: argparse.Namespace) -> None:
     from fastapi.testclient import TestClient
 
     recorder = Recorder()
-    install_sdk_recorder(recorder, rename_max_tokens=bool(candidate.get("needs_max_completion_tokens")))
+    install_sdk_recorder(recorder)
     quota.consume_llm_call = lambda store, uid: None  # no quota in the offline harness
     main.quota.consume_llm_call = quota.consume_llm_call
     main.app.dependency_overrides[main.get_current_uid] = lambda: "eval-user"
@@ -199,7 +219,7 @@ def run_candidate(args: argparse.Namespace) -> None:
         for variant in variants:
             configure_env(candidate, env, variant)
             llm._client_for.cache_clear()
-            endpoints = ["clarify", "recommend"] if variant in ("plain", "rfall") else ["recommend"]
+            endpoints = ["clarify", "recommend"] if variant in BOTH_ENDPOINTS else ["recommend"]
             for run in range(1, args.runs + 1):
                 for case in cases:
                     for endpoint in endpoints:
@@ -258,8 +278,9 @@ def main_cli() -> None:
     parser.add_argument(
         "--variants",
         default="plain,rf",
-        help="plain = production request; rf = plus response_format json_object on /recommendations only (needs a per-call option in llm.py); "
-        "rfall = response_format on both endpoints, which is what LLM_EXTRA_BODY alone can do",
+        help="plain = no response_format (LLM_JSON_MODE=false); rf = llm.py default, json_object on /recommendations only (recommendations run only); "
+        "prod = same configuration as rf, both endpoints run (card #73 re-run); "
+        "rfall = response_format on both endpoints, forced through LLM_EXTRA_BODY",
     )
     parser.add_argument("--out", default=str(HERE / "results" / "raw"))
     parser.add_argument("--env-file", help="path of the env file holding the keys")

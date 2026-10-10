@@ -6,13 +6,13 @@ What you end up with: the backend on **Cloud Run (`europe-west1`)**, Firestore i
 
 ## 0. Cost posture: nothing else is created
 
-| Resource                        | Setting                                                              | Why it is (almost) free                                                                                                   |
-| ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Cloud Run                       | service-level `--min 0` and `--max 2`, 512 MiB, 1 vCPU            | Nothing runs while idle. Free tier: 2 M requests, 180 000 vCPU-s, 360 000 GiB-s per month.                                |
+| Resource                        | Setting                                                                                       | Why it is (almost) free                                                                                                   |
+| ------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Cloud Run                       | service-level `--min 0` and `--max 2`, 512 MiB, 1 vCPU                                        | Nothing runs while idle. Free tier: 2 M requests, 180 000 vCPU-s, 360 000 GiB-s per month.                                |
 | Firestore                       | one database, one collection (`llmQuota`, LLM and report counters), TTL deletes old documents | Free tier: 1 GiB, 50 000 reads / 20 000 writes per day.                                                                   |
-| Secret Manager                  | one secret, one version                                              | Free tier: 6 active versions, 10 000 accesses per month.                                                                  |
-| Cloud Build + Artifact Registry | used by `gcloud run deploy --source`                                 | Free tier: 2 500 build-minutes, 0.5 GB of images. Each deploy leaves an image: delete old ones now and then (section 10). |
-| Firebase Hosting                | default domain                                                       | Spark-level product; no custom domain (card #18 is postponed).                                                            |
+| Secret Manager                  | one secret, one version                                                                       | Free tier: 6 active versions, 10 000 accesses per month.                                                                  |
+| Cloud Build + Artifact Registry | used by `gcloud run deploy --source`                                                          | Free tier: 2 500 build-minutes, 0.5 GB of images. Each deploy leaves an image: delete old ones now and then (section 10). |
+| Firebase Hosting                | default domain                                                                                | Spark-level product; no custom domain (card #18 is postponed).                                                            |
 
 Free-tier numbers: https://docs.cloud.google.com/free/docs/free-cloud-features (a billing account is required). That page does not say whether `europe-west1` is covered by the Cloud Run free tier, so the budget alert in section 2 is the safety net, not an assumption. Cloud Run and Secret Manager need the Firebase **Blaze** plan: https://firebase.google.com/pricing
 
@@ -136,7 +136,7 @@ The first binding (`roles/datastore.user`) is for the quota counters, the second
 | ------------------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `roles/datastore.user`               | project                       | read and write the `llmQuota` documents, including transactions. "Read/write access to data in a Firestore database. Intended for application developers and service accounts."                                                                                                                                      | https://docs.cloud.google.com/firestore/docs/security/iam                                                                                          |
 | `roles/secretmanager.secretAccessor` | the secret `LLM_API_KEY` only | Cloud Run reads the key at instance start.                                                                                                                                                                                                                                                                           | https://docs.cloud.google.com/run/docs/configuring/services/secrets and https://docs.cloud.google.com/secret-manager/docs/manage-access-to-secrets |
-| `roles/logging.logWriter`            | project                       | `POST /reports` writes one entry per report to the log `ai-content-report` with the Cloud Logging API. "Provides the permissions to write log entries." (permission `logging.logEntries.create`, checked 2026-10-09). The role grants no read access. | https://docs.cloud.google.com/logging/docs/access-control                                                                                          |
+| `roles/logging.logWriter`            | project                       | `POST /reports` writes one entry per report to the log `ai-content-report` with the Cloud Logging API. "Provides the permissions to write log entries." (permission `logging.logEntries.create`, checked 2026-10-09). The role grants no read access.                                                                | https://docs.cloud.google.com/logging/docs/access-control                                                                                          |
 | `roles/firebaseauth.viewer`          | project                       | `check_revoked=True` asks the Firebase Auth backend for the user's status ( https://firebase.google.com/docs/auth/admin/manage-sessions ). The role is "Read-only access to Authentication resources" and holds `firebaseauth.users.get` ( https://firebase.google.com/docs/projects/iam/roles-predefined-product ). | see the caveat below                                                                                                                               |
 
 **Caveat on `roles/firebaseauth.viewer`:** the docs list the role and its permission, but none of the pages says in so many words that the revocation lookup needs exactly `firebaseauth.users.get`. The smoke test (section 8) proves it: a valid token must return `200`. If it returns `503` and the Cloud Run log says `Token verification unavailable: <ErrorName>`, this role is the first thing to re-check. Do not "fix" it by granting Editor or Owner.
@@ -174,13 +174,17 @@ DAILY_REPORT_LIMIT: "20"
 # Production origins only: Firebase Hosting (both default domains) and the Capacitor app origins
 # (Android WebView https://localhost, iOS capacitor://localhost). Never http://localhost* or 10.0.2.2.
 CORS_ALLOWED_ORIGINS: "https://${PROJECT_ID}.web.app,https://${PROJECT_ID}.firebaseapp.com,https://localhost,capacitor://localhost"
-# LLM provider: decided by card #71. Fill in both lines below. For OpenAI directly, delete the LLM_BASE_URL line.
-LLM_BASE_URL: "REPLACE_WITH_PROVIDER_BASE_URL"
-LLM_MODEL: "REPLACE_WITH_MODEL_NAME"
+# LLM: OpenAI directly (no LLM_BASE_URL), model gpt-6-luna with reasoning off. Decision 10 of the
+# change account-deletion-and-launch (card #71, operator, 2026-10-10); settings by card #73.
+# The three lines below only work together: gpt-6-luna rejects max_tokens, and accepts a
+# temperature other than 1 only with reasoning_effort "none".
+LLM_MODEL: "gpt-6-luna"
+LLM_TOKEN_LIMIT_PARAM: "max_completion_tokens"
+LLM_EXTRA_BODY: '{"reasoning_effort":"none"}'
 EOF
 ```
 
-Open that file and fill `LLM_BASE_URL` and `LLM_MODEL` (for OpenAI directly, delete the `LLM_BASE_URL` line). If the provider needs router options, add `LLM_EXTRA_BODY` as a JSON string (see `README.md`, "LLM provider").
+The file is complete as it stands: nothing to fill in for the LLM. The code default is still `gpt-4o-mini` with `max_tokens`, so a deploy that forgets these three variables keeps working on `gpt-4o-mini` (same recipient, OpenAI; lower quality). Setting only `LLM_MODEL` to `gpt-6-luna` would make every call fail with HTTP 400, so change the three together. To go back, delete the three lines (or set `LLM_MODEL` to `gpt-4o-mini` and remove the other two) and deploy again. For another provider see `README.md`, "LLM provider".
 
 The next block deploys only if all of these hold, and otherwise prints why it stopped and does nothing:
 
@@ -385,10 +389,9 @@ How Hosting resolves this (https://firebase.google.com/docs/hosting/full-config 
 
 ## Placeholders you must fill (nothing here is guessed)
 
-| Where                      | Placeholder                                                                | Source                                                                |
-| -------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `.firebaserc` and shell    | `REPLACE_WITH_FIREBASE_PROJECT_ID`                                         | Firebase console > Project settings                                   |
-| shell                      | `REPLACE_WITH_BILLING_ACCOUNT_ID`                                          | `gcloud billing accounts list`                                        |
-| `~/bookmind-prod-env.yaml` | `LLM_BASE_URL`, `LLM_MODEL`                                                | provider chosen after card #71                                        |
-| shell                      | `REPLACE_WITH_WEB_API_KEY`                                                 | Firebase console > Project settings (same as `VITE_FIREBASE_API_KEY`) |
-| `firebase.json`            | `REPLACE_WITH_IUBENDA_IT_POLICY_URL`, `REPLACE_WITH_IUBENDA_EN_POLICY_URL` | Iubenda, once the policies exist                                      |
+| Where                   | Placeholder                                                                | Source                                                                |
+| ----------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `.firebaserc` and shell | `REPLACE_WITH_FIREBASE_PROJECT_ID`                                         | Firebase console > Project settings                                   |
+| shell                   | `REPLACE_WITH_BILLING_ACCOUNT_ID`                                          | `gcloud billing accounts list`                                        |
+| shell                   | `REPLACE_WITH_WEB_API_KEY`                                                 | Firebase console > Project settings (same as `VITE_FIREBASE_API_KEY`) |
+| `firebase.json`         | `REPLACE_WITH_IUBENDA_IT_POLICY_URL`, `REPLACE_WITH_IUBENDA_EN_POLICY_URL` | Iubenda, once the policies exist                                      |

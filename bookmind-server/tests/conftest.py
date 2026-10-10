@@ -8,6 +8,8 @@ import json
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
+import httpx
+import openai
 import pytest
 from fastapi.testclient import TestClient
 
@@ -24,6 +26,8 @@ CONFIG_ENV_VARS = [
     "OPENAI_API_KEY",
     "OPENAI_BASE_URL",
     "LLM_EXTRA_BODY",
+    "LLM_TOKEN_LIMIT_PARAM",
+    "LLM_JSON_MODE",
     "DAILY_LLM_CALL_LIMIT",
     "DAILY_REPORT_LIMIT",
     "REPORT_LOG_DESTINATION",
@@ -80,9 +84,14 @@ class FakeLLM:
         self.clarify_reply = "Do you want a short read?"
         self.recommend_reply = LLM_RECOMMENDATIONS_JSON
 
-    def __call__(self, messages, *, temperature, max_tokens) -> str:
+    def __call__(self, messages, *, temperature, max_tokens, json_object=False) -> str:
         self.calls.append(
-            {"messages": messages, "temperature": temperature, "max_tokens": max_tokens}
+            {
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+                "json_object": json_object,
+            }
         )
         return self.clarify_reply if max_tokens == 80 else self.recommend_reply
 
@@ -167,6 +176,65 @@ def now(monkeypatch):
 
 @pytest.fixture
 def client(fake_auth, fake_llm, quota_store, report_sink, now) -> TestClient:
+    main.app.dependency_overrides[quota.get_quota_store] = lambda: quota_store
+    main.app.dependency_overrides[reports.get_report_sink] = lambda: report_sink
+    yield TestClient(main.app)
+    main.app.dependency_overrides.clear()
+
+
+class Wire:
+    """The provider as seen over HTTP: records every request the real OpenAI SDK sends."""
+
+    def __init__(self) -> None:
+        self.requests: List[httpx.Request] = []
+        self.content = "  an answer \n"
+
+    def handler(self, request: httpx.Request) -> httpx.Response:
+        self.requests.append(request)
+        return httpx.Response(
+            200,
+            json={
+                "id": "chatcmpl-1",
+                "object": "chat.completion",
+                "created": 0,
+                "model": "x",
+                "choices": [
+                    {
+                        "index": 0,
+                        "finish_reason": "stop",
+                        "message": {"role": "assistant", "content": self.content},
+                    }
+                ],
+            },
+        )
+
+    @property
+    def last_body(self) -> dict:
+        return json.loads(self.requests[-1].content)
+
+    @property
+    def bodies(self) -> List[dict]:
+        return [json.loads(request.content) for request in self.requests]
+
+
+@pytest.fixture
+def wire(monkeypatch) -> Wire:
+    """Real SDK, real `llm.chat`; only the HTTP transport is replaced."""
+    wire = Wire()
+    real_openai = openai.OpenAI
+
+    def build(**kwargs):
+        return real_openai(
+            **kwargs, http_client=httpx.Client(transport=httpx.MockTransport(wire.handler))
+        )
+
+    monkeypatch.setattr(llm, "OpenAI", build)
+    return wire
+
+
+@pytest.fixture
+def wire_client(fake_auth, quota_store, report_sink, now, wire) -> TestClient:
+    """The real endpoints on top of the real `llm.chat`, so tests can assert on the HTTP bodies."""
     main.app.dependency_overrides[quota.get_quota_store] = lambda: quota_store
     main.app.dependency_overrides[reports.get_report_sink] = lambda: report_sink
     yield TestClient(main.app)
