@@ -41,7 +41,7 @@ The provider choice blocks the #65 copy and the Iubenda third-party list, but no
 
 -   Before promoting #60-#71, check that PR #16 is merged.
 -   Suggested Pronto order (WIP 3): #60, #71, #61. Next come #62, #63 and #66. #64 and #65 come later; #65 only after the #71 decision.
--   When #71 reports, record the decision in design Decision 10 and in the decisions table.
+-   #71 decided 2026-10-10 (OpenAI gpt-6-luna), recorded in PR #25; see [[card71-provider-decision]].
 -   #61 and #54 both write firebase.json.
 
 See [[external-requirements]].
