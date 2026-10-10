@@ -150,6 +150,38 @@ def test_book_review_overrides_decide_the_status(tmp_path):
     assert verifier.status("Ignored", "Unknown label") == "not_found"
 
 
+def test_sbn_lookup_matches_title_and_author(tmp_path, monkeypatch):
+    import books
+    from books import BookVerifier
+
+    records = {
+        "briefRecords": [
+            {"titolo": "Il labirinto degli spiriti / Carlos Ruiz Zafón", "autorePrincipale": "Ruiz Zafón, Carlos"},
+            {"titolo": "Il mistero della casa del tempo / regia di Eli Roth", "autorePrincipale": ""},
+        ]
+    }
+    monkeypatch.setattr(books, "_get_json", lambda url, retries=3: records)
+    verifier = BookVerifier(tmp_path / "cache.json", pause_s=0)
+    assert verifier._sbn("Il labirinto degli spiriti", "Carlos Ruiz Zafón")["source"] == "sbn"
+    assert verifier._sbn("Il mistero della casa del tempo", "John Bellairs") is None  # film record, no author
+    assert verifier.recheck_sbn("Il labirinto degli spiriti", "Carlos Ruiz Zafón")
+    assert verifier.status("Il labirinto degli spiriti", "Carlos Ruiz Zafón") == "found"
+
+
+def test_bootstrap_gap_is_clustered_by_case_and_reproducible():
+    results = [
+        {"id": "a", "case_means": {"c1": {"exist": 1.0, "invented": 0.0}, "c2": {"exist": 0.8, "invented": 0.1}, "c3": {"exist": 0.9, "invented": 0.0}}},
+        {"id": "b", "case_means": {"c1": {"exist": 0.7, "invented": 0.2}, "c2": {"exist": 0.6, "invented": 0.3}, "c3": {"exist": 0.8, "invented": 0.1}}},
+    ]
+    first = score.bootstrap_gap(results, "a", "b", n=500)
+    assert first == score.bootstrap_gap(results, "a", "b", n=500)
+    assert first["cases"] == 3
+    assert first["exist"]["gap_pts"] == pytest.approx(20.0)
+    assert first["invented"]["gap_pts"] == pytest.approx(-16.7, abs=0.05)
+    low, high = first["exist"]["ci95"]
+    assert low <= 20.0 <= high
+
+
 def test_committed_review_file_is_well_formed():
     from books import BookVerifier
 

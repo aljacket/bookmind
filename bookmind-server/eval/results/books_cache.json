@@ -234,8 +234,9 @@
    "author": "Erich Fromm",
    "title": "El arte de amar"
   },
-  "source": null,
-  "verified": false
+  "matched": "El arte de amar : una investigation sobre la naturaleza del amor",
+  "source": "sbn",
+  "verified": true
  },
  "arte de fuga|trentin": {
   "example": {
@@ -276,8 +277,9 @@
    "author": "Robert M. Pirsig",
    "title": "L'arte della manutenzione della motocicletta"
   },
-  "source": null,
-  "verified": false
+  "matched": "Lo zen e l'arte della manutenzione della motocicletta",
+  "source": "sbn",
+  "verified": true
  },
  "arte della pizza|marco": {
   "example": {
@@ -384,8 +386,9 @@
    "author": "Robin Hobb",
    "title": "L'Assassino di Corte"
   },
-  "source": null,
-  "verified": false
+  "matched": "L' assassino di corte : romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "assassino reale|hobb": {
   "example": {
@@ -567,8 +570,9 @@
    "author": "Sara Nisha Adams",
    "title": "La biblioteca dei giusti consigli"
   },
-  "source": null,
-  "verified": false
+  "matched": "La biblioteca dei giusti consigli",
+  "source": "sbn",
+  "verified": true
  },
  "biblioteca dei nuovi inizi|aoyama": {
   "example": {
@@ -599,8 +603,9 @@
    "author": "Matt Haig",
    "title": "La biblioteca di mezzanotte"
   },
-  "source": null,
-  "verified": false
+  "matched": "La biblioteca di mezzanotte",
+  "source": "sbn",
+  "verified": true
  },
  "bicicletta degli ineluttabili|giordano": {
   "example": {
@@ -992,8 +997,9 @@
    "author": "TJ Klune",
    "title": "La casa sul mare celeste"
   },
-  "source": null,
-  "verified": false
+  "matched": "La casa sul mare celeste",
+  "source": "sbn",
+  "verified": true
  },
  "casa sull albero di 13 piani|griffiths": {
   "example": {
@@ -1311,8 +1317,9 @@
    "author": "Joseph LeDoux",
    "title": "Il cervello emotivo"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il cervello emotivo : alle origini delle emozioni",
+  "source": "sbn",
+  "verified": true
  },
  "cervello errante|montalcini": {
   "example": {
@@ -1562,8 +1569,9 @@
    "author": "China Miéville",
    "title": "La città e la città"
   },
-  "source": null,
-  "verified": false
+  "matched": "La città e la città : romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "citta invisibili|calvino": {
   "example": {
@@ -1665,8 +1673,9 @@
    "author": "Ann Hood",
    "title": "Il club dei ricordi perduti"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il club dei ricordi perduti : romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "club del libro e della torta di bucce di patata di guernsey|barrows": {
   "example": {
@@ -1893,16 +1902,18 @@
    "author": "Shari Lapena",
    "title": "La coppia della porta accanto"
   },
-  "source": null,
-  "verified": false
+  "matched": "La coppia della porta accanto",
+  "source": "sbn",
+  "verified": true
  },
  "coppia perfetta|paris": {
   "example": {
    "author": "B.A. Paris",
    "title": "La coppia perfetta"
   },
-  "source": null,
-  "verified": false
+  "matched": "La coppia perfetta : [o la bugia perfetta?] : romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "coppia perfetta|ware": {
   "example": {
@@ -2385,8 +2396,9 @@
    "author": "Vilayanur S. Ramachandran",
    "title": "La donna che morì dal ridere e altre storie incredibili sui misteri della mente umana"
   },
-  "source": null,
-  "verified": false
+  "matched": "La donna che morì dal ridere e altre storie incredibili sui misteri della mente umana",
+  "source": "sbn",
+  "verified": true
  },
  "donna del giovedi|gerritsen": {
   "example": {
@@ -2717,8 +2729,9 @@
    "author": "Oliver Sacks",
    "title": "Il fiume della coscienza"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il fiume della coscienza",
+  "source": "sbn",
+  "verified": true
  },
  "fluent python|ramalho": {
   "example": {
@@ -2834,8 +2847,9 @@
    "author": "S. K. Tremayne",
    "title": "La gemella silenziosa"
   },
-  "source": null,
-  "verified": false
+  "matched": "La gemella silenziosa",
+  "source": "sbn",
+  "verified": true
  },
  "gene egoista|dawkins": {
   "example": {
@@ -3273,8 +3287,9 @@
    "author": "J.D. Salinger",
    "title": "El guardián entre el centeno"
   },
-  "source": null,
-  "verified": false
+  "matched": "El Guardian entre el centeno",
+  "source": "sbn",
+  "verified": true
  },
  "guernsey literary and potato peel pie society|shaffer": {
   "example": {
@@ -3529,8 +3544,9 @@
    "author": "John Steinbeck",
    "title": "In viaggio con Charley"
   },
-  "source": null,
-  "verified": false
+  "matched": "Viaggio con Charley",
+  "source": "sbn",
+  "verified": true
  },
  "inchieste del commissario ricciardi|giovanni": {
   "example": {
@@ -3553,8 +3569,9 @@
    "author": "David Eagleman",
    "title": "Incognito: La vita segreta della mente"
   },
-  "source": null,
-  "verified": false
+  "matched": "In incognito :  la vita segreta della mente",
+  "source": "sbn",
+  "verified": true
  },
  "incredibile viaggio di harold fry|joyce": {
   "example": {
@@ -3664,8 +3681,9 @@
    "author": "Steven Pinker",
    "title": "L'istinto del linguaggio"
   },
-  "source": null,
-  "verified": false
+  "matched": "L' istinto del linguaggio : come la mente crea il linguaggio",
+  "source": "sbn",
+  "verified": true
  },
  "istinto|french": {
   "example": {
@@ -3757,8 +3775,9 @@
    "author": "Carlos Ruiz Zafón",
    "title": "Il labirinto degli spiriti"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il labirinto degli spiriti",
+  "source": "sbn",
+  "verified": true
  },
  "ladro di fulmini|riordan": {
   "example": {
@@ -3851,8 +3870,9 @@
    "author": "C. S. Lewis",
    "title": "Il leone, la strega e l’armadio"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il leone, la strega e l'armadio",
+  "source": "sbn",
+  "verified": true
  },
  "lessico famigliare|ginzburg": {
   "example": {
@@ -3919,8 +3939,9 @@
    "author": "Laurence Cossé",
    "title": "La libreria del buon romanzo"
   },
-  "source": null,
-  "verified": false
+  "matched": "La libreria del buon romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "libreria|fitzgerald": {
   "example": {
@@ -4018,8 +4039,9 @@
    "author": "Lidia Yuknavitch",
    "title": "Il libro di Joan"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il libro di Joan",
+  "source": "sbn",
+  "verified": true
  },
  "libro di sapiens|kahneman": {
   "example": {
@@ -4245,8 +4267,9 @@
    "author": "E. M. Forster",
    "title": "La macchina si ferma"
   },
-  "source": null,
-  "verified": false
+  "matched": "La macchina si ferma",
+  "source": "sbn",
+  "verified": true
  },
  "machines like me|mcewan": {
   "example": {
@@ -4398,8 +4421,9 @@
    "author": "Ursula K. Le Guin",
    "title": "La mano sinistra del buio"
   },
-  "source": null,
-  "verified": false
+  "matched": "La mano sinistra del buio",
+  "source": "sbn",
+  "verified": true
  },
  "manuale del ciclista urbano|lauri": {
   "example": {
@@ -4582,8 +4606,9 @@
    "author": "Daniel J. Siegel",
    "title": "La mente relazionale"
   },
-  "source": null,
-  "verified": false
+  "matched": "La mente relazionale : neurobiologia dell'esperienza interpersonale",
+  "source": "sbn",
+  "verified": true
  },
  "metamorfosi|kafka": {
   "example": {
@@ -4766,8 +4791,9 @@
    "author": "Agatha Christie",
    "title": "Il mistero del treno azzurro"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il mistero del treno azzurro",
+  "source": "sbn",
+  "verified": true
  },
  "mistero del treno azzurro|scerbanenco": {
   "example": {
@@ -4782,8 +4808,9 @@
    "author": "John Bellairs",
    "title": "Il mistero della casa del tempo"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il mistero della casa del tempo",
+  "source": "sbn",
+  "verified": true
  },
  "mistero della casa stregata|bellairs": {
   "example": {
@@ -5245,8 +5272,9 @@
    "author": "S.J. Watson",
    "title": "Non ti addormentare"
   },
-  "source": null,
-  "verified": false
+  "matched": "Non ti addormentare",
+  "source": "sbn",
+  "verified": true
  },
  "non ti fidare di me|downing": {
   "example": {
@@ -5438,8 +5466,9 @@
    "author": "Nicolas Barreau",
    "title": "Parigi è sempre una buona idea"
   },
-  "source": null,
-  "verified": false
+  "matched": "Parigi è sempre una buona idea",
+  "source": "sbn",
+  "verified": true
  },
  "parigi e sempre festa|hemingway": {
   "example": {
@@ -5529,8 +5558,9 @@
    "author": "Daniel Kahneman",
    "title": "Pensieri lenti e veloci"
   },
-  "source": null,
-  "verified": false
+  "matched": "Pensieri lenti e veloci",
+  "source": "sbn",
+  "verified": true
  },
  "pequena princesa|burnett": {
   "example": {
@@ -5594,16 +5624,18 @@
    "author": "Rick Riordan",
    "title": "Percy Jackson e gli dei dell'Olimpo. Il ladro di fulmini"
   },
-  "source": null,
-  "verified": false
+  "matched": "Percy Jackson & gli dei dell'Olimpo. Il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
  },
  "percy jackson e dei dell olimpo|riordan": {
   "example": {
    "author": "Rick Riordan",
    "title": "Percy Jackson e gli dei dell'Olimpo: Il ladro di fulmini"
   },
-  "source": null,
-  "verified": false
+  "matched": "Percy Jackson e gli dei dell'Olimpo : il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
  },
  "percy jackson e ladri di fulmini|riordan": {
   "example": {
@@ -5618,8 +5650,9 @@
    "author": "Rick Riordan",
    "title": "Percy Jackson e il ladro di fulmini"
   },
-  "source": null,
-  "verified": false
+  "matched": "Percy Jackson & gli dei dell'Olimpo. Il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
  },
  "percy jackson e olympiani|riordan": {
   "example": {
@@ -5700,8 +5733,9 @@
    "author": "René Goscinny",
    "title": "Il piccolo Nicolas"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il piccolo Nicolas",
+  "source": "sbn",
+  "verified": true
  },
  "piccolo principe|exupery": {
   "example": {
@@ -5760,8 +5794,9 @@
    "author": "Gambero Rosso",
    "title": "Pizzerie d'Italia"
   },
-  "source": null,
-  "verified": false
+  "matched": "Pizzerie d'Italia 2026",
+  "source": "sbn",
+  "verified": true
  },
  "pizzerie d italia|verdi": {
   "example": {
@@ -6201,8 +6236,9 @@
    "author": "Paolo Bacigalupi",
    "title": "La ragazza meccanica"
   },
-  "source": null,
-  "verified": false
+  "matched": "La ragazza meccanica",
+  "source": "sbn",
+  "verified": true
  },
  "ragazza nella nebbia|carrisi": {
   "example": {
@@ -6266,8 +6302,9 @@
    "author": "Emma Cline",
    "title": "Le ragazze"
   },
-  "source": null,
-  "verified": false
+  "matched": "Le ragazze",
+  "source": "sbn",
+  "verified": true
  },
  "ragazzo che sapeva cantare|benni": {
   "example": {
@@ -6366,8 +6403,9 @@
    "author": "James Joyce",
    "title": "Ritratto di un artista da giovane"
   },
-  "source": null,
-  "verified": false
+  "matched": "Un ritratto dell'artista da giovane",
+  "source": "sbn",
+  "verified": true
  },
  "road to reality|penrose": {
   "example": {
@@ -6530,16 +6568,18 @@
    "author": "Ursula K. Le Guin",
    "title": "La saga di Earthsea"
   },
-  "source": null,
-  "verified": false
+  "matched": "La saga di Earthsea",
+  "source": "sbn",
+  "verified": true
  },
  "salmo per robot|chambers": {
   "example": {
    "author": "Becky Chambers",
    "title": "Un salmo per il robot"
   },
-  "source": null,
-  "verified": false
+  "matched": "Un salmo per il robot",
+  "source": "sbn",
+  "verified": true
  },
  "santos inocentes|delibes": {
   "example": {
@@ -6682,8 +6722,9 @@
    "author": "Alessandro Baricco",
    "title": "Seda"
   },
-  "source": null,
-  "verified": false
+  "matched": "Seda : romance",
+  "source": "sbn",
+  "verified": true
  },
  "segreto del lago|seddon": {
   "example": {
@@ -6890,8 +6931,9 @@
    "author": "J.R.R. Tolkien",
    "title": "Il signore degli anelli. La compagnia dell'anello"
   },
-  "source": null,
-  "verified": false
+  "matched": "Il Signore degli Anelli. La compagnia dell'anello",
+  "source": "sbn",
+  "verified": true
  },
  "signore degli anelli|tolkien": {
   "example": {
@@ -7117,8 +7159,9 @@
    "author": "Markus Zusak",
    "title": "Storia di una ladra di libri"
   },
-  "source": null,
-  "verified": false
+  "matched": "Storia di una ladra di libri",
+  "source": "sbn",
+  "verified": true
  },
  "storia di mina|almond": {
   "example": {
@@ -7134,16 +7177,18 @@
    "author": "J. M. Barrie",
    "title": "La storia di Peter Pan"
   },
-  "source": null,
-  "verified": false
+  "matched": "La storia di Peter Pan : racconto per bambini",
+  "source": "sbn",
+  "verified": true
  },
  "storia di ulisse e argo|milani": {
   "example": {
    "author": "Mino Milani",
    "title": "La storia di Ulisse e Argo"
   },
-  "source": null,
-  "verified": false
+  "matched": "La storia di Ulisse e Argo",
+  "source": "sbn",
+  "verified": true
  },
  "storia infinita|ende": {
   "example": {
@@ -7176,8 +7221,9 @@
    "author": "Cormac McCarthy",
    "title": "La strada"
   },
-  "source": null,
-  "verified": false
+  "matched": "La strada",
+  "source": "sbn",
+  "verified": true
  },
  "straordinaria invenzione di hugo cabret|selznick": {
   "example": {
@@ -7219,8 +7265,9 @@
    "author": "Jack Kerouac",
    "title": "Sulla strada"
   },
-  "source": null,
-  "verified": false
+  "matched": "Sulla strada",
+  "source": "sbn",
+  "verified": true
  },
  "surely you re joking mr feynman|feynman": {
   "example": {
@@ -7564,8 +7611,9 @@
    "author": "Ninni Holmqvist",
    "title": "L’unità"
   },
-  "source": null,
-  "verified": false
+  "matched": "L' Unità",
+  "source": "sbn",
+  "verified": true
  },
  "unlikely pilgrimage of harold fry|joyce": {
   "example": {
@@ -7589,8 +7637,9 @@
    "author": "Jean Giono",
    "title": "L'uomo che piantava gli alberi"
   },
-  "source": null,
-  "verified": false
+  "matched": "L’UOMO CHE PIANTAVA GLI ALBERI",
+  "source": "sbn",
+  "verified": true
  },
  "uomo che piego tempo|sawyer": {
   "example": {
@@ -7691,8 +7740,9 @@
    "author": "Joël Dicker",
    "title": "La verità sul caso di Harry Quebert"
   },
-  "source": null,
-  "verified": false
+  "matched": "La verità sul caso Harry Quebert",
+  "source": "sbn",
+  "verified": true
  },
  "verita sul caso harry quebert|dicker": {
   "example": {
@@ -7742,8 +7792,9 @@
    "author": "Louis-Ferdinand Céline",
    "title": "Viaggio al termine della notte"
   },
-  "source": null,
-  "verified": false
+  "matched": "Viaggio al termine della notte",
+  "source": "sbn",
+  "verified": true
  },
  "viaggio di arlo|rinaldi": {
   "example": {
@@ -7914,8 +7965,9 @@
    "author": "Guillaume Musso",
    "title": "La vita è un romanzo"
   },
-  "source": null,
-  "verified": false
+  "matched": "La vita è un romanzo",
+  "source": "sbn",
+  "verified": true
  },
  "vita in bicicletta|luca": {
   "example": {

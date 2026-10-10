@@ -1,0 +1,42 @@
+[
+ {
+  "a": "openai-gpt-6-luna-noreason",
+  "b": "openai-gpt-4o-mini",
+  "cases": 14,
+  "resamples": 10000,
+  "exist": {
+   "gap_pts": 10.3,
+   "ci95": [
+    0.3,
+    19.5
+   ]
+  },
+  "invented": {
+   "gap_pts": -8.4,
+   "ci95": [
+    -12.4,
+    -4.8
+   ]
+  }
+ },
+ {
+  "a": "openai-gpt-6-luna-noreason",
+  "b": "or-mistral-small-2603-eu",
+  "cases": 14,
+  "resamples": 10000,
+  "exist": {
+   "gap_pts": 6.3,
+   "ci95": [
+    -4.5,
+    16.9
+   ]
+  },
+  "invented": {
+   "gap_pts": -8.9,
+   "ci95": [
+    -15.7,
+    -3.3
+   ]
+  }
+ }
+]

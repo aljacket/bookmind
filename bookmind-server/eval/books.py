@@ -7,8 +7,9 @@ Cascade, first hit wins:
    so the cascade skips it. This is the card's required source: add the key to `.env` and re-run
    `score.py --refresh-books` to re-verify every book against it.
 2. Open Library search by title and author.
-3. Wikidata item search by label or alias (it, en, es); the description must name the author.
-4. Wikipedia search (it, en, es) for the title and the author.
+3. OPAC SBN, the Italian national library catalogue (no key), added on 2026-10-10 after QA.
+4. Wikidata item search by label or alias (it, en, es); the description must name the author.
+5. Wikipedia search (it, en, es) for the title and the author.
 
 A book is "verified" when a catalogue entry matches the title (fuzzy, articles and subtitles
 ignored) and the author's surname. Everything else is "unverified", which in this report means
@@ -107,6 +108,7 @@ class BookVerifier:
         result = (
             self._google(title, author)
             or self._open_library(title, author)
+            or self._sbn(title, author)
             or self._wikidata(title, author)
             or self._wikipedia(title, author)
             or {"verified": False, "source": None}
@@ -119,6 +121,15 @@ class BookVerifier:
         if flush:  # a long run must not lose its lookups if it is interrupted
             self.save()
         return result
+
+    def recheck_sbn(self, title: str, author: str) -> bool:
+        """Ask only OPAC SBN about a book cached as not found; update the cache on a hit."""
+        hit = self._sbn(title, author)
+        if hit:
+            hit["example"] = {"title": title, "author": author}
+            with self._lock:
+                self.cache[self.key(title, author)] = hit
+        return bool(hit)
 
     # --- sources -------------------------------------------------------------------------------
 
@@ -152,6 +163,21 @@ class BookVerifier:
                 # an exact title in that case.
                 if author_matches(author, names) or (names and not _has_latin(names) and title_key(title) == title_key(doc["title"])):
                     return {"verified": True, "source": "open_library", "matched": doc.get("title")}
+        return None
+
+    def _sbn(self, title: str, author: str) -> Optional[Dict[str, Any]]:
+        """OPAC SBN (Italian national library catalogue, no key): authoritative for Italian editions."""
+        sur = surname(author)
+        words = " ".join(w for w in normalize(title).split() if len(w) > 1)
+        if not words or not sur:
+            return None
+        params = {"any": f"{words} {sur}", "type": "0", "rows": "12"}
+        data = _get_json("https://opac.sbn.it/opacmobilegw/search.json?" + urllib.parse.urlencode(params))
+        time.sleep(self.pause_s)
+        for rec in (data or {}).get("briefRecords", []):
+            record_title = rec.get("titolo", "").split(" / ")[0]
+            if titles_match(title, record_title) and sur in normalize(rec.get("autorePrincipale", "")).split():
+                return {"verified": True, "source": "sbn", "matched": record_title}
         return None
 
     def _wikidata(self, title: str, author: str) -> Optional[Dict[str, Any]]:

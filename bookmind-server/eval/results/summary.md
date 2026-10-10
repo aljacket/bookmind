@@ -1,20 +1,20 @@
 **Quality** (percent; rubric score is the mean of five checks per answer)
 
-| Candidate | Rec. score | Books found in catalogues | Books that exist (catalogue + manual review) | Real book, wrong title | Invented | Answers with 3/3 existing | Reasons cite reader | Already-read repeats | Clarifier score | Overall (70/30 x acceptance) |
+| Candidate | Rec. score | Books found in catalogues | Books that exist (catalogue + manual review) | Real book, wrong title or author | Invented (no such book) | Answers with 3/3 existing | Reasons cite reader | Already-read repeats | Clarifier score | Overall (70/30 x acceptance) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| openai-gpt-4o-mini | 94.1 | 65.1 | 72.8 | 6.8 | 18.3 | 48.4 | 99.4 | 0.8 | 97.6 | 95.1 |
-| openai-gpt-6-luna-noreason | 96.1 | 73.1 | 81.6 | 7.5 | 7.7 | 58.4 | 100.0 | 0.0 | 100.0 | 95.7 |
+| openai-gpt-4o-mini | 94.3 | 73.3 | 73.8 | 9.3 | 14.8 | 51.6 | 99.4 | 0.8 | 97.6 | 95.3 |
+| openai-gpt-6-luna-noreason | 96.6 | 82.9 | 84.3 | 6.6 | 6.4 | 64.8 | 100.0 | 0.0 | 100.0 | 96.0 |
 | openai-gpt-6-luna | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 0.0 | 0.0 |
-| openai-gpt-6-sol-noreason | 97.5 | 74.6 | 87.3 | 9.5 | 1.6 | 73.8 | 100.0 | 0.0 | 92.9 | 96.1 |
-| or-claude-haiku-5.5-bedrock-eu-noreason | 92.3 | 61.2 | 64.5 | 6.0 | 28.7 | 36.1 | 99.7 | 1.6 | 71.4 | 81.4 |
+| openai-gpt-6-sol-noreason | 98.4 | 84.1 | 92.1 | 4.7 | 1.6 | 81.0 | 100.0 | 0.0 | 92.9 | 96.8 |
+| or-claude-haiku-5.5-bedrock-eu-noreason | 92.4 | 63.1 | 65.0 | 9.3 | 24.9 | 37.7 | 99.7 | 1.6 | 71.4 | 81.5 |
 | or-claude-haiku-5.5-bedrock-eu | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 64.3 | 19.3 |
 | or-claude-sonnet-5.5-vertex-eu | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 0.0 | 0.0 |
-| or-gemini-3.1-flash-lite-vertex-eu | 93.7 | 64.8 | 70.4 | 9.8 | 14.3 | 45.2 | 99.7 | 0.0 | 100.0 | 95.6 |
+| or-gemini-3.1-flash-lite-vertex-eu | 94.2 | 71.7 | 72.8 | 8.7 | 13.0 | 50.8 | 99.7 | 0.0 | 100.0 | 95.9 |
 | or-gemini-3.8-flash-vertex | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 0.0 | 0.0 |
-| or-mistral-large-2512-eu | 95.4 | 70.6 | 77.5 | 4.9 | 15.7 | 55.9 | 100.0 | 0.0 | 57.1 | 17.1 |
-| or-mistral-small-2603-eu | 95.1 | 72.1 | 77.6 | 5.7 | 15.1 | 53.8 | 99.3 | 1.0 | 95.2 | 60.3 |
-| proxy-gpt-oss-120b-via-openrouter | 94.5 | 67.9 | 73.5 | 5.5 | 21.0 | 50.0 | 100.0 | 0.0 | 71.4 | 65.5 |
-| proxy-llama-3.3-70b-via-openrouter | 93.1 | 60.3 | 67.5 | 7.1 | 23.0 | 46.4 | 100.0 | 0.0 | 76.2 | 88.0 |
+| or-mistral-large-2512-eu | 95.6 | 78.4 | 78.4 | 5.9 | 14.7 | 58.8 | 100.0 | 0.0 | 57.1 | 17.1 |
+| or-mistral-small-2603-eu | 95.2 | 75.6 | 78.2 | 5.5 | 14.7 | 54.8 | 99.3 | 1.0 | 95.2 | 60.3 |
+| proxy-gpt-oss-120b-via-openrouter | 94.5 | 71.0 | 73.5 | 8.6 | 17.9 | 50.0 | 100.0 | 0.0 | 71.4 | 65.5 |
+| proxy-llama-3.3-70b-via-openrouter | 93.2 | 65.9 | 67.9 | 9.1 | 20.6 | 47.6 | 100.0 | 0.0 | 76.2 | 88.1 |
 
 **JSON reliability of /recommendations** (share of calls the unchanged parser accepted)
 

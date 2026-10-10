@@ -44,21 +44,79 @@
    "failure_kinds": {},
    "failures_fixed_by_lenient_parser": 0
   },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.5555555555555556,
+    "invented": 0.2962962962962963
+   },
+   "it-fantasy": {
+    "exist": 0.8518518518518519,
+    "invented": 0.037037037037037035
+   },
+   "it-divulgazione": {
+    "exist": 0.37037037037037035,
+    "invented": 0.18518518518518517
+   },
+   "it-consolante": {
+    "exist": 0.7407407407407407,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.5555555555555556,
+    "invented": 0.25925925925925924
+   },
+   "it-novecento": {
+    "exist": 0.8888888888888888,
+    "invented": 0.037037037037037035
+   },
+   "it-scifi": {
+    "exist": 0.5185185185185185,
+    "invented": 0.25925925925925924
+   },
+   "it-ragazzo": {
+    "exist": 0.8148148148148148,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 0.925925925925926,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.7407407407407407,
+    "invented": 0.1111111111111111
+   },
+   "es-corto": {
+    "exist": 0.8518518518518517,
+    "invented": 0.1111111111111111
+   },
+   "it-offtopic-bici": {
+    "exist": 0.5185185185185186,
+    "invented": 0.4444444444444444
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 126,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 99.4,
    "answers_with_already_read_pct": 0.8,
-   "books_verified_pct": 72.8,
-   "books_in_catalogue_pct": 65.1,
-   "books_exist_lenient_pct": 79.6,
-   "books_invented_pct": 18.3,
+   "books_verified_pct": 73.8,
+   "books_in_catalogue_pct": 73.3,
+   "books_exist_lenient_pct": 83.1,
+   "books_invented_pct": 14.8,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 48.4,
-   "answers_all_three_verified_on_topic_pct": 44.4,
-   "books_verified_on_topic_pct": 72.2,
-   "score_pct": 94.1,
+   "answers_all_three_verified_pct": 51.6,
+   "answers_all_three_verified_on_topic_pct": 48.1,
+   "books_verified_on_topic_pct": 73.5,
+   "score_pct": 94.3,
    "unverified": [
     "A caccia di un padre — Mario Desiati",
     "Cervello. La storia di un organo — David Eagleman",
@@ -134,7 +192,6 @@
     "La ragazza con all'ombra — Marina e Valerio Massimo Manfredi",
     "La ragazza con tutti i doni — M.R. Carey",
     "La saga di Broken Earth — N.K. Jemisin",
-    "La saga di Earthsea — Ursula K. Le Guin",
     "La sombra de los otros — José Carlos Somoza",
     "La strada dei re — Brandon Sanderson",
     "La trilogia del Mar Grigio — V. E. Schwab",
@@ -147,15 +204,14 @@
     "Pensare veloce, pensare lento — Daniel Kahneman",
     "Pensare, veloce e lento — Daniel Kahneman",
     "Pizzerie d'Italia — Giovanni Verdi",
-    "Ritratto di un artista da giovane — James Joyce",
     "The Cotswold Mysteries — Rebecca Tope",
     "The Cotswold Mysteries: The Case of the Missing Men — Rebecca Tope",
     "Un anno con te — Katherine Center",
     "Un giorno in più — Gioia Marchegiani"
    ],
-   "score_all_calls_pct": 94.1
+   "score_all_calls_pct": 94.3
   },
-  "quality_overall_pct": 95.1,
+  "quality_overall_pct": 95.3,
   "latency_clarify": {
    "n": 42,
    "p50": 1.066,
@@ -232,21 +288,79 @@
    "failure_kinds": {},
    "failures_fixed_by_lenient_parser": 0
   },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.9629629629629629,
+    "invented": 0.037037037037037035
+   },
+   "it-fantasy": {
+    "exist": 0.5555555555555556,
+    "invented": 0.0
+   },
+   "it-consolante": {
+    "exist": 0.6296296296296295,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.8518518518518517,
+    "invented": 0.14814814814814814
+   },
+   "it-novecento": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.7407407407407407,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.48148148148148145,
+    "invented": 0.2962962962962963
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.625,
+    "invented": 0.08333333333333333
+   }
+  },
   "recommend_quality": {
    "scored_answers": 125,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 100.0,
    "answers_with_already_read_pct": 0.0,
-   "books_verified_pct": 81.6,
-   "books_in_catalogue_pct": 73.1,
-   "books_exist_lenient_pct": 89.1,
-   "books_invented_pct": 7.7,
+   "books_verified_pct": 84.3,
+   "books_in_catalogue_pct": 82.9,
+   "books_exist_lenient_pct": 90.9,
+   "books_invented_pct": 6.4,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 58.4,
-   "answers_all_three_verified_on_topic_pct": 60.7,
-   "books_verified_on_topic_pct": 83.5,
-   "score_pct": 96.1,
+   "answers_all_three_verified_pct": 64.8,
+   "answers_all_three_verified_on_topic_pct": 67.3,
+   "books_verified_on_topic_pct": 86.3,
+   "score_pct": 96.6,
    "unverified": [
     "Come riparare la bicicletta — Todd Downs",
     "Europa in treno — Nicky Gardner e Susanne Kries",
@@ -255,20 +369,15 @@
     "Il cervello. Istruzioni per l’uso — Norman Doidge",
     "Il cervello. La nostra storia — David Eagleman",
     "Il cervello. Manuale dell’utente — Marco Magrini",
-    "Il club dei ricordi perduti — Ann Hood",
-    "Il libro di Joan — Lidia Yuknavitch",
     "Il manuale del ciclista urbano — Chris Sidwells",
     "Il robot che sembrava me — Alastair Reynolds",
     "Il robot che sembrava me — Ian McEwan",
     "Incognito. La vita segreta della mente — David Eagleman",
-    "L'arte della manutenzione della motocicletta — Robert M. Pirsig",
     "L'arte di riparare una bicicletta — Robert M. Pirsig",
-    "La biblioteca dei giusti consigli — Sara Nisha Adams",
     "La biblioteca dei nuovi inizi — Michiko Aoyama",
     "La biblioteca dei sussurri — Michiko Aoyama",
     "La bicicletta — H. G. Wells",
     "La coppia perfetta — Ruth Ware",
-    "La gemella silenziosa — S. K. Tremayne",
     "La lama stessa — Joe Abercrombie",
     "La manutenzione della bicicletta e del ciclista — Rob van der Plas",
     "La misura del tempo — Matt Haig",
@@ -276,8 +385,6 @@
     "La pizza. Una storia globale — Carol Helstosky",
     "La scienza della pizza — Dario Bressanini",
     "La storia di Elsa Morante — Elsa Morante",
-    "La storia di Peter Pan — J. M. Barrie",
-    "La storia di Ulisse e Argo — Mino Milani",
     "La trilogia dei Lungavista — Robin Hobb",
     "La trilogia dei Lungavista. L'apprendista assassino — Robin Hobb",
     "La trilogia dei Lungavista. Libro primo: L'apprendista assassino — Robin Hobb",
@@ -292,7 +399,6 @@
     "Parigi è sempre una festa — Ernest Hemingway",
     "Roma. Guida gastronomica alle migliori pizzerie — Luca Cesari",
     "Roma. Guida gastronomica — Luca Cesari",
-    "Seda — Alessandro Baricco",
     "The Curious Incident of the Dog in the Night-Time — Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.",
     "Un uomo a pezzi — Martha Wells",
     "Un uomo chiamato Ove — Fredrik Backman",
@@ -303,9 +409,9 @@
     "Una vita come tante cose — Elizabeth Strout",
     "Una vita come tante cose — Fredrik Backman"
    ],
-   "score_all_calls_pct": 93.8
+   "score_all_calls_pct": 94.3
   },
-  "quality_overall_pct": 95.7,
+  "quality_overall_pct": 96.0,
   "latency_clarify": {
    "n": 42,
    "p50": 1.417,
@@ -362,6 +468,7 @@
   },
   "json_response_format": null,
   "json_response_format_all": null,
+  "case_means": {},
   "recommend_quality": {
    "scored_answers": 0,
    "three_books_pct": null,
@@ -435,21 +542,79 @@
   },
   "json_response_format": null,
   "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-fantasy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "it-consolante": {
+    "exist": 0.5555555555555555,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.6666666666666666,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-cozy": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 42,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 100.0,
    "answers_with_already_read_pct": 0.0,
-   "books_verified_pct": 87.3,
-   "books_in_catalogue_pct": 74.6,
+   "books_verified_pct": 92.1,
+   "books_in_catalogue_pct": 84.1,
    "books_exist_lenient_pct": 96.8,
    "books_invented_pct": 1.6,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 73.8,
-   "answers_all_three_verified_on_topic_pct": 69.4,
-   "books_verified_on_topic_pct": 85.2,
-   "score_pct": 97.5,
+   "answers_all_three_verified_pct": 81.0,
+   "answers_all_three_verified_on_topic_pct": 77.8,
+   "books_verified_on_topic_pct": 90.7,
+   "score_pct": 98.4,
    "unverified": [
     "A Murder to Remember — Bryn Turnbull",
     "Il segreto di mio marito — Liane Moriarty",
@@ -458,13 +623,11 @@
     "La libreria dei nuovi inizi — Jenny Colgan",
     "La lunga via per un piccolo pianeta arrabbiato — Becky Chambers",
     "La vita che volevi — Jojo Moyes",
-    "La vita che volevo — Jojo Moyes",
-    "Seda — Alessandro Baricco",
-    "Un salmo per il robot — Becky Chambers"
+    "La vita che volevo — Jojo Moyes"
    ],
-   "score_all_calls_pct": 97.5
+   "score_all_calls_pct": 98.4
   },
-  "quality_overall_pct": 96.1,
+  "quality_overall_pct": 96.8,
   "latency_clarify": {
    "n": 42,
    "p50": 1.3885,
@@ -547,21 +710,79 @@
    "failure_kinds": {},
    "failures_fixed_by_lenient_parser": 0
   },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.5555555555555556,
+    "invented": 0.14814814814814814
+   },
+   "it-fantasy": {
+    "exist": 0.47619047619047616,
+    "invented": 0.38095238095238093
+   },
+   "it-divulgazione": {
+    "exist": 0.14814814814814814,
+    "invented": 0.48148148148148145
+   },
+   "it-consolante": {
+    "exist": 0.5416666666666666,
+    "invented": 0.375
+   },
+   "it-thriller": {
+    "exist": 0.2222222222222222,
+    "invented": 0.6296296296296295
+   },
+   "it-novecento": {
+    "exist": 0.7777777777777778,
+    "invented": 0.2222222222222222
+   },
+   "it-scifi": {
+    "exist": 0.5185185185185185,
+    "invented": 0.3333333333333333
+   },
+   "en-cozy": {
+    "exist": 0.8888888888888888,
+    "invented": 0.037037037037037035
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.7407407407407407,
+    "invented": 0.2222222222222222
+   },
+   "es-corto": {
+    "exist": 0.7777777777777778,
+    "invented": 0.14814814814814814
+   },
+   "it-offtopic-bici": {
+    "exist": 0.8148148148148148,
+    "invented": 0.18518518518518517
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 0.5833333333333334,
+    "invented": 0.375
+   }
+  },
   "recommend_quality": {
    "scored_answers": 122,
    "three_books_pct": 99.2,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 99.7,
    "answers_with_already_read_pct": 1.6,
-   "books_verified_pct": 64.5,
-   "books_in_catalogue_pct": 61.2,
-   "books_exist_lenient_pct": 70.5,
-   "books_invented_pct": 28.7,
+   "books_verified_pct": 65.0,
+   "books_in_catalogue_pct": 63.1,
+   "books_exist_lenient_pct": 74.3,
+   "books_invented_pct": 24.9,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 36.1,
-   "answers_all_three_verified_on_topic_pct": 29.8,
-   "books_verified_on_topic_pct": 60.3,
-   "score_pct": 92.3,
+   "answers_all_three_verified_pct": 37.7,
+   "answers_all_three_verified_on_topic_pct": 30.8,
+   "books_verified_on_topic_pct": 60.6,
+   "score_pct": 92.4,
    "unverified": [
     "Ardor — Ana María Matute",
     "El Lejano Oeste — Eduardo Mendoza",
@@ -626,7 +847,6 @@
     "Il viaggiatore incantato — Dino Buzzati",
     "Il vicequestore Rocco Schiavone: Pietro Caruso — Antonio Manzini",
     "In bicicletta — Ivan Cerri",
-    "In viaggio con Charley — John Steinbeck",
     "La Mafia uccide solo d'estate — Pif (Pierfrancesco Diliberto)",
     "La Trilogia della Terra Fantasma — N. K. Jemisin",
     "La danza delle libellule — Gianrico Carofiglio",
@@ -654,7 +874,6 @@
     "Non ti lascio mai — Mary Kubica",
     "Non è un paese per vecchi — Irene Gough",
     "Pequeñas cosas como esta — Claire Keegan",
-    "Percy Jackson e il Ladro di Fulmini — Rick Riordan",
     "Piccole storie di Harry Potter o Sherlock Holmes per ragazzi: Il mistero del cane dei Baskerville — Arthur Conan Doyle",
     "Premios Nobel de la Armada — Miguel Delibes",
     "Scomparsa — Gillian Flynn",
@@ -676,9 +895,9 @@
     "Tutto il resto è pioggia — Lorenzo Marone",
     "Una corsa tutta sbagliata — Martha Wells"
    ],
-   "score_all_calls_pct": 85.7
+   "score_all_calls_pct": 85.8
   },
-  "quality_overall_pct": 81.4,
+  "quality_overall_pct": 81.5,
   "latency_clarify": {
    "n": 42,
    "p50": 1.075,
@@ -737,6 +956,7 @@
   },
   "json_response_format": null,
   "json_response_format_all": null,
+  "case_means": {},
   "recommend_quality": {
    "scored_answers": 0,
    "three_books_pct": null,
@@ -812,6 +1032,7 @@
   },
   "json_response_format": null,
   "json_response_format_all": null,
+  "case_means": {},
   "recommend_quality": {
    "scored_answers": 0,
    "three_books_pct": null,
@@ -907,21 +1128,79 @@
    "failure_kinds": {},
    "failures_fixed_by_lenient_parser": 0
   },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.4074074074074074,
+    "invented": 0.5925925925925926
+   },
+   "it-fantasy": {
+    "exist": 0.7407407407407407,
+    "invented": 0.07407407407407407
+   },
+   "it-divulgazione": {
+    "exist": 0.7037037037037037,
+    "invented": 0.25925925925925924
+   },
+   "it-consolante": {
+    "exist": 0.1111111111111111,
+    "invented": 0.4074074074074074
+   },
+   "it-thriller": {
+    "exist": 0.8888888888888888,
+    "invented": 0.07407407407407407
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.5555555555555556,
+    "invented": 0.07407407407407407
+   },
+   "it-ragazzo": {
+    "exist": 0.6296296296296295,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.18518518518518517,
+    "invented": 0.2222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 126,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 99.7,
    "answers_with_already_read_pct": 0.0,
-   "books_verified_pct": 70.4,
-   "books_in_catalogue_pct": 64.8,
-   "books_exist_lenient_pct": 80.2,
-   "books_invented_pct": 14.3,
+   "books_verified_pct": 72.8,
+   "books_in_catalogue_pct": 71.7,
+   "books_exist_lenient_pct": 81.5,
+   "books_invented_pct": 13.0,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 45.2,
-   "answers_all_three_verified_on_topic_pct": 44.4,
-   "books_verified_on_topic_pct": 72.2,
-   "score_pct": 93.7,
+   "answers_all_three_verified_pct": 50.8,
+   "answers_all_three_verified_on_topic_pct": 50.9,
+   "books_verified_on_topic_pct": 75.0,
+   "score_pct": 94.2,
    "unverified": [
     "A casa di Annabel — Emma Straub",
     "Ancora una volta, stelle — Mary Robinette Kowal",
@@ -952,7 +1231,6 @@
     "Il mondo di Graal: Il castello di Montségur — Luigi Malerba",
     "Il mondo di Percy Jackson: Percy Jackson e gli dei dell'Olimpo - La battaglia del labirinto — Rick Riordan",
     "Il morto nella piazza — Antonio Manzini",
-    "Incognito: La vita segreta della mente — David Eagleman",
     "L'albergo delle storie sospese — Eowyn Ivey",
     "L'albero delle storie perdute — Antonio G. Iturbe",
     "L'albero delle storie — Jojo Moyes",
@@ -972,7 +1250,6 @@
     "La casa nella mare ceruleo — TJ Klune",
     "La coppia dell'interno 2B — Shari Lapena",
     "La coppia dell'interno 9 — B.A. Paris",
-    "La coppia perfetta — B.A. Paris",
     "La libreria dei desideri — Desy Icardi",
     "La lunga strada per un piccolo pianeta arrabbiato — Becky Chambers",
     "La porta dell'eternità — Greg Egan",
@@ -981,7 +1258,6 @@
     "La trilogia dei Lungavista — Robin Hobb",
     "Le neuroscienze della felicità — Richard J. Davidson",
     "Manuale di meccanica per biciclette — Chris Sidwells",
-    "Non ti addormentare — S.J. Watson",
     "Parigi. Con cartina — Lonely Planet",
     "Parigi. Guida pratica — AA.VV.",
     "Parigi. Lonely Planet — AA.VV.",
@@ -1001,9 +1277,9 @@
     "Una casa piena di libri — Anne Fadiman",
     "Una cosa divertente che non farò mai più — Fredrik Backman"
    ],
-   "score_all_calls_pct": 93.7
+   "score_all_calls_pct": 94.2
   },
-  "quality_overall_pct": 95.6,
+  "quality_overall_pct": 95.9,
   "latency_clarify": {
    "n": 42,
    "p50": 0.8545,
@@ -1060,6 +1336,7 @@
   },
   "json_response_format": null,
   "json_response_format_all": null,
+  "case_means": {},
   "recommend_quality": {
    "scored_answers": 0,
    "three_books_pct": null,
@@ -1145,28 +1422,85 @@
    "failures_fixed_by_lenient_parser": 0
   },
   "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.0,
+    "invented": 0.6666666666666666
+   },
+   "it-fantasy": {
+    "exist": 0.3333333333333333,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.6666666666666666,
+    "invented": 0.3333333333333333
+   },
+   "it-consolante": {
+    "exist": 0.8333333333333333,
+    "invented": 0.16666666666666666
+   },
+   "it-thriller": {
+    "exist": 0.3333333333333333,
+    "invented": 0.6666666666666666
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.7777777777777777,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 0.8888888888888888,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.8333333333333333,
+    "invented": 0.16666666666666666
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 34,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 100.0,
    "answers_with_already_read_pct": 0.0,
-   "books_verified_pct": 77.5,
-   "books_in_catalogue_pct": 70.6,
-   "books_exist_lenient_pct": 82.4,
-   "books_invented_pct": 15.7,
+   "books_verified_pct": 78.4,
+   "books_in_catalogue_pct": 78.4,
+   "books_exist_lenient_pct": 84.3,
+   "books_invented_pct": 14.7,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 55.9,
-   "answers_all_three_verified_on_topic_pct": 53.3,
-   "books_verified_on_topic_pct": 75.6,
-   "score_pct": 95.4,
+   "answers_all_three_verified_pct": 58.8,
+   "answers_all_three_verified_on_topic_pct": 56.7,
+   "books_verified_on_topic_pct": 76.7,
+   "score_pct": 95.6,
    "unverified": [
     "Il cervello che cura — Lisa Feldman Barrett",
     "Il cervello che cura — Stanislas Dehaene",
     "Il ciclo di Luna - Luna: Nuova Luna — Ian McDonald",
     "Il metodo del cocodrillo — Massimo Carlotto",
     "Il metodo del commissario Ricciardi — Maurizio De Giovanni",
-    "Il mistero della casa del tempo — John Bellairs",
     "Il mistero della città di smeraldo — L. Frank Baum",
     "L'ospite perfetta — Rosie Walsh",
     "L'ospite perfetta — Ruth Ware",
@@ -1268,21 +1602,79 @@
    "failure_kinds": {},
    "failures_fixed_by_lenient_parser": 0
   },
+  "case_means": {
+   "it-fantasy": {
+    "exist": 0.7916666666666666,
+    "invented": 0.125
+   },
+   "it-divulgazione": {
+    "exist": 0.47619047619047616,
+    "invented": 0.19047619047619047
+   },
+   "it-scifi": {
+    "exist": 0.5416666666666666,
+    "invented": 0.375
+   },
+   "it-ragazzo": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.9583333333333334,
+    "invented": 0.041666666666666664
+   },
+   "es-corto": {
+    "exist": 0.9166666666666666,
+    "invented": 0.08333333333333333
+   },
+   "it-thriller": {
+    "exist": 0.4583333333333333,
+    "invented": 0.29166666666666663
+   },
+   "it-novecento": {
+    "exist": 0.9047619047619048,
+    "invented": 0.047619047619047616
+   },
+   "en-cozy": {
+    "exist": 0.9523809523809524,
+    "invented": 0.047619047619047616
+   },
+   "it-offtopic-bici": {
+    "exist": 0.7619047619047619,
+    "invented": 0.23809523809523808
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9047619047619048,
+    "invented": 0.09523809523809523
+   },
+   "it-giallo": {
+    "exist": 0.5,
+    "invented": 0.4444444444444444
+   },
+   "it-consolante": {
+    "exist": 0.8333333333333334,
+    "invented": 0.16666666666666666
+   }
+  },
   "recommend_quality": {
    "scored_answers": 104,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 99.3,
    "answers_with_already_read_pct": 1.0,
-   "books_verified_pct": 77.6,
-   "books_in_catalogue_pct": 72.1,
-   "books_exist_lenient_pct": 83.3,
-   "books_invented_pct": 15.1,
+   "books_verified_pct": 78.2,
+   "books_in_catalogue_pct": 75.6,
+   "books_exist_lenient_pct": 83.7,
+   "books_invented_pct": 14.7,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 53.8,
-   "answers_all_three_verified_on_topic_pct": 53.3,
-   "books_verified_on_topic_pct": 76.7,
-   "score_pct": 95.1,
+   "answers_all_three_verified_pct": 54.8,
+   "answers_all_three_verified_on_topic_pct": 54.4,
+   "books_verified_on_topic_pct": 77.4,
+   "score_pct": 95.2,
    "unverified": [
     "Autofocus — Lars Kepler",
     "Autofocus — Paolo Bacigalupi",
@@ -1331,7 +1723,6 @@
     "La donna della finestra — A.J. Finn",
     "La donna della luna — Becky Chambers",
     "La donna nella finestra — A.J. Finn",
-    "La mano sinistra del buio — Ursula K. Le Guin",
     "La moglie silenziosa — Alice Feeney",
     "La moglie — Alison Espach",
     "La ragazza della curva — Federica Iacobelli",
@@ -1344,7 +1735,6 @@
     "Non mi abbandonerai mai — Shari Lapena",
     "Non mi lasci più — Lisa Jewell",
     "Pensare. Velocemente e lentamente — Daniel Kahneman",
-    "Percy Jackson e il ladro di fulmini — Rick Riordan",
     "Pezzi di vetro — Dario Crapanzano",
     "Prima che tu vada — Lisa Jewell",
     "Prima di andarmene — Gin Phillips",
@@ -1425,6 +1815,60 @@
    "failures_fixed_by_lenient_parser": 0
   },
   "json_response_format_all": null,
+  "case_means": {
+   "it-fantasy": {
+    "exist": 0.6666666666666666,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.6666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "it-consolante": {
+    "exist": 0.0,
+    "invented": 0.9166666666666666
+   },
+   "it-novecento": {
+    "exist": 0.8666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "it-scifi": {
+    "exist": 0.8888888888888888,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "en-cozy": {
+    "exist": 0.8333333333333334,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 0.9333333333333333,
+    "invented": 0.06666666666666667
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 0.6666666666666666,
+    "invented": 0.2222222222222222
+   },
+   "it-offtopic-bici": {
+    "exist": 0.7777777777777778,
+    "invented": 0.2222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 0.6666666666666666,
+    "invented": 0.1111111111111111
+   },
+   "it-thriller": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 54,
    "three_books_pct": 100.0,
@@ -1432,9 +1876,9 @@
    "reason_cites_reader_pct": 100.0,
    "answers_with_already_read_pct": 0.0,
    "books_verified_pct": 73.5,
-   "books_in_catalogue_pct": 67.9,
-   "books_exist_lenient_pct": 79.0,
-   "books_invented_pct": 21.0,
+   "books_in_catalogue_pct": 71.0,
+   "books_exist_lenient_pct": 82.1,
+   "books_invented_pct": 17.9,
    "books_not_reviewed": 0,
    "answers_all_three_verified_pct": 50.0,
    "answers_all_three_verified_on_topic_pct": 48.9,
@@ -1552,21 +1996,79 @@
    "failures_fixed_by_lenient_parser": 0
   },
   "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.3333333333333333
+   },
+   "it-fantasy": {
+    "exist": 0.7777777777777778,
+    "invented": 0.16666666666666666
+   },
+   "it-divulgazione": {
+    "exist": 0.7777777777777778,
+    "invented": 0.05555555555555555
+   },
+   "it-consolante": {
+    "exist": 0.3333333333333333,
+    "invented": 0.27777777777777773
+   },
+   "it-thriller": {
+    "exist": 0.05555555555555555,
+    "invented": 0.5
+   },
+   "it-novecento": {
+    "exist": 0.8888888888888888,
+    "invented": 0.05555555555555555
+   },
+   "it-scifi": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.27777777777777773
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.6666666666666666,
+    "invented": 0.2222222222222222
+   },
+   "es-corto": {
+    "exist": 0.7222222222222222,
+    "invented": 0.27777777777777773
+   },
+   "it-offtopic-bici": {
+    "exist": 0.0,
+    "invented": 0.7222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9444444444444445,
+    "invented": 0.0
+   }
+  },
   "recommend_quality": {
    "scored_answers": 84,
    "three_books_pct": 100.0,
    "language_ok_pct": 100.0,
    "reason_cites_reader_pct": 100.0,
    "answers_with_already_read_pct": 0.0,
-   "books_verified_pct": 67.5,
-   "books_in_catalogue_pct": 60.3,
-   "books_exist_lenient_pct": 74.6,
-   "books_invented_pct": 23.0,
+   "books_verified_pct": 67.9,
+   "books_in_catalogue_pct": 65.9,
+   "books_exist_lenient_pct": 77.0,
+   "books_invented_pct": 20.6,
    "books_not_reviewed": 0,
-   "answers_all_three_verified_pct": 46.4,
-   "answers_all_three_verified_on_topic_pct": 47.2,
-   "books_verified_on_topic_pct": 70.8,
-   "score_pct": 93.1,
+   "answers_all_three_verified_pct": 47.6,
+   "answers_all_three_verified_on_topic_pct": 48.6,
+   "books_verified_on_topic_pct": 71.3,
+   "score_pct": 93.2,
    "unverified": [
     "Bella del Señor — Alberto Morales",
     "El jardín de las delicias — Dolores Medio",
@@ -1613,7 +2115,6 @@
     "La gang dei monelli — Louis Sachar",
     "La gang del bosco — Enid Blyton",
     "La mente nuova del re — Roger Penrose",
-    "La pequeña princesa — Frances Hodgson Burnett",
     "La pequeña princesa — Jean-Pierre Giraudoux",
     "La pequeña princesa — Jean-Pierre Jeunet y Guillaume Laurent",
     "La ragazza con il cuore di pietra — Maurizio de Giovanni",
@@ -1635,9 +2136,9 @@
     "Treni e viaggiatori — Paul Theroux",
     "Un delitto per Natale — Giancarlo De Cataldo"
    ],
-   "score_all_calls_pct": 93.1
+   "score_all_calls_pct": 93.2
   },
-  "quality_overall_pct": 88.0,
+  "quality_overall_pct": 88.1,
   "latency_clarify": {
    "n": 42,
    "p50": 1.5485,

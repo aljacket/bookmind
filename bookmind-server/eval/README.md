@@ -41,10 +41,15 @@ To add a candidate, add an entry to `candidates.json` with its price and pin (Op
 
 ## Limits to keep in mind
 
--   Book existence: Google Books could not be used (anonymous quota is 0). The cascade is Open Library,
-    Wikidata, Wikipedia, then a manual review (`book_review.tsv`, labels R real, T real but wrong title,
-    I invented, U unsure, by the backend-engineer agent from its own knowledge). Add
-    `GOOGLE_BOOKS_API_KEY` and run `score.py --refresh-books` to use Google Books first.
+-   Book existence: Google Books could not be used (anonymous quota is 0; the substitute was accepted
+    by the operator). The cascade is Open Library, OPAC SBN (`score.py --recheck-sbn` re-asks it for
+    unfound books), Wikidata, Wikipedia, then a manual review (`book_review.tsv`, labels R real, T real
+    but wrong title or author, I invented = no such book, U unsure, by the backend-engineer agent from
+    its own knowledge). Add `GOOGLE_BOOKS_API_KEY` and run `score.py --refresh-books` to use Google
+    Books first.
+-   `score.py` also writes `results/bootstrap.json`: case-clustered bootstrap of the existence and
+    invented gaps (resampling the 14 cases), which is the honest uncertainty of the model comparison.
+    Latency percentiles are linear interpolations over the HTTP 200 calls only.
 -   When new books appear, `score.py` writes the ones nobody has labelled to `results/review_todo.json`;
     they count as not existing until labelled.
 -   Latency is measured from the machine that runs the script, not from Cloud Run.

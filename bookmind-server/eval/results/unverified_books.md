@@ -1,7 +1,7 @@
 # Books that no catalogue found, with the manual review label (per candidate)
 
 
-## openai-gpt-4o-mini (92)
+## openai-gpt-4o-mini (90)
 
 - A caccia di un padre — Mario Desiati
 - Cervello. La storia di un organo — David Eagleman
@@ -77,7 +77,6 @@
 - La ragazza con all'ombra — Marina e Valerio Massimo Manfredi
 - La ragazza con tutti i doni — M.R. Carey
 - La saga di Broken Earth — N.K. Jemisin
-- La saga di Earthsea — Ursula K. Le Guin
 - La sombra de los otros — José Carlos Somoza
 - La strada dei re — Brandon Sanderson
 - La trilogia del Mar Grigio — V. E. Schwab
@@ -90,13 +89,12 @@
 - Pensare veloce, pensare lento — Daniel Kahneman
 - Pensare, veloce e lento — Daniel Kahneman
 - Pizzerie d'Italia — Giovanni Verdi
-- Ritratto di un artista da giovane — James Joyce
 - The Cotswold Mysteries — Rebecca Tope
 - The Cotswold Mysteries: The Case of the Missing Men — Rebecca Tope
 - Un anno con te — Katherine Center
 - Un giorno in più — Gioia Marchegiani
 
-## openai-gpt-6-luna-noreason (54)
+## openai-gpt-6-luna-noreason (46)
 
 - Come riparare la bicicletta — Todd Downs
 - Europa in treno — Nicky Gardner e Susanne Kries
@@ -105,20 +103,15 @@
 - Il cervello. Istruzioni per l’uso — Norman Doidge
 - Il cervello. La nostra storia — David Eagleman
 - Il cervello. Manuale dell’utente — Marco Magrini
-- Il club dei ricordi perduti — Ann Hood
-- Il libro di Joan — Lidia Yuknavitch
 - Il manuale del ciclista urbano — Chris Sidwells
 - Il robot che sembrava me — Alastair Reynolds
 - Il robot che sembrava me — Ian McEwan
 - Incognito. La vita segreta della mente — David Eagleman
-- L'arte della manutenzione della motocicletta — Robert M. Pirsig
 - L'arte di riparare una bicicletta — Robert M. Pirsig
-- La biblioteca dei giusti consigli — Sara Nisha Adams
 - La biblioteca dei nuovi inizi — Michiko Aoyama
 - La biblioteca dei sussurri — Michiko Aoyama
 - La bicicletta — H. G. Wells
 - La coppia perfetta — Ruth Ware
-- La gemella silenziosa — S. K. Tremayne
 - La lama stessa — Joe Abercrombie
 - La manutenzione della bicicletta e del ciclista — Rob van der Plas
 - La misura del tempo — Matt Haig
@@ -126,8 +119,6 @@
 - La pizza. Una storia globale — Carol Helstosky
 - La scienza della pizza — Dario Bressanini
 - La storia di Elsa Morante — Elsa Morante
-- La storia di Peter Pan — J. M. Barrie
-- La storia di Ulisse e Argo — Mino Milani
 - La trilogia dei Lungavista — Robin Hobb
 - La trilogia dei Lungavista. L'apprendista assassino — Robin Hobb
 - La trilogia dei Lungavista. Libro primo: L'apprendista assassino — Robin Hobb
@@ -142,7 +133,6 @@
 - Parigi è sempre una festa — Ernest Hemingway
 - Roma. Guida gastronomica alle migliori pizzerie — Luca Cesari
 - Roma. Guida gastronomica — Luca Cesari
-- Seda — Alessandro Baricco
 - The Curious Incident of the Dog in the Night-Time — Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.
 - Un uomo a pezzi — Martha Wells
 - Un uomo chiamato Ove — Fredrik Backman
@@ -156,7 +146,7 @@
 ## openai-gpt-6-luna (0)
 
 
-## openai-gpt-6-sol-noreason (10)
+## openai-gpt-6-sol-noreason (8)
 
 - A Murder to Remember — Bryn Turnbull
 - Il segreto di mio marito — Liane Moriarty
@@ -166,10 +156,8 @@
 - La lunga via per un piccolo pianeta arrabbiato — Becky Chambers
 - La vita che volevi — Jojo Moyes
 - La vita che volevo — Jojo Moyes
-- Seda — Alessandro Baricco
-- Un salmo per il robot — Becky Chambers
 
-## or-claude-haiku-5.5-bedrock-eu-noreason (112)
+## or-claude-haiku-5.5-bedrock-eu-noreason (110)
 
 - Ardor — Ana María Matute
 - El Lejano Oeste — Eduardo Mendoza
@@ -234,7 +222,6 @@
 - Il viaggiatore incantato — Dino Buzzati
 - Il vicequestore Rocco Schiavone: Pietro Caruso — Antonio Manzini
 - In bicicletta — Ivan Cerri
-- In viaggio con Charley — John Steinbeck
 - La Mafia uccide solo d'estate — Pif (Pierfrancesco Diliberto)
 - La Trilogia della Terra Fantasma — N. K. Jemisin
 - La danza delle libellule — Gianrico Carofiglio
@@ -262,7 +249,6 @@
 - Non ti lascio mai — Mary Kubica
 - Non è un paese per vecchi — Irene Gough
 - Pequeñas cosas como esta — Claire Keegan
-- Percy Jackson e il Ladro di Fulmini — Rick Riordan
 - Piccole storie di Harry Potter o Sherlock Holmes per ragazzi: Il mistero del cane dei Baskerville — Arthur Conan Doyle
 - Premios Nobel de la Armada — Miguel Delibes
 - Scomparsa — Gillian Flynn
@@ -290,7 +276,7 @@
 ## or-claude-sonnet-5.5-vertex-eu (0)
 
 
-## or-gemini-3.1-flash-lite-vertex-eu (77)
+## or-gemini-3.1-flash-lite-vertex-eu (74)
 
 - A casa di Annabel — Emma Straub
 - Ancora una volta, stelle — Mary Robinette Kowal
@@ -321,7 +307,6 @@
 - Il mondo di Graal: Il castello di Montségur — Luigi Malerba
 - Il mondo di Percy Jackson: Percy Jackson e gli dei dell'Olimpo - La battaglia del labirinto — Rick Riordan
 - Il morto nella piazza — Antonio Manzini
-- Incognito: La vita segreta della mente — David Eagleman
 - L'albergo delle storie sospese — Eowyn Ivey
 - L'albero delle storie perdute — Antonio G. Iturbe
 - L'albero delle storie — Jojo Moyes
@@ -341,7 +326,6 @@
 - La casa nella mare ceruleo — TJ Klune
 - La coppia dell'interno 2B — Shari Lapena
 - La coppia dell'interno 9 — B.A. Paris
-- La coppia perfetta — B.A. Paris
 - La libreria dei desideri — Desy Icardi
 - La lunga strada per un piccolo pianeta arrabbiato — Becky Chambers
 - La porta dell'eternità — Greg Egan
@@ -350,7 +334,6 @@
 - La trilogia dei Lungavista — Robin Hobb
 - Le neuroscienze della felicità — Richard J. Davidson
 - Manuale di meccanica per biciclette — Chris Sidwells
-- Non ti addormentare — S.J. Watson
 - Parigi. Con cartina — Lonely Planet
 - Parigi. Guida pratica — AA.VV.
 - Parigi. Lonely Planet — AA.VV.
@@ -373,14 +356,13 @@
 ## or-gemini-3.8-flash-vertex (0)
 
 
-## or-mistral-large-2512-eu (20)
+## or-mistral-large-2512-eu (19)
 
 - Il cervello che cura — Lisa Feldman Barrett
 - Il cervello che cura — Stanislas Dehaene
 - Il ciclo di Luna - Luna: Nuova Luna — Ian McDonald
 - Il metodo del cocodrillo — Massimo Carlotto
 - Il metodo del commissario Ricciardi — Maurizio De Giovanni
-- Il mistero della casa del tempo — John Bellairs
 - Il mistero della città di smeraldo — L. Frank Baum
 - L'ospite perfetta — Rosie Walsh
 - L'ospite perfetta — Ruth Ware
@@ -396,7 +378,7 @@
 - Un caso complicato per il commissario Bordelli — Marco Vichi
 - Una brutta storia — Carlo Lucarelli
 
-## or-mistral-small-2603-eu (67)
+## or-mistral-small-2603-eu (65)
 
 - Autofocus — Lars Kepler
 - Autofocus — Paolo Bacigalupi
@@ -445,7 +427,6 @@
 - La donna della finestra — A.J. Finn
 - La donna della luna — Becky Chambers
 - La donna nella finestra — A.J. Finn
-- La mano sinistra del buio — Ursula K. Le Guin
 - La moglie silenziosa — Alice Feeney
 - La moglie — Alison Espach
 - La ragazza della curva — Federica Iacobelli
@@ -458,7 +439,6 @@
 - Non mi abbandonerai mai — Shari Lapena
 - Non mi lasci più — Lisa Jewell
 - Pensare. Velocemente e lentamente — Daniel Kahneman
-- Percy Jackson e il ladro di fulmini — Rick Riordan
 - Pezzi di vetro — Dario Crapanzano
 - Prima che tu vada — Lisa Jewell
 - Prima di andarmene — Gin Phillips
@@ -512,7 +492,7 @@
 - Viaggi in treno: Storie e tariffe da Parigi a tutto il mondo — Giovanni Verdi
 - Viaggio in Treno verso Parigi — John Steinbeck
 
-## proxy-llama-3.3-70b-via-openrouter (66)
+## proxy-llama-3.3-70b-via-openrouter (65)
 
 - Bella del Señor — Alberto Morales
 - El jardín de las delicias — Dolores Medio
@@ -559,7 +539,6 @@
 - La gang dei monelli — Louis Sachar
 - La gang del bosco — Enid Blyton
 - La mente nuova del re — Roger Penrose
-- La pequeña princesa — Frances Hodgson Burnett
 - La pequeña princesa — Jean-Pierre Giraudoux
 - La pequeña princesa — Jean-Pierre Jeunet y Guillaume Laurent
 - La ragazza con il cuore di pietra — Maurizio de Giovanni

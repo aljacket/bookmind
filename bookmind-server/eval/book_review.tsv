@@ -7,8 +7,8 @@ R	El arte de amar	Erich Fromm	Spanish title of The Art of Loving
 I	L'arte della manutenzione della bicicletta	Rob van der Plas	pastiche of Pirsig's title
 T	L'arte della manutenzione della motocicletta	Robert M. Pirsig	official Italian title is Lo Zen e l'arte della manutenzione della motocicletta
 I	L'arte della pizza	Francesco De Marco	no such book
-I	L'arte di ascoltare i battiti d'ali	Marco Malvaldi	title exists under another author
-I	L'arte di essere fragili	Andrea Marcolongo	real book is by Alessandro D'Avenia
+T	L'arte di ascoltare i battiti d'ali	Marco Malvaldi	title exists under another author (relabelled T on 2026-10-10: the book exists, the author is wrong)
+T	L'arte di essere fragili	Andrea Marcolongo	real book is by Alessandro D'Avenia (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	L'arte di riparare una bicicletta	Robert M. Pirsig	no such book
 I	Assassinio al faro	Alice Basso	no such book
 T	L'assassino reale	Robin Hobb	literal translation of Royal Assassin; official Italian title differs
@@ -26,7 +26,7 @@ I	La bicicletta verde	Giorgio Faletti	no such book
 I	La bicicletta	H. G. Wells	no such book (cf. The Wheels of Chance)
 I	A caccia di un padre	Mario Desiati	no such book
 I	El café de la mañana	José Luis Sampedro	no such book
-I	La casa dei doganieri	Dino Buzzati	poem by Eugenio Montale, not Buzzati
+T	La casa dei doganieri	Dino Buzzati	poem by Eugenio Montale, not Buzzati (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	La casa del tempo sospeso	Mario Giordano	no such book
 I	La casa della paura	Mauro Corona	no such book
 T	La casa delle belle addormentate	Yasushi Inoue	real book by Yasunari Kawabata; author wrong
@@ -51,7 +51,7 @@ I	Il cervello e la sua mente	Gerald M. Edelman	no such book
 T	Il cervello e la sua storia	David Eagleman	approximates The Brain: The Story of You
 I	Il cervello e l'universo mentale	Stanislas Dehaene	no such book
 U	Il cervello imperfetto	Dean Burnett	possible Italian title of The Idiot Brain
-I	Il cervello infinito	David Eagleman	Il cervello infinito is by Doidge
+T	Il cervello infinito	David Eagleman	Il cervello infinito is by Doidge (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il cervello. Istruzioni per l’uso	Norman Doidge	no such book
 I	Il cervello. Istruzioni per l'uso	David Eagleman	no such book
 T	Il cervello. Istruzioni per l’uso	John J. Ratey	A User's Guide to the Brain; Italian title uncertain
@@ -78,14 +78,14 @@ I	La coppia dell'interno 2B	Shari Lapena	no such book
 R	La coppia della porta accanto	Shari Lapena	Italian title of The Couple Next Door
 I	La coppia perfetta	B.A. Paris	no such book
 I	La coppia perfetta	Ruth Ware	no such book
-I	Una cosa divertente che non farò mai più	Fredrik Backman	real book is by David Foster Wallace
+T	Una cosa divertente che non farò mai più	Fredrik Backman	real book is by David Foster Wallace (relabelled T on 2026-10-10: the book exists, the author is wrong)
 T	La coscienza e il cervello	Stanislas Dehaene	Consciousness and the Brain; Italian title is Il codice della coscienza
 T	The Cotswold Mysteries	Rebecca Tope	series name, not a single book
 R	Le cronache del ghiaccio e del fuoco: Il trono di spade	George R. R. Martin	Italian series and volume title
 T	The Curious Incident of the Dog in the Night-Time	Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.	real book; the author field holds the reason text (malformed output)
 R	Dietro la porta	B. A. Paris	Italian title of Behind Closed Doors
 I	Il diritto di sognare	Philip K. Dick	no such book
-I	The Dispatcher	Richard Osman	real book is by John Scalzi
+T	The Dispatcher	Richard Osman	real book is by John Scalzi (relabelled T on 2026-10-10: the book exists, the author is wrong)
 R	La donna che morì dal ridere e altre storie incredibili sui misteri della mente umana	Vilayanur S. Ramachandran	Italian edition of Phantoms in the Brain
 I	La donna del giovedì	Tess Gerritsen	no such book
 T	La donna della finestra	A.J. Finn	The Woman in the Window; Italian title is La donna alla finestra
@@ -94,7 +94,7 @@ I	La donna della pioggia	Giorgio Faletti	no such book
 I	La donna della tempesta	Gianrico Carofiglio	no such book
 T	La donna in cabina 10	Ruth Ware	The Woman in Cabin 10; Italian title is La donna della cabina 10
 T	La donna nella finestra	A. J. Finn	The Woman in the Window; Italian title is La donna alla finestra
-I	L'era dell'intelligenza artificiale	Jared Cohen	real book is by Kissinger, Schmidt and Huttenlocher
+T	L'era dell'intelligenza artificiale	Jared Cohen	real book is by Kissinger, Schmidt and Huttenlocher (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	L'era dell'intelligenza artificiale	Kai-Fu Lee	no such book by this author
 U	Europa in treno	Nicky Gardner e Susanne Kries	authors wrote Europe by Rail; Italian edition not confirmed
 I	La famiglia Aubrey	Emma Tennant	no such book
@@ -110,7 +110,7 @@ U	Il gioco del silenzio	Samantha Downing	not recognised
 I	Il gioco del silenzio	Valentina D'Urso	no such book
 I	Il gioco del sospetto	Shari Lapena	no such book
 I	Un giorno in più	Gioia Marchegiani	no such book
-I	Il giro di boa	Donato Carrisi	real book is by Camilleri
+T	Il giro di boa	Donato Carrisi	real book is by Camilleri (relabelled T on 2026-10-10: the book exists, the author is wrong)
 R	Gone Girl - L'amore bugiardo	Gillian Flynn	Italian edition title
 I	Il grande libro della bicicletta	Francesco Rossi	no such book
 I	Il Grande Sigillo	Ted Chiang	no such book
@@ -119,7 +119,7 @@ I	La guida del camperista	Marco Gallo	no such book
 I	Guida pratica alla manutenzione della bicicletta	Luca Verdi	no such book
 I	Guida pratica per ciclisti	Marco R.	no such book
 I	Le guide del tramonto	Robinette	no such book
-I	El husar	Joaquín Gallego	El húsar is by Arturo Pérez-Reverte
+T	El husar	Joaquín Gallego	El húsar is by Arturo Pérez-Reverte (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	In bicicletta	Ivan Cerri	no such book
 T	Incognito. La vita segreta della mente	David Eagleman	Italian title is Incognito. Vite segrete del cervello
 T	L'incredibile viaggio di Harold Fry	Rachel Joyce	Italian title is L'imprevedibile viaggio di Harold Fry
@@ -127,7 +127,7 @@ I	L'Intelligenza Artificiale e il Futuro dell'Umanità	Kathy O'Neill	no such boo
 I	L'Intelligenza Artificiale e il Futuro dell'umanità	Tiziano Terzani	no such book
 I	Intelligenza artificiale — Un'utopia in divenire	Hans Moravec	no such book
 R	Il labirinto degli spiriti	Carlos Ruiz Zafón	Italian title of El laberinto de los espíritus
-I	Il ladro di merendine	Giovanni Floris	real book is by Camilleri
+T	Il ladro di merendine	Giovanni Floris	real book is by Camilleri (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	La lama stessa	Joe Abercrombie	possible rendering of The Blade Itself
 I	El Lejano Oeste	Eduardo Mendoza	no such book
 R	Il leone, la strega e l’armadio	C. S. Lewis	Italian title
@@ -137,8 +137,8 @@ I	Il Libro dei Mostri	Patrick Ness	no such book
 I	Il Libro dei Nomi	Vox Day	no such book
 R	El libro del té	Kakuzō Okakura	Spanish title of The Book of Tea
 U	Il libro di Joan	Lidia Yuknavitch	The Book of Joan is real; Italian edition not confirmed
-I	La lluvia amarilla	Julián Sánchez	real book is by Julio Llamazares
-I	La lluvia antes de caer	Julián Barnes	real book (The Rain Before It Falls) is by Jonathan Coe
+T	La lluvia amarilla	Julián Sánchez	real book is by Julio Llamazares (relabelled T on 2026-10-10: the book exists, the author is wrong)
+T	La lluvia antes de caer	Julián Barnes	real book (The Rain Before It Falls) is by Jonathan Coe (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	La lluvia de fuego	Javier Cercas	no such book
 I	La lluvia en los zapatos	Javier Marías	no such book
 T	La lunga strada verso un piccolo arrabbiato pianeta	Becky Chambers	The Long Way to a Small, Angry Planet; Italian title differs
@@ -161,7 +161,7 @@ I	La manutenzione della bicicletta e del ciclista	Rob van der Plas	no such book
 I	La mente in evoluzione	Robert Wright	no such book by this author
 I	La mente in poche parole	Vikram Patel	no such book
 R	La mente relazionale	Daniel J. Siegel	Italian title of The Developing Mind
-I	Il metodo Catalanotti	Maurizio de Giovanni	real book is by Camilleri
+T	Il metodo Catalanotti	Maurizio de Giovanni	real book is by Camilleri (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Mi regalo de tiempo	Thich Nhat Hanh	no such book
 I	Mientras la guerra avanza, cien años de historia española	Arturo Pérez-Reverte	no such book
 I	Mientras la guerra explota	Javier Cercas	no such book
@@ -169,33 +169,33 @@ I	Il mio viaggio in bicicletta	Anna Bianchi	no such book
 I	Il Mistero del Lupo Nero	Lisa Thompson	no such book
 I	Il mistero del Ponte di Tollund	Francesco D'Adamo	no such book
 R	Il mistero del treno azzurro	Agatha Christie	Italian title of The Mystery of the Blue Train
-I	Il mistero del treno azzurro	Giorgio Scerbanenco	real book is by Christie
+T	Il mistero del treno azzurro	Giorgio Scerbanenco	real book is by Christie (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	Il mistero della casa stregata	John Bellairs	not recognised
-I	Il mistero della coscienza	Giulio Tononi e Marcello Massimini	real book of that title is by John Searle
+T	Il mistero della coscienza	Giulio Tononi e Marcello Massimini	real book of that title is by John Searle (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il mistero di villa del pino	Marco Malvaldi	no such book
-I	La misura del mondo	Fabrizio Silei	real book is by Daniel Kehlmann
-I	La misura del tempo	Matt Haig	real book is by Gianrico Carofiglio
+T	La misura del mondo	Fabrizio Silei	real book is by Daniel Kehlmann (relabelled T on 2026-10-10: the book exists, the author is wrong)
+T	La misura del tempo	Matt Haig	real book is by Gianrico Carofiglio (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il mito della mente e del cervello	Gerald M. Edelman	no such book
 R	La moglie tra di noi	Greer Hendricks e Sarah Pekkanen	Italian title of The Wife Between Us
 T	Il mondo di Sofie	Jostein Gaarder	Italian title is Il mondo di Sofia
-I	Il Mondo Nuovo	Ray Bradbury	real book is by Huxley
+T	Il Mondo Nuovo	Ray Bradbury	real book is by Huxley (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	Mrs. Pollifax Solves a Murder	Dorothy Gilman	not recognised in the Mrs. Pollifax series
 I	Muchacha de fuego	José Carlos Somoza	no such book
 U	A Murder to Remember	Bryn Turnbull	not recognised
 I	Il museo della giovinezza	Chabon	no such book
 I	Nada es nuestro	Ana Cristina Herreros	no such book
-I	Non è un paese per vecchi	Irene Gough	real book is by Cormac McCarthy
+T	Non è un paese per vecchi	Irene Gough	real book is by Cormac McCarthy (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Non ti fidare di me	Samantha Downing	no such book
 I	Non ti fidare di me	Lucy Foley	no such book
 I	Non ti lascio mai	Mary Kubica	no such book
 I	Il nostro anno di meraviglie	Sarah Perry	no such book
 I	Il nostro caro desiderio	Cecilia Ahern	no such book
-I	Los ojos del hermano eterno	Julio Ramón Ribeyro	real story is by Stefan Zweig
+T	Los ojos del hermano eterno	Julio Ramón Ribeyro	real story is by Stefan Zweig (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	Le ossa della principessa	Cristina Rava	not recognised
 I	La pallina assassina	Marco Malvaldi	no such book
 T	Parigi. Con cartina	Lonely Planet	a Lonely Planet Parigi guide exists; title mangled
 R	Parigi è sempre una buona idea	Nicolas Barreau	Italian title of Paris ist immer eine gute Idee
-T	Parigi è sempre una festa	Ernest Hemingway	Italian title is Parigi è una festa
+T	Parigi è sempre una festa	Ernest Hemingway	Italian title is Festa mobile (A Moveable Feast)
 U	Parigi. Guida pratica	AA.VV.	generic guide title
 T	Parigi. Lonely Planet	AA.VV.	a Lonely Planet Parigi guide exists
 T	Pensare, veloce e lento	Daniel Kahneman	Italian title is Pensieri lenti e veloci
@@ -206,14 +206,14 @@ T	Pequeñas cosas como esta	Claire Keegan	official Spanish title is Pequeñas co
 R	Percy Jackson e gli dei dell'Olimpo: Il ladro di fulmini	Rick Riordan	Italian series and volume title
 T	Percy Jackson e il ladro di fulmini	Rick Riordan	shortened Italian title
 I	Il pianeta degli alberi di Dio	Ursula K. Le Guin	no such book
-I	Il pianeta degli alberi di Natale	Ted Chiang	no such book
+T	Il pianeta degli alberi di Natale	Ted Chiang	real book by Gianni Rodari, author wrong (relabelled T on 2026-10-10)
 R	Il piccolo Nicolas	René Goscinny	Italian title of Le Petit Nicolas
 U	Pizza a Roma	Luciana Squadrilli	not confirmed
 I	Il cervello di Hume	Giorgio Vallortigara	no such book
 I	Il Ciclo di Ilrin: La Sfera del Dragone	Ryk Brown	no such book
 I	Il coraggio di essere felici	Lucia Accardo	no such book
 I	Una corsa tutta sbagliata	Martha Wells	no such book
-I	Il giro di boa	Marco Vichi	real book is by Camilleri
+T	Il giro di boa	Marco Vichi	real book is by Camilleri (relabelled T on 2026-10-10: the book exists, the author is wrong)
 T	In viaggio con Charley	John Steinbeck	Italian title is Viaggio con Charley
 I	Il libro dei viaggi	Bruce Chatwin	no such book
 I	Il Mago Stregato	Tanith Lee	no such book
@@ -297,7 +297,7 @@ I	Un uomo a pezzi	Martha Wells	no such book
 I	Il Vento che Ruggisce	Erin Morgenstern	no such book
 I	Il viaggio di Arlo	Daniela Rinaldi	no such book
 I	Il Viaggio di Nathan	Ruth Vande Pol Kessler	no such book
-I	El viajero del siglo	María Dueñas	real book is by Andrés Neuman
+T	El viajero del siglo	María Dueñas	real book is by Andrés Neuman (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il vicequestore Rocco Schiavone: Pietro Caruso	Antonio Manzini	no such book
 I	La vita che volevi	Jojo Moyes	no such book
 I	La vita che volevo	Jojo Moyes	no such book
@@ -370,7 +370,7 @@ I	Delitti in forma di sonetto	Marco Malvaldi	no such book
 I	Un delitto fatto in casa	Antonio Manzini	no such book
 T	Il diario di un automa guastafeste	Martha Wells	Murderbot Diaries; title mangled
 T	Il diario di Greg	Jeff Kinney	Diary of a Wimpy Kid; Italian title is Diario di una schiappa
-I	Il disagio della civiltà	Roberto Calasso	real book is by Freud
+T	Il disagio della civiltà	Roberto Calasso	real book is by Freud (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	La domestica	Nita Prose	The Maid is real; Italian title not confirmed
 I	La donna della luna	Becky Chambers	no such book
 R	L'errore di Cartesio. Emozione, ragione e cervello umano	Antonio Damasio	Italian title of Descartes' Error
@@ -382,7 +382,7 @@ T	Il gene. Il racconto dell'umanità, tra Darwin e Dna	Siddhartha Mukherjee	The 
 I	Il genio non esiste (e a volte è meglio così)	Benjamin Rapoport, Scott Barry Kaufman	no such book
 I	Il giardino delle illusioni perdute	Marie-Hélène Lafon	no such book
 U	Il giovane Sherlock Holmes - Magia nera	Andrew Lane	series is real; volume title not confirmed
-I	Il giro di boa	Gianrico Carofiglio	real book is by Camilleri
+T	Il giro di boa	Gianrico Carofiglio	real book is by Camilleri (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	La goccia che scava	Gianrico Carofiglio	no such book
 U	Il grande libro della bicicletta	AA.VV.	generic title
 U	Guida alle pizzerie di Roma	Gambero Rosso	Gambero Rosso publishes pizza guides; this edition not confirmed
@@ -392,12 +392,12 @@ T	Incognito: La vita segreta della mente	David Eagleman	Italian title is Incogni
 U	L'invito	Lucy Foley	possible Italian title of The Guest List, not confirmed
 I	L'istinto	Tana French	no such book
 T	Il ladro di libri	Markus Zusak	Italian title is Storia di una ladra di libri
-I	Las leyes de la frontera	Luis Landero	real book is by Javier Cercas
+T	Las leyes de la frontera	Luis Landero	real book is by Javier Cercas (relabelled T on 2026-10-10: the book exists, the author is wrong)
 U	La libreria dei desideri	Desy Icardi	not recognised
 T	Il libro cimitero	Neil Gaiman	The Graveyard Book; Italian title is Il figlio del cimitero
 T	Il libro del cimitero	Neil Gaiman	The Graveyard Book; Italian title is Il figlio del cimitero
 I	Il libro di Sapiens	Daniel Kahneman	no such book
-I	Little Life di Anna Gavalda	Anna Gavalda	A Little Life is by Hanya Yanagihara
+T	Little Life di Anna Gavalda	Anna Gavalda	A Little Life is by Hanya Yanagihara (relabelled T on 2026-10-10: the book exists, the author is wrong)
 R	Lonely Planet Francia	AA.VV.	guide exists
 R	Lonely Planet Parigi	AA.VV.	guide exists
 T	La lunga strada per un piccolo pianeta arrabbiato	Becky Chambers	The Long Way to a Small, Angry Planet; Italian title differs
@@ -405,12 +405,12 @@ I	Il manuale delle donne di servizio	Luciana Littizzetto	no such book
 I	Manuale di meccanica per biciclette	Chris Sidwells	no such book
 I	Manuale pratico di sopravvivenza in bicicletta urbana	Marco Giardino	no such book
 I	La Memoria del Mondo	Brandon Sanderson	no such book
-I	Il metodo del cocodrillo	Massimo Carlotto	real book is by Maurizio de Giovanni
+T	Il metodo del cocodrillo	Massimo Carlotto	real book is by Maurizio de Giovanni (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il metodo del commissario Ricciardi	Maurizio De Giovanni	no such book
 I	Il metodo del dottor Fonseca	Marco Malvaldi	no such book
 I	Il metodo del dottor Fonseca	Marco Vichi	no such book
 I	Il mio nome è Asher	Neal Stephenson	no such book
-U	Il mistero della casa del tempo	John Bellairs	not recognised
+R	Il mistero della casa del tempo	John Bellairs	Italian edition exists (DeA Planeta 2018); corrected after QA
 I	Il mistero della città di smeraldo	L. Frank Baum	no such book
 I	La moglie silenziosa	Alice Feeney	no such book
 I	La moglie tra le ombre	Jane Corry	no such book
@@ -479,7 +479,7 @@ I	El arte de la fuga	Michele Trentin	no such book
 I	Atomic Habits of Leadership	James Clear	no such book
 I	Il cervello. Come funziona la nostra mente	David Eagleman	no such book
 I	Il cervello e la coscienza. Una guida introduttiva	Christof Koch	no such book
-I	Il cervello emotivo	Antonio Damasio	real book of that title is by Joseph LeDoux
+T	Il cervello emotivo	Antonio Damasio	real book of that title is by Joseph LeDoux (relabelled T on 2026-10-10: the book exists, the author is wrong)
 R	Il cervello emotivo	Joseph LeDoux	Italian title of The Emotional Brain
 I	Il ciclista e l'arte di riparare: Guide pratiche per ogni strada	Luca Bianchi	no such book
 R	Il ciclo di Terramare	Ursula K. Le Guin	Italian title of the Earthsea cycle
@@ -492,8 +492,8 @@ I	Il giardino segreto di casa mia	Alessia Gazzola	no such book
 I	Il giardino segreto di Emily	Liane Moriarty	no such book
 I	Giro d'Italia in cucina: Le migliori pizzerie d'Italia	Maria Rossi	no such book
 I	Il grande albero di Natale	Jodi Picoult	no such book
-I	El libro de los abrazos	Alain de Botton	real book is by Eduardo Galeano
-I	El libro de los abrazos	Luis Sepúlveda	real book is by Eduardo Galeano
+T	El libro de los abrazos	Alain de Botton	real book is by Eduardo Galeano (relabelled T on 2026-10-10: the book exists, the author is wrong)
+T	El libro de los abrazos	Luis Sepúlveda	real book is by Eduardo Galeano (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Le luci di maggio	Paolo Giordano	no such book
 I	Il mare dove non sei	Michela Murgia	no such book
 R	The Murderbot Diaries: All Systems Red	Martha Wells	series and first volume
@@ -502,24 +502,24 @@ T	Percy Jackson e gli Olympiani: Il ladro di fulmini	Rick Riordan	series name mi
 I	El Principito para adultos	Ana Alcolea	no such book
 I	El principito para adultos	Jorge Luis Lira	no such book
 I	El principito para adultos	Ana María Shua	no such book
-I	The Quiche of Death (The Miss Marple Series)	Mavis Doriel Hay	real book is by M. C. Beaton
+T	The Quiche of Death (The Miss Marple Series)	Mavis Doriel Hay	real book is by M. C. Beaton (relabelled T on 2026-10-10: the book exists, the author is wrong)
 R	Storia di una ladra di libri	Markus Zusak	Italian title of The Book Thief
 T	La trilogia di Artemis Fowl: Artemis Fowl, l'arconte	Eoin Colfer	series and volume mixed
 T	La trilogia di Mistborn	Brandon Sanderson	series, not a single book
 I	Viaggi in treno: Storie e tariffe da Parigi a tutto il mondo	Giovanni Verdi	no such book
 I	Viaggio in Treno verso Parigi	John Steinbeck	no such book
-I	Una vita come tante	Liane Moriarty	real book is by Hanya Yanagihara
+T	Una vita come tante	Liane Moriarty	real book is by Hanya Yanagihara (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Una vita da guardare	Francesca Cavallo	no such book
 I	Una vita da madre	Megan O'Grady	no such book
 I	La vita è una cosa meravigliosa	Jenny Offill	no such book
 I	La vita è facile, amico mio	Marcin Szczygielski	no such book
 T	The Weather Book: An Easy-to-Understand Guide to the Science of Weather	Jack Williams	The USA Today Weather Book exists; title differs
 T	The Weather Makers: How Climate Change Is Shaping Our Future	Tim Flannery	real book; subtitle differs
-I	L'amore bugiardo	Elena Ferrante	real book of that title is by Gillian Flynn
+T	L'amore bugiardo	Elena Ferrante	real book of that title is by Gillian Flynn (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	L'amore bugiardo	Eleanor Oliphant	no such book
 I	L'arte di essere felice	Giovanni D'Agata	no such book
 R	Le avventure di Tintin: Il segreto del liocorno	Hergé	Italian edition
-I	Bella del Señor	Alberto Morales	real book is by Albert Cohen
+T	Bella del Señor	Alberto Morales	real book is by Albert Cohen (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	Il caso del lago di Garda	Francesco Recami	no such book
 I	Il caso Van Baghen	Augusto De Angelis	no such book
 I	Il caso Vanetta	Augusto De Angelis	no such book
@@ -548,14 +548,14 @@ I	Guida alle pizzerie di Roma	Luca Maroni	no such book
 I	Guida alle pizzerie di Roma	varii	no such book
 R	L'istinto del linguaggio	Steven Pinker	Italian title of The Language Instinct
 I	El jardín de las delicias	Dolores Medio	no such book
-I	El laberinto de las aceitunas	Juan Gómez-Jurado	real book is by Eduardo Mendoza
+T	El laberinto de las aceitunas	Juan Gómez-Jurado	real book is by Eduardo Mendoza (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	El laberinto de agua	Federico García Lorca	no such book
 I	El laberinto del fauno	no es un libro, así que te recomiendo	a film, malformed author field
 I	Manuale del ciclista	Vittorio Brumotti	no such book
 U	Manutenzione della bicicletta	Rob van der Plas	possible Italian edition of The Bicycle Repair Book, not confirmed
 T	La mente nuova del re	Roger Penrose	Italian title is La mente nuova dell'imperatore
 I	Il mondo di Araldi	Garth Nix	no such book
-T	La pequeña princesa	Frances Hodgson Burnett	A Little Princess; Spanish title differs
+R	La pequeña princesa	Frances Hodgson Burnett	Spanish edition exists (Atlantida 1997); corrected after QA
 I	La pequeña princesa	Jean-Pierre Giraudoux	no such book
 I	La pequeña princesa	Jean-Pierre Jeunet y Guillaume Laurent	no such book
 I	El pequeño príncipe de Antoine de Saint-Exupéry para adultos: El poder del ahora	Eckhart Tolle	no such book
@@ -564,7 +564,7 @@ I	Il Primo Legame	Brandon Sanderson	no such book
 I	Il Principe dei Ladri	Scott Lynch	no such book
 I	La ragazza con il cuore di pietra	Maurizio de Giovanni	no such book
 I	La ragazza con il cuore di vetro	Marco Malvaldi	no such book
-I	La ragazza con la Leica	Helga Schneider	real book is by Helena Janeczek
+T	La ragazza con la Leica	Helga Schneider	real book is by Helena Janeczek (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	La ragazza con la pistola	Marcello D'Orta	no such book
 I	La ragazza scomparsa	Gillian Flynn	no such book
 I	La ragazza scomparsa	Clare Mackintosh	no such book
@@ -572,8 +572,8 @@ T	La ragazza sul treno	Paula Hawkins	Italian title is La ragazza del treno
 I	La ragazza sulla collina	Nicola Lagioia	no such book
 I	La ragazza sulla nave	Morgan McCarthy	no such book
 I	La sencilla verdad	Thomas Merton	no such book
-I	Il silenzio degli innocenti	Tess Gerritsen	real book is by Thomas Harris
-I	Il silenzio delle ragazze	Laura Purcell	real book is by Pat Barker
+T	Il silenzio degli innocenti	Tess Gerritsen	real book is by Thomas Harris (relabelled T on 2026-10-10: the book exists, the author is wrong)
+T	Il silenzio delle ragazze	Laura Purcell	real book is by Pat Barker (relabelled T on 2026-10-10: the book exists, the author is wrong)
 I	La silla roja	Ángeles Mastretta	no such book
 U	Treni e viaggi in Europa	Thomas Cook	generic guide title
 I	Treni e viaggi in Europa	Enrico Pastore	no such book

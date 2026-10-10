@@ -164,6 +164,10 @@ def score_candidate(cid: str, cand: Dict[str, Any], recs: List[Dict[str, Any]], 
     def mean(xs: List[float]) -> Optional[float]:
         return sum(xs) / len(xs) if xs else None
 
+    per_case: Dict[str, List[Dict[str, float]]] = defaultdict(list)
+    for a in answers:
+        per_case[a["case"]].append({"exist": a["verified_fraction"], "invented": a["invented_fraction"]})
+    summary["case_means"] = {c: {k: sum(x[k] for x in rows) / len(rows) for k in ("exist", "invented")} for c, rows in per_case.items()}
     on_topic = [a for a in answers if not a["off_topic"]]
     summary["recommend_quality"] = {
         "scored_answers": len(answers),
@@ -238,6 +242,26 @@ def score_candidate(cid: str, cand: Dict[str, Any], recs: List[Dict[str, Any]], 
     return summary
 
 
+def bootstrap_gap(results: List[Dict[str, Any]], a_id: str, b_id: str, n: int = 10000, seed: int = 71) -> Dict[str, Any]:
+    """Case-clustered bootstrap of the gap a - b: resample the 14 cases with replacement.
+
+    The 3 runs of a case are not independent observations, so the case is the unit of resampling.
+    """
+    import random
+
+    by_id = {s["id"]: s for s in results}
+    ca, cb = by_id[a_id]["case_means"], by_id[b_id]["case_means"]
+    cases = sorted(set(ca) & set(cb))
+    rng = random.Random(seed)
+    out: Dict[str, Any] = {"a": a_id, "b": b_id, "cases": len(cases), "resamples": n}
+    for metric in ("exist", "invented"):
+        diffs = [ca[c][metric] - cb[c][metric] for c in cases]
+        point = 100 * sum(diffs) / len(diffs)
+        boots = sorted(100 * sum(diffs[rng.randrange(len(diffs))] for _ in diffs) / len(diffs) for _ in range(n))
+        out[metric] = {"gap_pts": round(point, 1), "ci95": [round(boots[int(0.025 * n)], 1), round(boots[int(0.975 * n)], 1)]}
+    return out
+
+
 def tables(results: List[Dict[str, Any]]) -> str:
     def pct(v: Optional[float]) -> str:
         return fmt(v, 1)
@@ -249,7 +273,7 @@ def tables(results: List[Dict[str, Any]]) -> str:
     out = []
     out.append("**Quality** (percent; rubric score is the mean of five checks per answer)\n")
     out.append(
-        "| Candidate | Rec. score | Books found in catalogues | Books that exist (catalogue + manual review) | Real book, wrong title | Invented | Answers with 3/3 existing | "
+        "| Candidate | Rec. score | Books found in catalogues | Books that exist (catalogue + manual review) | Real book, wrong title or author | Invented (no such book) | Answers with 3/3 existing | "
         "Reasons cite reader | Already-read repeats | Clarifier score | Overall (70/30 x acceptance) |"
     )
     out.append("|---|---|---|---|---|---|---|---|---|---|---|")
@@ -292,6 +316,7 @@ def main() -> None:
     parser.add_argument("--candidates", help="comma-separated candidate ids")
     parser.add_argument("--refresh-books", action="store_true")
     parser.add_argument("--recheck-unverified", action="store_true", help="re-run the lookups only for books cached as not found")
+    parser.add_argument("--recheck-sbn", action="store_true", help="ask OPAC SBN about every book cached as not found")
     parser.add_argument("--env-file", help="env file that may hold GOOGLE_BOOKS_API_KEY")
     args = parser.parse_args()
 
@@ -321,6 +346,13 @@ def main() -> None:
         if args.refresh_books or k not in verifier.cache or (args.recheck_unverified and not verifier.cache[k]["verified"])
     ]
     print(f"{len(todo)} distinct books, {len(pending)} to verify (Google Books key: {'yes' if google_key else 'no'})", file=sys.stderr)
+    if args.recheck_sbn:
+        # Cross-check the books no catalogue found against OPAC SBN only (free, no key).
+        unfound = [(v["example"]["title"], v["example"]["author"]) for v in verifier.cache.values() if not v["verified"]]
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            hits = sum(pool.map(lambda ta: verifier.recheck_sbn(ta[0], ta[1]), unfound))
+        print(f"OPAC SBN: {hits} of {len(unfound)} previously unfound books are in the catalogue", file=sys.stderr)
+        verifier.save()
     refresh = args.refresh_books or args.recheck_unverified
     with ThreadPoolExecutor(max_workers=8) as pool:
         list(pool.map(lambda ta: verifier.verify(ta[0], ta[1], refresh=refresh), pending))
@@ -353,6 +385,13 @@ def main() -> None:
         lines.extend(f"- {u}" for u in s["recommend_quality"]["unverified"])
     (out_dir / "unverified_books.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(table)
+    present = {s["id"] for s in results}
+    pairs = [("openai-gpt-6-luna-noreason", "openai-gpt-4o-mini"), ("openai-gpt-6-luna-noreason", "or-mistral-small-2603-eu")]
+    gaps = [bootstrap_gap(results, a, b) for a, b in pairs if a in present and b in present]
+    (out_dir / "bootstrap.json").write_text(json.dumps(gaps, indent=1), encoding="utf-8")
+    print("\nCase-clustered bootstrap (gap in points, 95% CI):")
+    for g in gaps:
+        print(f"  {g['a']} - {g['b']}: exist {g['exist']}, invented {g['invented']}")
     print(f"\n{len(todo_rows)} books still waiting for review (results/review_todo.json)", file=sys.stderr)
 
 
