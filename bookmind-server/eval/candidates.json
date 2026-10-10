@@ -1,0 +1,287 @@
+{
+    "version": 1,
+    "price_checked": "2026-10-09",
+    "note": "Prices are USD per 1M tokens, copied from the official price pages on the date above. router_fee_multiplier is the credit-purchase fee: OpenRouter charges 5.5% on card purchases (https://openrouter.ai/docs/faq, checked 2026-10-09), OpenAI and Hugging Face add nothing to the provider price. extra_body is the exact LLM_EXTRA_BODY used in production-style deployment; the OpenRouter pin is provider.only + allow_fallbacks:false + data_collection:deny + zdr:true, the Hugging Face pin is the :provider suffix of the model id.",
+    "candidates": [
+        {
+            "id": "openai-gpt-4o-mini",
+            "role": "baseline",
+            "router": "OpenAI (direct)",
+            "pinned_provider": "OpenAI",
+            "base_url": null,
+            "model": "gpt-4o-mini",
+            "key_env": "OPENAI_API_KEY",
+            "extra_body": null,
+            "price_in": 0.15,
+            "price_out": 0.6,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+            "id": "openai-gpt-6-luna",
+            "role": "bonus (same recipient as the baseline, newer model)",
+            "router": "OpenAI (direct)",
+            "pinned_provider": "OpenAI",
+            "base_url": null,
+            "model": "gpt-6-luna",
+            "needs_max_completion_tokens": true,
+            "key_env": "OPENAI_API_KEY",
+            "extra_body": null,
+            "price_in": 0.1,
+            "price_out": 0.5,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+            "id": "or-mistral-small-2603-eu",
+            "role": "candidate",
+            "router": "OpenRouter",
+            "pinned_provider": "Mistral AI (endpoint mistral/eu)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "mistralai/mistral-small-2603",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["mistral/eu"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                }
+            },
+            "price_in": 0.165,
+            "price_out": 0.66,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/mistralai/mistral-small-2603 (endpoint prices: https://openrouter.ai/api/v1/models/mistralai/mistral-small-2603/endpoints)"
+        },
+        {
+            "id": "or-claude-haiku-5.5-bedrock-eu",
+            "role": "candidate",
+            "router": "OpenRouter",
+            "pinned_provider": "Amazon Bedrock, eu-west-1 (endpoint amazon-bedrock/eu-west-1)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "anthropic/claude-haiku-5.5",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["amazon-bedrock/eu-west-1"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                }
+            },
+            "price_in": 0.11,
+            "price_out": 0.55,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/anthropic/claude-haiku-5.5 (endpoint prices: https://openrouter.ai/api/v1/models/anthropic/claude-haiku-5.5/endpoints)"
+        },
+        {
+            "id": "or-claude-haiku-5.5-bedrock-eu-noreason",
+            "role": "candidate (reasoning disabled: the default exhausts max_tokens)",
+            "router": "OpenRouter",
+            "pinned_provider": "Amazon Bedrock, eu-west-1 (endpoint amazon-bedrock/eu-west-1)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "anthropic/claude-haiku-5.5",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["amazon-bedrock/eu-west-1"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                },
+                "reasoning": { "effort": "none" }
+            },
+            "price_in": 0.11,
+            "price_out": 0.55,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/anthropic/claude-haiku-5.5 (endpoint prices: https://openrouter.ai/api/v1/models/anthropic/claude-haiku-5.5/endpoints)"
+        },
+        {
+            "id": "openai-gpt-6-luna-noreason",
+            "role": "bonus (reasoning_effort none)",
+            "router": "OpenAI (direct)",
+            "pinned_provider": "OpenAI",
+            "base_url": null,
+            "model": "gpt-6-luna",
+            "needs_max_completion_tokens": true,
+            "key_env": "OPENAI_API_KEY",
+            "extra_body": { "reasoning_effort": "none" },
+            "price_in": 0.1,
+            "price_out": 0.5,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+            "id": "or-gemini-3.1-flash-lite-vertex-eu",
+            "role": "candidate",
+            "router": "OpenRouter",
+            "pinned_provider": "Google Vertex AI, EU (endpoint google-vertex/eu)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "google/gemini-3.1-flash-lite",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["google-vertex/eu"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                }
+            },
+            "price_in": 0.275,
+            "price_out": 1.65,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/google/gemini-3.1-flash-lite (endpoint prices: https://openrouter.ai/api/v1/models/google/gemini-3.1-flash-lite/endpoints)"
+        },
+        {
+            "id": "or-mistral-large-2512-eu",
+            "role": "reference (larger Mistral, same pinned endpoint family)",
+            "router": "OpenRouter",
+            "pinned_provider": "Mistral AI (endpoint mistral/eu)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "mistralai/mistral-large-2512",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["mistral/eu"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                }
+            },
+            "price_in": 0.55,
+            "price_out": 1.65,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/mistralai/mistral-large-2512 (endpoint prices: https://openrouter.ai/api/v1/models/mistralai/mistral-large-2512/endpoints)"
+        },
+        {
+            "id": "or-claude-sonnet-5.5-vertex-eu",
+            "role": "reference (premium tier, to see whether a bigger model fixes book existence)",
+            "router": "OpenRouter",
+            "pinned_provider": "Google Vertex AI, Europe (endpoint google-vertex/europe)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "anthropic/claude-sonnet-5.5",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["google-vertex/europe"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                },
+                "reasoning": { "effort": "none" }
+            },
+            "price_in": 2.2,
+            "price_out": 11.0,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/anthropic/claude-sonnet-5.5 (endpoint prices: https://openrouter.ai/api/v1/models/anthropic/claude-sonnet-5.5/endpoints)"
+        },
+        {
+            "id": "or-gemini-3.8-flash-vertex",
+            "role": "reference (premium tier; the pinned endpoint is Vertex global, not EU)",
+            "router": "OpenRouter",
+            "pinned_provider": "Google Vertex AI, global (endpoint google-vertex/global)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "google/gemini-3.8-flash",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["google-vertex/global"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                },
+                "reasoning": { "effort": "none" }
+            },
+            "price_in": 0.75,
+            "price_out": 3.75,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/google/gemini-3.8-flash (endpoint prices: https://openrouter.ai/api/v1/models/google/gemini-3.8-flash/endpoints)"
+        },
+        {
+            "id": "openai-gpt-6-sol-noreason",
+            "role": "reference (premium tier, OpenAI direct, reasoning_effort none)",
+            "router": "OpenAI (direct)",
+            "pinned_provider": "OpenAI",
+            "base_url": null,
+            "model": "gpt-6-sol",
+            "needs_max_completion_tokens": true,
+            "key_env": "OPENAI_API_KEY",
+            "extra_body": { "reasoning_effort": "none" },
+            "price_in": 2.0,
+            "price_out": 10.0,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://openrouter.ai/openai/gpt-6-sol (OpenAI list price; checked on https://openrouter.ai/api/v1/models/openai/gpt-6-sol/endpoints, endpoint openai) - not on the fetched OpenAI pricing page extract"
+        },
+        {
+            "id": "proxy-llama-3.3-70b-via-openrouter",
+            "role": "quality proxy for the blocked Hugging Face route: same model, other host (DeepInfra, US). NOT a candidate route",
+            "router": "OpenRouter",
+            "pinned_provider": "DeepInfra (endpoint deepinfra/turbo)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "meta-llama/llama-3.3-70b-instruct",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["deepinfra/turbo"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                }
+            },
+            "price_in": 0.1,
+            "price_out": 0.32,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct (endpoint prices: https://openrouter.ai/api/v1/models/meta-llama/llama-3.3-70b-instruct/endpoints)"
+        },
+        {
+            "id": "proxy-gpt-oss-120b-via-openrouter",
+            "role": "quality proxy for the blocked Hugging Face route: same model, other host (DeepInfra, US). NOT a candidate route",
+            "router": "OpenRouter",
+            "pinned_provider": "DeepInfra (endpoint deepinfra/bf16)",
+            "base_url": "https://openrouter.ai/api/v1",
+            "model": "openai/gpt-oss-120b",
+            "key_env": "OPENROUTER_KEY",
+            "extra_body": {
+                "provider": {
+                    "only": ["deepinfra/bf16"],
+                    "allow_fallbacks": false,
+                    "data_collection": "deny",
+                    "zdr": true
+                },
+                "reasoning": { "effort": "low" }
+            },
+            "price_in": 0.037,
+            "price_out": 0.17,
+            "router_fee_multiplier": 1.055,
+            "price_url": "https://openrouter.ai/openai/gpt-oss-120b (endpoint prices: https://openrouter.ai/api/v1/models/openai/gpt-oss-120b/endpoints)"
+        },
+        {
+            "id": "hf-gpt-oss-120b-ovhcloud",
+            "role": "candidate",
+            "router": "Hugging Face Inference Providers",
+            "pinned_provider": "OVHcloud AI Endpoints",
+            "base_url": "https://router.huggingface.co/v1",
+            "model": "openai/gpt-oss-120b:ovhcloud",
+            "key_env": "HUGGINGFACE_KEY",
+            "extra_body": null,
+            "price_in": 0.09,
+            "price_out": 0.47,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://router.huggingface.co/v1/models (live listing) and https://huggingface.co/docs/inference-providers/pricing"
+        },
+        {
+            "id": "hf-llama-3.3-70b-ovhcloud",
+            "role": "candidate",
+            "router": "Hugging Face Inference Providers",
+            "pinned_provider": "OVHcloud AI Endpoints",
+            "base_url": "https://router.huggingface.co/v1",
+            "model": "meta-llama/Llama-3.3-70B-Instruct:ovhcloud",
+            "key_env": "HUGGINGFACE_KEY",
+            "extra_body": null,
+            "price_in": 0.74,
+            "price_out": 0.74,
+            "router_fee_multiplier": 1.0,
+            "price_url": "https://router.huggingface.co/v1/models (live listing) and https://huggingface.co/docs/inference-providers/pricing"
+        }
+    ]
+}

@@ -1,0 +1,8084 @@
+{
+ "1984|orwell": {
+  "example": {
+   "author": "George Orwell",
+   "title": "1984"
+  },
+  "matched": "1984 (adaptation)",
+  "source": "open_library",
+  "verified": true
+ },
+ "7 deaths of evelyn hardcastle|turton": {
+  "example": {
+   "author": "Stuart Turton",
+   "title": "The 7½ Deaths of Evelyn Hardcastle"
+  },
+  "matched": "The Seven Deaths of Evelyn Hardcastle",
+  "source": "open_library",
+  "verified": true
+ },
+ "7 habits of highly effective people|covey": {
+  "example": {
+   "author": "Stephen R. Covey",
+   "title": "The 7 Habits of Highly Effective People"
+  },
+  "matched": "The 7 Habits of Highly Effective People",
+  "source": "open_library",
+  "verified": true
+ },
+ "agenzia dei sogni|verso": {
+  "example": {
+   "author": "Francesco Verso",
+   "title": "L’agenzia dei sogni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "agenzia|thompson": {
+  "example": {
+   "author": "Tade Thompson",
+   "title": "L'agenzia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "aires dificiles|grandes": {
+  "example": {
+   "author": "Almudena Grandes",
+   "title": "Los aires difíciles"
+  },
+  "matched": "Los aires difíciles",
+  "source": "open_library",
+  "verified": true
+ },
+ "albergo delle storie sospese|ivey": {
+  "example": {
+   "author": "Eowyn Ivey",
+   "title": "L'albergo delle storie sospese"
+  },
+  "source": null,
+  "verified": false
+ },
+ "albero delle storie perdute|iturbe": {
+  "example": {
+   "author": "Antonio G. Iturbe",
+   "title": "L'albero delle storie perdute"
+  },
+  "source": null,
+  "verified": false
+ },
+ "albero delle storie|moyes": {
+  "example": {
+   "author": "Jojo Moyes",
+   "title": "L'albero delle storie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "albero delle storie|rundell": {
+  "example": {
+   "author": "Katherine Rundell",
+   "title": "L'albero delle storie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "alchemist|coelho": {
+  "example": {
+   "author": "Paulo Coelho",
+   "title": "The Alchemist"
+  },
+  "matched": "The Alchemist - The Pilgrimage - By the River Piedra I Sat Down and Wept",
+  "source": "open_library",
+  "verified": true
+ },
+ "alchimista|coelho": {
+  "example": {
+   "author": "Paulo Coelho",
+   "title": "L'alchimista"
+  },
+  "matched": "El alquimista",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "aleph|borges": {
+  "example": {
+   "author": "Jorge Luis Borges",
+   "title": "El aleph"
+  },
+  "matched": "El Aleph",
+  "source": "open_library",
+  "verified": true
+ },
+ "all good things|mayne": {
+  "example": {
+   "author": "Andrew Mayne",
+   "title": "All Good Things"
+  },
+  "source": null,
+  "verified": false
+ },
+ "alliances of light|simms": {
+  "example": {
+   "author": "Catherine L. Simms",
+   "title": "Alliances of Light"
+  },
+  "source": null,
+  "verified": false
+ },
+ "alquimista|coelho": {
+  "example": {
+   "author": "Paulo Coelho",
+   "title": "El alquimista"
+  },
+  "matched": "El alquimista",
+  "source": "open_library",
+  "verified": true
+ },
+ "amica geniale|ferrante": {
+  "example": {
+   "author": "Elena Ferrante",
+   "title": "L'amica geniale"
+  },
+  "matched": "L'amica geniale",
+  "source": "open_library",
+  "verified": true
+ },
+ "amor en tiempos del colera|marquez": {
+  "example": {
+   "author": "Gabriel García Márquez",
+   "title": "El amor en los tiempos del cólera"
+  },
+  "matched": "El amor en los tiempos del cólera",
+  "source": "open_library",
+  "verified": true
+ },
+ "amore ai tempi del colera|marquez": {
+  "example": {
+   "author": "Gabriel García Márquez",
+   "title": "L’amore ai tempi del colera"
+  },
+  "matched": "El amor en los tiempos del cólera",
+  "source": "open_library",
+  "verified": true
+ },
+ "amore bugiardo|ferrante": {
+  "example": {
+   "author": "Elena Ferrante",
+   "title": "L'amore bugiardo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "amore bugiardo|flynn": {
+  "example": {
+   "author": "Gillian Flynn",
+   "title": "L'amore bugiardo"
+  },
+  "matched": "L'amore bugiardo",
+  "source": "open_library",
+  "verified": true
+ },
+ "amore bugiardo|oliphant": {
+  "example": {
+   "author": "Eleanor Oliphant",
+   "title": "L'amore bugiardo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ancillary justice|leckie": {
+  "example": {
+   "author": "Ann Leckie",
+   "title": "Ancillary Justice"
+  },
+  "matched": "Ancillary Justice",
+  "source": "open_library",
+  "verified": true
+ },
+ "ancora volta stelle|kowal": {
+  "example": {
+   "author": "Mary Robinette Kowal",
+   "title": "Ancora una volta, stelle"
+  },
+  "source": null,
+  "verified": false
+ },
+ "anno con te|center": {
+  "example": {
+   "author": "Katherine Center",
+   "title": "Un anno con te"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ardor|matute": {
+  "example": {
+   "author": "Ana María Matute",
+   "title": "Ardor"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arsenic and adobo|manansala": {
+  "example": {
+   "author": "Mia P. Manansala",
+   "title": "Arsenic and Adobo"
+  },
+  "matched": "Arsenic and Adobo",
+  "source": "open_library",
+  "verified": true
+ },
+ "arte de amar|fromm": {
+  "example": {
+   "author": "Erich Fromm",
+   "title": "El arte de amar"
+  },
+  "matched": "El arte de amar : una investigation sobre la naturaleza del amor",
+  "source": "sbn",
+  "verified": true
+ },
+ "arte de fuga|trentin": {
+  "example": {
+   "author": "Michele Trentin",
+   "title": "El arte de la fuga"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte de prudencia|gracian": {
+  "example": {
+   "author": "Baltasar Gracián",
+   "title": "El arte de la prudencia"
+  },
+  "matched": "El Arte de La Prudencia",
+  "source": "open_library",
+  "verified": true
+ },
+ "arte della gioia|sapienza": {
+  "example": {
+   "author": "Goliarda Sapienza",
+   "title": "L’arte della gioia"
+  },
+  "matched": "L'arte della gioia",
+  "source": "open_library",
+  "verified": true
+ },
+ "arte della manutenzione della bicicletta|plas": {
+  "example": {
+   "author": "Rob van der Plas",
+   "title": "L'arte della manutenzione della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte della manutenzione della motocicletta|pirsig": {
+  "example": {
+   "author": "Robert M. Pirsig",
+   "title": "L'arte della manutenzione della motocicletta"
+  },
+  "matched": "Lo zen e l'arte della manutenzione della motocicletta",
+  "source": "sbn",
+  "verified": true
+ },
+ "arte della pizza|marco": {
+  "example": {
+   "author": "Francesco De Marco",
+   "title": "L'arte della pizza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte di aggiustare cose rotte|bergendorff": {
+  "example": {
+   "author": "Wolfgang Bergendorff",
+   "title": "L’arte di aggiustare le cose rotte"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte di ascoltare battiti d ali|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "L'arte di ascoltare i battiti d'ali"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte di correre sotto pioggia|stein": {
+  "example": {
+   "author": "Garth Stein",
+   "title": "L’arte di correre sotto la pioggia"
+  },
+  "matched": "L'arte di correre sotto la pioggia",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "arte di correre|murakami": {
+  "example": {
+   "author": "Haruki Murakami",
+   "title": "L'arte di correre"
+  },
+  "matched": "L'arte di correre",
+  "source": "open_library",
+  "verified": true
+ },
+ "arte di essere felice|agata": {
+  "example": {
+   "author": "Giovanni D'Agata",
+   "title": "L'arte di essere felice"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte di essere fragili|avenia": {
+  "example": {
+   "author": "Alessandro D'Avenia",
+   "title": "L'arte di essere fragili"
+  },
+  "matched": "L'arte di essere fragili",
+  "source": "open_library",
+  "verified": true
+ },
+ "arte di essere fragili|marcolongo": {
+  "example": {
+   "author": "Andrea Marcolongo",
+   "title": "L'arte di essere fragili"
+  },
+  "source": null,
+  "verified": false
+ },
+ "arte di riparare bicicletta|pirsig": {
+  "example": {
+   "author": "Robert M. Pirsig",
+   "title": "L'arte di riparare una bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "artemis fowl|colfer": {
+  "example": {
+   "author": "Eoin Colfer",
+   "title": "Artemis Fowl"
+  },
+  "matched": "Artemis Fowl",
+  "source": "open_library",
+  "verified": true
+ },
+ "assassinio al faro|basso": {
+  "example": {
+   "author": "Alice Basso",
+   "title": "Assassinio al faro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "assassinio al faro|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Assassinio al faro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "assassino di corte|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "L'Assassino di Corte"
+  },
+  "matched": "L' assassino di corte : romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "assassino reale|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "L'assassino reale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "atomic habits of leadership|clear": {
+  "example": {
+   "author": "James Clear",
+   "title": "Atomic Habits of Leadership"
+  },
+  "source": null,
+  "verified": false
+ },
+ "autofocus|bacigalupi": {
+  "example": {
+   "author": "Paolo Bacigalupi",
+   "title": "Autofocus"
+  },
+  "source": null,
+  "verified": false
+ },
+ "autofocus|kepler": {
+  "example": {
+   "author": "Lars Kepler",
+   "title": "Autofocus"
+  },
+  "source": null,
+  "verified": false
+ },
+ "automate boring stuff with python|sweigart": {
+  "example": {
+   "author": "Al Sweigart",
+   "title": "Automate the Boring Stuff with Python"
+  },
+  "matched": "Automate the Boring Stuff with Python",
+  "source": "open_library",
+  "verified": true
+ },
+ "autonomous|newitz": {
+  "example": {
+   "author": "Annalee Newitz",
+   "title": "Autonomous"
+  },
+  "matched": "Autonomous",
+  "source": "open_library",
+  "verified": true
+ },
+ "avventure di tintin|herge": {
+  "example": {
+   "author": "Hergé",
+   "title": "Le avventure di Tintin: Il segreto del liocorno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "avventure di tom sawyer|twain": {
+  "example": {
+   "author": "Mark Twain",
+   "title": "Le avventure di Tom Sawyer"
+  },
+  "matched": "Le avventure di Tom Sawyer",
+  "source": "open_library",
+  "verified": true
+ },
+ "axiomatic|egan": {
+  "example": {
+   "author": "Greg Egan",
+   "title": "Axiomatic"
+  },
+  "matched": "Axiomatic",
+  "source": "open_library",
+  "verified": true
+ },
+ "bambina che nutriva dati|tanenbaum": {
+  "example": {
+   "author": "Tanenbaum",
+   "title": "La bambina che nutriva i dati"
+  },
+  "source": null,
+  "verified": false
+ },
+ "banda dei brocchi|coe": {
+  "example": {
+   "author": "Jonathan Coe",
+   "title": "La banda dei brocchi"
+  },
+  "matched": "Jonathan Coe",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "banda dei brocchi|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "La banda dei brocchi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "banda dei notturni|auxier": {
+  "example": {
+   "author": "Jonathan Auxier",
+   "title": "La banda dei notturni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "barone rampante|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Il barone rampante"
+  },
+  "matched": "Il barone rampante",
+  "source": "open_library",
+  "verified": true
+ },
+ "bastardi di pizzofalcone|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "I bastardi di Pizzofalcone"
+  },
+  "matched": "Vuoto.Per i bastardi di Pizzofalcone",
+  "source": "open_library",
+  "verified": true
+ },
+ "bella del senor|morales": {
+  "example": {
+   "author": "Alberto Morales",
+   "title": "Bella del Señor"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei cuori solitari|bivald": {
+  "example": {
+   "author": "Katarina Bivald",
+   "title": "La biblioteca dei cuori solitari"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei cuori sospesi|adams": {
+  "example": {
+   "author": "Sara Nisha Adams",
+   "title": "La biblioteca dei cuori sospesi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei cuori sospesi|bonidan": {
+  "example": {
+   "author": "Cathy Bonidan",
+   "title": "La biblioteca dei cuori sospesi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei cuori sospesi|bonvicini": {
+  "example": {
+   "author": "Caterina Bonvicini",
+   "title": "La biblioteca dei cuori sospesi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei cuori sospesi|sobral": {
+  "example": {
+   "author": "Catarina Sobral",
+   "title": "La biblioteca dei cuori sospesi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei giusti consigli|adams": {
+  "example": {
+   "author": "Sara Nisha Adams",
+   "title": "La biblioteca dei giusti consigli"
+  },
+  "matched": "La biblioteca dei giusti consigli",
+  "source": "sbn",
+  "verified": true
+ },
+ "biblioteca dei nuovi inizi|aoyama": {
+  "example": {
+   "author": "Michiko Aoyama",
+   "title": "La biblioteca dei nuovi inizi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca dei sussurri|aoyama": {
+  "example": {
+   "author": "Michiko Aoyama",
+   "title": "La biblioteca dei sussurri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca della mezzanotte|haig": {
+  "example": {
+   "author": "Matt Haig",
+   "title": "La Biblioteca della Mezzanotte"
+  },
+  "source": null,
+  "verified": false
+ },
+ "biblioteca di mezzanotte|haig": {
+  "example": {
+   "author": "Matt Haig",
+   "title": "La biblioteca di mezzanotte"
+  },
+  "matched": "La biblioteca di mezzanotte",
+  "source": "sbn",
+  "verified": true
+ },
+ "bicicletta degli ineluttabili|giordano": {
+  "example": {
+   "author": "Paolo Giordano",
+   "title": "La bicicletta degli ineluttabili"
+  },
+  "source": null,
+  "verified": false
+ },
+ "bicicletta di bartali|matteini": {
+  "example": {
+   "author": "Matteo Matteini",
+   "title": "La bicicletta di Bartali"
+  },
+  "source": null,
+  "verified": false
+ },
+ "bicicletta verde|faletti": {
+  "example": {
+   "author": "Giorgio Faletti",
+   "title": "La bicicletta verde"
+  },
+  "source": null,
+  "verified": false
+ },
+ "bicicletta|wells": {
+  "example": {
+   "author": "H. G. Wells",
+   "title": "La bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "birraio di preston|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il birraio di Preston"
+  },
+  "matched": "Il birraio di Preston",
+  "source": "open_library",
+  "verified": true
+ },
+ "bohumil|bilenchi": {
+  "example": {
+   "author": "Romano Bilenchi",
+   "title": "Bohumil"
+  },
+  "source": null,
+  "verified": false
+ },
+ "boutique del mistero|buzzati": {
+  "example": {
+   "author": "Dino Buzzati",
+   "title": "La boutique del mistero"
+  },
+  "matched": "La Boutique del mistero",
+  "source": "open_library",
+  "verified": true
+ },
+ "brain that changes itself|doidge": {
+  "example": {
+   "author": "Norman Doidge",
+   "title": "The Brain That Changes Itself"
+  },
+  "matched": "The Brain That Changes Itself",
+  "source": "open_library",
+  "verified": true
+ },
+ "breve storia della mente|anolli": {
+  "example": {
+   "author": "Luigi Anolli",
+   "title": "Breve storia della mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "breve storia della mente|ricard": {
+  "example": {
+   "author": "Matthieu Ricard",
+   "title": "Breve storia della mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "brevi risposte grandi domande|hawking": {
+  "example": {
+   "author": "Stephen Hawking",
+   "title": "Brevi risposte a grandi domande"
+  },
+  "source": null,
+  "verified": false
+ },
+ "brief history of time|hawking": {
+  "example": {
+   "author": "Stephen Hawking",
+   "title": "A Brief History of Time"
+  },
+  "matched": "A Brief History of Time",
+  "source": "open_library",
+  "verified": true
+ },
+ "briscola in cinque|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "La briscola in cinque"
+  },
+  "matched": "La briscola in cinque",
+  "source": "open_library",
+  "verified": true
+ },
+ "brutta storia|lucarelli": {
+  "example": {
+   "author": "Carlo Lucarelli",
+   "title": "Una brutta storia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "bussola d oro|pullman": {
+  "example": {
+   "author": "Philip Pullman",
+   "title": "La bussola d'oro"
+  },
+  "matched": "Luces del Norte",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "caballero de armadura oxidada|fisher": {
+  "example": {
+   "author": "Robert Fisher",
+   "title": "El caballero de la armadura oxidada"
+  },
+  "matched": "El Caballero de La Armadura Oxidada",
+  "source": "open_library",
+  "verified": true
+ },
+ "caccia di padre|desiati": {
+  "example": {
+   "author": "Mario Desiati",
+   "title": "A caccia di un padre"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cafe de manana|sampedro": {
+  "example": {
+   "author": "José Luis Sampedro",
+   "title": "El café de la mañana"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caminante|machado": {
+  "example": {
+   "author": "Antonio Machado",
+   "title": "El caminante"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cane dei baskerville|doyle": {
+  "example": {
+   "author": "Arthur Conan Doyle",
+   "title": "Il cane dei Baskerville"
+  },
+  "matched": "The Hound of the Baskervilles",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "cane di terracotta|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il cane di terracotta"
+  },
+  "matched": "Il cane di terracotta",
+  "source": "open_library",
+  "verified": true
+ },
+ "cartas joven poeta|rilke": {
+  "example": {
+   "author": "Rainer Maria Rilke",
+   "title": "Cartas a un joven poeta"
+  },
+  "matched": "Cartas a un Joven Poeta",
+  "source": "open_library",
+  "verified": true
+ },
+ "casa de espiritus|allende": {
+  "example": {
+   "author": "Isabel Allende",
+   "title": "La casa de los espíritus"
+  },
+  "matched": "La casa de los espíritus",
+  "source": "open_library",
+  "verified": true
+ },
+ "casa degli spiriti|allende": {
+  "example": {
+   "author": "Isabel Allende",
+   "title": "La casa degli spiriti"
+  },
+  "matched": "La casa degli spiriti",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "casa dei doganieri|buzzati": {
+  "example": {
+   "author": "Dino Buzzati",
+   "title": "La casa dei doganieri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa dei sogni|carrisi": {
+  "example": {
+   "author": "Donato Carrisi",
+   "title": "La casa dei sogni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa del tempo sospeso|giordano": {
+  "example": {
+   "author": "Mario Giordano",
+   "title": "La casa del tempo sospeso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa della paura|corona": {
+  "example": {
+   "author": "Mauro Corona",
+   "title": "La casa della paura"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa delle belle addormentate|inoue": {
+  "example": {
+   "author": "Yasushi Inoue",
+   "title": "La casa delle belle addormentate"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa delle belle addormentate|kawabata": {
+  "example": {
+   "author": "Yasunari Kawabata",
+   "title": "La casa delle belle addormentate"
+  },
+  "matched": "La casa delle belle addormentate",
+  "source": "open_library",
+  "verified": true
+ },
+ "casa delle foglie|danielewski": {
+  "example": {
+   "author": "Mark Z. Danielewski",
+   "title": "La casa delle foglie"
+  },
+  "matched": "Casa di foglie",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "casa delle onde|chase": {
+  "example": {
+   "author": "Samantha Chase",
+   "title": "La casa delle onde"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa delle onde|ekback": {
+  "example": {
+   "author": "Cecilia Ekbäck",
+   "title": "La casa delle onde"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa delle ragazze|jewell": {
+  "example": {
+   "author": "Lisa Jewell",
+   "title": "La casa delle ragazze"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa delle ragazze|mckenzie": {
+  "example": {
+   "author": "Sophie McKenzie",
+   "title": "La casa delle ragazze"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa di annabel|straub": {
+  "example": {
+   "author": "Emma Straub",
+   "title": "A casa di Annabel"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa di ringhiera|recami": {
+  "example": {
+   "author": "Francesco Recami",
+   "title": "La casa di ringhiera"
+  },
+  "matched": "La casa di ringhiera",
+  "source": "open_library",
+  "verified": true
+ },
+ "casa en mango street|cisneros": {
+  "example": {
+   "author": "Sandra Cisneros",
+   "title": "La casa en Mango Street"
+  },
+  "matched": "The House on Mango Street",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "casa in collina|pavese": {
+  "example": {
+   "author": "Cesare Pavese",
+   "title": "La casa in collina"
+  },
+  "matched": "La casa in collina",
+  "source": "open_library",
+  "verified": true
+ },
+ "casa nella cerulea onda|klune": {
+  "example": {
+   "author": "TJ Klune",
+   "title": "La casa nella cerulea onda"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa nella cerulean sea|klune": {
+  "example": {
+   "author": "TJ Klune",
+   "title": "La casa nella cerulean sea"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa nella collina dei ciliegi|": {
+  "example": {
+   "author": "乔凡娜·加尔贝利",
+   "title": "La casa nella collina dei ciliegi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa nella mare ceruleo|klune": {
+  "example": {
+   "author": "TJ Klune",
+   "title": "La casa nella mare ceruleo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa per due|leary": {
+  "example": {
+   "author": "Beth O'Leary",
+   "title": "Una casa per due"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa piena di gente|straub": {
+  "example": {
+   "author": "Emma Straub",
+   "title": "Una casa piena di gente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa piena di libri|fadiman": {
+  "example": {
+   "author": "Anne Fadiman",
+   "title": "Una casa piena di libri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "casa sul mare celeste|klune": {
+  "example": {
+   "author": "TJ Klune",
+   "title": "La casa sul mare celeste"
+  },
+  "matched": "La casa sul mare celeste",
+  "source": "sbn",
+  "verified": true
+ },
+ "casa sull albero di 13 piani|griffiths": {
+  "example": {
+   "author": "Andy Griffiths",
+   "title": "La casa sull'albero di 13 piani"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso battiston|bacone": {
+  "example": {
+   "author": "Federico Bacone",
+   "title": "Il caso Battiston"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso complicato per commissario bordelli|vichi": {
+  "example": {
+   "author": "Marco Vichi",
+   "title": "Un caso complicato per il commissario Bordelli"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso del cane nero|fitzgerald": {
+  "example": {
+   "author": "Conor Fitzgerald",
+   "title": "Il caso del cane nero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso del lago di garda|recami": {
+  "example": {
+   "author": "Francesco Recami",
+   "title": "Il caso del lago di Garda"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso di coscienza|manzini": {
+  "example": {
+   "author": "Antonio Manzini",
+   "title": "Un caso di coscienza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso per commissario soneri|varesi": {
+  "example": {
+   "author": "Valerio Varesi",
+   "title": "Un caso per il commissario Soneri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso per maresciallo casati|robecchi": {
+  "example": {
+   "author": "Alessandro Robecchi",
+   "title": "Un caso per il maresciallo Casati"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso tosatti|andrea": {
+  "example": {
+   "author": "Luca D'Andrea",
+   "title": "Il caso Tosatti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso van baghen|angelis": {
+  "example": {
+   "author": "Augusto De Angelis",
+   "title": "Il caso Van Baghen"
+  },
+  "source": null,
+  "verified": false
+ },
+ "caso vanetta|angelis": {
+  "example": {
+   "author": "Augusto De Angelis",
+   "title": "Il caso Vanetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cat who went into oven|unknown": {
+  "example": {
+   "author": "Unknown",
+   "title": "The Cat Who Went Into the Oven"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cat who went underground|braun": {
+  "example": {
+   "author": "Lilian Jackson Braun",
+   "title": "The Cat Who Went Underground"
+  },
+  "matched": "The Cat Who Went Underground",
+  "source": "open_library",
+  "verified": true
+ },
+ "catcher in rye|salinger": {
+  "example": {
+   "author": "J.D. Salinger",
+   "title": "The Catcher in the Rye"
+  },
+  "matched": "The Catcher in the Rye",
+  "source": "open_library",
+  "verified": true
+ },
+ "catedral del mar|falcones": {
+  "example": {
+   "author": "Ildefonso Falcones",
+   "title": "La catedral del mar"
+  },
+  "matched": "La catedral del mar",
+  "source": "open_library",
+  "verified": true
+ },
+ "cavaliere inesistente|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Il cavaliere inesistente"
+  },
+  "matched": "Il cavaliere inesistente",
+  "source": "open_library",
+  "verified": true
+ },
+ "cementerio de libros olvidados|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "El cementerio de los libros olvidados"
+  },
+  "matched": "The Cemetery of Forgotten Books",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "cena|koch": {
+  "example": {
+   "author": "Herman Koch",
+   "title": "La cena"
+  },
+  "matched": "La cena",
+  "source": "open_library",
+  "verified": true
+ },
+ "cent anni di solitudine|marquez": {
+  "example": {
+   "author": "Gabriel García Márquez",
+   "title": "Cent'anni di solitudine"
+  },
+  "matched": "Cent'anni di solitudine",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "cervello che apprende|zull": {
+  "example": {
+   "author": "James E. Zull",
+   "title": "Il cervello che apprende"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello che cambia se stesso|doidge": {
+  "example": {
+   "author": "Norman Doidge",
+   "title": "Il cervello che cambia se stesso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello che cambia|doidge": {
+  "example": {
+   "author": "Norman Doidge",
+   "title": "Il cervello che cambia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello che cura|barrett": {
+  "example": {
+   "author": "Lisa Feldman Barrett",
+   "title": "Il cervello che cura"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello che cura|dehaene": {
+  "example": {
+   "author": "Stanislas Dehaene",
+   "title": "Il cervello che cura"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello come funziona nostra mente|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello. Come funziona la nostra mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello di buddha|mendius": {
+  "example": {
+   "author": "Rick Hanson e Richard Mendius",
+   "title": "Il cervello di Buddha"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello di hugo|pinna": {
+  "example": {
+   "author": "Lorenzo Pinna",
+   "title": "Il cervello di Hugo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello di hume|vallortigara": {
+  "example": {
+   "author": "Giorgio Vallortigara",
+   "title": "Il cervello di Hume"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e anima|feldman": {
+  "example": {
+   "author": "Ruth Feldman",
+   "title": "Il cervello e l'anima"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e coscienza guida introduttiva|koch": {
+  "example": {
+   "author": "Christof Koch",
+   "title": "Il cervello e la coscienza. Una guida introduttiva"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e coscienza|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "Il cervello e la coscienza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e mente|ammaniti": {
+  "example": {
+   "author": "Mario Ammaniti",
+   "title": "Il cervello e la mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e mente|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello e la mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e mondo|sacks": {
+  "example": {
+   "author": "Oliver Sacks",
+   "title": "Il cervello e il mondo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e sua mente|edelman": {
+  "example": {
+   "author": "Gerald M. Edelman",
+   "title": "Il cervello e la sua mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e sua storia|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello e la sua storia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello e universo mentale|dehaene": {
+  "example": {
+   "author": "Stanislas Dehaene",
+   "title": "Il cervello e l'universo mentale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello emotivo|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "Il cervello emotivo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello emotivo|ledoux": {
+  "example": {
+   "author": "Joseph LeDoux",
+   "title": "Il cervello emotivo"
+  },
+  "matched": "Il cervello emotivo : alle origini delle emozioni",
+  "source": "sbn",
+  "verified": true
+ },
+ "cervello errante|montalcini": {
+  "example": {
+   "author": "Rita Levi-Montalcini",
+   "title": "Il cervello errante"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello imperfetto|burnett": {
+  "example": {
+   "author": "Dean Burnett",
+   "title": "Il cervello imperfetto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello infinito|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello infinito"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello istruzioni per uso|doidge": {
+  "example": {
+   "author": "Norman Doidge",
+   "title": "Il cervello. Istruzioni per l’uso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello istruzioni per uso|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello. Istruzioni per l'uso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello istruzioni per uso|ratey": {
+  "example": {
+   "author": "John J. Ratey",
+   "title": "Il cervello. Istruzioni per l’uso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello manuale dell utente|magrini": {
+  "example": {
+   "author": "Marco Magrini",
+   "title": "Il cervello. Manuale dell’utente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello nostra storia|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello. La nostra storia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello storia di organo|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Cervello. La storia di un organo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello|barrett": {
+  "example": {
+   "author": "Lisa Feldman Barrett",
+   "title": "Il cervello: La scatola nera della mente umana"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cervello|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Il cervello: Una biografia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclista e arte di riparare|bianchi": {
+  "example": {
+   "author": "Luca Bianchi",
+   "title": "Il ciclista e l'arte di riparare: Guide pratiche per ogni strada"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclista|cutrera": {
+  "example": {
+   "author": "Ricardo Cutrera",
+   "title": "Il ciclista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclista|fournel": {
+  "example": {
+   "author": "Paul Fournel",
+   "title": "Il ciclista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo dei robot|asimov": {
+  "example": {
+   "author": "Isaac Asimov",
+   "title": "Il ciclo dei robot"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo dell assassinio|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "Il ciclo dell'Assassinio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo dell eredita|paolini": {
+  "example": {
+   "author": "Christopher Paolini",
+   "title": "Il ciclo dell'Eredità"
+  },
+  "matched": "Ciclo dell'Eredità",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "ciclo dell infinito|may": {
+  "example": {
+   "author": "Julian May",
+   "title": "Il ciclo dell'infinito"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di earthsea|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "Il Ciclo di Earthsea"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di ilrin|brown": {
+  "example": {
+   "author": "Ryk Brown",
+   "title": "Il Ciclo di Ilrin: La Sfera del Dragone"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di luna|mcdonald": {
+  "example": {
+   "author": "Ian McDonald",
+   "title": "Il ciclo di Luna - Luna: Nuova Luna"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di malazan|erikson": {
+  "example": {
+   "author": "Steven Erikson",
+   "title": "Il ciclo di Malazan: I giardini della luna"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di murderbot|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "Il ciclo di Murderbot — Starter Kit (Ciclo di Murderbot)"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ciclo di terramare|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "Il ciclo di Terramare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cielo di bodrum|sini": {
+  "example": {
+   "author": "Gaetano Sini",
+   "title": "Il cielo di Bodrum"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cio che inferno non e|avenia": {
+  "example": {
+   "author": "Alessandro D'Avenia",
+   "title": "Ciò che inferno non è"
+  },
+  "matched": "Cio' che inferno non e'",
+  "source": "open_library",
+  "verified": true
+ },
+ "circo della farfalla|buzzati": {
+  "example": {
+   "author": "Dino Buzzati",
+   "title": "Il Circo della Farfalla"
+  },
+  "source": null,
+  "verified": false
+ },
+ "circo della notte|morgenstern": {
+  "example": {
+   "author": "Erin Morgenstern",
+   "title": "Il circo della notte"
+  },
+  "matched": "Il circo della notte",
+  "source": "open_library",
+  "verified": true
+ },
+ "circolo chiuso|eggers": {
+  "example": {
+   "author": "Dave Eggers",
+   "title": "Il circolo chiuso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "citta dei mostri|ait": {
+  "example": {
+   "author": "Lorenzo Ait",
+   "title": "La città dei mostri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "citta e citta|mieville": {
+  "example": {
+   "author": "China Miéville",
+   "title": "La città e la città"
+  },
+  "matched": "La città e la città : romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "citta invisibili|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Le città invisibili"
+  },
+  "matched": "Le città invisibili",
+  "source": "open_library",
+  "verified": true
+ },
+ "ciudad de prodigios|mendoza": {
+  "example": {
+   "author": "Eduardo Mendoza",
+   "title": "La ciudad de los prodigios"
+  },
+  "matched": "La ciudad de los prodigios",
+  "source": "open_library",
+  "verified": true
+ },
+ "ciudad y perros|llosa": {
+  "example": {
+   "author": "Mario Vargas Llosa",
+   "title": "La ciudad y los perros"
+  },
+  "matched": "La ciudad y los perros",
+  "source": "open_library",
+  "verified": true
+ },
+ "clean code|martin": {
+  "example": {
+   "author": "Robert C. Martin",
+   "title": "Clean Code: A Handbook of Agile Software Craftsmanship"
+  },
+  "matched": "Clean Code",
+  "source": "open_library",
+  "verified": true
+ },
+ "closed and common orbit|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "A Closed and Common Orbit"
+  },
+  "matched": "A Closed and Common Orbit",
+  "source": "open_library",
+  "verified": true
+ },
+ "cloud atlas|mitchell": {
+  "example": {
+   "author": "David Mitchell",
+   "title": "Cloud Atlas"
+  },
+  "matched": "Cloud Atlas",
+  "source": "open_library",
+  "verified": true
+ },
+ "club dei bonsai|mari": {
+  "example": {
+   "author": "Michele Mari",
+   "title": "Il club dei bonsai"
+  },
+  "source": null,
+  "verified": false
+ },
+ "club dei cuochi di strada|bourdain": {
+  "example": {
+   "author": "Anthony Bourdain",
+   "title": "Il club dei cuochi di strada"
+  },
+  "source": null,
+  "verified": false
+ },
+ "club dei delitti del giovedi|osman": {
+  "example": {
+   "author": "Richard Osman",
+   "title": "Il club dei delitti del giovedì"
+  },
+  "matched": "Il club dei delitti del giovedì (romanzo)",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "club dei lettori solitari|petti": {
+  "example": {
+   "author": "Lavinia Petti",
+   "title": "Il club dei lettori solitari"
+  },
+  "source": null,
+  "verified": false
+ },
+ "club dei libri segreti|adams": {
+  "example": {
+   "author": "Lyssa Kay Adams",
+   "title": "Il club dei libri segreti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "club dei ricordi perduti|hood": {
+  "example": {
+   "author": "Ann Hood",
+   "title": "Il club dei ricordi perduti"
+  },
+  "matched": "Il club dei ricordi perduti : romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "club del libro e della torta di bucce di patata di guernsey|barrows": {
+  "example": {
+   "author": "Mary Ann Shaffer e Annie Barrows",
+   "title": "Il club del libro e della torta di bucce di patata di Guernsey"
+  },
+  "matched": "Il club del libro e della torta di bucce di patata di Guernsey",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "club delle promesse del te|barrows": {
+  "example": {
+   "author": "Mary Ann Shaffer e Annie Barrows",
+   "title": "Il club delle promesse del tè"
+  },
+  "source": null,
+  "verified": false
+ },
+ "coaching habit|stanier": {
+  "example": {
+   "author": "Michael Bungay Stanier",
+   "title": "The Coaching Habit"
+  },
+  "matched": "The coaching habit",
+  "source": "open_library",
+  "verified": true
+ },
+ "code book|singh": {
+  "example": {
+   "author": "Simon Singh",
+   "title": "The Code Book"
+  },
+  "matched": "The Code Book",
+  "source": "open_library",
+  "verified": true
+ },
+ "cognizione del dolore|gadda": {
+  "example": {
+   "author": "Carlo Emilio Gadda",
+   "title": "La cognizione del dolore"
+  },
+  "matched": "La cognizione del dolore",
+  "source": "open_library",
+  "verified": true
+ },
+ "colina de fusilados|mendoza": {
+  "example": {
+   "author": "Eduardo Mendoza",
+   "title": "La colina de los fusilados"
+  },
+  "source": null,
+  "verified": false
+ },
+ "collega tatuata|oggero": {
+  "example": {
+   "author": "Margherita Oggero",
+   "title": "La collega tatuata"
+  },
+  "matched": "La Collega Tatuata",
+  "source": "open_library",
+  "verified": true
+ },
+ "colmena|cela": {
+  "example": {
+   "author": "Camilo José Cela",
+   "title": "La colmena"
+  },
+  "matched": "LA Colmena",
+  "source": "open_library",
+  "verified": true
+ },
+ "come cervello crea nostra realta|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Come il cervello crea la nostra realtà"
+  },
+  "source": null,
+  "verified": false
+ },
+ "come cervello crea nostra realta|seth": {
+  "example": {
+   "author": "Anil Seth",
+   "title": "Come il cervello crea la nostra realtà"
+  },
+  "source": null,
+  "verified": false
+ },
+ "come pensa cervello|ramachandran": {
+  "example": {
+   "author": "Vilayanur S. Ramachandran",
+   "title": "Come pensa il cervello"
+  },
+  "source": null,
+  "verified": false
+ },
+ "come riparare bicicletta|downs": {
+  "example": {
+   "author": "Todd Downs",
+   "title": "Come riparare la bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "come si cambia gomma bucata|giovanni": {
+  "example": {
+   "author": "Giovanni B.",
+   "title": "Come si cambia una gomma bucata"
+  },
+  "source": null,
+  "verified": false
+ },
+ "come si cambia gomma bucata|rossi": {
+  "example": {
+   "author": "Giovanni Rossi",
+   "title": "Come si cambia una gomma bucata"
+  },
+  "source": null,
+  "verified": false
+ },
+ "commissario bordelli|vichi": {
+  "example": {
+   "author": "Marco Vichi",
+   "title": "Il commissario Bordelli"
+  },
+  "matched": "Il Commissario Bordelli",
+  "source": "open_library",
+  "verified": true
+ },
+ "commissario brunetti e mistero del cielo|leon": {
+  "example": {
+   "author": "Donna Leon",
+   "title": "Il commissario Brunetti e il mistero del cielo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "commissario de luca|lucarelli": {
+  "example": {
+   "author": "Carlo Lucarelli",
+   "title": "Il commissario De Luca"
+  },
+  "matched": "Il commissario De Luca",
+  "source": "open_library",
+  "verified": true
+ },
+ "commissario de vincenzi|angelis": {
+  "example": {
+   "author": "Augusto De Angelis",
+   "title": "Il commissario De Vincenzi"
+  },
+  "matched": "Il commissario De Vincenzi",
+  "source": "open_library",
+  "verified": true
+ },
+ "commissario montalbano e figlio del re|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il commissario Montalbano e il figlio del re"
+  },
+  "source": null,
+  "verified": false
+ },
+ "commissario montalbano forma dell acqua|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il commissario Montalbano. La forma dell'acqua"
+  },
+  "source": null,
+  "verified": false
+ },
+ "commissario ricciardi|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "Il commissario Ricciardi"
+  },
+  "matched": "Il commissario Ricciardi",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "complete guide to australia|donnell": {
+  "example": {
+   "author": "Megan O'Donnell",
+   "title": "The Complete Guide to Australia: History, Culture, and Travel"
+  },
+  "source": null,
+  "verified": false
+ },
+ "complete manual of things that might kill you|knock": {
+  "example": {
+   "author": "Knock Knock",
+   "title": "The Complete Manual of Things That Might Kill You"
+  },
+  "matched": "The Complete Manual of Things That Might Kill You",
+  "source": "open_library",
+  "verified": true
+ },
+ "conformista|moravia": {
+  "example": {
+   "author": "Alberto Moravia",
+   "title": "Il conformista"
+  },
+  "matched": "Il conformista",
+  "source": "open_library",
+  "verified": true
+ },
+ "coppia dell interno 2b|lapena": {
+  "example": {
+   "author": "Shari Lapena",
+   "title": "La coppia dell'interno 2B"
+  },
+  "source": null,
+  "verified": false
+ },
+ "coppia dell interno 9|paris": {
+  "example": {
+   "author": "B.A. Paris",
+   "title": "La coppia dell'interno 9"
+  },
+  "source": null,
+  "verified": false
+ },
+ "coppia della porta accanto|lapena": {
+  "example": {
+   "author": "Shari Lapena",
+   "title": "La coppia della porta accanto"
+  },
+  "matched": "La coppia della porta accanto",
+  "source": "sbn",
+  "verified": true
+ },
+ "coppia perfetta|paris": {
+  "example": {
+   "author": "B.A. Paris",
+   "title": "La coppia perfetta"
+  },
+  "matched": "La coppia perfetta : [o la bugia perfetta?] : romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "coppia perfetta|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "La coppia perfetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "coraggio di essere felici|accardo": {
+  "example": {
+   "author": "Lucia Accardo",
+   "title": "Il coraggio di essere felici"
+  },
+  "source": null,
+  "verified": false
+ },
+ "corazon helado|grandes": {
+  "example": {
+   "author": "Almudena Grandes",
+   "title": "El corazón helado"
+  },
+  "matched": "El corazón helado",
+  "source": "open_library",
+  "verified": true
+ },
+ "correzioni|franzen": {
+  "example": {
+   "author": "Jonathan Franzen",
+   "title": "Le correzioni"
+  },
+  "matched": "Las correcciones",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "corsa tutta sbagliata|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "Una corsa tutta sbagliata"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cosa divertente che non faro mai piu|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "Una cosa divertente che non farò mai più"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cosa divertente che non faro mai piu|wallace": {
+  "example": {
+   "author": "David Foster Wallace",
+   "title": "Una cosa divertente che non farò mai più"
+  },
+  "matched": "Una cosa divertente che non farò mai più",
+  "source": "open_library",
+  "verified": true
+ },
+ "cosas que perdimos en fuego|enriquez": {
+  "example": {
+   "author": "Mariana Enríquez",
+   "title": "Las cosas que perdimos en el fuego"
+  },
+  "matched": "Las cosas que perdimos en el fuego",
+  "source": "open_library",
+  "verified": true
+ },
+ "coscienza di zeno|svevo": {
+  "example": {
+   "author": "Italo Svevo",
+   "title": "La coscienza di Zeno"
+  },
+  "matched": "La Coscienza Di Zeno",
+  "source": "open_library",
+  "verified": true
+ },
+ "coscienza e cervello|dehaene": {
+  "example": {
+   "author": "Stanislas Dehaene",
+   "title": "La coscienza e il cervello"
+  },
+  "source": null,
+  "verified": false
+ },
+ "coscienza in coma|tononi": {
+  "example": {
+   "author": "Guilio Tononi",
+   "title": "La coscienza in coma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cotswold mysteries|tope": {
+  "example": {
+   "author": "Rebecca Tope",
+   "title": "The Cotswold Mysteries"
+  },
+  "source": null,
+  "verified": false
+ },
+ "crimine imperfetto|carofiglio": {
+  "example": {
+   "author": "Gianrico Carofiglio",
+   "title": "Crimine imperfetto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cronaca di morte annunciata|marquez": {
+  "example": {
+   "author": "Gabriel García Márquez",
+   "title": "Cronaca di una morte annunciata"
+  },
+  "matched": "Cronaca di una morte annunciata",
+  "source": "open_library",
+  "verified": true
+ },
+ "cronache del ghiaccio e del fuoco|martin": {
+  "example": {
+   "author": "George R. R. Martin",
+   "title": "Le cronache del ghiaccio e del fuoco: Il trono di spade"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cronache di fitzchivalry|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "Le cronache di Fitzchivalry: L'assassino di corte"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cronache di marte|bradbury": {
+  "example": {
+   "author": "Ray Bradbury",
+   "title": "Le Cronache di Marte"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cronache di narnia|lewis": {
+  "example": {
+   "author": "C.S. Lewis",
+   "title": "Le cronache di Narnia: Il leone, la strega e l'armadio"
+  },
+  "matched": "Le cronache di Narnia",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "cuaderno de maya|allende": {
+  "example": {
+   "author": "Isabel Allende",
+   "title": "El cuaderno de Maya"
+  },
+  "matched": "El cuaderno de Maya",
+  "source": "open_library",
+  "verified": true
+ },
+ "cucina italiana|boni": {
+  "example": {
+   "author": "Ada Boni",
+   "title": "La cucina italiana"
+  },
+  "source": null,
+  "verified": false
+ },
+ "cuckoo s calling|galbraith": {
+  "example": {
+   "author": "Robert Galbraith",
+   "title": "The Cuckoo's Calling"
+  },
+  "matched": "The Cuckoo's Calling",
+  "source": "open_library",
+  "verified": true
+ },
+ "cuentos de buenas noches para ninas rebeldes|cavallo": {
+  "example": {
+   "author": "Elena Favilli y Francesca Cavallo",
+   "title": "Cuentos de buenas noches para niñas rebeldes"
+  },
+  "matched": "Cuentos de buenas noches para niñas rebeldes 2",
+  "source": "open_library",
+  "verified": true
+ },
+ "cuentos de selva|quiroga": {
+  "example": {
+   "author": "Horacio Quiroga",
+   "title": "Cuentos de la selva"
+  },
+  "matched": "Cuentos de la selva",
+  "source": "open_library",
+  "verified": true
+ },
+ "culture code|coyle": {
+  "example": {
+   "author": "Daniel Coyle",
+   "title": "The Culture Code"
+  },
+  "matched": "The culture code",
+  "source": "open_library",
+  "verified": true
+ },
+ "cuore dei giorni|comencini": {
+  "example": {
+   "author": "Cristina Comencini",
+   "title": "Il cuore dei giorni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "curioso incidente del perro medianoche|haddon": {
+  "example": {
+   "author": "Mark Haddon",
+   "title": "El curioso incidente del perro a medianoche"
+  },
+  "matched": "El curioso incidente del perro a medianoche",
+  "source": "open_library",
+  "verified": true
+ },
+ "curious beginning|raybourn": {
+  "example": {
+   "author": "Deanna Raybourn",
+   "title": "A Curious Beginning"
+  },
+  "matched": "A curious beginning",
+  "source": "open_library",
+  "verified": true
+ },
+ "curious incident of dog in night time|haddon": {
+  "example": {
+   "author": "Mark Haddon",
+   "title": "The Curious Incident of the Dog in the Night-Time"
+  },
+  "matched": "The Curious Incident of the Dog in the Night-Time",
+  "source": "open_library",
+  "verified": true
+ },
+ "curious incident of dog in night time|world": {
+  "example": {
+   "author": "Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.",
+   "title": "The Curious Incident of the Dog in the Night-Time"
+  },
+  "source": null,
+  "verified": false
+ },
+ "danza delle libellule|carofiglio": {
+  "example": {
+   "author": "Gianrico Carofiglio",
+   "title": "La danza delle libellule"
+  },
+  "source": null,
+  "verified": false
+ },
+ "dare to lead|brown": {
+  "example": {
+   "author": "Brené Brown",
+   "title": "Dare to Lead"
+  },
+  "matched": "Dare to lead",
+  "source": "open_library",
+  "verified": true
+ },
+ "death at vicarage|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Death at the Vicarage"
+  },
+  "source": null,
+  "verified": false
+ },
+ "death on nile|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Death on the Nile"
+  },
+  "matched": "Death on the Nile",
+  "source": "open_library",
+  "verified": true
+ },
+ "deep work|newport": {
+  "example": {
+   "author": "Cal Newport",
+   "title": "Deep Work"
+  },
+  "matched": "Deep Work",
+  "source": "open_library",
+  "verified": true
+ },
+ "delitti del barlume|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "I delitti del BarLume"
+  },
+  "matched": "I delitti del BarLume",
+  "source": "open_library",
+  "verified": true
+ },
+ "delitti in alto mare|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Delitti in alto mare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "delitti in forma di sonetto|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Delitti in forma di sonetto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "delitto fatto in casa|manzini": {
+  "example": {
+   "author": "Antonio Manzini",
+   "title": "Un delitto fatto in casa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "delitto per natale|cataldo": {
+  "example": {
+   "author": "Giancarlo De Cataldo",
+   "title": "Un delitto per Natale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "deserto dei tartari|buzzati": {
+  "example": {
+   "author": "Dino Buzzati",
+   "title": "Il deserto dei Tartari"
+  },
+  "matched": "Il deserto dei Tartari",
+  "source": "open_library",
+  "verified": true
+ },
+ "detectives salvajes|bolano": {
+  "example": {
+   "author": "Roberto Bolaño",
+   "title": "Los detectives salvajes"
+  },
+  "matched": "Los detectives salvajes",
+  "source": "open_library",
+  "verified": true
+ },
+ "dia de manana|pison": {
+  "example": {
+   "author": "Ignacio Martínez de Pisón",
+   "title": "El día de mañana"
+  },
+  "matched": "El día de mañana",
+  "source": "open_library",
+  "verified": true
+ },
+ "diamond age|stephenson": {
+  "example": {
+   "author": "Neal Stephenson",
+   "title": "The Diamond Age"
+  },
+  "matched": "The Diamond Age",
+  "source": "open_library",
+  "verified": true
+ },
+ "diario di automa guastafeste|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "Il diario di un automa guastafeste"
+  },
+  "source": null,
+  "verified": false
+ },
+ "diario di greg|kinney": {
+  "example": {
+   "author": "Jeff Kinney",
+   "title": "Il diario di Greg"
+  },
+  "source": null,
+  "verified": false
+ },
+ "diario di ragazzino fifone|kinney": {
+  "example": {
+   "author": "Jeff Kinney",
+   "title": "Il diario di un ragazzino fifone"
+  },
+  "source": null,
+  "verified": false
+ },
+ "diary of nobody|grossmith": {
+  "example": {
+   "author": "George and Weedon Grossmith",
+   "title": "The Diary of a Nobody"
+  },
+  "matched": "The diary of a nobody",
+  "source": "open_library",
+  "verified": true
+ },
+ "diary of young girl|frank": {
+  "example": {
+   "author": "Anne Frank",
+   "title": "The Diary of a Young Girl"
+  },
+  "matched": "The diary of a young girl",
+  "source": "open_library",
+  "verified": true
+ },
+ "diaspora|egan": {
+  "example": {
+   "author": "Greg Egan",
+   "title": "Diaspora"
+  },
+  "matched": "Diaspora",
+  "source": "open_library",
+  "verified": true
+ },
+ "dietro porta|paris": {
+  "example": {
+   "author": "B. A. Paris",
+   "title": "Dietro la porta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "dietro suoi occhi|pinborough": {
+  "example": {
+   "author": "Sarah Pinborough",
+   "title": "Dietro i suoi occhi"
+  },
+  "matched": "Dietro i suoi occhi",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "diritto di sognare|dick": {
+  "example": {
+   "author": "Philip K. Dick",
+   "title": "Il diritto di sognare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "disagio della civilta|calasso": {
+  "example": {
+   "author": "Roberto Calasso",
+   "title": "Il disagio della civiltà"
+  },
+  "source": null,
+  "verified": false
+ },
+ "dispatcher|osman": {
+  "example": {
+   "author": "Richard Osman",
+   "title": "The Dispatcher"
+  },
+  "source": null,
+  "verified": false
+ },
+ "domestica|prose": {
+  "example": {
+   "author": "Nita Prose",
+   "title": "La domestica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna alla finestra|finn": {
+  "example": {
+   "author": "A.J. Finn",
+   "title": "La donna alla finestra"
+  },
+  "matched": "A. J. Finn",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "donna che mori dal ridere e altre storie incredibili sui misteri della mente umana|ramachandran": {
+  "example": {
+   "author": "Vilayanur S. Ramachandran",
+   "title": "La donna che morì dal ridere e altre storie incredibili sui misteri della mente umana"
+  },
+  "matched": "La donna che morì dal ridere e altre storie incredibili sui misteri della mente umana",
+  "source": "sbn",
+  "verified": true
+ },
+ "donna del giovedi|gerritsen": {
+  "example": {
+   "author": "Tess Gerritsen",
+   "title": "La donna del giovedì"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna della domenica|lucentini": {
+  "example": {
+   "author": "Carlo Fruttero e Franco Lucentini",
+   "title": "La donna della domenica"
+  },
+  "matched": "La donna della domenica",
+  "source": "open_library",
+  "verified": true
+ },
+ "donna della finestra|finn": {
+  "example": {
+   "author": "A.J. Finn",
+   "title": "La donna della finestra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna della luna|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "La donna della luna"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna della mia vita|oggero": {
+  "example": {
+   "author": "Margherita Oggero",
+   "title": "La donna della mia vita"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna della pioggia|faletti": {
+  "example": {
+   "author": "Giorgio Faletti",
+   "title": "La donna della pioggia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna della tempesta|carofiglio": {
+  "example": {
+   "author": "Gianrico Carofiglio",
+   "title": "La donna della tempesta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna in cabina 10|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "La donna in cabina 10"
+  },
+  "source": null,
+  "verified": false
+ },
+ "donna nella finestra|finn": {
+  "example": {
+   "author": "A. J. Finn",
+   "title": "La donna nella finestra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "drive|pink": {
+  "example": {
+   "author": "Daniel H. Pink",
+   "title": "Drive"
+  },
+  "matched": "Drive",
+  "source": "open_library",
+  "verified": true
+ },
+ "dune|herbert": {
+  "example": {
+   "author": "Frank Herbert",
+   "title": "Dune"
+  },
+  "matched": "Dune",
+  "source": "open_library",
+  "verified": true
+ },
+ "educated|westover": {
+  "example": {
+   "author": "Tara Westover",
+   "title": "Educated"
+  },
+  "matched": "Educated",
+  "source": "open_library",
+  "verified": true
+ },
+ "effective executive|drucker": {
+  "example": {
+   "author": "Peter F. Drucker",
+   "title": "The Effective Executive"
+  },
+  "matched": "The Effective Executive ",
+  "source": "open_library",
+  "verified": true
+ },
+ "eleanor oliphant e completamente sola|honeyman": {
+  "example": {
+   "author": "Gail Honeyman",
+   "title": "Eleanor Oliphant è completamente sola"
+  },
+  "source": null,
+  "verified": false
+ },
+ "eleanor oliphant sta benissimo|honeyman": {
+  "example": {
+   "author": "Gail Honeyman",
+   "title": "Eleanor Oliphant sta benissimo"
+  },
+  "matched": "Eleanor Oliphant sta benissimo",
+  "source": "open_library",
+  "verified": true
+ },
+ "elegancia del erizo|barbery": {
+  "example": {
+   "author": "Muriel Barbery",
+   "title": "La elegancia del erizo"
+  },
+  "matched": "La elegancia del erizo",
+  "source": "open_library",
+  "verified": true
+ },
+ "eleganza del riccio|barbery": {
+  "example": {
+   "author": "Muriel Barbery",
+   "title": "L'eleganza del riccio"
+  },
+  "matched": "L'eleganza del riccio",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "elements of computing systems|schocken": {
+  "example": {
+   "author": "Noam Nisan and Shimon Schocken",
+   "title": "The Elements of Computing Systems"
+  },
+  "matched": "The Elements of Computing Systems",
+  "source": "open_library",
+  "verified": true
+ },
+ "elements of style|white": {
+  "example": {
+   "author": "William Strunk Jr. and E.B. White",
+   "title": "The Elements of Style"
+  },
+  "matched": "The Elements of Style",
+  "source": "open_library",
+  "verified": true
+ },
+ "ensayo sobre ceguera|saramago": {
+  "example": {
+   "author": "José Saramago",
+   "title": "Ensayo sobre la ceguera"
+  },
+  "matched": "ENSAYO SOBRE LA CEGUERA",
+  "source": "open_library",
+  "verified": true
+ },
+ "ensayo sobre lucidez|saramago": {
+  "example": {
+   "author": "José Saramago",
+   "title": "Ensayo sobre la lucidez"
+  },
+  "matched": "Ensayo Sobre La Lucidez",
+  "source": "open_library",
+  "verified": true
+ },
+ "era dell intelligenza artificiale|cohen": {
+  "example": {
+   "author": "Jared Cohen",
+   "title": "L'era dell'intelligenza artificiale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "era dell intelligenza artificiale|lee": {
+  "example": {
+   "author": "Kai-Fu Lee",
+   "title": "L'era dell'intelligenza artificiale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "errore di cartesio emozione ragione e cervello umano|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "L'errore di Cartesio. Emozione, ragione e cervello umano"
+  },
+  "source": null,
+  "verified": false
+ },
+ "errore di cartesio emozione razionalita e cervello umano|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "L'errore di Cartesio. Emozione, razionalità e cervello umano"
+  },
+  "source": null,
+  "verified": false
+ },
+ "errore di cartesio|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "L'errore di Cartesio"
+  },
+  "matched": "L'errore di Cartesio",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "estate del commissario ricciardi|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "L'estate del commissario Ricciardi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "europa in treno|kries": {
+  "example": {
+   "author": "Nicky Gardner e Susanne Kries",
+   "title": "Europa in treno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "fabbrica di cioccolato|dahl": {
+  "example": {
+   "author": "Roald Dahl",
+   "title": "La fabbrica di cioccolato"
+  },
+  "matched": "Roald Dahl",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "fahrenheit 451|bradbury": {
+  "example": {
+   "author": "Ray Bradbury",
+   "title": "Fahrenheit 451"
+  },
+  "matched": "Fahrenheit 451",
+  "source": "open_library",
+  "verified": true
+ },
+ "famiglia aubrey|tennant": {
+  "example": {
+   "author": "Emma Tennant",
+   "title": "La famiglia Aubrey"
+  },
+  "source": null,
+  "verified": false
+ },
+ "fate ignoranti|ozpetek": {
+  "example": {
+   "author": "Ferzan Özpetek",
+   "title": "Le fate ignoranti"
+  },
+  "matched": "The Ignorant Fairies",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "fearless organization|edmondson": {
+  "example": {
+   "author": "Amy C. Edmondson",
+   "title": "The Fearless Organization"
+  },
+  "matched": "The Fearless Organization",
+  "source": "open_library",
+  "verified": true
+ },
+ "felicidad de ogros|pennac": {
+  "example": {
+   "author": "Daniel Pennac",
+   "title": "La felicidad de los ogros"
+  },
+  "matched": "La Felicidad de Los Ogros",
+  "source": "open_library",
+  "verified": true
+ },
+ "felicidad es te contigo|afanasiev": {
+  "example": {
+   "author": "Mihail Afanasiev",
+   "title": "La felicidad es un té contigo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "fiasco|lem": {
+  "example": {
+   "author": "Stanislaw Lem",
+   "title": "Fiasco"
+  },
+  "matched": "Fiasco",
+  "source": "open_library",
+  "verified": true
+ },
+ "fidanzato di mia sorella|downing": {
+  "example": {
+   "author": "Samantha Downing",
+   "title": "Il fidanzato di mia sorella"
+  },
+  "source": null,
+  "verified": false
+ },
+ "figlio del cimitero|gaiman": {
+  "example": {
+   "author": "Neil Gaiman",
+   "title": "Il figlio del cimitero"
+  },
+  "matched": "Il figlio del cimitero",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "fiume della coscienza|sacks": {
+  "example": {
+   "author": "Oliver Sacks",
+   "title": "Il fiume della coscienza"
+  },
+  "matched": "Il fiume della coscienza",
+  "source": "sbn",
+  "verified": true
+ },
+ "fluent python|ramalho": {
+  "example": {
+   "author": "Luciano Ramalho",
+   "title": "Fluent Python"
+  },
+  "matched": "Fluent Python",
+  "source": "open_library",
+  "verified": true
+ },
+ "forma dell acqua|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "La forma dell'acqua"
+  },
+  "matched": "La forma dell'acqua",
+  "source": "open_library",
+  "verified": true
+ },
+ "fu mattia pascal|pirandello": {
+  "example": {
+   "author": "Luigi Pirandello",
+   "title": "Il fu Mattia Pascal"
+  },
+  "matched": "Il fu Mattia Pascal",
+  "source": "open_library",
+  "verified": true
+ },
+ "fuga dal pianeta sconosciuto|kinney": {
+  "example": {
+   "author": "Jeff Kinney",
+   "title": "Fuga dal Pianeta Sconosciuto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "fuoco di londra|gadda": {
+  "example": {
+   "author": "Carlo Emilio Gadda",
+   "title": "Il fuoco di Londra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "fuoco greco|bassani": {
+  "example": {
+   "author": "Giorgio Bassani",
+   "title": "Il fuoco greco"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gabbiano jonathan livingston|bach": {
+  "example": {
+   "author": "Richard Bach",
+   "title": "Il gabbiano Jonathan Livingston"
+  },
+  "matched": "Il Gabbiano Jonathan Livingston",
+  "source": "open_library",
+  "verified": true
+ },
+ "gamba di legno di joe petrosino|pederiali": {
+  "example": {
+   "author": "Giuseppe Pederiali",
+   "title": "La gamba di legno di Joe Petrosino"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gang dei monelli|blyton": {
+  "example": {
+   "author": "Enid Blyton",
+   "title": "La gang dei monelli"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gang dei monelli|sachar": {
+  "example": {
+   "author": "Louis Sachar",
+   "title": "La gang dei monelli"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gang del bosco|blyton": {
+  "example": {
+   "author": "Enid Blyton",
+   "title": "La gang del bosco"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gatto nero|scerbanenco": {
+  "example": {
+   "author": "Giorgio Scerbanenco",
+   "title": "Il gatto nero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gattopardo|lampedusa": {
+  "example": {
+   "author": "Giuseppe Tomasi di Lampedusa",
+   "title": "Il Gattopardo"
+  },
+  "matched": "Il Gattopardo",
+  "source": "open_library",
+  "verified": true
+ },
+ "gemella silenziosa|tremayne": {
+  "example": {
+   "author": "S. K. Tremayne",
+   "title": "La gemella silenziosa"
+  },
+  "matched": "La gemella silenziosa",
+  "source": "sbn",
+  "verified": true
+ },
+ "gene egoista|dawkins": {
+  "example": {
+   "author": "Richard Dawkins",
+   "title": "Il gene egoista"
+  },
+  "matched": "Il gene egoista",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "gene libro che racconta storia della specie umana|mukherjee": {
+  "example": {
+   "author": "Siddhartha Mukherjee",
+   "title": "Il gene. Il libro che racconta la storia della specie umana"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gene racconto dell umanita tra darwin e dna|mukherjee": {
+  "example": {
+   "author": "Siddhartha Mukherjee",
+   "title": "Il gene. Il racconto dell'umanità, tra Darwin e Dna"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gene storia intima|mukherjee": {
+  "example": {
+   "author": "Siddhartha Mukherjee",
+   "title": "Il gene. Una storia intima"
+  },
+  "source": null,
+  "verified": false
+ },
+ "genio non esiste|kaufman": {
+  "example": {
+   "author": "Benjamin Rapoport, Scott Barry Kaufman",
+   "title": "Il genio non esiste (e a volte è meglio così)"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ggg|dahl": {
+  "example": {
+   "author": "Roald Dahl",
+   "title": "Il GGG"
+  },
+  "matched": "The BFG",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "giardino dei finzi contini|bassani": {
+  "example": {
+   "author": "Giorgio Bassani",
+   "title": "Il giardino dei Finzi-Contini"
+  },
+  "matched": "Il giardino dei Finzi-Contini",
+  "source": "open_library",
+  "verified": true
+ },
+ "giardino delle api|fontana": {
+  "example": {
+   "author": "Giorgio Fontana",
+   "title": "Il giardino delle api"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giardino delle illusioni perdute|lafon": {
+  "example": {
+   "author": "Marie-Hélène Lafon",
+   "title": "Il giardino delle illusioni perdute"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giardino segreto di casa mia|gazzola": {
+  "example": {
+   "author": "Alessia Gazzola",
+   "title": "Il giardino segreto di casa mia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giardino segreto di emily|moriarty": {
+  "example": {
+   "author": "Liane Moriarty",
+   "title": "Il giardino segreto di Emily"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giardino segreto|burnett": {
+  "example": {
+   "author": "Frances Hodgson Burnett",
+   "title": "Il giardino segreto"
+  },
+  "matched": "Il giardino segreto",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "gioco dei lupi|webb": {
+  "example": {
+   "author": "Holly Webb",
+   "title": "Il gioco dei lupi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gioco del silenzio|downing": {
+  "example": {
+   "author": "Samantha Downing",
+   "title": "Il gioco del silenzio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gioco del silenzio|urso": {
+  "example": {
+   "author": "Valentina D'Urso",
+   "title": "Il gioco del silenzio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gioco del sospetto|lapena": {
+  "example": {
+   "author": "Shari Lapena",
+   "title": "Il gioco del sospetto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "gioco dell angelo|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "Il gioco dell'angelo"
+  },
+  "matched": "The Angel's Game",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "gioco delle tre carte|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Il gioco delle tre carte"
+  },
+  "matched": "Il gioco delle tre carte",
+  "source": "open_library",
+  "verified": true
+ },
+ "giornata d uno scrutatore|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "La giornata d’uno scrutatore"
+  },
+  "matched": "La giornata d'uno scrutatore",
+  "source": "open_library",
+  "verified": true
+ },
+ "giorno della civetta|sciascia": {
+  "example": {
+   "author": "Leonardo Sciascia",
+   "title": "Il giorno della civetta"
+  },
+  "matched": "Il giorno della civetta",
+  "source": "open_library",
+  "verified": true
+ },
+ "giorno in piu|marchegiani": {
+  "example": {
+   "author": "Gioia Marchegiani",
+   "title": "Un giorno in più"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giorno questo dolore ti sara utile|cameron": {
+  "example": {
+   "author": "Peter Cameron",
+   "title": "Un giorno questo dolore ti sarà utile"
+  },
+  "matched": "Un giorno questo dolore ti sarà utile",
+  "source": "open_library",
+  "verified": true
+ },
+ "giorno|nicholls": {
+  "example": {
+   "author": "David Nicholls",
+   "title": "Un giorno"
+  },
+  "matched": "Un giorno (romanzo)",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "giostra degli scambi|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "La giostra degli scambi"
+  },
+  "matched": "La giostra degli scambi",
+  "source": "open_library",
+  "verified": true
+ },
+ "giovane holden|salinger": {
+  "example": {
+   "author": "J.D. Salinger",
+   "title": "Il giovane Holden"
+  },
+  "matched": "Il Giovane Holden",
+  "source": "open_library",
+  "verified": true
+ },
+ "giovane sherlock holmes|lane": {
+  "example": {
+   "author": "Andrew Lane",
+   "title": "Il giovane Sherlock Holmes - Magia nera"
+  },
+  "source": null,
+  "verified": false
+ },
+ "girasoles ciegos|mendez": {
+  "example": {
+   "author": "Alberto Méndez",
+   "title": "Los girasoles ciegos"
+  },
+  "matched": "Los Girasoles Ciegos",
+  "source": "open_library",
+  "verified": true
+ },
+ "giro d italia in cucina|rossi": {
+  "example": {
+   "author": "Maria Rossi",
+   "title": "Giro d'Italia in cucina: Le migliori pizzerie d'Italia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giro del mondo in 80 giorni|verne": {
+  "example": {
+   "author": "Jules Verne",
+   "title": "Il giro del mondo in 80 giorni"
+  },
+  "matched": "Il giro del mondo in 80 giorni",
+  "source": "open_library",
+  "verified": true
+ },
+ "giro del mondo in ottanta giorni|verne": {
+  "example": {
+   "author": "Jules Verne",
+   "title": "Il giro del mondo in ottanta giorni"
+  },
+  "matched": "Il giro del mondo in ottanta giorni",
+  "source": "open_library",
+  "verified": true
+ },
+ "giro di boa|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il giro di boa"
+  },
+  "matched": "Il Giro Di Boa",
+  "source": "open_library",
+  "verified": true
+ },
+ "giro di boa|carofiglio": {
+  "example": {
+   "author": "Gianrico Carofiglio",
+   "title": "Il giro di boa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giro di boa|carrisi": {
+  "example": {
+   "author": "Donato Carrisi",
+   "title": "Il giro di boa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "giro di boa|vichi": {
+  "example": {
+   "author": "Marco Vichi",
+   "title": "Il giro di boa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "goal|goldratt": {
+  "example": {
+   "author": "Eliyahu M. Goldratt",
+   "title": "The Goal: A Process of Ongoing Improvement"
+  },
+  "matched": "The goal",
+  "source": "open_library",
+  "verified": true
+ },
+ "goccia che scava|carofiglio": {
+  "example": {
+   "author": "Gianrico Carofiglio",
+   "title": "La goccia che scava"
+  },
+  "source": null,
+  "verified": false
+ },
+ "godel escher bach|hofstadter": {
+  "example": {
+   "author": "Douglas Hofstadter",
+   "title": "Gödel, Escher, Bach: An Eternal Golden Braid"
+  },
+  "matched": "Gödel, Escher, Bach",
+  "source": "open_library",
+  "verified": true
+ },
+ "golden spoon|maxwell": {
+  "example": {
+   "author": "Jessa Maxwell",
+   "title": "The Golden Spoon"
+  },
+  "matched": "Golden Spoon",
+  "source": "open_library",
+  "verified": true
+ },
+ "gone girl|flynn": {
+  "example": {
+   "author": "Gillian Flynn",
+   "title": "Gone Girl - L'amore bugiardo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "good girl s guide to murder|jackson": {
+  "example": {
+   "author": "Holly Jackson",
+   "title": "A Good Girl’s Guide to Murder"
+  },
+  "matched": "A Good Girl's Guide to Murder",
+  "source": "open_library",
+  "verified": true
+ },
+ "good omens|pratchett": {
+  "example": {
+   "author": "Neil Gaiman and Terry Pratchett",
+   "title": "Good Omens"
+  },
+  "matched": "Good Omens",
+  "source": "open_library",
+  "verified": true
+ },
+ "good strategy bad strategy|rumelt": {
+  "example": {
+   "author": "Richard Rumelt",
+   "title": "Good Strategy Bad Strategy"
+  },
+  "matched": "Good Strategy, Bad Strategy",
+  "source": "open_library",
+  "verified": true
+ },
+ "good to great|collins": {
+  "example": {
+   "author": "Jim Collins",
+   "title": "Good to Great"
+  },
+  "matched": "Good to Great",
+  "source": "open_library",
+  "verified": true
+ },
+ "grande albero di natale|picoult": {
+  "example": {
+   "author": "Jodi Picoult",
+   "title": "Il grande albero di Natale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande libro della bicicletta|brumotti": {
+  "example": {
+   "author": "Vittorio Brumotti",
+   "title": "Il grande libro della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande libro della bicicletta|ponti": {
+  "example": {
+   "author": "Giorgio De Ponti",
+   "title": "Il grande libro della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande libro della bicicletta|rossi": {
+  "example": {
+   "author": "Francesco Rossi",
+   "title": "Il grande libro della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande libro della bicicletta|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Il grande libro della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande sigillo|chiang": {
+  "example": {
+   "author": "Ted Chiang",
+   "title": "Il Grande Sigillo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande viaggio|london": {
+  "example": {
+   "author": "Jack London",
+   "title": "Il grande viaggio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "grande viaggio|nietzsche": {
+  "example": {
+   "author": "Friedrich Nietzsche",
+   "title": "Il grande viaggio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guardian entre centeno|salinger": {
+  "example": {
+   "author": "J.D. Salinger",
+   "title": "El guardián entre el centeno"
+  },
+  "matched": "El Guardian entre el centeno",
+  "source": "sbn",
+  "verified": true
+ },
+ "guernsey literary and potato peel pie society|shaffer": {
+  "example": {
+   "author": "Mary Ann Shaffer",
+   "title": "The Guernsey Literary and Potato Peel Pie Society"
+  },
+  "matched": "The Guernsey Literary and Potato Peel Pie Society",
+  "source": "open_library",
+  "verified": true
+ },
+ "guerra dei mondi|wells": {
+  "example": {
+   "author": "H.G. Wells",
+   "title": "La guerra dei mondi"
+  },
+  "matched": "La guerra dei mondi",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "guerra dei papaveri|kuang": {
+  "example": {
+   "author": "R. F. Kuang",
+   "title": "La guerra dei papaveri"
+  },
+  "matched": "La guerra dei papaveri",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "guida ai ristoranti di roma|rosso": {
+  "example": {
+   "author": "Gambero Rosso",
+   "title": "Guida ai ristoranti di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida ai viaggi in treno in europa|cook": {
+  "example": {
+   "author": "Thomas Cook",
+   "title": "Guida ai viaggi in treno in Europa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida alle pizzerie di roma|bonci": {
+  "example": {
+   "author": "Gabriele Bonci",
+   "title": "Guida alle pizzerie di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida alle pizzerie di roma|maroni": {
+  "example": {
+   "author": "Luca Maroni",
+   "title": "Guida alle pizzerie di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida alle pizzerie di roma|rosso": {
+  "example": {
+   "author": "Gambero Rosso",
+   "title": "Guida alle pizzerie di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida alle pizzerie di roma|varii": {
+  "example": {
+   "author": "varii",
+   "title": "Guida alle pizzerie di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida del camperista|gallo": {
+  "example": {
+   "author": "Marco Gallo",
+   "title": "La guida del camperista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida pratica alla manutenzione della bicicletta|verdi": {
+  "example": {
+   "author": "Luca Verdi",
+   "title": "Guida pratica alla manutenzione della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guida pratica per ciclisti|marco": {
+  "example": {
+   "author": "Marco R.",
+   "title": "Guida pratica per ciclisti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "guide del tramonto|robinette": {
+  "example": {
+   "author": "Robinette",
+   "title": "Le guide del tramonto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "hard thing about hard things|horowitz": {
+  "example": {
+   "author": "Ben Horowitz",
+   "title": "The Hard Thing About Hard Things"
+  },
+  "matched": "The Hard Thing About Hard Things",
+  "source": "open_library",
+  "verified": true
+ },
+ "hercule poirot s christmas|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Hercule Poirot's Christmas"
+  },
+  "matched": "Hercule Poirot's Christmas",
+  "source": "open_library",
+  "verified": true
+ },
+ "hereje|delibes": {
+  "example": {
+   "author": "Miguel Delibes",
+   "title": "El hereje"
+  },
+  "matched": "El hereje",
+  "source": "open_library",
+  "verified": true
+ },
+ "high output management|grove": {
+  "example": {
+   "author": "Andrew S. Grove",
+   "title": "High Output Management"
+  },
+  "matched": "High Output Management",
+  "source": "open_library",
+  "verified": true
+ },
+ "hitchhiker s guide to galaxy|adams": {
+  "example": {
+   "author": "Douglas Adams",
+   "title": "The Hitchhiker's Guide to the Galaxy"
+  },
+  "matched": "The Hitchhiker's Guide to the Galaxy",
+  "source": "open_library",
+  "verified": true
+ },
+ "hombre en busca de sentido|frankl": {
+  "example": {
+   "author": "Viktor E. Frankl",
+   "title": "El hombre en busca de sentido"
+  },
+  "matched": "Man's Search for Meaning",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "hombre llamado ove|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "Un hombre llamado Ove"
+  },
+  "source": null,
+  "verified": false
+ },
+ "hombre que plantaba arboles|giono": {
+  "example": {
+   "author": "Jean Giono",
+   "title": "El hombre que plantaba árboles"
+  },
+  "matched": "El Hombre Que Plantaba Arboles",
+  "source": "open_library",
+  "verified": true
+ },
+ "house in cerulean sea|klune": {
+  "example": {
+   "author": "TJ Klune",
+   "title": "The House in the Cerulean Sea"
+  },
+  "matched": "The house in the Cerulean Sea",
+  "source": "open_library",
+  "verified": true
+ },
+ "how mind works|pinker": {
+  "example": {
+   "author": "Steven Pinker",
+   "title": "How the Mind Works"
+  },
+  "matched": "How the Mind Works",
+  "source": "open_library",
+  "verified": true
+ },
+ "how to lie with statistics|huff": {
+  "example": {
+   "author": "Darrell Huff",
+   "title": "How to Lie with Statistics"
+  },
+  "matched": "How to Lie with Statistics",
+  "source": "open_library",
+  "verified": true
+ },
+ "husar|gallego": {
+  "example": {
+   "author": "Joaquín Gallego",
+   "title": "El husar"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ilium|simmons": {
+  "example": {
+   "author": "Dan Simmons",
+   "title": "Ilium"
+  },
+  "matched": "Ilium",
+  "source": "open_library",
+  "verified": true
+ },
+ "in bicicletta|cerri": {
+  "example": {
+   "author": "Ivan Cerri",
+   "title": "In bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "in patagonia|chatwin": {
+  "example": {
+   "author": "Bruce Chatwin",
+   "title": "In Patagonia"
+  },
+  "matched": "In Patagonia",
+  "source": "open_library",
+  "verified": true
+ },
+ "in sunburned country|bryson": {
+  "example": {
+   "author": "Bill Bryson",
+   "title": "In a Sunburned Country"
+  },
+  "matched": "In a Sunburned Country",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "in viaggio con charley|steinbeck": {
+  "example": {
+   "author": "John Steinbeck",
+   "title": "In viaggio con Charley"
+  },
+  "matched": "Viaggio con Charley",
+  "source": "sbn",
+  "verified": true
+ },
+ "inchieste del commissario ricciardi|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "Le inchieste del commissario Ricciardi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "incognito vita segreta della mente|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Incognito. La vita segreta della mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "incognito|eagleman": {
+  "example": {
+   "author": "David Eagleman",
+   "title": "Incognito: La vita segreta della mente"
+  },
+  "matched": "In incognito :  la vita segreta della mente",
+  "source": "sbn",
+  "verified": true
+ },
+ "incredibile viaggio di harold fry|joyce": {
+  "example": {
+   "author": "Rachel Joyce",
+   "title": "L'incredibile viaggio di Harold Fry"
+  },
+  "source": null,
+  "verified": false
+ },
+ "indifferenti|moravia": {
+  "example": {
+   "author": "Alberto Moravia",
+   "title": "Gli indifferenti"
+  },
+  "matched": "Gli indifferenti",
+  "source": "open_library",
+  "verified": true
+ },
+ "indistractable|eyal": {
+  "example": {
+   "author": "Nir Eyal",
+   "title": "Indistractable: How to Control Your Attention and Choose Your Life"
+  },
+  "matched": "Indistractable",
+  "source": "open_library",
+  "verified": true
+ },
+ "ines y alegria|grandes": {
+  "example": {
+   "author": "Almudena Grandes",
+   "title": "Inés y la alegría"
+  },
+  "matched": "Inés y la Alegría",
+  "source": "open_library",
+  "verified": true
+ },
+ "influence|cialdini": {
+  "example": {
+   "author": "Robert Cialdini",
+   "title": "Influence: The Psychology of Persuasion"
+  },
+  "matched": "Influence",
+  "source": "open_library",
+  "verified": true
+ },
+ "intelligenza artificiale e futuro dell umanita|neill": {
+  "example": {
+   "author": "Kathy O'Neill",
+   "title": "L'Intelligenza Artificiale e il Futuro dell'Umanità"
+  },
+  "source": null,
+  "verified": false
+ },
+ "intelligenza artificiale e futuro dell umanita|terzani": {
+  "example": {
+   "author": "Tiziano Terzani",
+   "title": "L'Intelligenza Artificiale e il Futuro dell'umanità"
+  },
+  "source": null,
+  "verified": false
+ },
+ "intelligenza artificiale|moravec": {
+  "example": {
+   "author": "Hans Moravec",
+   "title": "Intelligenza artificiale — Un'utopia in divenire"
+  },
+  "source": null,
+  "verified": false
+ },
+ "introduction to algorithms|cormen": {
+  "example": {
+   "author": "Thomas H. Cormen",
+   "title": "Introduction to Algorithms"
+  },
+  "matched": "Introduction to Algorithms",
+  "source": "open_library",
+  "verified": true
+ },
+ "invierno en lisboa|molina": {
+  "example": {
+   "author": "Antonio Muñoz Molina",
+   "title": "El invierno en Lisboa"
+  },
+  "matched": "El invierno en Lisboa",
+  "source": "open_library",
+  "verified": true
+ },
+ "invito|foley": {
+  "example": {
+   "author": "Lucy Foley",
+   "title": "L'invito"
+  },
+  "source": null,
+  "verified": false
+ },
+ "io della mente|dennett": {
+  "example": {
+   "author": "Douglas R. Hofstadter e Daniel C. Dennett",
+   "title": "L’io della mente"
+  },
+  "matched": "L'Io della mente",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "istinto del linguaggio|pinker": {
+  "example": {
+   "author": "Steven Pinker",
+   "title": "L'istinto del linguaggio"
+  },
+  "matched": "L' istinto del linguaggio : come la mente crea il linguaggio",
+  "source": "sbn",
+  "verified": true
+ },
+ "istinto|french": {
+  "example": {
+   "author": "Tana French",
+   "title": "L'istinto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "jardin de delicias|medio": {
+  "example": {
+   "author": "Dolores Medio",
+   "title": "El jardín de las delicias"
+  },
+  "source": null,
+  "verified": false
+ },
+ "jardin secreto|burnett": {
+  "example": {
+   "author": "Frances Hodgson Burnett",
+   "title": "El jardín secreto"
+  },
+  "matched": "El jardín secreto",
+  "source": "open_library",
+  "verified": true
+ },
+ "juan salvador gaviota|bach": {
+  "example": {
+   "author": "Richard Bach",
+   "title": "Juan Salvador Gaviota"
+  },
+  "matched": "Juan Salvador Gaviota - Tapa Dura -",
+  "source": "open_library",
+  "verified": true
+ },
+ "juego del angel|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "El juego del ángel"
+  },
+  "matched": "El Juego del Ángel",
+  "source": "open_library",
+  "verified": true
+ },
+ "keeper of lost things|hogan": {
+  "example": {
+   "author": "Ruth Hogan",
+   "title": "The Keeper of Lost Things"
+  },
+  "matched": "The keeper of lost things",
+  "source": "open_library",
+  "verified": true
+ },
+ "klara e sole|ishiguro": {
+  "example": {
+   "author": "Kazuo Ishiguro",
+   "title": "Klara e il Sole"
+  },
+  "matched": "Klara y el Sol",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "laberinto de aceitunas|jurado": {
+  "example": {
+   "author": "Juan Gómez-Jurado",
+   "title": "El laberinto de las aceitunas"
+  },
+  "source": null,
+  "verified": false
+ },
+ "laberinto de agua|lorca": {
+  "example": {
+   "author": "Federico García Lorca",
+   "title": "El laberinto de agua"
+  },
+  "source": null,
+  "verified": false
+ },
+ "laberinto del fauno|recomiendo": {
+  "example": {
+   "author": "no es un libro, así que te recomiendo",
+   "title": "El laberinto del fauno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "labirinto degli spiriti|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "Il labirinto degli spiriti"
+  },
+  "matched": "Il labirinto degli spiriti",
+  "source": "sbn",
+  "verified": true
+ },
+ "ladro di fulmini|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Il ladro di fulmini"
+  },
+  "matched": "Rick Riordan",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "ladro di libri|zusak": {
+  "example": {
+   "author": "Markus Zusak",
+   "title": "Il ladro di libri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ladro di merendine|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il ladro di merendine"
+  },
+  "matched": "Il ladro di merendine",
+  "source": "open_library",
+  "verified": true
+ },
+ "ladro di merendine|floris": {
+  "example": {
+   "author": "Giovanni Floris",
+   "title": "Il ladro di merendine"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ladrona de libros|zusak": {
+  "example": {
+   "author": "Markus Zusak",
+   "title": "La ladrona de libros"
+  },
+  "matched": "La ladrona de libros",
+  "source": "open_library",
+  "verified": true
+ },
+ "lama stessa|abercrombie": {
+  "example": {
+   "author": "Joe Abercrombie",
+   "title": "La lama stessa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "last thing he told me|dave": {
+  "example": {
+   "author": "Laura Dave",
+   "title": "The Last Thing He Told Me"
+  },
+  "matched": "The Last Thing He Told Me",
+  "source": "open_library",
+  "verified": true
+ },
+ "lean startup|ries": {
+  "example": {
+   "author": "Eric Ries",
+   "title": "The Lean Startup"
+  },
+  "matched": "The Lean Startup",
+  "source": "open_library",
+  "verified": true
+ },
+ "learning python|lutz": {
+  "example": {
+   "author": "Mark Lutz",
+   "title": "Learning Python"
+  },
+  "matched": "Learning Python",
+  "source": "open_library",
+  "verified": true
+ },
+ "lejano oeste|mendoza": {
+  "example": {
+   "author": "Eduardo Mendoza",
+   "title": "El Lejano Oeste"
+  },
+  "source": null,
+  "verified": false
+ },
+ "leone strega e armadio|lewis": {
+  "example": {
+   "author": "C. S. Lewis",
+   "title": "Il leone, la strega e l’armadio"
+  },
+  "matched": "Il leone, la strega e l'armadio",
+  "source": "sbn",
+  "verified": true
+ },
+ "lessico famigliare|ginzburg": {
+  "example": {
+   "author": "Natalia Ginzburg",
+   "title": "Lessico famigliare"
+  },
+  "matched": "Lessico famigliare",
+  "source": "open_library",
+  "verified": true
+ },
+ "less|greer": {
+  "example": {
+   "author": "Andrew Sean Greer",
+   "title": "Less"
+  },
+  "matched": "Less",
+  "source": "open_library",
+  "verified": true
+ },
+ "leyenda del santo bebedor|roth": {
+  "example": {
+   "author": "Joseph Roth",
+   "title": "La leyenda del santo bebedor"
+  },
+  "matched": "La leyenda del santo bebedor",
+  "source": "open_library",
+  "verified": true
+ },
+ "leyes de frontera|cercas": {
+  "example": {
+   "author": "Javier Cercas",
+   "title": "Las leyes de la frontera"
+  },
+  "matched": " Las leyes de la frontera",
+  "source": "open_library",
+  "verified": true
+ },
+ "leyes de frontera|landero": {
+  "example": {
+   "author": "Luis Landero",
+   "title": "Las leyes de la frontera"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libreria dei desideri|icardi": {
+  "example": {
+   "author": "Desy Icardi",
+   "title": "La libreria dei desideri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libreria dei nuovi inizi|colgan": {
+  "example": {
+   "author": "Jenny Colgan",
+   "title": "La libreria dei nuovi inizi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libreria del buon romanzo|cosse": {
+  "example": {
+   "author": "Laurence Cossé",
+   "title": "La libreria del buon romanzo"
+  },
+  "matched": "La libreria del buon romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "libreria|fitzgerald": {
+  "example": {
+   "author": "Penelope Fitzgerald",
+   "title": "La librería"
+  },
+  "matched": "La libreria",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "libro cimitero|gaiman": {
+  "example": {
+   "author": "Neil Gaiman",
+   "title": "Il libro cimitero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro de abrazos|botton": {
+  "example": {
+   "author": "Alain de Botton",
+   "title": "El libro de los abrazos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro de abrazos|galeano": {
+  "example": {
+   "author": "Eduardo Galeano",
+   "title": "El libro de los abrazos"
+  },
+  "matched": "El libro de los abrazos",
+  "source": "open_library",
+  "verified": true
+ },
+ "libro de abrazos|sepulveda": {
+  "example": {
+   "author": "Luis Sepúlveda",
+   "title": "El libro de los abrazos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro dei mostri|ness": {
+  "example": {
+   "author": "Patrick Ness",
+   "title": "Il Libro dei Mostri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro dei nomi|day": {
+  "example": {
+   "author": "Vox Day",
+   "title": "Il Libro dei Nomi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro dei viaggi|chatwin": {
+  "example": {
+   "author": "Bruce Chatwin",
+   "title": "Il libro dei viaggi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro del cimitero|gaiman": {
+  "example": {
+   "author": "Neil Gaiman",
+   "title": "Il libro del cimitero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro del te|okakura": {
+  "example": {
+   "author": "Kakuzō Okakura",
+   "title": "El libro del té"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro della giungla|kipling": {
+  "example": {
+   "author": "Rudyard Kipling",
+   "title": "Il libro della giungla"
+  },
+  "matched": "Il libro della giungla",
+  "source": "open_library",
+  "verified": true
+ },
+ "libro di joan|yuknavitch": {
+  "example": {
+   "author": "Lidia Yuknavitch",
+   "title": "Il libro di Joan"
+  },
+  "matched": "Il libro di Joan",
+  "source": "sbn",
+  "verified": true
+ },
+ "libro di sapiens|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Il libro di Sapiens"
+  },
+  "source": null,
+  "verified": false
+ },
+ "libro tibetano de vida y de muerte|rinpoche": {
+  "example": {
+   "author": "Sogyal Rinpoché",
+   "title": "El libro tibetano de la vida y de la muerte"
+  },
+  "matched": "El libro tibetano de la vida y de la muerte",
+  "source": "open_library",
+  "verified": true
+ },
+ "little life di anna gavalda|gavalda": {
+  "example": {
+   "author": "Anna Gavalda",
+   "title": "Little Life di Anna Gavalda"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lluvia amarilla|sanchez": {
+  "example": {
+   "author": "Julián Sánchez",
+   "title": "La lluvia amarilla"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lluvia antes de caer|barnes": {
+  "example": {
+   "author": "Julián Barnes",
+   "title": "La lluvia antes de caer"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lluvia de fuego|cercas": {
+  "example": {
+   "author": "Javier Cercas",
+   "title": "La lluvia de fuego"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lluvia en zapatos|marias": {
+  "example": {
+   "author": "Javier Marías",
+   "title": "La lluvia en los zapatos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lonely planet australia|planet": {
+  "example": {
+   "author": "Lonely Planet",
+   "title": "Lonely Planet Australia"
+  },
+  "matched": "Lonely Planet Australia",
+  "source": "open_library",
+  "verified": true
+ },
+ "lonely planet francia|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Lonely Planet Francia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lonely planet parigi|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Lonely Planet Parigi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "long drop|mina": {
+  "example": {
+   "author": "Denise Mina",
+   "title": "The Long Drop"
+  },
+  "matched": "The long drop",
+  "source": "open_library",
+  "verified": true
+ },
+ "long way to small angry planet|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "The Long Way to a Small, Angry Planet"
+  },
+  "matched": "The Long Way to a Small, Angry Planet",
+  "source": "open_library",
+  "verified": true
+ },
+ "luci di maggio|giordano": {
+  "example": {
+   "author": "Paolo Giordano",
+   "title": "Le luci di maggio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "luna e falo|pavese": {
+  "example": {
+   "author": "Cesare Pavese",
+   "title": "La luna e i falò"
+  },
+  "matched": "La luna e i falò",
+  "source": "open_library",
+  "verified": true
+ },
+ "luna e severa maestra|heinlein": {
+  "example": {
+   "author": "Robert A. Heinlein",
+   "title": "La Luna è una severa maestra"
+  },
+  "matched": "La Luna è una severa maestra",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "lunga attesa dell angelo|mazzucco": {
+  "example": {
+   "author": "Melania G. Mazzucco",
+   "title": "La lunga attesa dell'angelo"
+  },
+  "matched": "La lunga attesa dell'angelo",
+  "source": "open_library",
+  "verified": true
+ },
+ "lunga strada per piccolo pianeta arrabbiato|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "La lunga strada per un piccolo pianeta arrabbiato"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lunga strada verso piccolo arrabbiato pianeta|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "La lunga strada verso un piccolo arrabbiato pianeta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lunga terra|baxter": {
+  "example": {
+   "author": "Terry Pratchett e Stephen Baxter",
+   "title": "La lunga Terra"
+  },
+  "matched": "La lunga terra",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "lunga via per piccolo pianeta arrabbiato|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "La lunga via per un piccolo pianeta arrabbiato"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lungo viaggio su piccolo pianeta irrequieto|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Il lungo viaggio su un piccolo pianeta irrequieto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lungo viaggio su piccolo pianeta|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Il lungo viaggio su un piccolo pianeta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "lungo viaggio verso piccolo pianeta arrabbiato|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Il lungo viaggio verso un piccolo pianeta arrabbiato"
+  },
+  "source": null,
+  "verified": false
+ },
+ "macchina del tempo|wells": {
+  "example": {
+   "author": "H.G. Wells",
+   "title": "La macchina del tempo"
+  },
+  "matched": "La macchina del tempo",
+  "source": "open_library",
+  "verified": true
+ },
+ "macchina della realta|gibson": {
+  "example": {
+   "author": "Bruce Sterling e William Gibson",
+   "title": "La macchina della realtà"
+  },
+  "matched": "La macchina della realtà",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "macchina della realta|sterling": {
+  "example": {
+   "author": "William Gibson e Bruce Sterling",
+   "title": "La macchina della realtà"
+  },
+  "matched": "La macchina della realtà",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "macchina si ferma|forster": {
+  "example": {
+   "author": "E. M. Forster",
+   "title": "La macchina si ferma"
+  },
+  "matched": "La macchina si ferma",
+  "source": "sbn",
+  "verified": true
+ },
+ "machines like me|mcewan": {
+  "example": {
+   "author": "Ian McEwan",
+   "title": "Machines Like Me"
+  },
+  "matched": "Machines Like Me",
+  "source": "open_library",
+  "verified": true
+ },
+ "mafia uccide solo d estate|diliberto": {
+  "example": {
+   "author": "Pif (Pierfrancesco Diliberto)",
+   "title": "La Mafia uccide solo d'estate"
+  },
+  "source": null,
+  "verified": false
+ },
+ "magica casa sull albero|osborne": {
+  "example": {
+   "author": "Mary Pope Osborne",
+   "title": "La magica casa sull'albero: Dinosauri prima del tramonto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mago dei mari|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "Il Mago dei Mari"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mago di oz|baum": {
+  "example": {
+   "author": "L. Frank Baum",
+   "title": "Il Mago di Oz"
+  },
+  "matched": "Il mago di Oz (film 1939)",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "mago stregato|lee": {
+  "example": {
+   "author": "Tanith Lee",
+   "title": "Il Mago Stregato"
+  },
+  "source": null,
+  "verified": false
+ },
+ "magpie murders|horowitz": {
+  "example": {
+   "author": "Anthony Horowitz",
+   "title": "Magpie Murders"
+  },
+  "matched": "Magpie Murders",
+  "source": "open_library",
+  "verified": true
+ },
+ "maid|prose": {
+  "example": {
+   "author": "Nita Prose",
+   "title": "The Maid"
+  },
+  "matched": "The Maid",
+  "source": "open_library",
+  "verified": true
+ },
+ "making of manager|zhuo": {
+  "example": {
+   "author": "Julie Zhuo",
+   "title": "The Making of a Manager"
+  },
+  "matched": "The Making of a Manager",
+  "source": "open_library",
+  "verified": true
+ },
+ "mamma per amica libro|pai": {
+  "example": {
+   "author": "Amy Sherman-Palladino e Helen Pai",
+   "title": "Una mamma per amica. Il libro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mamma per amica romanzo|clark": {
+  "example": {
+   "author": "Catherine Clark",
+   "title": "Una mamma per amica. Il romanzo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mamma per amica|macomber": {
+  "example": {
+   "author": "Debbie Macomber",
+   "title": "Una mamma per amica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mamma per amica|napolitano": {
+  "example": {
+   "author": "Ann Napolitano",
+   "title": "Una mamma per amica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "man called ove|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "A Man Called Ove"
+  },
+  "matched": "A Man Called Ove (novel)",
+  "source": "wikipedia_en",
+  "verified": true
+ },
+ "man lay dead|marsh": {
+  "example": {
+   "author": "Ngaio Marsh",
+   "title": "A Man Lay Dead"
+  },
+  "matched": "A Man Lay Dead",
+  "source": "open_library",
+  "verified": true
+ },
+ "man who died twice|osman": {
+  "example": {
+   "author": "Richard Osman",
+   "title": "The Man Who Died Twice"
+  },
+  "matched": "The Man Who Died Twice",
+  "source": "open_library",
+  "verified": true
+ },
+ "man who mistook his wife for hat|sacks": {
+  "example": {
+   "author": "Oliver Sacks",
+   "title": "The Man Who Mistook His Wife for a Hat"
+  },
+  "matched": "The Man Who Mistook His Wife for a Hat",
+  "source": "open_library",
+  "verified": true
+ },
+ "mano sinistra del buio|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "La mano sinistra del buio"
+  },
+  "matched": "La mano sinistra del buio",
+  "source": "sbn",
+  "verified": true
+ },
+ "manuale del ciclista urbano|lauri": {
+  "example": {
+   "author": "Ivan Lauri",
+   "title": "Il manuale del ciclista urbano"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manuale del ciclista urbano|sidwells": {
+  "example": {
+   "author": "Chris Sidwells",
+   "title": "Il manuale del ciclista urbano"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manuale del ciclista|brumotti": {
+  "example": {
+   "author": "Vittorio Brumotti",
+   "title": "Manuale del ciclista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manuale delle donne di servizio|littizzetto": {
+  "example": {
+   "author": "Luciana Littizzetto",
+   "title": "Il manuale delle donne di servizio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manuale di meccanica per biciclette|sidwells": {
+  "example": {
+   "author": "Chris Sidwells",
+   "title": "Manuale di meccanica per biciclette"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manuale pratico di sopravvivenza in bicicletta urbana|giardino": {
+  "example": {
+   "author": "Marco Giardino",
+   "title": "Manuale pratico di sopravvivenza in bicicletta urbana"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manutenzione della bicicletta e del ciclista|plas": {
+  "example": {
+   "author": "Rob van der Plas",
+   "title": "La manutenzione della bicicletta e del ciclista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "manutenzione della bicicletta|plas": {
+  "example": {
+   "author": "Rob van der Plas",
+   "title": "Manutenzione della bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "marcovaldo ovvero stagioni in citta|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Marcovaldo ovvero Le stagioni in città"
+  },
+  "matched": "Marcovaldo, ovvero Le stagioni in città",
+  "source": "open_library",
+  "verified": true
+ },
+ "marcovaldo|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Marcovaldo"
+  },
+  "matched": "Marcovaldo",
+  "source": "open_library",
+  "verified": true
+ },
+ "mare dove non sei|murgia": {
+  "example": {
+   "author": "Michela Murgia",
+   "title": "Il mare dove non sei"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mare non bagna napoli|ortese": {
+  "example": {
+   "author": "Anna Maria Ortese",
+   "title": "Il mare non bagna Napoli"
+  },
+  "matched": "Il mare non bagna Napoli",
+  "source": "open_library",
+  "verified": true
+ },
+ "marina|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "Marina"
+  },
+  "matched": "Marina",
+  "source": "open_library",
+  "verified": true
+ },
+ "marlow murder club|thorogood": {
+  "example": {
+   "author": "Robert Thorogood",
+   "title": "The Marlow Murder Club"
+  },
+  "matched": "The Marlow Murder Club",
+  "source": "open_library",
+  "verified": true
+ },
+ "martian|weir": {
+  "example": {
+   "author": "Andy Weir",
+   "title": "The Martian"
+  },
+  "matched": "The Martian",
+  "source": "open_library",
+  "verified": true
+ },
+ "measure what matters|doerr": {
+  "example": {
+   "author": "John Doerr",
+   "title": "Measure What Matters"
+  },
+  "matched": "Measure What Matter",
+  "source": "open_library",
+  "verified": true
+ },
+ "memoria del mondo|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "La Memoria del Mondo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mente in evoluzione|wright": {
+  "example": {
+   "author": "Robert Wright",
+   "title": "La mente in evoluzione"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mente in poche parole|patel": {
+  "example": {
+   "author": "Vikram Patel",
+   "title": "La mente in poche parole"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mente nuova del re|penrose": {
+  "example": {
+   "author": "Roger Penrose",
+   "title": "La mente nuova del re"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mente nuova dell imperatore|penrose": {
+  "example": {
+   "author": "Roger Penrose",
+   "title": "La mente nuova dell'imperatore"
+  },
+  "matched": "La mente nuova dell'imperatore",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "mente relazionale|siegel": {
+  "example": {
+   "author": "Daniel J. Siegel",
+   "title": "La mente relazionale"
+  },
+  "matched": "La mente relazionale : neurobiologia dell'esperienza interpersonale",
+  "source": "sbn",
+  "verified": true
+ },
+ "metamorfosi|kafka": {
+  "example": {
+   "author": "Franz Kafka",
+   "title": "La metamorfosi"
+  },
+  "matched": "La Metamorfosis",
+  "source": "open_library",
+  "verified": true
+ },
+ "metodo catalanotti|camilleri": {
+  "example": {
+   "author": "Andrea Camilleri",
+   "title": "Il metodo Catalanotti"
+  },
+  "matched": "Il metodo Catalanotti",
+  "source": "open_library",
+  "verified": true
+ },
+ "metodo catalanotti|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "Il metodo Catalanotti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "metodo del coccodrillo|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "Il metodo del coccodrillo"
+  },
+  "matched": "Il metodo del coccodrillo",
+  "source": "open_library",
+  "verified": true
+ },
+ "metodo del cocodrillo|carlotto": {
+  "example": {
+   "author": "Massimo Carlotto",
+   "title": "Il metodo del cocodrillo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "metodo del commissario ricciardi|giovanni": {
+  "example": {
+   "author": "Maurizio De Giovanni",
+   "title": "Il metodo del commissario Ricciardi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "metodo del dottor fonseca|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Il metodo del dottor Fonseca"
+  },
+  "source": null,
+  "verified": false
+ },
+ "metodo del dottor fonseca|vichi": {
+  "example": {
+   "author": "Marco Vichi",
+   "title": "Il metodo del dottor Fonseca"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mi regalo de tiempo|hanh": {
+  "example": {
+   "author": "Thich Nhat Hanh",
+   "title": "Mi regalo de tiempo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mia famiglia e altri animali|durrell": {
+  "example": {
+   "author": "Gerald Durrell",
+   "title": "La mia famiglia e altri animali"
+  },
+  "matched": "La Mia Famiglia E Altri Animali (Italian Edition)",
+  "source": "open_library",
+  "verified": true
+ },
+ "mientras guerra avanza cien anos de historia espanola|reverte": {
+  "example": {
+   "author": "Arturo Pérez-Reverte",
+   "title": "Mientras la guerra avanza, cien años de historia española"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mientras guerra explota|cercas": {
+  "example": {
+   "author": "Javier Cercas",
+   "title": "Mientras la guerra explota"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mindset|dweck": {
+  "example": {
+   "author": "Carol S. Dweck",
+   "title": "Mindset: The New Psychology of Success"
+  },
+  "matched": "Mindset",
+  "source": "open_library",
+  "verified": true
+ },
+ "mio nome e asher|stephenson": {
+  "example": {
+   "author": "Neal Stephenson",
+   "title": "Il mio nome è Asher"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mio nome e legione|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Il mio nome è Legione"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mio viaggio in bicicletta|bianchi": {
+  "example": {
+   "author": "Anna Bianchi",
+   "title": "Il mio viaggio in bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "miss marple|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Miss Marple: The Complete Short Stories"
+  },
+  "matched": "Miss Marple - Miss Marple and Mystery",
+  "source": "open_library",
+  "verified": true
+ },
+ "mistborn|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "Mistborn: L'ultima impero"
+  },
+  "matched": "Mistborn: L'Ultimo Impero",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "mistero del london eye|dowd": {
+  "example": {
+   "author": "Siobhan Dowd",
+   "title": "Il mistero del London Eye"
+  },
+  "matched": "Il Mistero Del London Eye",
+  "source": "open_library",
+  "verified": true
+ },
+ "mistero del lupo nero|thompson": {
+  "example": {
+   "author": "Lisa Thompson",
+   "title": "Il Mistero del Lupo Nero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero del ponte di tollund|adamo": {
+  "example": {
+   "author": "Francesco D'Adamo",
+   "title": "Il mistero del Ponte di Tollund"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero del treno azzurro|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Il mistero del treno azzurro"
+  },
+  "matched": "Il mistero del treno azzurro",
+  "source": "sbn",
+  "verified": true
+ },
+ "mistero del treno azzurro|scerbanenco": {
+  "example": {
+   "author": "Giorgio Scerbanenco",
+   "title": "Il mistero del treno azzurro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero della casa del tempo|bellairs": {
+  "example": {
+   "author": "John Bellairs",
+   "title": "Il mistero della casa del tempo"
+  },
+  "matched": "Il mistero della casa del tempo",
+  "source": "sbn",
+  "verified": true
+ },
+ "mistero della casa stregata|bellairs": {
+  "example": {
+   "author": "John Bellairs",
+   "title": "Il mistero della casa stregata"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero della citta di smeraldo|baum": {
+  "example": {
+   "author": "L. Frank Baum",
+   "title": "Il mistero della città di smeraldo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero della coscienza|massimini": {
+  "example": {
+   "author": "Giulio Tononi e Marcello Massimini",
+   "title": "Il mistero della coscienza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mistero di villa del pino|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Il mistero di villa del pino"
+  },
+  "source": null,
+  "verified": false
+ },
+ "misura del mondo|silei": {
+  "example": {
+   "author": "Fabrizio Silei",
+   "title": "La misura del mondo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "misura del tempo|haig": {
+  "example": {
+   "author": "Matt Haig",
+   "title": "La misura del tempo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mito della mente e del cervello|edelman": {
+  "example": {
+   "author": "Gerald M. Edelman",
+   "title": "Il mito della mente e del cervello"
+  },
+  "source": null,
+  "verified": false
+ },
+ "moglie dell uomo che viaggiava nel tempo|niffenegger": {
+  "example": {
+   "author": "Audrey Niffenegger",
+   "title": "La moglie dell'uomo che viaggiava nel tempo"
+  },
+  "matched": "La moglie dell'uomo che viaggiava nel tempo",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "moglie silenziosa|feeney": {
+  "example": {
+   "author": "Alice Feeney",
+   "title": "La moglie silenziosa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "moglie tra di noi|pekkanen": {
+  "example": {
+   "author": "Greer Hendricks e Sarah Pekkanen",
+   "title": "La moglie tra di noi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "moglie tra ombre|corry": {
+  "example": {
+   "author": "Jane Corry",
+   "title": "La moglie tra le ombre"
+  },
+  "source": null,
+  "verified": false
+ },
+ "moglie tra righe|pekkanen": {
+  "example": {
+   "author": "Greer Hendricks e Sarah Pekkanen",
+   "title": "La moglie tra le righe"
+  },
+  "source": null,
+  "verified": false
+ },
+ "moglie|espach": {
+  "example": {
+   "author": "Alison Espach",
+   "title": "La moglie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "momo|ende": {
+  "example": {
+   "author": "Michael Ende",
+   "title": "Momo"
+  },
+  "matched": "Momo",
+  "source": "open_library",
+  "verified": true
+ },
+ "mondo di araldi|nix": {
+  "example": {
+   "author": "Garth Nix",
+   "title": "Il mondo di Araldi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mondo di graal|malerba": {
+  "example": {
+   "author": "Luigi Malerba",
+   "title": "Il mondo di Graal: Il castello di Montségur"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mondo di percy jackson|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Il mondo di Percy Jackson: Percy Jackson e gli dei dell'Olimpo - La battaglia del labirinto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mondo di sofia|gaarder": {
+  "example": {
+   "author": "Jostein Gaarder",
+   "title": "Il mondo di Sofia"
+  },
+  "matched": "Il mondo di Sofia",
+  "source": "open_library",
+  "verified": true
+ },
+ "mondo di sofie|gaarder": {
+  "example": {
+   "author": "Jostein Gaarder",
+   "title": "Il mondo di Sofie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mondo nuovo degli androidi|dick": {
+  "example": {
+   "author": "Philip K. Dick",
+   "title": "Il Mondo Nuovo degli androidi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mondo nuovo|bradbury": {
+  "example": {
+   "author": "Ray Bradbury",
+   "title": "Il Mondo Nuovo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "monje que vendio su ferrari|sharma": {
+  "example": {
+   "author": "Robin Sharma",
+   "title": "El monje que vendió su Ferrari"
+  },
+  "matched": "El monje que vendió su Ferrari",
+  "source": "wikipedia_es",
+  "verified": true
+ },
+ "morte in mare aperto|giovanni": {
+  "example": {
+   "author": "Maurizio De Giovanni",
+   "title": "Morte in mare aperto"
+  },
+  "source": null,
+  "verified": false
+ },
+ "morto nella piazza|manzini": {
+  "example": {
+   "author": "Antonio Manzini",
+   "title": "Il morto nella piazza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mrs pollifax solves murder|gilman": {
+  "example": {
+   "author": "Dorothy Gilman",
+   "title": "Mrs. Pollifax Solves a Murder"
+  },
+  "source": null,
+  "verified": false
+ },
+ "muchacha de fuego|somoza": {
+  "example": {
+   "author": "José Carlos Somoza",
+   "title": "Muchacha de fuego"
+  },
+  "source": null,
+  "verified": false
+ },
+ "muerte de ivan ilich|tolstoi": {
+  "example": {
+   "author": "León Tolstói",
+   "title": "La muerte de Iván Ilich"
+  },
+  "matched": "La muerte de Ivan Ilich",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder at vicarage|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Murder at the Vicarage"
+  },
+  "matched": "The Murder at the Vicarage",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder is announced|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "A Murder Is Announced"
+  },
+  "matched": "A Murder Is Announced",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder most unladylike|stevens": {
+  "example": {
+   "author": "Robin Stevens",
+   "title": "Murder Most Unladylike"
+  },
+  "matched": "Murder Most unladylike",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder most unlikely|queen": {
+  "example": {
+   "author": "Ellery Queen",
+   "title": "Murder Most Unlikely"
+  },
+  "matched": "Murder Most Unlikely",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder of roger ackroyd|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "The Murder of Roger Ackroyd"
+  },
+  "matched": "The Murder of Roger Ackroyd",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder on orient express|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "Murder on the Orient Express"
+  },
+  "matched": "Murder on the Orient Express",
+  "source": "open_library",
+  "verified": true
+ },
+ "murder to remember|turnbull": {
+  "example": {
+   "author": "Bryn Turnbull",
+   "title": "A Murder to Remember"
+  },
+  "source": null,
+  "verified": false
+ },
+ "murderbot diari della macchina assassina|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "Murderbot. I diari della macchina assassina"
+  },
+  "matched": "Martha Wells",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "murderbot diaries|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "The Murderbot Diaries: All Systems Red"
+  },
+  "source": null,
+  "verified": false
+ },
+ "museo della giovinezza|chabon": {
+  "example": {
+   "author": "Chabon",
+   "title": "Il museo della giovinezza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "mysterious affair at styles|christie": {
+  "example": {
+   "author": "Agatha Christie",
+   "title": "The Mysterious Affair at Styles"
+  },
+  "matched": "The Mysterious Affair at Styles",
+  "source": "open_library",
+  "verified": true
+ },
+ "mysterious benedict society|stewart": {
+  "example": {
+   "author": "Trenton Lee Stewart",
+   "title": "The Mysterious Benedict Society"
+  },
+  "matched": "The Mysterious Benedict Society (The Mysterious Benedict Society #1)",
+  "source": "open_library",
+  "verified": true
+ },
+ "nada es nuestro|herreros": {
+  "example": {
+   "author": "Ana Cristina Herreros",
+   "title": "Nada es nuestro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "nada|laforet": {
+  "example": {
+   "author": "Carmen Laforet",
+   "title": "Nada"
+  },
+  "matched": "Nada",
+  "source": "open_library",
+  "verified": true
+ },
+ "name of wind|rothfuss": {
+  "example": {
+   "author": "Patrick Rothfuss",
+   "title": "The Name of the Wind"
+  },
+  "matched": "The Name of the Wind",
+  "source": "open_library",
+  "verified": true
+ },
+ "neuromante|gibson": {
+  "example": {
+   "author": "William Gibson",
+   "title": "Neuromante"
+  },
+  "matched": "Neuromante",
+  "source": "open_library",
+  "verified": true
+ },
+ "neuroscienze della felicita|davidson": {
+  "example": {
+   "author": "Richard J. Davidson",
+   "title": "Le neuroscienze della felicità"
+  },
+  "source": null,
+  "verified": false
+ },
+ "nieta del senor linh|claudel": {
+  "example": {
+   "author": "Philippe Claudel",
+   "title": "La nieta del señor Linh"
+  },
+  "matched": "La nieta del señor Linh",
+  "source": "open_library",
+  "verified": true
+ },
+ "no 1 ladies detective agency|smith": {
+  "example": {
+   "author": "Alexander McCall Smith",
+   "title": "The No. 1 Ladies' Detective Agency"
+  },
+  "matched": "The No. 1 Ladies' Detective Agency",
+  "source": "open_library",
+  "verified": true
+ },
+ "noche de tiempos|molina": {
+  "example": {
+   "author": "Antonio Muñoz Molina",
+   "title": "La noche de los tiempos"
+  },
+  "matched": "La noche de los tiempos",
+  "source": "open_library",
+  "verified": true
+ },
+ "noia|moravia": {
+  "example": {
+   "author": "Alberto Moravia",
+   "title": "La noia"
+  },
+  "matched": "La noia",
+  "source": "open_library",
+  "verified": true
+ },
+ "nome del vento|rothfuss": {
+  "example": {
+   "author": "Patrick Rothfuss",
+   "title": "Il Nome del Vento: La paura del saggio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "nome della rosa|eco": {
+  "example": {
+   "author": "Umberto Eco",
+   "title": "Il nome della rosa"
+  },
+  "matched": "Il nome della rosa",
+  "source": "open_library",
+  "verified": true
+ },
+ "non dirlo nessuno|coben": {
+  "example": {
+   "author": "Harlan Coben",
+   "title": "Non dirlo a nessuno"
+  },
+  "matched": "Non dirlo a nessuno",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "non e paese per vecchi|gough": {
+  "example": {
+   "author": "Irene Gough",
+   "title": "Non è un paese per vecchi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non mi abbandonerai mai|lapena": {
+  "example": {
+   "author": "Shari Lapena",
+   "title": "Non mi abbandonerai mai"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non mi lasci piu|jewell": {
+  "example": {
+   "author": "Lisa Jewell",
+   "title": "Non mi lasci più"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non ti addormentare|watson": {
+  "example": {
+   "author": "S.J. Watson",
+   "title": "Non ti addormentare"
+  },
+  "matched": "Non ti addormentare",
+  "source": "sbn",
+  "verified": true
+ },
+ "non ti fidare di me|downing": {
+  "example": {
+   "author": "Samantha Downing",
+   "title": "Non ti fidare di me"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non ti fidare di me|foley": {
+  "example": {
+   "author": "Lucy Foley",
+   "title": "Non ti fidare di me"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non ti lascio mai|kubica": {
+  "example": {
+   "author": "Mary Kubica",
+   "title": "Non ti lascio mai"
+  },
+  "source": null,
+  "verified": false
+ },
+ "non ti muovere|mazzantini": {
+  "example": {
+   "author": "Margaret Mazzantini",
+   "title": "Non ti muovere"
+  },
+  "matched": "Non ti muovere",
+  "source": "open_library",
+  "verified": true
+ },
+ "nostro anno di meraviglie|perry": {
+  "example": {
+   "author": "Sarah Perry",
+   "title": "Il nostro anno di meraviglie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "nostro caro desiderio|ahern": {
+  "example": {
+   "author": "Cecilia Ahern",
+   "title": "Il nostro caro desiderio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "nuvola di smog|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "La nuvola di smog"
+  },
+  "matched": "La nuvola di smog",
+  "source": "open_library",
+  "verified": true
+ },
+ "occhio del mondo|jordan": {
+  "example": {
+   "author": "Robert Jordan",
+   "title": "L'occhio del mondo"
+  },
+  "matched": "L'occhio del mondo",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "ojos del hermano eterno|ribeyro": {
+  "example": {
+   "author": "Julio Ramón Ribeyro",
+   "title": "Los ojos del hermano eterno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ombra del vento|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "L'ombra del vento"
+  },
+  "matched": "La sombra del viento",
+  "source": "open_library",
+  "verified": true
+ },
+ "ordine del tempo|rovelli": {
+  "example": {
+   "author": "Carlo Rovelli",
+   "title": "L'ordine del tempo"
+  },
+  "matched": "L'ordine del tempo",
+  "source": "open_library",
+  "verified": true
+ },
+ "ore piccole|kinsella": {
+  "example": {
+   "author": "Sophie Kinsella",
+   "title": "Le ore piccole"
+  },
+  "source": null,
+  "verified": false
+ },
+ "originals|grant": {
+  "example": {
+   "author": "Adam Grant",
+   "title": "Originals"
+  },
+  "matched": "Originals",
+  "source": "open_library",
+  "verified": true
+ },
+ "ospite perfetta|walsh": {
+  "example": {
+   "author": "Rosie Walsh",
+   "title": "L'ospite perfetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ospite perfetta|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "L'ospite perfetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ossa della principessa|rava": {
+  "example": {
+   "author": "Cristina Rava",
+   "title": "Le ossa della principessa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "otto montagne|cognetti": {
+  "example": {
+   "author": "Paolo Cognetti",
+   "title": "Le otto montagne"
+  },
+  "matched": "Le otto montagne",
+  "source": "open_library",
+  "verified": true
+ },
+ "pacientes del doctor garcia|grandes": {
+  "example": {
+   "author": "Almudena Grandes",
+   "title": "Los pacientes del doctor García"
+  },
+  "matched": "PACIENTES DEL DOCTOR GARCIA, LOS",
+  "source": "open_library",
+  "verified": true
+ },
+ "pagine della nostra vita|sparks": {
+  "example": {
+   "author": "Nicholas Sparks",
+   "title": "Le pagine della nostra vita"
+  },
+  "matched": "Le pagine della nostra vita",
+  "source": "open_library",
+  "verified": true
+ },
+ "pallina assassina|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "La pallina assassina"
+  },
+  "source": null,
+  "verified": false
+ },
+ "paradosso dell uomo|sacks": {
+  "example": {
+   "author": "Oliver Sacks",
+   "title": "Il paradosso dell'uomo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "parigi con cartina|planet": {
+  "example": {
+   "author": "Lonely Planet",
+   "title": "Parigi. Con cartina"
+  },
+  "source": null,
+  "verified": false
+ },
+ "parigi e sempre buona idea|barreau": {
+  "example": {
+   "author": "Nicolas Barreau",
+   "title": "Parigi è sempre una buona idea"
+  },
+  "matched": "Parigi è sempre una buona idea",
+  "source": "sbn",
+  "verified": true
+ },
+ "parigi e sempre festa|hemingway": {
+  "example": {
+   "author": "Ernest Hemingway",
+   "title": "Parigi è sempre una festa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "parigi guida pratica|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Parigi. Guida pratica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "parigi lonely planet|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Parigi. Lonely Planet"
+  },
+  "source": null,
+  "verified": false
+ },
+ "passaggio|willis": {
+  "example": {
+   "author": "Connie Willis",
+   "title": "Il passaggio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "patente|pirandello": {
+  "example": {
+   "author": "Luigi Pirandello",
+   "title": "La patente"
+  },
+  "matched": "La patente",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "patria|aramburu": {
+  "example": {
+   "author": "Fernando Aramburu",
+   "title": "Patria"
+  },
+  "matched": "Patria",
+  "source": "open_library",
+  "verified": true
+ },
+ "paziente silenziosa|michaelides": {
+  "example": {
+   "author": "Alex Michaelides",
+   "title": "La paziente silenziosa"
+  },
+  "matched": "La paziente silenziosa",
+  "source": "open_library",
+  "verified": true
+ },
+ "pensare veloce e lento|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Pensare, veloce e lento"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pensare veloce pensare lento|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Pensare veloce, pensare lento"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pensare velocemente e lentamente|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Pensare. Velocemente e lentamente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pensieri lenti e veloci|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Pensieri lenti e veloci"
+  },
+  "matched": "Pensieri lenti e veloci",
+  "source": "sbn",
+  "verified": true
+ },
+ "pequena princesa|burnett": {
+  "example": {
+   "author": "Frances Hodgson Burnett",
+   "title": "La pequeña princesa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequena princesa|giraudoux": {
+  "example": {
+   "author": "Jean-Pierre Giraudoux",
+   "title": "La pequeña princesa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequena princesa|laurent": {
+  "example": {
+   "author": "Jean-Pierre Jeunet y Guillaume Laurent",
+   "title": "La pequeña princesa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequenas cosas como esta|keegan": {
+  "example": {
+   "author": "Claire Keegan",
+   "title": "Pequeñas cosas como esta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequeno libro de vida|gaarder": {
+  "example": {
+   "author": "Jostein Gaarder",
+   "title": "El pequeño libro de la vida"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequeno principe de antoine de saint exupery para adultos|tolle": {
+  "example": {
+   "author": "Eckhart Tolle",
+   "title": "El pequeño príncipe de Antoine de Saint-Exupéry para adultos: El poder del ahora"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pequeno principe|exupery": {
+  "example": {
+   "author": "Antoine de Saint-Exupéry",
+   "title": "El pequeño príncipe"
+  },
+  "matched": "El Principito",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "percy jackson e dei dell olimpo ladro di fulmini|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson e gli dei dell'Olimpo. Il ladro di fulmini"
+  },
+  "matched": "Percy Jackson & gli dei dell'Olimpo. Il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
+ },
+ "percy jackson e dei dell olimpo|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson e gli dei dell'Olimpo: Il ladro di fulmini"
+  },
+  "matched": "Percy Jackson e gli dei dell'Olimpo : il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
+ },
+ "percy jackson e ladri di fulmini|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson e i Ladri di Fulmini"
+  },
+  "source": null,
+  "verified": false
+ },
+ "percy jackson e ladro di fulmini|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson e il ladro di fulmini"
+  },
+  "matched": "Percy Jackson & gli dei dell'Olimpo. Il ladro di fulmini",
+  "source": "sbn",
+  "verified": true
+ },
+ "percy jackson e olympiani|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson e gli Olympiani: Il ladro di fulmini"
+  },
+  "source": null,
+  "verified": false
+ },
+ "percy jackson|riordan": {
+  "example": {
+   "author": "Rick Riordan",
+   "title": "Percy Jackson: La sfida degli dei"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pesci non chiudono occhi|luca": {
+  "example": {
+   "author": "Erri De Luca",
+   "title": "I pesci non chiudono gli occhi"
+  },
+  "matched": "I pesci non chiudono gli occhi",
+  "source": "open_library",
+  "verified": true
+ },
+ "pezzi di vetro|crapanzano": {
+  "example": {
+   "author": "Dario Crapanzano",
+   "title": "Pezzi di vetro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pianeta degli alberi di dio|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "Il pianeta degli alberi di Dio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pianeta degli alberi di natale|chiang": {
+  "example": {
+   "author": "Ted Chiang",
+   "title": "Il pianeta degli alberi di Natale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pianeta dei tre soli|liu": {
+  "example": {
+   "author": "Cixin Liu",
+   "title": "Il pianeta dei Tre Soli"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pianeta del tesoro|stevenson": {
+  "example": {
+   "author": "Robert Louis Stevenson",
+   "title": "Il Pianeta del Tesoro"
+  },
+  "matched": "Il pianeta del tesoro",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "piccole storie di harry potter o sherlock holmes per ragazzi|doyle": {
+  "example": {
+   "author": "Arthur Conan Doyle",
+   "title": "Piccole storie di Harry Potter o Sherlock Holmes per ragazzi: Il mistero del cane dei Baskerville"
+  },
+  "source": null,
+  "verified": false
+ },
+ "piccolo nicolas|goscinny": {
+  "example": {
+   "author": "René Goscinny",
+   "title": "Il piccolo Nicolas"
+  },
+  "matched": "Il piccolo Nicolas",
+  "source": "sbn",
+  "verified": true
+ },
+ "piccolo principe|exupery": {
+  "example": {
+   "author": "Antoine de Saint-Exupéry",
+   "title": "Il piccolo principe"
+  },
+  "matched": "Il Piccolo Principe",
+  "source": "open_library",
+  "verified": true
+ },
+ "pilares de tierra|follett": {
+  "example": {
+   "author": "Ken Follett",
+   "title": "Los pilares de la Tierra"
+  },
+  "matched": "Los Pilares De La Tierra II",
+  "source": "open_library",
+  "verified": true
+ },
+ "pista nera|manzini": {
+  "example": {
+   "author": "Antonio Manzini",
+   "title": "Pista nera"
+  },
+  "matched": "Pista nera",
+  "source": "open_library",
+  "verified": true
+ },
+ "pizza roma|squadrilli": {
+  "example": {
+   "author": "Luciana Squadrilli",
+   "title": "Pizza a Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pizza storia globale|helstosky": {
+  "example": {
+   "author": "Carol Helstosky",
+   "title": "La pizza. Una storia globale"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pizza|helstosky": {
+  "example": {
+   "author": "Carol Helstosky",
+   "title": "La pizza: una storia globale"
+  },
+  "matched": "Pizza",
+  "source": "wikipedia_es",
+  "verified": true
+ },
+ "pizzerie d italia|rosso": {
+  "example": {
+   "author": "Gambero Rosso",
+   "title": "Pizzerie d'Italia"
+  },
+  "matched": "Pizzerie d'Italia 2026",
+  "source": "sbn",
+  "verified": true
+ },
+ "pizzerie d italia|verdi": {
+  "example": {
+   "author": "Giovanni Verdi",
+   "title": "Pizzerie d'Italia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "plaza del diamante|rodoreda": {
+  "example": {
+   "author": "Merce Rodoreda",
+   "title": "La plaza del diamante"
+  },
+  "matched": "La plaça del diamant",
+  "source": "open_library",
+  "verified": true
+ },
+ "poder del ahora|tolle": {
+  "example": {
+   "author": "Eckhart Tolle",
+   "title": "El poder del ahora"
+  },
+  "matched": "El poder del ahora",
+  "source": "open_library",
+  "verified": true
+ },
+ "porta dell eternita|egan": {
+  "example": {
+   "author": "Greg Egan",
+   "title": "La porta dell'eternità"
+  },
+  "source": null,
+  "verified": false
+ },
+ "porta sull estate|heinlein": {
+  "example": {
+   "author": "Robert A. Heinlein",
+   "title": "La porta sull'estate"
+  },
+  "matched": "The Door into Summer",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "power broker|caro": {
+  "example": {
+   "author": "Robert A. Caro",
+   "title": "The Power Broker"
+  },
+  "matched": "The power broker: Robert Moses and the fall of New York",
+  "source": "open_library",
+  "verified": true
+ },
+ "power of habit|duhigg": {
+  "example": {
+   "author": "Charles Duhigg",
+   "title": "The Power of Habit"
+  },
+  "matched": "The Power of Habit",
+  "source": "open_library",
+  "verified": true
+ },
+ "pragmatic programmer|hunt": {
+  "example": {
+   "author": "David Thomas and Andrew Hunt",
+   "title": "The Pragmatic Programmer"
+  },
+  "matched": "The Pragmatic Programmer",
+  "source": "open_library",
+  "verified": true
+ },
+ "pragmatic programmer|thomas": {
+  "example": {
+   "author": "Andrew Hunt and David Thomas",
+   "title": "The Pragmatic Programmer"
+  },
+  "matched": "The Pragmatic Programmer",
+  "source": "open_library",
+  "verified": true
+ },
+ "premios nobel de armada|delibes": {
+  "example": {
+   "author": "Miguel Delibes",
+   "title": "Premios Nobel de la Armada"
+  },
+  "source": null,
+  "verified": false
+ },
+ "pretore di cuvio|chiara": {
+  "example": {
+   "author": "Piero Chiara",
+   "title": "Il pretore di Cuvio"
+  },
+  "matched": "Il pretore di Cuvio",
+  "source": "open_library",
+  "verified": true
+ },
+ "pride and prejudice|austen": {
+  "example": {
+   "author": "Jane Austen",
+   "title": "Pride and Prejudice"
+  },
+  "matched": "Pride and Prejudice",
+  "source": "open_library",
+  "verified": true
+ },
+ "prima che tu vada|jewell": {
+  "example": {
+   "author": "Lisa Jewell",
+   "title": "Prima che tu vada"
+  },
+  "source": null,
+  "verified": false
+ },
+ "prima di andarmene|phillips": {
+  "example": {
+   "author": "Gin Phillips",
+   "title": "Prima di andarmene"
+  },
+  "source": null,
+  "verified": false
+ },
+ "prima di dormire|watson": {
+  "example": {
+   "author": "S.J. Watson",
+   "title": "Prima di dormire"
+  },
+  "source": null,
+  "verified": false
+ },
+ "prima legge|abercrombie": {
+  "example": {
+   "author": "Joe Abercrombie",
+   "title": "La prima legge"
+  },
+  "matched": "Joe Abercrombie",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "prima legge|deludera": {
+  "example": {
+   "author": "poiché ti è piaciuta \"la musica usata come magia\", questo ciclo offre una magia unica e una narrazione avvincente che non ti deluderà.",
+   "title": "La Prima Legge"
+  },
+  "source": null,
+  "verified": false
+ },
+ "primo impero|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "Il primo impero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "primo legame|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "Il Primo Legame"
+  },
+  "source": null,
+  "verified": false
+ },
+ "primo legame|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "Il Primo Legame"
+  },
+  "source": null,
+  "verified": false
+ },
+ "principe dei ladri|lynch": {
+  "example": {
+   "author": "Scott Lynch",
+   "title": "Il Principe dei Ladri"
+  },
+  "source": null,
+  "verified": false
+ },
+ "principe della nebbia|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "Il Principe della Nebbia"
+  },
+  "matched": "Il principe della nebbia",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "principito para adultos|alcolea": {
+  "example": {
+   "author": "Ana Alcolea",
+   "title": "El Principito para adultos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "principito para adultos|lira": {
+  "example": {
+   "author": "Jorge Luis Lira",
+   "title": "El principito para adultos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "principito para adultos|shua": {
+  "example": {
+   "author": "Ana María Shua",
+   "title": "El principito para adultos"
+  },
+  "source": null,
+  "verified": false
+ },
+ "principles|dalio": {
+  "example": {
+   "author": "Ray Dalio",
+   "title": "Principles: Life and Work"
+  },
+  "matched": "Principles",
+  "source": "open_library",
+  "verified": true
+ },
+ "profeta|gibran": {
+  "example": {
+   "author": "Kahlil Gibran",
+   "title": "El profeta"
+  },
+  "matched": "Profeta, El",
+  "source": "open_library",
+  "verified": true
+ },
+ "progress principle|kramer": {
+  "example": {
+   "author": "Teresa Amabile and Steven Kramer",
+   "title": "The Progress Principle"
+  },
+  "matched": "The Progress Principle",
+  "source": "open_library",
+  "verified": true
+ },
+ "project hail mary|weir": {
+  "example": {
+   "author": "Andy Weir",
+   "title": "Project Hail Mary"
+  },
+  "matched": "Project Hail Mary",
+  "source": "open_library",
+  "verified": true
+ },
+ "psalm for wild built|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Psalm for the Wild-Built"
+  },
+  "matched": "A Psalm for the Wild-Built",
+  "source": "open_library",
+  "verified": true
+ },
+ "psichiatra|dorn": {
+  "example": {
+   "author": "Wulf Dorn",
+   "title": "La psichiatra"
+  },
+  "matched": "La psichiatra",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "python book|eck": {
+  "example": {
+   "author": "David J. Eck",
+   "title": "The Python Book: A Complete Introduction to the Python Language"
+  },
+  "source": null,
+  "verified": false
+ },
+ "python book|massaron": {
+  "example": {
+   "author": "John Paul Mueller, Luca Massaron",
+   "title": "The Python Book: A Complete Introduction for Beginners"
+  },
+  "source": null,
+  "verified": false
+ },
+ "python crash course|matthes": {
+  "example": {
+   "author": "Eric Matthes",
+   "title": "Python Crash Course"
+  },
+  "matched": "Python crash course",
+  "source": "open_library",
+  "verified": true
+ },
+ "python workbook|stephenson": {
+  "example": {
+   "author": "Ben Stephenson",
+   "title": "The Python Workbook: A Brief Introduction with Exercises and Solutions"
+  },
+  "matched": "The Python workbook",
+  "source": "open_library",
+  "verified": true
+ },
+ "qed|feynman": {
+  "example": {
+   "author": "Richard Feynman",
+   "title": "QED: The Strange Theory of Light and Matter"
+  },
+  "matched": "Qed - The Strange Theory of Light and Matter",
+  "source": "open_library",
+  "verified": true
+ },
+ "quer pasticciaccio brutto de via merulana|gadda": {
+  "example": {
+   "author": "Carlo Emilio Gadda",
+   "title": "Quer pasticciaccio brutto de Via Merulana"
+  },
+  "matched": "Quer pasticciaccio brutto de via Merulana",
+  "source": "open_library",
+  "verified": true
+ },
+ "questione privata|fenoglio": {
+  "example": {
+   "author": "Beppe Fenoglio",
+   "title": "Una questione privata"
+  },
+  "matched": "Una questione privata",
+  "source": "open_library",
+  "verified": true
+ },
+ "quiche of death|hay": {
+  "example": {
+   "author": "Mavis Doriel Hay",
+   "title": "The Quiche of Death (The Miss Marple Series)"
+  },
+  "source": null,
+  "verified": false
+ },
+ "quinta stagione|jemisin": {
+  "example": {
+   "author": "N.K. Jemisin",
+   "title": "La Quinta Stagione"
+  },
+  "matched": "La quinta stagione",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "racconti delle fate di oscar wilde|wilde": {
+  "example": {
+   "author": "Oscar Wilde",
+   "title": "I racconti delle fate di Oscar Wilde"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza che sognava sogno di fuoco|motte": {
+  "example": {
+   "author": "Anders de la Motte",
+   "title": "La ragazza che sognava un sogno di fuoco"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con all ombra|manfredi": {
+  "example": {
+   "author": "Marina e Valerio Massimo Manfredi",
+   "title": "La ragazza con all'ombra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con cuore di pietra|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "La ragazza con il cuore di pietra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con cuore di vetro|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "La ragazza con il cuore di vetro"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con leica|janeczek": {
+  "example": {
+   "author": "Helena Janeczek",
+   "title": "La ragazza con la Leica"
+  },
+  "matched": "The Girl with the Leica",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "ragazza con leica|schneider": {
+  "example": {
+   "author": "Helga Schneider",
+   "title": "La ragazza con la Leica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con pistola|orta": {
+  "example": {
+   "author": "Marcello D'Orta",
+   "title": "La ragazza con la pistola"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza con tutti doni|carey": {
+  "example": {
+   "author": "M.R. Carey",
+   "title": "La ragazza con tutti i doni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza del treno|hawkins": {
+  "example": {
+   "author": "Paula Hawkins",
+   "title": "La ragazza del treno"
+  },
+  "matched": "La ragazza del treno",
+  "source": "open_library",
+  "verified": true
+ },
+ "ragazza della curva|iacobelli": {
+  "example": {
+   "author": "Federica Iacobelli",
+   "title": "La ragazza della curva"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza meccanica|bacigalupi": {
+  "example": {
+   "author": "Paolo Bacigalupi",
+   "title": "La ragazza meccanica"
+  },
+  "matched": "La ragazza meccanica",
+  "source": "sbn",
+  "verified": true
+ },
+ "ragazza nella nebbia|carrisi": {
+  "example": {
+   "author": "Donato Carrisi",
+   "title": "La ragazza nella nebbia"
+  },
+  "matched": "La ragazza nella nebbia",
+  "source": "open_library",
+  "verified": true
+ },
+ "ragazza scomparsa|flynn": {
+  "example": {
+   "author": "Gillian Flynn",
+   "title": "La ragazza scomparsa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza scomparsa|mackintosh": {
+  "example": {
+   "author": "Clare Mackintosh",
+   "title": "La ragazza scomparsa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza sul treno|hawkins": {
+  "example": {
+   "author": "Paula Hawkins",
+   "title": "La ragazza sul treno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza sulla collina|lagioia": {
+  "example": {
+   "author": "Nicola Lagioia",
+   "title": "La ragazza sulla collina"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazza sulla nave|mccarthy": {
+  "example": {
+   "author": "Morgan McCarthy",
+   "title": "La ragazza sulla nave"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazze di lankhmar|consoli": {
+  "example": {
+   "author": "Ai giorni nostri consoli",
+   "title": "Le ragazze di Lankhmar"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazze|cline": {
+  "example": {
+   "author": "Emma Cline",
+   "title": "Le ragazze"
+  },
+  "matched": "Le ragazze",
+  "source": "sbn",
+  "verified": true
+ },
+ "ragazzo che sapeva cantare|benni": {
+  "example": {
+   "author": "Stefano Benni",
+   "title": "Il Ragazzo che Sapeva Cantare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazzo che sapeva volare|rodari": {
+  "example": {
+   "author": "Gianni Rodari",
+   "title": "Il Ragazzo che Sapeva Volare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ragazzo dei mondi infiniti|gaiman": {
+  "example": {
+   "author": "Neil Gaiman",
+   "title": "Il ragazzo dei mondi infiniti"
+  },
+  "matched": "Il ragazzo dei mondi infiniti",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "regole della vita|moyes": {
+  "example": {
+   "author": "Jojo Moyes",
+   "title": "Le regole della vita"
+  },
+  "source": null,
+  "verified": false
+ },
+ "reina sin espejo|domingo": {
+  "example": {
+   "author": "Carmen Domingo",
+   "title": "La reina sin espejo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "remains of day|ishiguro": {
+  "example": {
+   "author": "Kazuo Ishiguro",
+   "title": "The Remains of the Day"
+  },
+  "matched": "The Remains of the Day",
+  "source": "open_library",
+  "verified": true
+ },
+ "richiamo della foresta|london": {
+  "example": {
+   "author": "Jack London",
+   "title": "Il richiamo della foresta"
+  },
+  "matched": "Il richiamo della foresta.",
+  "source": "open_library",
+  "verified": true
+ },
+ "ridicula idea de no volver verte|montero": {
+  "example": {
+   "author": "Rosa Montero",
+   "title": "La ridícula idea de no volver a verte"
+  },
+  "matched": "La ridícula idea de no volver a verte",
+  "source": "open_library",
+  "verified": true
+ },
+ "risveglio dei morti|watts": {
+  "example": {
+   "author": "Peter Watts",
+   "title": "Il risveglio dei morti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "risveglio del leviatano|corey": {
+  "example": {
+   "author": "James S.A. Corey",
+   "title": "Il risveglio del leviatano"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ritmo della guerra|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "Il ritmo della guerra"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ritratto di artista da giovane|joyce": {
+  "example": {
+   "author": "James Joyce",
+   "title": "Ritratto di un artista da giovane"
+  },
+  "matched": "Un ritratto dell'artista da giovane",
+  "source": "sbn",
+  "verified": true
+ },
+ "road to reality|penrose": {
+  "example": {
+   "author": "Roger Penrose",
+   "title": "The Road to Reality"
+  },
+  "matched": "The Road to Reality",
+  "source": "open_library",
+  "verified": true
+ },
+ "robot che sembrava me|mcewan": {
+  "example": {
+   "author": "Ian McEwan",
+   "title": "Il robot che sembrava me"
+  },
+  "source": null,
+  "verified": false
+ },
+ "robot che sembrava me|reynolds": {
+  "example": {
+   "author": "Alastair Reynolds",
+   "title": "Il robot che sembrava me"
+  },
+  "source": null,
+  "verified": false
+ },
+ "robot|asimov": {
+  "example": {
+   "author": "Isaac Asimov",
+   "title": "Robot"
+  },
+  "matched": "I, Robot",
+  "source": "open_library",
+  "verified": true
+ },
+ "roma guida gastronomica alle migliori pizzerie|cesari": {
+  "example": {
+   "author": "Luca Cesari",
+   "title": "Roma. Guida gastronomica alle migliori pizzerie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "roma guida gastronomica|cesari": {
+  "example": {
+   "author": "Luca Cesari",
+   "title": "Roma. Guida gastronomica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "roma guida gastronomica|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Roma. Guida gastronomica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "roma migliori pizzerie|squadrilli": {
+  "example": {
+   "author": "Luciana Squadrilli",
+   "title": "Roma. Le migliori pizzerie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "roma|vv": {
+  "example": {
+   "author": "AA.VV.",
+   "title": "Roma: le migliori pizzerie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "rosie result|simsion": {
+  "example": {
+   "author": "Graeme Simsion",
+   "title": "The Rosie Result"
+  },
+  "matched": "the Rosie Result",
+  "source": "open_library",
+  "verified": true
+ },
+ "rossa di via chiaia|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "La rossa di Via Chiaia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "rumore delle cose|clark": {
+  "example": {
+   "author": "Julie Clark",
+   "title": "Il rumore delle cose"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ruota del tempo occhio del mondo|jordan": {
+  "example": {
+   "author": "Robert Jordan",
+   "title": "La Ruota del Tempo. L'occhio del mondo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ruota del tempo|jordan": {
+  "example": {
+   "author": "Robert Jordan",
+   "title": "La Ruota del Tempo"
+  },
+  "matched": "La Ruota del Tempo",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "ruota del tempo|sanderson": {
+  "example": {
+   "author": "Robert Jordan e Brandon Sanderson",
+   "title": "La Ruota del Tempo (serie completa)"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sabiduria del corazon|bucay": {
+  "example": {
+   "author": "Jorge Bucay",
+   "title": "La sabiduría del corazón"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sabiduria del fuego|exupery": {
+  "example": {
+   "author": "Antoine de Saint-Exupéry",
+   "title": "La sabiduría del fuego"
+  },
+  "source": null,
+  "verified": false
+ },
+ "saga della torre nera|king": {
+  "example": {
+   "author": "Stephen King",
+   "title": "La saga della Torre Nera"
+  },
+  "source": null,
+  "verified": false
+ },
+ "saga di broken earth|jemisin": {
+  "example": {
+   "author": "N.K. Jemisin",
+   "title": "La saga di Broken Earth"
+  },
+  "source": null,
+  "verified": false
+ },
+ "saga di earthsea|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "La saga di Earthsea"
+  },
+  "matched": "La saga di Earthsea",
+  "source": "sbn",
+  "verified": true
+ },
+ "salmo per robot|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Un salmo per il robot"
+  },
+  "matched": "Un salmo per il robot",
+  "source": "sbn",
+  "verified": true
+ },
+ "santos inocentes|delibes": {
+  "example": {
+   "author": "Miguel Delibes",
+   "title": "Los santos inocentes"
+  },
+  "matched": "Los santos inocentes",
+  "source": "open_library",
+  "verified": true
+ },
+ "sapiens|harari": {
+  "example": {
+   "author": "Yuval Noah Harari",
+   "title": "Sapiens: A Brief History of Humankind"
+  },
+  "matched": "Sapiens",
+  "source": "open_library",
+  "verified": true
+ },
+ "saturday big tent wedding party|smith": {
+  "example": {
+   "author": "Alexander McCall Smith",
+   "title": "The Saturday Big Tent Wedding Party"
+  },
+  "matched": "The Saturday Big Tent Wedding Party",
+  "source": "open_library",
+  "verified": true
+ },
+ "saturday murder club|osman": {
+  "example": {
+   "author": "Richard Osman",
+   "title": "The Saturday Murder Club"
+  },
+  "source": null,
+  "verified": false
+ },
+ "scienza della pizza|bressanini": {
+  "example": {
+   "author": "Dario Bressanini",
+   "title": "La scienza della pizza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "scienza in cucina e arte di mangiar bene|artusi": {
+  "example": {
+   "author": "Pellegrino Artusi",
+   "title": "La scienza in cucina e l'arte di mangiar bene"
+  },
+  "matched": "La scienza in cucina e l'arte di mangiar bene",
+  "source": "open_library",
+  "verified": true
+ },
+ "scimmia pensante|sapolsky": {
+  "example": {
+   "author": "Robert M. Sapolsky",
+   "title": "La scimmia pensante"
+  },
+  "source": null,
+  "verified": false
+ },
+ "scomparsa|flynn": {
+  "example": {
+   "author": "Gillian Flynn",
+   "title": "Scomparsa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "scuola del bene e del male|chainani": {
+  "example": {
+   "author": "Soman Chainani",
+   "title": "La scuola del Bene e del Male"
+  },
+  "source": null,
+  "verified": false
+ },
+ "se della mente|damasio": {
+  "example": {
+   "author": "Antonio Damasio",
+   "title": "Il sé della mente"
+  },
+  "source": null,
+  "verified": false
+ },
+ "se niente e reale grande libro della fisica quantistica|rovelli": {
+  "example": {
+   "author": "Carlo Rovelli",
+   "title": "Se niente è reale. Il grande libro della fisica quantistica"
+  },
+  "source": null,
+  "verified": false
+ },
+ "se notte d inverno viaggiatore|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Se una notte d'inverno un viaggiatore"
+  },
+  "matched": "Se una notte d'inverno un viaggiatore",
+  "source": "open_library",
+  "verified": true
+ },
+ "se questo e amore|levi": {
+  "example": {
+   "author": "Primo Levi",
+   "title": "Se questo è amore"
+  },
+  "source": null,
+  "verified": false
+ },
+ "se questo e uomo|levi": {
+  "example": {
+   "author": "Primo Levi",
+   "title": "Se questo è un uomo"
+  },
+  "matched": "Se questo è un uomo",
+  "source": "open_library",
+  "verified": true
+ },
+ "sea of rust|cargill": {
+  "example": {
+   "author": "C. Robert Cargill",
+   "title": "Sea of Rust"
+  },
+  "matched": "Sea of Rust",
+  "source": "open_library",
+  "verified": true
+ },
+ "secret river|grenville": {
+  "example": {
+   "author": "Kate Grenville",
+   "title": "The Secret River"
+  },
+  "matched": "The Secret River",
+  "source": "open_library",
+  "verified": true
+ },
+ "seda|baricco": {
+  "example": {
+   "author": "Alessandro Baricco",
+   "title": "Seda"
+  },
+  "matched": "Seda : romance",
+  "source": "sbn",
+  "verified": true
+ },
+ "segreto del lago|seddon": {
+  "example": {
+   "author": "Holly Seddon",
+   "title": "Il segreto del lago"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto del marito|moriarty": {
+  "example": {
+   "author": "Liane Moriarty",
+   "title": "Il segreto del marito"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto del vino|malvaldi": {
+  "example": {
+   "author": "Marco Malvaldi",
+   "title": "Il segreto del vino"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto di mio marito|moriarty": {
+  "example": {
+   "author": "Liane Moriarty",
+   "title": "Il segreto di mio marito"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto di sarah|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "Il segreto di Sarah"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto di verity|frances": {
+  "example": {
+   "author": "Michelle Frances",
+   "title": "Il segreto di Verity"
+  },
+  "source": null,
+  "verified": false
+ },
+ "segreto di verity|hoover": {
+  "example": {
+   "author": "Colleen Hoover",
+   "title": "Il segreto di Verity"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei brava ragazza|hunter": {
+  "example": {
+   "author": "Karen Hunter",
+   "title": "Sei una brava ragazza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei mesi ancora|mackintosh": {
+  "example": {
+   "author": "Clare Mackintosh",
+   "title": "Sei mesi ancora"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei mesi di nebbia|lapena": {
+  "example": {
+   "author": "Shari Lapena",
+   "title": "Sei mesi di nebbia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei mesi di noi|mcfarlane": {
+  "example": {
+   "author": "Mhairi McFarlane",
+   "title": "Sei mesi di noi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei mesi fa|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "Sei mesi fa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei mesi venezia|leonelli": {
+  "example": {
+   "author": "Liza Leonelli",
+   "title": "Sei mesi a Venezia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sei sempre stata qui|johnson": {
+  "example": {
+   "author": "Ana Johnson",
+   "title": "Sei sempre stata qui"
+  },
+  "source": null,
+  "verified": false
+ },
+ "selfish gene|dawkins": {
+  "example": {
+   "author": "Richard Dawkins",
+   "title": "The Selfish Gene"
+  },
+  "matched": "The Selfish Gene",
+  "source": "open_library",
+  "verified": true
+ },
+ "sencilla verdad|merton": {
+  "example": {
+   "author": "Thomas Merton",
+   "title": "La sencilla verdad"
+  },
+  "source": null,
+  "verified": false
+ },
+ "senso del dolore|giovanni": {
+  "example": {
+   "author": "Maurizio de Giovanni",
+   "title": "Il senso del dolore"
+  },
+  "matched": "Il senso del dolore",
+  "source": "open_library",
+  "verified": true
+ },
+ "sentiero dei nidi di ragno|calvino": {
+  "example": {
+   "author": "Italo Calvino",
+   "title": "Il sentiero dei nidi di ragno"
+  },
+  "matched": "Il sentiero dei nidi di ragno",
+  "source": "open_library",
+  "verified": true
+ },
+ "seta|baricco": {
+  "example": {
+   "author": "Alessandro Baricco",
+   "title": "Seta"
+  },
+  "matched": "Seta",
+  "source": "open_library",
+  "verified": true
+ },
+ "shadow of wind|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "The Shadow of the Wind"
+  },
+  "matched": "The Shadow of the Wind",
+  "source": "open_library",
+  "verified": true
+ },
+ "short history of nearly everything|bryson": {
+  "example": {
+   "author": "Bill Bryson",
+   "title": "A Short History of Nearly Everything"
+  },
+  "matched": "A short history of nearly everything",
+  "source": "open_library",
+  "verified": true
+ },
+ "shutter island|lehane": {
+  "example": {
+   "author": "Dennis Lehane",
+   "title": "Shutter Island"
+  },
+  "matched": "Shutter Island",
+  "source": "open_library",
+  "verified": true
+ },
+ "sia fatta tua volonta|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "Sia fatta la tua volontà"
+  },
+  "source": null,
+  "verified": false
+ },
+ "siddhartha|hesse": {
+  "example": {
+   "author": "Hermann Hesse",
+   "title": "Siddhartha"
+  },
+  "matched": "Siddhartha",
+  "source": "open_library",
+  "verified": true
+ },
+ "signore degli anelli compagnia dell anello|tolkien": {
+  "example": {
+   "author": "J.R.R. Tolkien",
+   "title": "Il signore degli anelli. La compagnia dell'anello"
+  },
+  "matched": "Il Signore degli Anelli. La compagnia dell'anello",
+  "source": "sbn",
+  "verified": true
+ },
+ "signore degli anelli|tolkien": {
+  "example": {
+   "author": "J.R.R. Tolkien",
+   "title": "Il Signore degli Anelli"
+  },
+  "matched": "Il signore degli anelli",
+  "source": "open_library",
+  "verified": true
+ },
+ "signore del tempo|cooper": {
+  "example": {
+   "author": "Louise Cooper",
+   "title": "Il Signore del Tempo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "signore della luce|zelazny": {
+  "example": {
+   "author": "Roger Zelazny",
+   "title": "Il Signore della Luce"
+  },
+  "matched": "Signore della luce",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "signore delle mosche|golding": {
+  "example": {
+   "author": "William Golding",
+   "title": "Il Signore delle Mosche"
+  },
+  "matched": "Il signore delle mosche",
+  "source": "open_library",
+  "verified": true
+ },
+ "silenzio degli innocenti|gerritsen": {
+  "example": {
+   "author": "Tess Gerritsen",
+   "title": "Il silenzio degli innocenti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "silenzio delle ragazze|purcell": {
+  "example": {
+   "author": "Laura Purcell",
+   "title": "Il silenzio delle ragazze"
+  },
+  "source": null,
+  "verified": false
+ },
+ "silla roja|mastretta": {
+  "example": {
+   "author": "Ángeles Mastretta",
+   "title": "La silla roja"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sistema martin|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "Il sistema Martin"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sistema periodico|levi": {
+  "example": {
+   "author": "Primo Levi",
+   "title": "Il sistema periodico"
+  },
+  "matched": "Il sistema periodico",
+  "source": "open_library",
+  "verified": true
+ },
+ "skandar e furto dell unicorno|steadman": {
+  "example": {
+   "author": "A.F. Steadman",
+   "title": "Skandar e il furto dell'unicorno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "skandar e ladro dell unicorno|steadman": {
+  "example": {
+   "author": "A.F. Steadman",
+   "title": "Skandar e il ladro dell'unicorno"
+  },
+  "source": null,
+  "verified": false
+ },
+ "skulduggery pleasant|landy": {
+  "example": {
+   "author": "Derek Landy",
+   "title": "Skulduggery Pleasant"
+  },
+  "matched": "Skulduggery Pleasant",
+  "source": "open_library",
+  "verified": true
+ },
+ "snow crash|stephenson": {
+  "example": {
+   "author": "Neal Stephenson",
+   "title": "Snow Crash"
+  },
+  "matched": "Snow Crash",
+  "source": "open_library",
+  "verified": true
+ },
+ "soldados de salamina|cercas": {
+  "example": {
+   "author": "Javier Cercas",
+   "title": "Soldados de Salamina"
+  },
+  "matched": "Soldados de Salamina",
+  "source": "open_library",
+  "verified": true
+ },
+ "solitudine dei numeri primi|giordano": {
+  "example": {
+   "author": "Paolo Giordano",
+   "title": "La solitudine dei numeri primi"
+  },
+  "matched": "La solitudine dei numeri primi",
+  "source": "open_library",
+  "verified": true
+ },
+ "solitudine del lupo|vichi": {
+  "example": {
+   "author": "Marco Vichi",
+   "title": "La solitudine del lupo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sombra de otros|somoza": {
+  "example": {
+   "author": "José Carlos Somoza",
+   "title": "La sombra de los otros"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sombra del viento|zafon": {
+  "example": {
+   "author": "Carlos Ruiz Zafón",
+   "title": "La sombra del viento"
+  },
+  "matched": "La sombra del viento",
+  "source": "open_library",
+  "verified": true
+ },
+ "sono brava ragazza|lauren": {
+  "example": {
+   "author": "Christina Lauren",
+   "title": "Sono una brava ragazza"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sorelle|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "Sorelle"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sotto sole di roma|levi": {
+  "example": {
+   "author": "Carlo Levi",
+   "title": "Sotto il sole di Roma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "sourdough|sloan": {
+  "example": {
+   "author": "Robin Sloan",
+   "title": "Sourdough"
+  },
+  "matched": "Sourdough",
+  "source": "open_library",
+  "verified": true
+ },
+ "specchio di ombre|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "Lo specchio di Ombre"
+  },
+  "source": null,
+  "verified": false
+ },
+ "spiriti di dove|snicket": {
+  "example": {
+   "author": "Lemony Snicket",
+   "title": "Gli Spiriti di Dove?"
+  },
+  "source": null,
+  "verified": false
+ },
+ "start with why|sinek": {
+  "example": {
+   "author": "Simon Sinek",
+   "title": "Start with Why"
+  },
+  "matched": "Start with why",
+  "source": "open_library",
+  "verified": true
+ },
+ "storia di elsa morante|morante": {
+  "example": {
+   "author": "Elsa Morante",
+   "title": "La storia di Elsa Morante"
+  },
+  "source": null,
+  "verified": false
+ },
+ "storia di ladra di libri|zusak": {
+  "example": {
+   "author": "Markus Zusak",
+   "title": "Storia di una ladra di libri"
+  },
+  "matched": "Storia di una ladra di libri",
+  "source": "sbn",
+  "verified": true
+ },
+ "storia di mina|almond": {
+  "example": {
+   "author": "David Almond",
+   "title": "La storia di Mina"
+  },
+  "matched": "La storia di Mina",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "storia di peter pan|barrie": {
+  "example": {
+   "author": "J. M. Barrie",
+   "title": "La storia di Peter Pan"
+  },
+  "matched": "La storia di Peter Pan : racconto per bambini",
+  "source": "sbn",
+  "verified": true
+ },
+ "storia di ulisse e argo|milani": {
+  "example": {
+   "author": "Mino Milani",
+   "title": "La storia di Ulisse e Argo"
+  },
+  "matched": "La storia di Ulisse e Argo",
+  "source": "sbn",
+  "verified": true
+ },
+ "storia infinita|ende": {
+  "example": {
+   "author": "Michael Ende",
+   "title": "La storia infinita"
+  },
+  "matched": "La storia infinita",
+  "source": "open_library",
+  "verified": true
+ },
+ "storia|morante": {
+  "example": {
+   "author": "Elsa Morante",
+   "title": "La storia"
+  },
+  "matched": "La storia",
+  "source": "open_library",
+  "verified": true
+ },
+ "strada dei re|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "La strada dei re"
+  },
+  "source": null,
+  "verified": false
+ },
+ "strada|mccarthy": {
+  "example": {
+   "author": "Cormac McCarthy",
+   "title": "La strada"
+  },
+  "matched": "La strada",
+  "source": "sbn",
+  "verified": true
+ },
+ "straordinaria invenzione di hugo cabret|selznick": {
+  "example": {
+   "author": "Brian Selznick",
+   "title": "La straordinaria invenzione di Hugo Cabret"
+  },
+  "matched": "The Invention of Hugo Cabret",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "strato dei sogni|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "Lo Strato dei Sogni"
+  },
+  "source": null,
+  "verified": false
+ },
+ "streghe|dahl": {
+  "example": {
+   "author": "Roald Dahl",
+   "title": "Le streghe"
+  },
+  "matched": "Las brujas",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "suburra|cataldo": {
+  "example": {
+   "author": "Carlo Bonini, Giancarlo De Cataldo",
+   "title": "Suburra"
+  },
+  "matched": "Suburra",
+  "source": "open_library",
+  "verified": true
+ },
+ "sulla strada|kerouac": {
+  "example": {
+   "author": "Jack Kerouac",
+   "title": "Sulla strada"
+  },
+  "matched": "Sulla strada",
+  "source": "sbn",
+  "verified": true
+ },
+ "surely you re joking mr feynman|feynman": {
+  "example": {
+   "author": "Richard P. Feynman",
+   "title": "Surely You're Joking, Mr. Feynman!"
+  },
+  "matched": "\"Surely You're Joking, Mr. Feynman\"",
+  "source": "open_library",
+  "verified": true
+ },
+ "sweetness at bottom of pie|bradley": {
+  "example": {
+   "author": "Alan Bradley",
+   "title": "The Sweetness at the Bottom of the Pie"
+  },
+  "matched": "The Sweetness at the Bottom of the Pie",
+  "source": "open_library",
+  "verified": true
+ },
+ "talento di mr clevax|bester": {
+  "example": {
+   "author": "Alfred Bester",
+   "title": "Il talento di Mr. Clevax"
+  },
+  "source": null,
+  "verified": false
+ },
+ "te llamare tambor|marse": {
+  "example": {
+   "author": "Juan Marsé",
+   "title": "Te llamaré Tambor"
+  },
+  "source": null,
+  "verified": false
+ },
+ "tempo che ci vuole per essere felici|giannone": {
+  "example": {
+   "author": "Francesca Giannone",
+   "title": "Il tempo che ci vuole per essere felici"
+  },
+  "source": null,
+  "verified": false
+ },
+ "tempo che ci vuole per essere felici|rhodes": {
+  "example": {
+   "author": "Lynn Rhodes",
+   "title": "Il tempo che ci vuole per essere felici"
+  },
+  "source": null,
+  "verified": false
+ },
+ "tempo che ci vuole per tornare casa|hogan": {
+  "example": {
+   "author": "Ruth Hogan",
+   "title": "Il tempo che ci vuole per tornare a casa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "tempo delle farfalle|alvarez": {
+  "example": {
+   "author": "Julia Alvarez",
+   "title": "Il tempo delle farfalle"
+  },
+  "matched": "Il Tempo Delle Farfalle",
+  "source": "open_library",
+  "verified": true
+ },
+ "think again|grant": {
+  "example": {
+   "author": "Adam Grant",
+   "title": "Think Again"
+  },
+  "matched": "Think Again",
+  "source": "open_library",
+  "verified": true
+ },
+ "thinking fast and slow|kahneman": {
+  "example": {
+   "author": "Daniel Kahneman",
+   "title": "Thinking, Fast and Slow"
+  },
+  "matched": "Thinking, fast and slow",
+  "source": "open_library",
+  "verified": true
+ },
+ "thursday murder club|osman": {
+  "example": {
+   "author": "Richard Osman",
+   "title": "The Thursday Murder Club"
+  },
+  "matched": "The Thursday Murder Club",
+  "source": "open_library",
+  "verified": true
+ },
+ "tiempo entre costuras|duenas": {
+  "example": {
+   "author": "María Dueñas",
+   "title": "El tiempo entre costuras"
+  },
+  "matched": "El tiempo entre costuras",
+  "source": "open_library",
+  "verified": true
+ },
+ "to kill mockingbird|lee": {
+  "example": {
+   "author": "Harper Lee",
+   "title": "To Kill a Mockingbird"
+  },
+  "matched": "To Kill a Mockingbird",
+  "source": "open_library",
+  "verified": true
+ },
+ "tregua|benedetti": {
+  "example": {
+   "author": "Mario Benedetti",
+   "title": "La tregua"
+  },
+  "matched": "La tregua",
+  "source": "open_library",
+  "verified": true
+ },
+ "tregua|levi": {
+  "example": {
+   "author": "Primo Levi",
+   "title": "La tregua"
+  },
+  "matched": "La tregua",
+  "source": "open_library",
+  "verified": true
+ },
+ "treni e viaggi in europa|cook": {
+  "example": {
+   "author": "Thomas Cook",
+   "title": "Treni e viaggi in Europa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "treni e viaggi in europa|pastore": {
+  "example": {
+   "author": "Enrico Pastore",
+   "title": "Treni e viaggi in Europa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "treni e viaggiatori|theroux": {
+  "example": {
+   "author": "Paul Theroux",
+   "title": "Treni e viaggiatori"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trillion dollar coach|eagle": {
+  "example": {
+   "author": "Eric Schmidt, Jonathan Rosenberg, Alan Eagle",
+   "title": "Trillion Dollar Coach"
+  },
+  "matched": "Trillion Dollar Coach",
+  "source": "open_library",
+  "verified": true
+ },
+ "trilogia dei lungavista apprendista assassino|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "La trilogia dei Lungavista. L'apprendista assassino"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia dei lungavista libro primo|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "La trilogia dei Lungavista. Libro primo: L'apprendista assassino"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia dei lungavista|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "La trilogia dei Lungavista"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia del mar grigio|schwab": {
+  "example": {
+   "author": "V. E. Schwab",
+   "title": "La trilogia del Mar Grigio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia dell assassino|hobb": {
+  "example": {
+   "author": "Robin Hobb",
+   "title": "La trilogia dell'Assassino"
+  },
+  "matched": "La furia dell'assassino",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "trilogia della fondazione|asimov": {
+  "example": {
+   "author": "Isaac Asimov",
+   "title": "La trilogia della Fondazione"
+  },
+  "matched": "Foundation Trilogy",
+  "source": "wikidata_en",
+  "verified": true
+ },
+ "trilogia della prima legge|abercrombie": {
+  "example": {
+   "author": "Joe Abercrombie",
+   "title": "La trilogia della Prima Legge"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia della terra fantasma|jemisin": {
+  "example": {
+   "author": "N. K. Jemisin",
+   "title": "La Trilogia della Terra Fantasma"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia di artemis fowl|colfer": {
+  "example": {
+   "author": "Eoin Colfer",
+   "title": "La trilogia di Artemis Fowl: Artemis Fowl, l'arconte"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia di bartimeus|stroud": {
+  "example": {
+   "author": "Jonathan Stroud",
+   "title": "La trilogia di Bartimeus: L'amuleto di Samarcanda"
+  },
+  "matched": "Tetralogia di Bartimeus",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "trilogia di earthsea|guin": {
+  "example": {
+   "author": "Ursula K. Le Guin",
+   "title": "La trilogia di Earthsea"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia di gelo e fuoco|martin": {
+  "example": {
+   "author": "George R.R. Martin",
+   "title": "La Trilogia di Gelo e Fuoco"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trilogia di mistborn|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "La trilogia di Mistborn"
+  },
+  "source": null,
+  "verified": false
+ },
+ "trono di spade|martin": {
+  "example": {
+   "author": "George R.R. Martin",
+   "title": "Il trono di spade"
+  },
+  "matched": "Il trono di spade : Il regno dei lupi-La regina dei draghi",
+  "source": "open_library",
+  "verified": true
+ },
+ "tutto resto e pioggia|marone": {
+  "example": {
+   "author": "Lorenzo Marone",
+   "title": "Tutto il resto è pioggia"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ultima cosa che vedo|barton": {
+  "example": {
+   "author": "Fiona Barton",
+   "title": "L'ultima cosa che vedo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ultima moglie|lloyd": {
+  "example": {
+   "author": "Amy Lloyd",
+   "title": "L'ultima moglie"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ultima notte montecarlo|mandel": {
+  "example": {
+   "author": "Emily St. John Mandel",
+   "title": "L'ultima notte a Montecarlo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "ultimo impero|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "L'ultimo impero"
+  },
+  "source": null,
+  "verified": false
+ },
+ "unexpected inheritance of inspector chopra|khan": {
+  "example": {
+   "author": "Vaseem Khan",
+   "title": "The Unexpected Inheritance of Inspector Chopra"
+  },
+  "matched": "The unexpected inheritance of Inspector Chopra",
+  "source": "open_library",
+  "verified": true
+ },
+ "unexpected mrs pollifax|gilman": {
+  "example": {
+   "author": "Dorothy Gilman",
+   "title": "The Unexpected Mrs. Pollifax"
+  },
+  "matched": "The Unexpected Mrs. Pollifax",
+  "source": "open_library",
+  "verified": true
+ },
+ "unita|holmqvist": {
+  "example": {
+   "author": "Ninni Holmqvist",
+   "title": "L’unità"
+  },
+  "matched": "L' Unità",
+  "source": "sbn",
+  "verified": true
+ },
+ "unlikely pilgrimage of harold fry|joyce": {
+  "example": {
+   "author": "Rachel Joyce",
+   "title": "The Unlikely Pilgrimage of Harold Fry"
+  },
+  "matched": "The Unlikely Pilgrimage of Harold Fry",
+  "source": "open_library",
+  "verified": true
+ },
+ "uomo bicentenario|asimov": {
+  "example": {
+   "author": "Isaac Asimov",
+   "title": "L’uomo bicentenario"
+  },
+  "source": null,
+  "verified": false
+ },
+ "uomo che piantava alberi|giono": {
+  "example": {
+   "author": "Jean Giono",
+   "title": "L'uomo che piantava gli alberi"
+  },
+  "matched": "L’UOMO CHE PIANTAVA GLI ALBERI",
+  "source": "sbn",
+  "verified": true
+ },
+ "uomo che piego tempo|sawyer": {
+  "example": {
+   "author": "Robert J. Sawyer",
+   "title": "L'uomo che piegò il tempo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "uomo che scambio sua moglie per cappello|sacks": {
+  "example": {
+   "author": "Oliver Sacks",
+   "title": "L'uomo che scambiò sua moglie per un cappello"
+  },
+  "matched": "L'uomo che scambiò sua moglie per un cappello",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "uomo chiamato ove|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "Un uomo chiamato Ove"
+  },
+  "source": null,
+  "verified": false
+ },
+ "uomo di nome ove|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "Un uomo di nome Ove"
+  },
+  "source": null,
+  "verified": false
+ },
+ "uomo illustrato|bradbury": {
+  "example": {
+   "author": "Ray Bradbury",
+   "title": "L’uomo illustrato"
+  },
+  "matched": "Il gioco dei pianeti",
+  "source": "wikidata_it",
+  "verified": true
+ },
+ "uomo pezzi|wells": {
+  "example": {
+   "author": "Martha Wells",
+   "title": "Un uomo a pezzi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "variante di luneburg|maurensig": {
+  "example": {
+   "author": "Paolo Maurensig",
+   "title": "La variante di Luneburg"
+  },
+  "matched": "La variante di Lüneburg",
+  "source": "open_library",
+  "verified": true
+ },
+ "veinte poemas de amor y cancion desesperada|neruda": {
+  "example": {
+   "author": "Pablo Neruda",
+   "title": "Veinte poemas de amor y una canción desesperada"
+  },
+  "matched": "Veinte poemas de amor y una canción desesperada",
+  "source": "open_library",
+  "verified": true
+ },
+ "vento che ruggisce|morgenstern": {
+  "example": {
+   "author": "Erin Morgenstern",
+   "title": "Il Vento che Ruggisce"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vera wong s unsolicited advice for murderers|sutanto": {
+  "example": {
+   "author": "Jesse Q. Sutanto",
+   "title": "Vera Wong's Unsolicited Advice for Murderers"
+  },
+  "matched": "Vera Wong's Unsolicited Advice for Murderers",
+  "source": "open_library",
+  "verified": true
+ },
+ "verdad sobre caso savolta|mendoza": {
+  "example": {
+   "author": "Eduardo Mendoza",
+   "title": "La verdad sobre el caso Savolta"
+  },
+  "matched": "La verdad sobre el caso Savolta",
+  "source": "open_library",
+  "verified": true
+ },
+ "verita sul caso di harry quebert|dicker": {
+  "example": {
+   "author": "Joël Dicker",
+   "title": "La verità sul caso di Harry Quebert"
+  },
+  "matched": "La verità sul caso Harry Quebert",
+  "source": "sbn",
+  "verified": true
+ },
+ "verita sul caso harry quebert|dicker": {
+  "example": {
+   "author": "Joël Dicker",
+   "title": "La verità sul caso Harry Quebert"
+  },
+  "matched": "Joël Dicker",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "via dei re|sanderson": {
+  "example": {
+   "author": "Brandon Sanderson",
+   "title": "La via dei re"
+  },
+  "matched": "La Via dei Re",
+  "source": "open_library",
+  "verified": true
+ },
+ "viaggi in treno|verdi": {
+  "example": {
+   "author": "Giovanni Verdi",
+   "title": "Viaggi in treno: Storie e tariffe da Parigi a tutto il mondo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "viaggiatore incantato|buzzati": {
+  "example": {
+   "author": "Dino Buzzati",
+   "title": "Il viaggiatore incantato"
+  },
+  "source": null,
+  "verified": false
+ },
+ "viaggio al centro della terra|verne": {
+  "example": {
+   "author": "Jules Verne",
+   "title": "Viaggio al centro della Terra"
+  },
+  "matched": "Viaggio al centro della terra",
+  "source": "open_library",
+  "verified": true
+ },
+ "viaggio al termine della notte|celine": {
+  "example": {
+   "author": "Louis-Ferdinand Céline",
+   "title": "Viaggio al termine della notte"
+  },
+  "matched": "Viaggio al termine della notte",
+  "source": "sbn",
+  "verified": true
+ },
+ "viaggio di arlo|rinaldi": {
+  "example": {
+   "author": "Daniela Rinaldi",
+   "title": "Il viaggio di Arlo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "viaggio di nathan|kessler": {
+  "example": {
+   "author": "Ruth Vande Pol Kessler",
+   "title": "Il Viaggio di Nathan"
+  },
+  "source": null,
+  "verified": false
+ },
+ "viaggio in italia|piovene": {
+  "example": {
+   "author": "Guido Piovene",
+   "title": "Viaggio in Italia"
+  },
+  "matched": "Viaggio in Italia",
+  "source": "open_library",
+  "verified": true
+ },
+ "viaggio in treno verso parigi|steinbeck": {
+  "example": {
+   "author": "John Steinbeck",
+   "title": "Viaggio in Treno verso Parigi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "viajero del siglo|duenas": {
+  "example": {
+   "author": "María Dueñas",
+   "title": "El viajero del siglo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vicequestore rocco schiavone|manzini": {
+  "example": {
+   "author": "Antonio Manzini",
+   "title": "Il vicequestore Rocco Schiavone: Pietro Caruso"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vida ante si|ajar": {
+  "example": {
+   "author": "Romain Gary (Émile Ajar)",
+   "title": "La vida ante sí"
+  },
+  "matched": "La vida ante sí",
+  "source": "open_library",
+  "verified": true
+ },
+ "viejo y mar|hemingway": {
+  "example": {
+   "author": "Ernest Hemingway",
+   "title": "El viejo y el mar"
+  },
+  "matched": "El viejo y el Mar",
+  "source": "open_library",
+  "verified": true
+ },
+ "vita che volevi|moyes": {
+  "example": {
+   "author": "Jojo Moyes",
+   "title": "La vita che volevi"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita che volevo|moyes": {
+  "example": {
+   "author": "Jojo Moyes",
+   "title": "La vita che volevo"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita come tante cose|backman": {
+  "example": {
+   "author": "Fredrik Backman",
+   "title": "Una vita come tante cose"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita come tante cose|strout": {
+  "example": {
+   "author": "Elizabeth Strout",
+   "title": "Una vita come tante cose"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita come tante|moriarty": {
+  "example": {
+   "author": "Liane Moriarty",
+   "title": "Una vita come tante"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita come tante|yanagihara": {
+  "example": {
+   "author": "Hanya Yanagihara",
+   "title": "Una vita come tante"
+  },
+  "matched": "Una vita come tante",
+  "source": "wikipedia_it",
+  "verified": true
+ },
+ "vita da guardare|cavallo": {
+  "example": {
+   "author": "Francesca Cavallo",
+   "title": "Una vita da guardare"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita da madre|grady": {
+  "example": {
+   "author": "Megan O'Grady",
+   "title": "Una vita da madre"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita degli androidi e difficile|chambers": {
+  "example": {
+   "author": "Becky Chambers",
+   "title": "La vita degli androidi è difficile"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita degli oggetti|chiang": {
+  "example": {
+   "author": "Ted Chiang",
+   "title": "La vita degli oggetti"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita e cosa meravigliosa|offill": {
+  "example": {
+   "author": "Jenny Offill",
+   "title": "La vita è una cosa meravigliosa"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita e facile amico mio|szczygielski": {
+  "example": {
+   "author": "Marcin Szczygielski",
+   "title": "La vita è facile, amico mio"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita e romanzo|musso": {
+  "example": {
+   "author": "Guillaume Musso",
+   "title": "La vita è un romanzo"
+  },
+  "matched": "La vita è un romanzo",
+  "source": "sbn",
+  "verified": true
+ },
+ "vita in bicicletta|luca": {
+  "example": {
+   "author": "Luca T.",
+   "title": "La vita in bicicletta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita perfetta|paris": {
+  "example": {
+   "author": "B. A. Paris",
+   "title": "La vita perfetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita perfetta|ware": {
+  "example": {
+   "author": "Ruth Ware",
+   "title": "La vita perfetta"
+  },
+  "source": null,
+  "verified": false
+ },
+ "vita segreta delle api|kidd": {
+  "example": {
+   "author": "Sue Monk Kidd",
+   "title": "La vita segreta delle api"
+  },
+  "matched": "The Secret Life of Bees",
+  "source": "wikidata_es",
+  "verified": true
+ },
+ "voz dormida|chacon": {
+  "example": {
+   "author": "Dulce Chacón",
+   "title": "La voz dormida"
+  },
+  "matched": "La voz dormida",
+  "source": "open_library",
+  "verified": true
+ },
+ "we are legion|taylor": {
+  "example": {
+   "author": "Dennis E. Taylor",
+   "title": "We Are Legion (We Are Bob)"
+  },
+  "matched": "We Are Legion",
+  "source": "open_library",
+  "verified": true
+ },
+ "weather book|williams": {
+  "example": {
+   "author": "Jack Williams",
+   "title": "The Weather Book: An Easy-to-Understand Guide to the Science of Weather"
+  },
+  "source": null,
+  "verified": false
+ },
+ "weather machine|blum": {
+  "example": {
+   "author": "Andrew Blum",
+   "title": "The Weather Machine"
+  },
+  "matched": "The Weather Machine",
+  "source": "open_library",
+  "verified": true
+ },
+ "weather makers|flannery": {
+  "example": {
+   "author": "Tim Flannery",
+   "title": "The Weather Makers: How Climate Change Is Shaping Our Future"
+  },
+  "source": null,
+  "verified": false
+ },
+ "windsor knot|bennett": {
+  "example": {
+   "author": "SJ Bennett",
+   "title": "The Windsor Knot"
+  },
+  "matched": "The Windsor Knot",
+  "source": "open_library",
+  "verified": true
+ },
+ "word is murder|horowitz": {
+  "example": {
+   "author": "Anthony Horowitz",
+   "title": "The Word is Murder"
+  },
+  "matched": "The Word is Murder",
+  "source": "open_library",
+  "verified": true
+ },
+ "work rules|bock": {
+  "example": {
+   "author": "Laszlo Bock",
+   "title": "Work Rules!: Insights from Inside Google That Will Transform How You Live and Lead"
+  },
+  "matched": "Work Rules!",
+  "source": "open_library",
+  "verified": true
+ },
+ "zen e arte della manutenzione della motocicletta|pirsig": {
+  "example": {
+   "author": "Robert M. Pirsig",
+   "title": "Lo zen e l'arte della manutenzione della motocicletta"
+  },
+  "matched": "Lo Zen e l'arte della manutenzione della motocicletta",
+  "source": "wikipedia_it",
+  "verified": true
+ }
+}

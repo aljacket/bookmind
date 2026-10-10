@@ -191,6 +191,8 @@ LLM_API_KEY=<key from the secret store>
 LLM_EXTRA_BODY='{"provider": {"only": ["<provider>"], "allow_fallbacks": false}}'
 ```
 
+The offline harness used to compare providers and models (quality, cost, latency, JSON reliability) is in `eval/`: see `eval/README.md`. It is not part of the container image.
+
 ## CORS
 
 Allowed origins are read from `CORS_ALLOWED_ORIGINS`, a comma-separated list. When it is unset, the local development list applies (Vite dev server, `localhost`, `capacitor://localhost`, the Android emulator host `10.0.2.2`). Production must set it to the Firebase Hosting origins and the Capacitor app origins only, with no `localhost` or `10.0.2.2` entry. Credentials are not allowed (`allow_credentials=False`): authentication is the bearer header. A preflight from an origin that is not in the list gets no `Access-Control-Allow-Origin` header.

@@ -1,0 +1,132 @@
+{
+ "it-giallo": {
+  "A": {
+   "candidate": "or-gemini-3.1-flash-lite-vertex-eu",
+   "run": 1
+  },
+  "B": {
+   "candidate": "or-claude-haiku-5.5-bedrock-eu-noreason",
+   "run": 2
+  },
+  "C": {
+   "candidate": "or-mistral-small-2603-eu",
+   "run": 1
+  },
+  "D": {
+   "candidate": "openai-gpt-4o-mini",
+   "run": 2
+  },
+  "E": {
+   "candidate": "openai-gpt-6-sol-noreason",
+   "run": 3
+  },
+  "F": {
+   "candidate": "openai-gpt-6-luna-noreason",
+   "run": 3
+  }
+ },
+ "it-fantasy": {
+  "A": {
+   "candidate": "or-gemini-3.1-flash-lite-vertex-eu",
+   "run": 3
+  },
+  "B": {
+   "candidate": "openai-gpt-4o-mini",
+   "run": 3
+  },
+  "C": {
+   "candidate": "or-claude-haiku-5.5-bedrock-eu-noreason",
+   "run": 3
+  },
+  "D": {
+   "candidate": "openai-gpt-6-luna-noreason",
+   "run": 1
+  },
+  "E": {
+   "candidate": "or-mistral-small-2603-eu",
+   "run": 1
+  },
+  "F": {
+   "candidate": "openai-gpt-6-sol-noreason",
+   "run": 3
+  }
+ },
+ "it-consolante": {
+  "A": {
+   "candidate": "openai-gpt-4o-mini",
+   "run": 1
+  },
+  "B": {
+   "candidate": "openai-gpt-6-sol-noreason",
+   "run": 3
+  },
+  "C": {
+   "candidate": "or-mistral-small-2603-eu",
+   "run": 1
+  },
+  "D": {
+   "candidate": "or-gemini-3.1-flash-lite-vertex-eu",
+   "run": 3
+  },
+  "E": {
+   "candidate": "openai-gpt-6-luna-noreason",
+   "run": 2
+  },
+  "F": {
+   "candidate": "or-claude-haiku-5.5-bedrock-eu-noreason",
+   "run": 2
+  }
+ },
+ "en-cozy": {
+  "A": {
+   "candidate": "openai-gpt-4o-mini",
+   "run": 2
+  },
+  "B": {
+   "candidate": "or-mistral-small-2603-eu",
+   "run": 1
+  },
+  "C": {
+   "candidate": "openai-gpt-6-sol-noreason",
+   "run": 3
+  },
+  "D": {
+   "candidate": "or-claude-haiku-5.5-bedrock-eu-noreason",
+   "run": 1
+  },
+  "E": {
+   "candidate": "or-gemini-3.1-flash-lite-vertex-eu",
+   "run": 3
+  },
+  "F": {
+   "candidate": "openai-gpt-6-luna-noreason",
+   "run": 1
+  }
+ },
+ "es-historica": {
+  "A": {
+   "candidate": "openai-gpt-6-luna-noreason",
+   "run": 3
+  },
+  "B": {
+   "candidate": "openai-gpt-6-sol-noreason",
+   "run": 1
+  },
+  "C": {
+   "candidate": "or-gemini-3.1-flash-lite-vertex-eu",
+   "run": 1
+  },
+  "D": {
+   "candidate": "or-claude-haiku-5.5-bedrock-eu-noreason",
+   "run": 2
+  },
+  "E": {
+   "candidate": "openai-gpt-4o-mini",
+   "run": 2
+  },
+  "F": {
+   "candidate": "or-mistral-small-2603-eu",
+   "run": 2
+  }
+ }
+}

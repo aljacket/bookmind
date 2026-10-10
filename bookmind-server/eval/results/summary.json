@@ -1,0 +1,2173 @@
+[
+ {
+  "id": "openai-gpt-4o-mini",
+  "model": "gpt-4o-mini",
+  "router": "OpenAI (direct)",
+  "pinned_provider": "OpenAI",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 41,
+   "failed_checks": {
+    "under_25_words": 1
+   },
+   "score_pct": 97.6
+  },
+  "clarify_response_format_all": {
+   "calls": 42,
+   "http_ok": 0,
+   "all_checks_pass": 0,
+   "failed_checks": {},
+   "score_pct": 0.0
+  },
+  "json_plain": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.5555555555555556,
+    "invented": 0.2962962962962963
+   },
+   "it-fantasy": {
+    "exist": 0.8518518518518519,
+    "invented": 0.037037037037037035
+   },
+   "it-divulgazione": {
+    "exist": 0.37037037037037035,
+    "invented": 0.18518518518518517
+   },
+   "it-consolante": {
+    "exist": 0.7407407407407407,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.5555555555555556,
+    "invented": 0.25925925925925924
+   },
+   "it-novecento": {
+    "exist": 0.8888888888888888,
+    "invented": 0.037037037037037035
+   },
+   "it-scifi": {
+    "exist": 0.5185185185185185,
+    "invented": 0.25925925925925924
+   },
+   "it-ragazzo": {
+    "exist": 0.8148148148148148,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 0.925925925925926,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.7407407407407407,
+    "invented": 0.1111111111111111
+   },
+   "es-corto": {
+    "exist": 0.8518518518518517,
+    "invented": 0.1111111111111111
+   },
+   "it-offtopic-bici": {
+    "exist": 0.5185185185185186,
+    "invented": 0.4444444444444444
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 126,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 99.4,
+   "answers_with_already_read_pct": 0.8,
+   "books_verified_pct": 73.8,
+   "books_in_catalogue_pct": 73.3,
+   "books_exist_lenient_pct": 83.1,
+   "books_invented_pct": 14.8,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 51.6,
+   "answers_all_three_verified_on_topic_pct": 48.1,
+   "books_verified_on_topic_pct": 73.5,
+   "score_pct": 94.3,
+   "unverified": [
+    "A caccia di un padre — Mario Desiati",
+    "Cervello. La storia di un organo — David Eagleman",
+    "Come si cambia una gomma bucata — Giovanni B.",
+    "Come si cambia una gomma bucata — Giovanni Rossi",
+    "El café de la mañana — José Luis Sampedro",
+    "El husar — Joaquín Gallego",
+    "El viajero del siglo — María Dueñas",
+    "Guida pratica alla manutenzione della bicicletta — Luca Verdi",
+    "Guida pratica per ciclisti — Marco R.",
+    "I racconti delle fate di Oscar Wilde — Oscar Wilde",
+    "Il cervello e la coscienza — Antonio Damasio",
+    "Il cervello e la mente — David Eagleman",
+    "Il cervello e la sua storia — David Eagleman",
+    "Il cervello imperfetto — Dean Burnett",
+    "Il cervello infinito — David Eagleman",
+    "Il cervello: una biografia — David Eagleman",
+    "Il commissario Brunetti e il mistero del cielo — Donna Leon",
+    "Il commissario Montalbano. La forma dell'acqua — Andrea Camilleri",
+    "Il fidanzato di mia sorella — Samantha Downing",
+    "Il giardino delle api — Giorgio Fontana",
+    "Il gioco del silenzio — Samantha Downing",
+    "Il gioco del silenzio — Valentina D'Urso",
+    "Il gioco del sospetto — Shari Lapena",
+    "Il grande libro della bicicletta — Francesco Rossi",
+    "Il ladro di merendine — Giovanni Floris",
+    "Il mio viaggio in bicicletta — Anna Bianchi",
+    "Il mistero del Ponte di Tollund — Francesco D'Adamo",
+    "Il mistero del treno azzurro — Giorgio Scerbanenco",
+    "Il mondo di Sofie — Jostein Gaarder",
+    "Il nostro anno di meraviglie — Sarah Perry",
+    "Il nostro caro desiderio — Cecilia Ahern",
+    "Il segreto del lago — Holly Seddon",
+    "Il segreto del vino — Marco Malvaldi",
+    "Il viaggio di Arlo — Daniela Rinaldi",
+    "Intelligenza artificiale — Un'utopia in divenire — Hans Moravec",
+    "L'Intelligenza Artificiale e il Futuro dell'Umanità — Kathy O'Neill",
+    "L'Intelligenza Artificiale e il Futuro dell'umanità — Tiziano Terzani",
+    "L'agenzia — Tade Thompson",
+    "L'arte della pizza — Francesco De Marco",
+    "L'arte di ascoltare i battiti d'ali — Marco Malvaldi",
+    "L'arte di essere fragili — Andrea Marcolongo",
+    "L'era dell'intelligenza artificiale — Jared Cohen",
+    "L'era dell'intelligenza artificiale — Kai-Fu Lee",
+    "La banda dei brocchi — Marco Malvaldi",
+    "La bicicletta verde — Giorgio Faletti",
+    "La casa dei doganieri — Dino Buzzati",
+    "La casa del tempo sospeso — Mario Giordano",
+    "La casa della paura — Mauro Corona",
+    "La casa delle belle addormentate — Yasushi Inoue",
+    "La casa delle onde — Cecilia Ekbäck",
+    "La casa delle onde — Samantha Chase",
+    "La casa delle ragazze — Lisa Jewell",
+    "La casa delle ragazze — Sophie McKenzie",
+    "La città dei mostri — Lorenzo Ait",
+    "La donna del giovedì — Tess Gerritsen",
+    "La donna della mia vita — Margherita Oggero",
+    "La donna della pioggia — Giorgio Faletti",
+    "La donna della tempesta — Gianrico Carofiglio",
+    "La donna in cabina 10 — Ruth Ware",
+    "La famiglia Aubrey — Emma Tennant",
+    "La felicidad es un té contigo — Mihail Afanasiev",
+    "La guida del camperista — Marco Gallo",
+    "La lluvia amarilla — Julián Sánchez",
+    "La lluvia antes de caer — Julián Barnes",
+    "La lluvia de fuego — Javier Cercas",
+    "La lluvia en los zapatos — Javier Marías",
+    "La lunga strada verso un piccolo arrabbiato pianeta — Becky Chambers",
+    "La mente in evoluzione — Robert Wright",
+    "La mente in poche parole — Vikram Patel",
+    "La misura del mondo — Fabrizio Silei",
+    "La ragazza che sognava un sogno di fuoco — Anders de la Motte",
+    "La ragazza con all'ombra — Marina e Valerio Massimo Manfredi",
+    "La ragazza con tutti i doni — M.R. Carey",
+    "La saga di Broken Earth — N.K. Jemisin",
+    "La sombra de los otros — José Carlos Somoza",
+    "La strada dei re — Brandon Sanderson",
+    "La trilogia del Mar Grigio — V. E. Schwab",
+    "La trilogia di Earthsea — Ursula K. Le Guin",
+    "La vita in bicicletta — Luca T.",
+    "Le ossa della principessa — Cristina Rava",
+    "Los ojos del hermano eterno — Julio Ramón Ribeyro",
+    "L’agenzia dei sogni — Francesco Verso",
+    "Muchacha de fuego — José Carlos Somoza",
+    "Pensare veloce, pensare lento — Daniel Kahneman",
+    "Pensare, veloce e lento — Daniel Kahneman",
+    "Pizzerie d'Italia — Giovanni Verdi",
+    "The Cotswold Mysteries — Rebecca Tope",
+    "The Cotswold Mysteries: The Case of the Missing Men — Rebecca Tope",
+    "Un anno con te — Katherine Center",
+    "Un giorno in più — Gioia Marchegiani"
+   ],
+   "score_all_calls_pct": 94.3
+  },
+  "quality_overall_pct": 95.3,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 1.066,
+   "p95": 1.3224500000000001,
+   "max": 1.936,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 42,
+   "p50": 1.836,
+   "p95": 2.3249500000000007,
+   "max": 3.003,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 5.296785714285714e-05,
+   "recommend_usd": 0.00013909642857142857,
+   "per_chat_usd": 0.0001920642857142857,
+   "per_user_day_usd": 0.0009603214285714285,
+   "per_month_100dau_usd": 2.8809642857142856,
+   "tokens_in_clarify": 258.35714285714283,
+   "tokens_out_clarify": 23.69047619047619,
+   "tokens_in_recommend": 326.64285714285717,
+   "tokens_out_recommend": 150.16666666666666,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.0195192
+  },
+  "served_by": {
+   "None / gpt-4o-mini-2024-07-18": 168
+  }
+ },
+ {
+  "id": "openai-gpt-6-luna-noreason",
+  "model": "gpt-6-luna",
+  "router": "OpenAI (direct)",
+  "pinned_provider": "OpenAI",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 42,
+   "failed_checks": {},
+   "score_pct": 100.0
+  },
+  "clarify_response_format_all": {
+   "calls": 42,
+   "http_ok": 0,
+   "all_checks_pass": 0,
+   "failed_checks": {},
+   "score_pct": 0.0
+  },
+  "json_plain": {
+   "calls": 42,
+   "accepted": 41,
+   "failed": 1,
+   "accept_rate_pct": 97.6,
+   "failure_kinds": {
+    "Failed to parse model response as JSON": 1
+   },
+   "failures_fixed_by_lenient_parser": 1
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.9629629629629629,
+    "invented": 0.037037037037037035
+   },
+   "it-fantasy": {
+    "exist": 0.5555555555555556,
+    "invented": 0.0
+   },
+   "it-consolante": {
+    "exist": 0.6296296296296295,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.8518518518518517,
+    "invented": 0.14814814814814814
+   },
+   "it-novecento": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.7407407407407407,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.48148148148148145,
+    "invented": 0.2962962962962963
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.625,
+    "invented": 0.08333333333333333
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 125,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 100.0,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 84.3,
+   "books_in_catalogue_pct": 82.9,
+   "books_exist_lenient_pct": 90.9,
+   "books_invented_pct": 6.4,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 64.8,
+   "answers_all_three_verified_on_topic_pct": 67.3,
+   "books_verified_on_topic_pct": 86.3,
+   "score_pct": 96.6,
+   "unverified": [
+    "Come riparare la bicicletta — Todd Downs",
+    "Europa in treno — Nicky Gardner e Susanne Kries",
+    "Il cervello. Istruzioni per l'uso — David Eagleman",
+    "Il cervello. Istruzioni per l’uso — John J. Ratey",
+    "Il cervello. Istruzioni per l’uso — Norman Doidge",
+    "Il cervello. La nostra storia — David Eagleman",
+    "Il cervello. Manuale dell’utente — Marco Magrini",
+    "Il manuale del ciclista urbano — Chris Sidwells",
+    "Il robot che sembrava me — Alastair Reynolds",
+    "Il robot che sembrava me — Ian McEwan",
+    "Incognito. La vita segreta della mente — David Eagleman",
+    "L'arte di riparare una bicicletta — Robert M. Pirsig",
+    "La biblioteca dei nuovi inizi — Michiko Aoyama",
+    "La biblioteca dei sussurri — Michiko Aoyama",
+    "La bicicletta — H. G. Wells",
+    "La coppia perfetta — Ruth Ware",
+    "La lama stessa — Joe Abercrombie",
+    "La manutenzione della bicicletta e del ciclista — Rob van der Plas",
+    "La misura del tempo — Matt Haig",
+    "La pallina assassina — Marco Malvaldi",
+    "La pizza. Una storia globale — Carol Helstosky",
+    "La scienza della pizza — Dario Bressanini",
+    "La storia di Elsa Morante — Elsa Morante",
+    "La trilogia dei Lungavista — Robin Hobb",
+    "La trilogia dei Lungavista. L'apprendista assassino — Robin Hobb",
+    "La trilogia dei Lungavista. Libro primo: L'apprendista assassino — Robin Hobb",
+    "La trilogia dei Lungavista: L'apprendista assassino — Robin Hobb",
+    "La trilogia dei Lungavista: L’apprendista assassino — Robin Hobb",
+    "La trilogia della Prima Legge — Joe Abercrombie",
+    "La trilogia di Earthsea — Ursula K. Le Guin",
+    "La vita degli androidi è difficile — Becky Chambers",
+    "La vita degli oggetti — Ted Chiang",
+    "La vita perfetta — B. A. Paris",
+    "La vita perfetta — Ruth Ware",
+    "Parigi è sempre una festa — Ernest Hemingway",
+    "Roma. Guida gastronomica alle migliori pizzerie — Luca Cesari",
+    "Roma. Guida gastronomica — Luca Cesari",
+    "The Curious Incident of the Dog in the Night-Time — Since your question asks for a clear answer about Australia, this mystery offers a distinctive perspective on making sense of the world.",
+    "Un uomo a pezzi — Martha Wells",
+    "Un uomo chiamato Ove — Fredrik Backman",
+    "Una mamma per amica — Ann Napolitano",
+    "Una mamma per amica — Debbie Macomber",
+    "Una mamma per amica. Il libro — Amy Sherman-Palladino e Helen Pai",
+    "Una mamma per amica. Il romanzo — Catherine Clark",
+    "Una vita come tante cose — Elizabeth Strout",
+    "Una vita come tante cose — Fredrik Backman"
+   ],
+   "score_all_calls_pct": 94.3
+  },
+  "quality_overall_pct": 96.0,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 1.417,
+   "p95": 2.5001000000000007,
+   "max": 3.54,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 41,
+   "p50": 2.518,
+   "p95": 2.922,
+   "max": 3.447,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 3.8164285714285716e-05,
+   "recommend_usd": 0.00012554047619047618,
+   "per_chat_usd": 0.0001637047619047619,
+   "per_user_day_usd": 0.0008185238095238095,
+   "per_month_100dau_usd": 2.4555714285714285,
+   "tokens_in_clarify": 257.35714285714283,
+   "tokens_out_clarify": 24.857142857142858,
+   "tokens_in_recommend": 325.64285714285717,
+   "tokens_out_recommend": 185.95238095238096,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.017467
+  },
+  "served_by": {
+   "None / gpt-6-luna": 168
+  }
+ },
+ {
+  "id": "openai-gpt-6-luna",
+  "model": "gpt-6-luna",
+  "router": "OpenAI (direct)",
+  "pinned_provider": "OpenAI",
+  "clarify": {
+   "calls": 14,
+   "http_ok": 0,
+   "all_checks_pass": 0,
+   "failed_checks": {},
+   "score_pct": 0.0
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 14,
+   "accepted": 0,
+   "failed": 14,
+   "accept_rate_pct": 0.0,
+   "failure_kinds": {
+    "provider error 400": 14
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": null,
+  "json_response_format_all": null,
+  "case_means": {},
+  "recommend_quality": {
+   "scored_answers": 0,
+   "three_books_pct": null,
+   "language_ok_pct": null,
+   "reason_cites_reader_pct": null,
+   "answers_with_already_read_pct": null,
+   "books_verified_pct": null,
+   "books_in_catalogue_pct": null,
+   "books_exist_lenient_pct": null,
+   "books_invented_pct": null,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": null,
+   "answers_all_three_verified_on_topic_pct": null,
+   "books_verified_on_topic_pct": null,
+   "score_pct": null,
+   "unverified": [],
+   "score_all_calls_pct": 0.0
+  },
+  "quality_overall_pct": 0.0,
+  "latency_clarify": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": null,
+   "recommend_usd": null,
+   "per_chat_usd": 0,
+   "per_user_day_usd": 0,
+   "per_month_100dau_usd": 0,
+   "tokens_in_clarify": null,
+   "tokens_out_clarify": null,
+   "tokens_in_recommend": null,
+   "tokens_out_recommend": null,
+   "reasoning_tokens_recommend": null,
+   "total_spent_usd": 0.0
+  },
+  "served_by": {}
+ },
+ {
+  "id": "openai-gpt-6-sol-noreason",
+  "model": "gpt-6-sol",
+  "router": "OpenAI (direct)",
+  "pinned_provider": "OpenAI",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 39,
+   "failed_checks": {
+    "language": 3
+   },
+   "score_pct": 92.9
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": null,
+  "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-fantasy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "it-consolante": {
+    "exist": 0.5555555555555555,
+    "invented": 0.2222222222222222
+   },
+   "it-thriller": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.6666666666666666,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-cozy": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 42,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 100.0,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 92.1,
+   "books_in_catalogue_pct": 84.1,
+   "books_exist_lenient_pct": 96.8,
+   "books_invented_pct": 1.6,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 81.0,
+   "answers_all_three_verified_on_topic_pct": 77.8,
+   "books_verified_on_topic_pct": 90.7,
+   "score_pct": 98.4,
+   "unverified": [
+    "A Murder to Remember — Bryn Turnbull",
+    "Il segreto di mio marito — Liane Moriarty",
+    "L'incredibile viaggio di Harold Fry — Rachel Joyce",
+    "La coscienza e il cervello — Stanislas Dehaene",
+    "La libreria dei nuovi inizi — Jenny Colgan",
+    "La lunga via per un piccolo pianeta arrabbiato — Becky Chambers",
+    "La vita che volevi — Jojo Moyes",
+    "La vita che volevo — Jojo Moyes"
+   ],
+   "score_all_calls_pct": 98.4
+  },
+  "quality_overall_pct": 96.8,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 1.3885,
+   "p95": 2.739800000000003,
+   "max": 4.451,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 42,
+   "p50": 2.9505,
+   "p95": 3.3565,
+   "max": 3.829,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 0.0007449523809523809,
+   "recommend_usd": 0.0023843809523809525,
+   "per_chat_usd": 0.0031293333333333334,
+   "per_user_day_usd": 0.015646666666666666,
+   "per_month_100dau_usd": 46.94,
+   "tokens_in_clarify": 257.35714285714283,
+   "tokens_out_clarify": 23.023809523809526,
+   "tokens_in_recommend": 325.64285714285717,
+   "tokens_out_recommend": 173.3095238095238,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.131432
+  },
+  "served_by": {
+   "None / gpt-6-sol": 84
+  }
+ },
+ {
+  "id": "or-claude-haiku-5.5-bedrock-eu-noreason",
+  "model": "anthropic/claude-haiku-5.5",
+  "router": "OpenRouter",
+  "pinned_provider": "Amazon Bedrock, eu-west-1 (endpoint amazon-bedrock/eu-west-1)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 30,
+   "failed_checks": {
+    "under_25_words": 12
+   },
+   "score_pct": 71.4
+  },
+  "clarify_response_format_all": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 31,
+   "failed_checks": {
+    "under_25_words": 11
+   },
+   "score_pct": 73.8
+  },
+  "json_plain": {
+   "calls": 42,
+   "accepted": 39,
+   "failed": 3,
+   "accept_rate_pct": 92.9,
+   "failure_kinds": {
+    "truncated (finish_reason=length)": 3
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 41,
+   "failed": 1,
+   "accept_rate_pct": 97.6,
+   "failure_kinds": {
+    "Failed to parse model response as JSON": 1
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.5555555555555556,
+    "invented": 0.14814814814814814
+   },
+   "it-fantasy": {
+    "exist": 0.47619047619047616,
+    "invented": 0.38095238095238093
+   },
+   "it-divulgazione": {
+    "exist": 0.14814814814814814,
+    "invented": 0.48148148148148145
+   },
+   "it-consolante": {
+    "exist": 0.5416666666666666,
+    "invented": 0.375
+   },
+   "it-thriller": {
+    "exist": 0.2222222222222222,
+    "invented": 0.6296296296296295
+   },
+   "it-novecento": {
+    "exist": 0.7777777777777778,
+    "invented": 0.2222222222222222
+   },
+   "it-scifi": {
+    "exist": 0.5185185185185185,
+    "invented": 0.3333333333333333
+   },
+   "en-cozy": {
+    "exist": 0.8888888888888888,
+    "invented": 0.037037037037037035
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.7407407407407407,
+    "invented": 0.2222222222222222
+   },
+   "es-corto": {
+    "exist": 0.7777777777777778,
+    "invented": 0.14814814814814814
+   },
+   "it-offtopic-bici": {
+    "exist": 0.8148148148148148,
+    "invented": 0.18518518518518517
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 0.5833333333333334,
+    "invented": 0.375
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 122,
+   "three_books_pct": 99.2,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 99.7,
+   "answers_with_already_read_pct": 1.6,
+   "books_verified_pct": 65.0,
+   "books_in_catalogue_pct": 63.1,
+   "books_exist_lenient_pct": 74.3,
+   "books_invented_pct": 24.9,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 37.7,
+   "answers_all_three_verified_on_topic_pct": 30.8,
+   "books_verified_on_topic_pct": 60.6,
+   "score_pct": 92.4,
+   "unverified": [
+    "Ardor — Ana María Matute",
+    "El Lejano Oeste — Eduardo Mendoza",
+    "Fuga dal Pianeta Sconosciuto — Jeff Kinney",
+    "Gli Spiriti di Dove? — Lemony Snicket",
+    "Il Ciclo di Ilrin: La Sfera del Dragone — Ryk Brown",
+    "Il Circo della Farfalla — Dino Buzzati",
+    "Il Grande Sigillo — Ted Chiang",
+    "Il Libro dei Mostri — Patrick Ness",
+    "Il Libro dei Nomi — Vox Day",
+    "Il Mago Stregato — Tanith Lee",
+    "Il Mago dei Mari — Ursula K. Le Guin",
+    "Il Mistero del Lupo Nero — Lisa Thompson",
+    "Il Mondo Nuovo degli androidi — Philip K. Dick",
+    "Il Mondo Nuovo — Ray Bradbury",
+    "Il Nome del Vento: La paura del saggio — Patrick Rothfuss",
+    "Il Ragazzo che Sapeva Cantare — Stefano Benni",
+    "Il Ragazzo che Sapeva Volare — Gianni Rodari",
+    "Il Vento che Ruggisce — Erin Morgenstern",
+    "Il Viaggio di Nathan — Ruth Vande Pol Kessler",
+    "Il cervello che cambia se stesso — Norman Doidge",
+    "Il cervello che cambia — Norman Doidge",
+    "Il cervello di Hugo — Lorenzo Pinna",
+    "Il cervello di Hume — Giorgio Vallortigara",
+    "Il cervello e il mondo — Oliver Sacks",
+    "Il cervello e l'anima — Ruth Feldman",
+    "Il cervello e l'universo mentale — Stanislas Dehaene",
+    "Il cervello e la mente — Mario Ammaniti",
+    "Il cervello e la sua mente — Gerald M. Edelman",
+    "Il cervello errante — Rita Levi-Montalcini",
+    "Il ciclista — Ricardo Cutrera",
+    "Il ciclo di Malazan: I giardini della luna — Steven Erikson",
+    "Il ciclo di Murderbot — Starter Kit (Ciclo di Murderbot) — Martha Wells",
+    "Il cielo di Bodrum — Gaetano Sini",
+    "Il coraggio di essere felici — Lucia Accardo",
+    "Il diario di Greg — Jeff Kinney",
+    "Il diritto di sognare — Philip K. Dick",
+    "Il gatto nero — Giorgio Scerbanenco",
+    "Il giro di boa — Donato Carrisi",
+    "Il giro di boa — Gianrico Carofiglio",
+    "Il giro di boa — Marco Vichi",
+    "Il libro dei viaggi — Bruce Chatwin",
+    "Il libro di Sapiens — Daniel Kahneman",
+    "Il manuale del ciclista urbano — Ivan Lauri",
+    "Il metodo Catalanotti — Maurizio de Giovanni",
+    "Il mio nome è Legione — Becky Chambers",
+    "Il mistero della coscienza — Giulio Tononi e Marcello Massimini",
+    "Il mito della mente e del cervello — Gerald M. Edelman",
+    "Il paradosso dell'uomo — Oliver Sacks",
+    "Il pianeta degli alberi di Dio — Ursula K. Le Guin",
+    "Il pianeta degli alberi di Natale — Ted Chiang",
+    "Il pianeta dei Tre Soli — Cixin Liu",
+    "Il rumore delle cose — Julie Clark",
+    "Il segreto di Sarah — Ruth Ware",
+    "Il segreto di Verity — Colleen Hoover",
+    "Il segreto di Verity — Michelle Frances",
+    "Il sistema Martin — Becky Chambers",
+    "Il sé della mente — Antonio Damasio",
+    "Il tempo che ci vuole per essere felici — Francesca Giannone",
+    "Il tempo che ci vuole per essere felici — Lynn Rhodes",
+    "Il tempo che ci vuole per tornare a casa — Ruth Hogan",
+    "Il viaggiatore incantato — Dino Buzzati",
+    "Il vicequestore Rocco Schiavone: Pietro Caruso — Antonio Manzini",
+    "In bicicletta — Ivan Cerri",
+    "La Mafia uccide solo d'estate — Pif (Pierfrancesco Diliberto)",
+    "La Trilogia della Terra Fantasma — N. K. Jemisin",
+    "La danza delle libellule — Gianrico Carofiglio",
+    "La donna nella finestra — A. J. Finn",
+    "La rossa di Via Chiaia — Maurizio de Giovanni",
+    "La sabiduría del corazón — Jorge Bucay",
+    "La sabiduría del fuego — Antoine de Saint-Exupéry",
+    "La scimmia pensante — Robert M. Sapolsky",
+    "Las leyes de la frontera — Luis Landero",
+    "Le Cronache di Marte — Ray Bradbury",
+    "Le cronache di Fitzchivalry: L'assassino di corte — Robin Hobb",
+    "Le inchieste del commissario Ricciardi — Maurizio de Giovanni",
+    "Le ore piccole — Sophie Kinsella",
+    "Le ragazze di Lankhmar — Ai giorni nostri consoli",
+    "Little Life di Anna Gavalda — Anna Gavalda",
+    "Lo Strato dei Sogni — Ursula K. Le Guin",
+    "Lo specchio di Ombre — Brandon Sanderson",
+    "Mi regalo de tiempo — Thich Nhat Hanh",
+    "Mientras la guerra avanza, cien años de historia española — Arturo Pérez-Reverte",
+    "Mientras la guerra explota — Javier Cercas",
+    "Mrs. Pollifax Solves a Murder — Dorothy Gilman",
+    "Nada es nuestro — Ana Cristina Herreros",
+    "Non ti fidare di me — Lucy Foley",
+    "Non ti fidare di me — Samantha Downing",
+    "Non ti lascio mai — Mary Kubica",
+    "Non è un paese per vecchi — Irene Gough",
+    "Pequeñas cosas como esta — Claire Keegan",
+    "Piccole storie di Harry Potter o Sherlock Holmes per ragazzi: Il mistero del cane dei Baskerville — Arthur Conan Doyle",
+    "Premios Nobel de la Armada — Miguel Delibes",
+    "Scomparsa — Gillian Flynn",
+    "Se niente è reale. Il grande libro della fisica quantistica — Carlo Rovelli",
+    "Se questo è amore — Primo Levi",
+    "Sei mesi a Venezia — Liza Leonelli",
+    "Sei mesi ancora — Clare Mackintosh",
+    "Sei mesi di nebbia — Shari Lapena",
+    "Sei mesi di noi — Mhairi McFarlane",
+    "Sei mesi fa — Ruth Ware",
+    "Sei sempre stata qui — Ana Johnson",
+    "Sei una brava ragazza — Karen Hunter",
+    "Sia fatta la tua volontà — Ruth Ware",
+    "Sono una brava ragazza — Christina Lauren",
+    "Sorelle — Ruth Ware",
+    "Te llamaré Tambor — Juan Marsé",
+    "The Cat Who Went Into the Oven — Unknown",
+    "The Dispatcher — Richard Osman",
+    "Tutto il resto è pioggia — Lorenzo Marone",
+    "Una corsa tutta sbagliata — Martha Wells"
+   ],
+   "score_all_calls_pct": 85.8
+  },
+  "quality_overall_pct": 81.5,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 1.075,
+   "p95": 1.5034500000000004,
+   "max": 3.249,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 39,
+   "p50": 2.434,
+   "p95": 3.1547000000000005,
+   "max": 4.867,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 7.517553214285713e-05,
+   "recommend_usd": 0.00025350293571428574,
+   "per_chat_usd": 0.0003286784678571429,
+   "per_user_day_usd": 0.0016433923392857146,
+   "per_month_100dau_usd": 4.930177017857144,
+   "tokens_in_clarify": 384.2142857142857,
+   "tokens_out_clarify": 52.714285714285715,
+   "tokens_in_recommend": 510.85714285714283,
+   "tokens_out_recommend": 334.7142857142857,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.03781222335
+  },
+  "served_by": {
+   "Amazon Bedrock / anthropic/claude-haiku-5.5": 210
+  }
+ },
+ {
+  "id": "or-claude-haiku-5.5-bedrock-eu",
+  "model": "anthropic/claude-haiku-5.5",
+  "router": "OpenRouter",
+  "pinned_provider": "Amazon Bedrock, eu-west-1 (endpoint amazon-bedrock/eu-west-1)",
+  "clarify": {
+   "calls": 14,
+   "http_ok": 12,
+   "all_checks_pass": 9,
+   "failed_checks": {
+    "under_25_words": 3
+   },
+   "score_pct": 64.3
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 14,
+   "accepted": 0,
+   "failed": 14,
+   "accept_rate_pct": 0.0,
+   "failure_kinds": {
+    "truncated (finish_reason=length)": 14
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": null,
+  "json_response_format_all": null,
+  "case_means": {},
+  "recommend_quality": {
+   "scored_answers": 0,
+   "three_books_pct": null,
+   "language_ok_pct": null,
+   "reason_cites_reader_pct": null,
+   "answers_with_already_read_pct": null,
+   "books_verified_pct": null,
+   "books_in_catalogue_pct": null,
+   "books_exist_lenient_pct": null,
+   "books_invented_pct": null,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": null,
+   "answers_all_three_verified_on_topic_pct": null,
+   "books_verified_on_topic_pct": null,
+   "score_pct": null,
+   "unverified": [],
+   "score_all_calls_pct": 0.0
+  },
+  "quality_overall_pct": 19.3,
+  "latency_clarify": {
+   "n": 12,
+   "p50": 1.1155,
+   "p95": 2.47355,
+   "max": 2.704,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 7.773692142857141e-05,
+   "recommend_usd": 0.0002915010214285715,
+   "per_chat_usd": 0.0003692379428571429,
+   "per_user_day_usd": 0.0018461897142857146,
+   "per_month_100dau_usd": 5.538569142857144,
+   "tokens_in_clarify": 385.2142857142857,
+   "tokens_out_clarify": 56.92857142857143,
+   "tokens_in_recommend": 511.85714285714283,
+   "tokens_out_recommend": 400.0,
+   "reasoning_tokens_recommend": 367.7857142857143,
+   "total_spent_usd": 0.0051693312
+  },
+  "served_by": {
+   "Amazon Bedrock / anthropic/claude-haiku-5.5": 28
+  }
+ },
+ {
+  "id": "or-claude-sonnet-5.5-vertex-eu",
+  "model": "anthropic/claude-sonnet-5.5",
+  "router": "OpenRouter",
+  "pinned_provider": "Google Vertex AI, Europe (endpoint google-vertex/europe)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 0,
+   "all_checks_pass": 0,
+   "failed_checks": {},
+   "score_pct": 0.0
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 0,
+   "failed": 42,
+   "accept_rate_pct": 0.0,
+   "failure_kinds": {
+    "provider error 400": 42
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": null,
+  "json_response_format_all": null,
+  "case_means": {},
+  "recommend_quality": {
+   "scored_answers": 0,
+   "three_books_pct": null,
+   "language_ok_pct": null,
+   "reason_cites_reader_pct": null,
+   "answers_with_already_read_pct": null,
+   "books_verified_pct": null,
+   "books_in_catalogue_pct": null,
+   "books_exist_lenient_pct": null,
+   "books_invented_pct": null,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": null,
+   "answers_all_three_verified_on_topic_pct": null,
+   "books_verified_on_topic_pct": null,
+   "score_pct": null,
+   "unverified": [],
+   "score_all_calls_pct": 0.0
+  },
+  "quality_overall_pct": 0.0,
+  "latency_clarify": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": null,
+   "recommend_usd": null,
+   "per_chat_usd": 0,
+   "per_user_day_usd": 0,
+   "per_month_100dau_usd": 0,
+   "tokens_in_clarify": null,
+   "tokens_out_clarify": null,
+   "tokens_in_recommend": null,
+   "tokens_out_recommend": null,
+   "reasoning_tokens_recommend": null,
+   "total_spent_usd": 0.0
+  },
+  "served_by": {}
+ },
+ {
+  "id": "or-gemini-3.1-flash-lite-vertex-eu",
+  "model": "google/gemini-3.1-flash-lite",
+  "router": "OpenRouter",
+  "pinned_provider": "Google Vertex AI, EU (endpoint google-vertex/eu)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 42,
+   "failed_checks": {},
+   "score_pct": 100.0
+  },
+  "clarify_response_format_all": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 0,
+   "failed_checks": {
+    "plain_text": 42,
+    "single_question": 42,
+    "under_25_words": 3
+   },
+   "score_pct": 0.0
+  },
+  "json_plain": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.4074074074074074,
+    "invented": 0.5925925925925926
+   },
+   "it-fantasy": {
+    "exist": 0.7407407407407407,
+    "invented": 0.07407407407407407
+   },
+   "it-divulgazione": {
+    "exist": 0.7037037037037037,
+    "invented": 0.25925925925925924
+   },
+   "it-consolante": {
+    "exist": 0.1111111111111111,
+    "invented": 0.4074074074074074
+   },
+   "it-thriller": {
+    "exist": 0.8888888888888888,
+    "invented": 0.07407407407407407
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.5555555555555556,
+    "invented": 0.07407407407407407
+   },
+   "it-ragazzo": {
+    "exist": 0.6296296296296295,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 0.9629629629629629,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.18518518518518517,
+    "invented": 0.2222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 126,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 99.7,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 72.8,
+   "books_in_catalogue_pct": 71.7,
+   "books_exist_lenient_pct": 81.5,
+   "books_invented_pct": 13.0,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 50.8,
+   "answers_all_three_verified_on_topic_pct": 50.9,
+   "books_verified_on_topic_pct": 75.0,
+   "score_pct": 94.2,
+   "unverified": [
+    "A casa di Annabel — Emma Straub",
+    "Ancora una volta, stelle — Mary Robinette Kowal",
+    "Assassinio al faro — Alice Basso",
+    "Assassinio al faro — Marco Malvaldi",
+    "Come il cervello crea la nostra realtà — Anil Seth",
+    "Come il cervello crea la nostra realtà — David Eagleman",
+    "Come pensa il cervello — Vilayanur S. Ramachandran",
+    "Death at the Vicarage — Agatha Christie",
+    "Delitti in alto mare — Marco Malvaldi",
+    "Delitti in forma di sonetto — Marco Malvaldi",
+    "Guida alle pizzerie di Roma — Gambero Rosso",
+    "Il Ciclo di Earthsea — Ursula K. Le Guin",
+    "Il Signore del Tempo — Louise Cooper",
+    "Il club dei lettori solitari — Lavinia Petti",
+    "Il club dei libri segreti — Lyssa Kay Adams",
+    "Il diario di un automa guastafeste — Martha Wells",
+    "Il grande libro della bicicletta — AA.VV.",
+    "Il libro cimitero — Neil Gaiman",
+    "Il libro del cimitero — Neil Gaiman",
+    "Il lungo viaggio su un piccolo pianeta irrequieto — Becky Chambers",
+    "Il lungo viaggio su un piccolo pianeta — Becky Chambers",
+    "Il lungo viaggio verso un piccolo pianeta arrabbiato — Becky Chambers",
+    "Il metodo del dottor Fonseca — Marco Malvaldi",
+    "Il metodo del dottor Fonseca — Marco Vichi",
+    "Il mistero della casa stregata — John Bellairs",
+    "Il mistero di villa del pino — Marco Malvaldi",
+    "Il mondo di Graal: Il castello di Montségur — Luigi Malerba",
+    "Il mondo di Percy Jackson: Percy Jackson e gli dei dell'Olimpo - La battaglia del labirinto — Rick Riordan",
+    "Il morto nella piazza — Antonio Manzini",
+    "L'albergo delle storie sospese — Eowyn Ivey",
+    "L'albero delle storie perdute — Antonio G. Iturbe",
+    "L'albero delle storie — Jojo Moyes",
+    "L'albero delle storie — Katherine Rundell",
+    "L'arte della manutenzione della bicicletta — Rob van der Plas",
+    "L'assassino reale — Robin Hobb",
+    "L'invito — Lucy Foley",
+    "La banda dei notturni — Jonathan Auxier",
+    "La biblioteca dei cuori solitari — Katarina Bivald",
+    "La biblioteca dei cuori sospesi — Catarina Sobral",
+    "La biblioteca dei cuori sospesi — Caterina Bonvicini",
+    "La biblioteca dei cuori sospesi — Cathy Bonidan",
+    "La biblioteca dei cuori sospesi — Sara Nisha Adams",
+    "La casa nella cerulea onda — TJ Klune",
+    "La casa nella cerulean sea — TJ Klune",
+    "La casa nella collina dei ciliegi — 乔凡娜·加尔贝利",
+    "La casa nella mare ceruleo — TJ Klune",
+    "La coppia dell'interno 2B — Shari Lapena",
+    "La coppia dell'interno 9 — B.A. Paris",
+    "La libreria dei desideri — Desy Icardi",
+    "La lunga strada per un piccolo pianeta arrabbiato — Becky Chambers",
+    "La porta dell'eternità — Greg Egan",
+    "La saga della Torre Nera — Stephen King",
+    "La solitudine del lupo — Marco Vichi",
+    "La trilogia dei Lungavista — Robin Hobb",
+    "Le neuroscienze della felicità — Richard J. Davidson",
+    "Manuale di meccanica per biciclette — Chris Sidwells",
+    "Parigi. Con cartina — Lonely Planet",
+    "Parigi. Guida pratica — AA.VV.",
+    "Parigi. Lonely Planet — AA.VV.",
+    "Percy Jackson: La sfida degli dei — Rick Riordan",
+    "Pizza a Roma — Luciana Squadrilli",
+    "Roma. Guida gastronomica — AA.VV.",
+    "Roma. Le migliori pizzerie — Luciana Squadrilli",
+    "Roma: le migliori pizzerie — AA.VV.",
+    "Skandar e il furto dell'unicorno — A.F. Steadman",
+    "Skandar e il ladro dell'unicorno — A.F. Steadman",
+    "Un caso di coscienza — Antonio Manzini",
+    "Un caso per il commissario Soneri — Valerio Varesi",
+    "Un caso per il maresciallo Casati — Alessandro Robecchi",
+    "Un delitto fatto in casa — Antonio Manzini",
+    "Una casa per due — Beth O'Leary",
+    "Una casa piena di gente — Emma Straub",
+    "Una casa piena di libri — Anne Fadiman",
+    "Una cosa divertente che non farò mai più — Fredrik Backman"
+   ],
+   "score_all_calls_pct": 94.2
+  },
+  "quality_overall_pct": 95.9,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 0.8545,
+   "p95": 1.14305,
+   "max": 1.222,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 42,
+   "p50": 1.3935,
+   "p95": 1.6382,
+   "max": 2.504,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 0.00012338601785714286,
+   "recommend_usd": 0.0003729556874999999,
+   "per_chat_usd": 0.0004963417053571428,
+   "per_user_day_usd": 0.002481708526785714,
+   "per_month_100dau_usd": 7.445125580357143,
+   "tokens_in_clarify": 255.14285714285714,
+   "tokens_out_clarify": 28.357142857142858,
+   "tokens_in_recommend": 321.5,
+   "tokens_out_recommend": 160.66666666666666,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.065815146375
+  },
+  "served_by": {
+   "Google / google/gemini-3.1-flash-lite": 210
+  }
+ },
+ {
+  "id": "or-gemini-3.8-flash-vertex",
+  "model": "google/gemini-3.8-flash",
+  "router": "OpenRouter",
+  "pinned_provider": "Google Vertex AI, global (endpoint google-vertex/global)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 0,
+   "all_checks_pass": 0,
+   "failed_checks": {},
+   "score_pct": 0.0
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 0,
+   "failed": 42,
+   "accept_rate_pct": 0.0,
+   "failure_kinds": {
+    "provider error 400": 42
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": null,
+  "json_response_format_all": null,
+  "case_means": {},
+  "recommend_quality": {
+   "scored_answers": 0,
+   "three_books_pct": null,
+   "language_ok_pct": null,
+   "reason_cites_reader_pct": null,
+   "answers_with_already_read_pct": null,
+   "books_verified_pct": null,
+   "books_in_catalogue_pct": null,
+   "books_exist_lenient_pct": null,
+   "books_invented_pct": null,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": null,
+   "answers_all_three_verified_on_topic_pct": null,
+   "books_verified_on_topic_pct": null,
+   "score_pct": null,
+   "unverified": [],
+   "score_all_calls_pct": 0.0
+  },
+  "quality_overall_pct": 0.0,
+  "latency_clarify": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": null,
+   "recommend_usd": null,
+   "per_chat_usd": 0,
+   "per_user_day_usd": 0,
+   "per_month_100dau_usd": 0,
+   "tokens_in_clarify": null,
+   "tokens_out_clarify": null,
+   "tokens_in_recommend": null,
+   "tokens_out_recommend": null,
+   "reasoning_tokens_recommend": null,
+   "total_spent_usd": 0.0
+  },
+  "served_by": {}
+ },
+ {
+  "id": "or-mistral-large-2512-eu",
+  "model": "mistralai/mistral-large-2512",
+  "router": "OpenRouter",
+  "pinned_provider": "Mistral AI (endpoint mistral/eu)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 25,
+   "all_checks_pass": 24,
+   "failed_checks": {
+    "language": 1
+   },
+   "score_pct": 57.1
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 0,
+   "failed": 42,
+   "accept_rate_pct": 0.0,
+   "failure_kinds": {
+    "Failed to parse model response as JSON": 24,
+    "provider error 429": 18
+   },
+   "failures_fixed_by_lenient_parser": 24
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 34,
+   "failed": 8,
+   "accept_rate_pct": 81.0,
+   "failure_kinds": {
+    "provider error 429": 8
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.0,
+    "invented": 0.6666666666666666
+   },
+   "it-fantasy": {
+    "exist": 0.3333333333333333,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.6666666666666666,
+    "invented": 0.3333333333333333
+   },
+   "it-consolante": {
+    "exist": 0.8333333333333333,
+    "invented": 0.16666666666666666
+   },
+   "it-thriller": {
+    "exist": 0.3333333333333333,
+    "invented": 0.6666666666666666
+   },
+   "it-novecento": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-scifi": {
+    "exist": 0.7777777777777777,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 0.8888888888888888,
+    "invented": 0.1111111111111111
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-offtopic-bici": {
+    "exist": 0.8333333333333333,
+    "invented": 0.16666666666666666
+   },
+   "en-offtopic-injection": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 34,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 100.0,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 78.4,
+   "books_in_catalogue_pct": 78.4,
+   "books_exist_lenient_pct": 84.3,
+   "books_invented_pct": 14.7,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 58.8,
+   "answers_all_three_verified_on_topic_pct": 56.7,
+   "books_verified_on_topic_pct": 76.7,
+   "score_pct": 95.6,
+   "unverified": [
+    "Il cervello che cura — Lisa Feldman Barrett",
+    "Il cervello che cura — Stanislas Dehaene",
+    "Il ciclo di Luna - Luna: Nuova Luna — Ian McDonald",
+    "Il metodo del cocodrillo — Massimo Carlotto",
+    "Il metodo del commissario Ricciardi — Maurizio De Giovanni",
+    "Il mistero della città di smeraldo — L. Frank Baum",
+    "L'ospite perfetta — Rosie Walsh",
+    "L'ospite perfetta — Ruth Ware",
+    "L'uomo che piegò il tempo — Robert J. Sawyer",
+    "La Biblioteca della Mezzanotte — Matt Haig",
+    "La Ruota del Tempo (serie completa) — Robert Jordan e Brandon Sanderson",
+    "La casa dei sogni — Donato Carrisi",
+    "La gamba di legno di Joe Petrosino — Giuseppe Pederiali",
+    "La goccia che scava — Gianrico Carofiglio",
+    "La moglie tra le ombre — Jane Corry",
+    "La moglie tra le righe — Greer Hendricks e Sarah Pekkanen",
+    "Sotto il sole di Roma — Carlo Levi",
+    "Un caso complicato per il commissario Bordelli — Marco Vichi",
+    "Una brutta storia — Carlo Lucarelli"
+   ],
+   "score_all_calls_pct": 0.0
+  },
+  "quality_overall_pct": 17.1,
+  "latency_clarify": {
+   "n": 25,
+   "p50": 1.0,
+   "p95": 1.6502000000000001,
+   "max": 1.932,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 0,
+   "p50": null,
+   "p95": null,
+   "max": null,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 0.00019547462000000002,
+   "recommend_usd": 0.0005644623645833333,
+   "per_chat_usd": 0.0007599369845833334,
+   "per_user_day_usd": 0.003799684922916667,
+   "per_month_100dau_usd": 11.399054768750002,
+   "tokens_in_clarify": 260.8,
+   "tokens_out_clarify": 25.36,
+   "tokens_in_recommend": 334.9166666666667,
+   "tokens_out_recommend": 212.625,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.03723290175
+  },
+  "served_by": {
+   "Mistral / mistralai/mistral-large-2512": 83
+  }
+ },
+ {
+  "id": "or-mistral-small-2603-eu",
+  "model": "mistralai/mistral-small-2603",
+  "router": "OpenRouter",
+  "pinned_provider": "Mistral AI (endpoint mistral/eu)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 40,
+   "failed_checks": {
+    "language": 1,
+    "under_25_words": 1
+   },
+   "score_pct": 95.2
+  },
+  "clarify_response_format_all": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 0,
+   "failed_checks": {
+    "plain_text": 42,
+    "under_25_words": 1,
+    "language": 1
+   },
+   "score_pct": 0.0
+  },
+  "json_plain": {
+   "calls": 42,
+   "accepted": 20,
+   "failed": 22,
+   "accept_rate_pct": 47.6,
+   "failure_kinds": {
+    "Failed to parse model response as JSON": 22
+   },
+   "failures_fixed_by_lenient_parser": 22
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "case_means": {
+   "it-fantasy": {
+    "exist": 0.7916666666666666,
+    "invented": 0.125
+   },
+   "it-divulgazione": {
+    "exist": 0.47619047619047616,
+    "invented": 0.19047619047619047
+   },
+   "it-scifi": {
+    "exist": 0.5416666666666666,
+    "invented": 0.375
+   },
+   "it-ragazzo": {
+    "exist": 0.8888888888888888,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.9583333333333334,
+    "invented": 0.041666666666666664
+   },
+   "es-corto": {
+    "exist": 0.9166666666666666,
+    "invented": 0.08333333333333333
+   },
+   "it-thriller": {
+    "exist": 0.4583333333333333,
+    "invented": 0.29166666666666663
+   },
+   "it-novecento": {
+    "exist": 0.9047619047619048,
+    "invented": 0.047619047619047616
+   },
+   "en-cozy": {
+    "exist": 0.9523809523809524,
+    "invented": 0.047619047619047616
+   },
+   "it-offtopic-bici": {
+    "exist": 0.7619047619047619,
+    "invented": 0.23809523809523808
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9047619047619048,
+    "invented": 0.09523809523809523
+   },
+   "it-giallo": {
+    "exist": 0.5,
+    "invented": 0.4444444444444444
+   },
+   "it-consolante": {
+    "exist": 0.8333333333333334,
+    "invented": 0.16666666666666666
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 104,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 99.3,
+   "answers_with_already_read_pct": 1.0,
+   "books_verified_pct": 78.2,
+   "books_in_catalogue_pct": 75.6,
+   "books_exist_lenient_pct": 83.7,
+   "books_invented_pct": 14.7,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 54.8,
+   "answers_all_three_verified_on_topic_pct": 54.4,
+   "books_verified_on_topic_pct": 77.4,
+   "score_pct": 95.2,
+   "unverified": [
+    "Autofocus — Lars Kepler",
+    "Autofocus — Paolo Bacigalupi",
+    "Bohumil — Romano Bilenchi",
+    "Breve storia della mente — Luigi Anolli",
+    "Breve storia della mente — Matthieu Ricard",
+    "Brevi risposte a grandi domande — Stephen Hawking",
+    "Crimine imperfetto — Gianrico Carofiglio",
+    "El caminante — Antonio Machado",
+    "El pequeño libro de la vida — Jostein Gaarder",
+    "Il caso Battiston — Federico Bacone",
+    "Il caso Tosatti — Luca D'Andrea",
+    "Il caso del cane nero — Conor Fitzgerald",
+    "Il cervello: La scatola nera della mente umana — Lisa Feldman Barrett",
+    "Il cervello: Una biografia — David Eagleman",
+    "Il cervello: Una introduzione a scienza, cultura e società — David Eagleman",
+    "Il ciclo dell'Assassinio — Robin Hobb",
+    "Il ciclo dell'infinito — Julian May",
+    "Il circolo chiuso — Dave Eggers",
+    "Il club delle promesse del tè — Mary Ann Shaffer e Annie Barrows",
+    "Il commissario Montalbano e il figlio del re — Andrea Camilleri",
+    "Il disagio della civiltà — Roberto Calasso",
+    "Il gene. Il libro che racconta la storia della specie umana — Siddhartha Mukherjee",
+    "Il gene. Il racconto dell'umanità, tra Darwin e Dna — Siddhartha Mukherjee",
+    "Il genio non esiste (e a volte è meglio così) — Benjamin Rapoport, Scott Barry Kaufman",
+    "Il giardino delle illusioni perdute — Marie-Hélène Lafon",
+    "Il giovane Sherlock Holmes - Corde d'argento — Andrew Lane",
+    "Il giovane Sherlock Holmes - Magia nera — Andrew Lane",
+    "Il ladro di libri — Markus Zusak",
+    "Il manuale delle donne di servizio — Luciana Littizzetto",
+    "Il mio nome è Asher — Neal Stephenson",
+    "Il museo della giovinezza — Chabon",
+    "Il passaggio — Connie Willis",
+    "Il primo impero — Brandon Sanderson",
+    "Il risveglio dei morti — Peter Watts",
+    "Il talento di Mr. Clevax — Alfred Bester",
+    "L'errore di Cartesio. Emozione, razionalità e cervello umano — Antonio Damasio",
+    "L'estate del commissario Ricciardi — Maurizio de Giovanni",
+    "L'istinto — Tana French",
+    "La Memoria del Mondo — Brandon Sanderson",
+    "La Prima Legge — poiché ti è piaciuta \"la musica usata come magia\", questo ciclo offre una magia unica e una narrazione avvincente che non ti deluderà.",
+    "La bambina che nutriva i dati — Tanenbaum",
+    "La bicicletta degli ineluttabili — Paolo Giordano",
+    "La bicicletta di Bartali — Matteo Matteini",
+    "La domestica — Nita Prose",
+    "La donna della finestra — A.J. Finn",
+    "La donna della luna — Becky Chambers",
+    "La donna nella finestra — A.J. Finn",
+    "La moglie silenziosa — Alice Feeney",
+    "La moglie — Alison Espach",
+    "La ragazza della curva — Federica Iacobelli",
+    "La reina sin espejo — Carmen Domingo",
+    "Le guide del tramonto — Robinette",
+    "Le regole della vita — Jojo Moyes",
+    "L’arte di aggiustare le cose rotte — Wolfgang Bergendorff",
+    "Manuale pratico di sopravvivenza in bicicletta urbana — Marco Giardino",
+    "Morte in mare aperto — Maurizio De Giovanni",
+    "Non mi abbandonerai mai — Shari Lapena",
+    "Non mi lasci più — Lisa Jewell",
+    "Pensare. Velocemente e lentamente — Daniel Kahneman",
+    "Pezzi di vetro — Dario Crapanzano",
+    "Prima che tu vada — Lisa Jewell",
+    "Prima di andarmene — Gin Phillips",
+    "The Python Book: A Complete Introduction for Beginners — John Paul Mueller, Luca Massaron",
+    "The Python Book: A Complete Introduction to the Python Language — David J. Eck",
+    "The Saturday Murder Club — Richard Osman"
+   ],
+   "score_all_calls_pct": 45.3
+  },
+  "quality_overall_pct": 60.3,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 0.653,
+   "p95": 2.4733000000000036,
+   "max": 5.446,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 20,
+   "p50": 1.772,
+   "p95": 2.778900000000003,
+   "max": 6.387,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 6.391868214285714e-05,
+   "recommend_usd": 0.0001748583375,
+   "per_chat_usd": 0.00023877701964285713,
+   "per_user_day_usd": 0.0011938850982142857,
+   "per_month_100dau_usd": 3.581655294642857,
+   "tokens_in_clarify": 270.42857142857144,
+   "tokens_out_clarify": 24.19047619047619,
+   "tokens_in_recommend": 343.64285714285717,
+   "tokens_out_recommend": 165.21428571428572,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.028172123925
+  },
+  "served_by": {
+   "Mistral / mistralai/mistral-small-2603": 210
+  }
+ },
+ {
+  "id": "proxy-gpt-oss-120b-via-openrouter",
+  "model": "openai/gpt-oss-120b",
+  "router": "OpenRouter",
+  "pinned_provider": "DeepInfra (endpoint deepinfra/bf16)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 37,
+   "all_checks_pass": 30,
+   "failed_checks": {
+    "single_question": 7,
+    "language": 1
+   },
+   "score_pct": 71.4
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 28,
+   "failed": 14,
+   "accept_rate_pct": 66.7,
+   "failure_kinds": {
+    "truncated (finish_reason=length)": 11,
+    "provider error 429": 3
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 26,
+   "failed": 16,
+   "accept_rate_pct": 61.9,
+   "failure_kinds": {
+    "truncated (finish_reason=length)": 7,
+    "provider error 429": 9
+   },
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": null,
+  "case_means": {
+   "it-fantasy": {
+    "exist": 0.6666666666666666,
+    "invented": 0.0
+   },
+   "it-divulgazione": {
+    "exist": 0.6666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "it-consolante": {
+    "exist": 0.0,
+    "invented": 0.9166666666666666
+   },
+   "it-novecento": {
+    "exist": 0.8666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "it-scifi": {
+    "exist": 0.8888888888888888,
+    "invented": 0.1111111111111111
+   },
+   "it-ragazzo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.13333333333333333
+   },
+   "en-cozy": {
+    "exist": 0.8333333333333334,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 0.9333333333333333,
+    "invented": 0.06666666666666667
+   },
+   "es-historica": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-corto": {
+    "exist": 0.6666666666666666,
+    "invented": 0.2222222222222222
+   },
+   "it-offtopic-bici": {
+    "exist": 0.7777777777777778,
+    "invented": 0.2222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 0.6666666666666666,
+    "invented": 0.1111111111111111
+   },
+   "it-thriller": {
+    "exist": 1.0,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 54,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 100.0,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 73.5,
+   "books_in_catalogue_pct": 71.0,
+   "books_exist_lenient_pct": 82.1,
+   "books_invented_pct": 17.9,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 50.0,
+   "answers_all_three_verified_on_topic_pct": 48.9,
+   "books_verified_on_topic_pct": 73.3,
+   "score_pct": 94.5,
+   "unverified": [
+    "All Good Things — Andrew Mayne",
+    "Alliances of Light — Catherine L. Simms",
+    "Atomic Habits of Leadership — James Clear",
+    "El Principito para adultos — Ana Alcolea",
+    "El arte de la fuga — Michele Trentin",
+    "El libro de los abrazos — Alain de Botton",
+    "El libro de los abrazos — Luis Sepúlveda",
+    "El principito para adultos — Ana María Shua",
+    "El principito para adultos — Jorge Luis Lira",
+    "Giro d'Italia in cucina: Le migliori pizzerie d'Italia — Maria Rossi",
+    "Il cervello e la coscienza. Una guida introduttiva — Christof Koch",
+    "Il cervello emotivo — Antonio Damasio",
+    "Il cervello. Come funziona la nostra mente — David Eagleman",
+    "Il cervello. La storia di un organo — David Eagleman",
+    "Il cervello: Come funziona la nostra mente — David Eagleman",
+    "Il ciclista e l'arte di riparare: Guide pratiche per ogni strada — Luca Bianchi",
+    "Il club dei bonsai — Michele Mari",
+    "Il club dei cuochi di strada — Anthony Bourdain",
+    "Il fuoco di Londra — Carlo Emilio Gadda",
+    "Il fuoco greco — Giorgio Bassani",
+    "Il giardino segreto di Emily — Liane Moriarty",
+    "Il giardino segreto di casa mia — Alessia Gazzola",
+    "Il grande albero di Natale — Jodi Picoult",
+    "Il mare dove non sei — Michela Murgia",
+    "La trilogia di Artemis Fowl: Artemis Fowl, l'arconte — Eoin Colfer",
+    "La trilogia di Mistborn — Brandon Sanderson",
+    "La vita è facile, amico mio — Marcin Szczygielski",
+    "La vita è una cosa meravigliosa — Jenny Offill",
+    "Le luci di maggio — Paolo Giordano",
+    "Percy Jackson - Il ladro di fulmini — Rick Riordan",
+    "Percy Jackson e gli Olympiani: Il ladro di fulmini — Rick Riordan",
+    "Percy Jackson e i Ladri di Fulmini — Rick Riordan",
+    "Percy Jackson – Il ladro di fulmini — Rick Riordan",
+    "The Complete Guide to Australia: History, Culture, and Travel — Megan O'Donnell",
+    "The Cotswold Mysteries: The Cotswold Mystery — Rebecca Tope",
+    "The Quiche of Death (The Miss Marple Series) — Mavis Doriel Hay",
+    "The Weather Book: An Easy-to-Understand Guide to the Science of Weather — Jack Williams",
+    "The Weather Makers: How Climate Change Is Shaping Our Future — Tim Flannery",
+    "Una vita come tante — Liane Moriarty",
+    "Una vita da guardare — Francesca Cavallo",
+    "Una vita da madre — Megan O'Grady",
+    "Viaggi in treno: Storie e tariffe da Parigi a tutto il mondo — Giovanni Verdi",
+    "Viaggio in Treno verso Parigi — John Steinbeck"
+   ],
+   "score_all_calls_pct": 63.0
+  },
+  "quality_overall_pct": 65.5,
+  "latency_clarify": {
+   "n": 37,
+   "p50": 2.928,
+   "p95": 5.0748,
+   "max": 6.414,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 28,
+   "p50": 8.993500000000001,
+   "p95": 13.722999999999999,
+   "max": 19.082,
+   "over_30s": 0
+  },
+  "cost": {
+   "clarify_usd": 2.3810850263157893e-05,
+   "recommend_usd": 6.773400269230769e-05,
+   "per_chat_usd": 9.154485295546558e-05,
+   "per_user_day_usd": 0.0004577242647773279,
+   "per_month_100dau_usd": 1.3731727943319836,
+   "tokens_in_clarify": 308.3157894736842,
+   "tokens_out_clarify": 65.65789473684211,
+   "tokens_in_recommend": 376.7435897435897,
+   "tokens_out_recommend": 295.6666666666667,
+   "reasoning_tokens_recommend": 141.25641025641025,
+   "total_spent_usd": 0.00566579732
+  },
+  "served_by": {
+   "DeepInfra / openai/gpt-oss-120b": 110
+  }
+ },
+ {
+  "id": "proxy-llama-3.3-70b-via-openrouter",
+  "model": "meta-llama/llama-3.3-70b-instruct",
+  "router": "OpenRouter",
+  "pinned_provider": "DeepInfra (endpoint deepinfra/turbo)",
+  "clarify": {
+   "calls": 42,
+   "http_ok": 42,
+   "all_checks_pass": 32,
+   "failed_checks": {
+    "language": 9,
+    "single_question": 1
+   },
+   "score_pct": 76.2
+  },
+  "clarify_response_format_all": null,
+  "json_plain": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format": {
+   "calls": 42,
+   "accepted": 42,
+   "failed": 0,
+   "accept_rate_pct": 100.0,
+   "failure_kinds": {},
+   "failures_fixed_by_lenient_parser": 0
+  },
+  "json_response_format_all": null,
+  "case_means": {
+   "it-giallo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.3333333333333333
+   },
+   "it-fantasy": {
+    "exist": 0.7777777777777778,
+    "invented": 0.16666666666666666
+   },
+   "it-divulgazione": {
+    "exist": 0.7777777777777778,
+    "invented": 0.05555555555555555
+   },
+   "it-consolante": {
+    "exist": 0.3333333333333333,
+    "invented": 0.27777777777777773
+   },
+   "it-thriller": {
+    "exist": 0.05555555555555555,
+    "invented": 0.5
+   },
+   "it-novecento": {
+    "exist": 0.8888888888888888,
+    "invented": 0.05555555555555555
+   },
+   "it-scifi": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "it-ragazzo": {
+    "exist": 0.6666666666666666,
+    "invented": 0.27777777777777773
+   },
+   "en-cozy": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "en-business": {
+    "exist": 1.0,
+    "invented": 0.0
+   },
+   "es-historica": {
+    "exist": 0.6666666666666666,
+    "invented": 0.2222222222222222
+   },
+   "es-corto": {
+    "exist": 0.7222222222222222,
+    "invented": 0.27777777777777773
+   },
+   "it-offtopic-bici": {
+    "exist": 0.0,
+    "invented": 0.7222222222222222
+   },
+   "en-offtopic-injection": {
+    "exist": 0.9444444444444445,
+    "invented": 0.0
+   }
+  },
+  "recommend_quality": {
+   "scored_answers": 84,
+   "three_books_pct": 100.0,
+   "language_ok_pct": 100.0,
+   "reason_cites_reader_pct": 100.0,
+   "answers_with_already_read_pct": 0.0,
+   "books_verified_pct": 67.9,
+   "books_in_catalogue_pct": 65.9,
+   "books_exist_lenient_pct": 77.0,
+   "books_invented_pct": 20.6,
+   "books_not_reviewed": 0,
+   "answers_all_three_verified_pct": 47.6,
+   "answers_all_three_verified_on_topic_pct": 48.6,
+   "books_verified_on_topic_pct": 71.3,
+   "score_pct": 93.2,
+   "unverified": [
+    "Bella del Señor — Alberto Morales",
+    "El jardín de las delicias — Dolores Medio",
+    "El laberinto de agua — Federico García Lorca",
+    "El laberinto de las aceitunas — Juan Gómez-Jurado",
+    "El laberinto del fauno — no es un libro, así que te recomiendo",
+    "El pequeño príncipe de Antoine de Saint-Exupéry para adultos: El poder del ahora — Eckhart Tolle",
+    "Eleanor Oliphant è completamente sola — Gail Honeyman",
+    "Guida ai ristoranti di Roma — Gambero Rosso",
+    "Guida ai viaggi in treno in Europa — Thomas Cook",
+    "Guida alle pizzerie di Roma — Gabriele Bonci",
+    "Guida alle pizzerie di Roma — Luca Maroni",
+    "Guida alle pizzerie di Roma — varii",
+    "Il Primo Legame — Brandon Sanderson",
+    "Il Primo Legame — Robin Hobb",
+    "Il Principe dei Ladri — Scott Lynch",
+    "Il caso Van Baghen — Augusto De Angelis",
+    "Il caso Vanetta — Augusto De Angelis",
+    "Il caso del lago di Garda — Francesco Recami",
+    "Il cervello che apprende — James E. Zull",
+    "Il ciclista — Paul Fournel",
+    "Il cuore dei giorni — Cristina Comencini",
+    "Il diario di un ragazzino fifone — Jeff Kinney",
+    "Il gioco dei lupi — Holly Webb",
+    "Il grande libro della bicicletta — Giorgio De Ponti",
+    "Il grande libro della bicicletta — Vittorio Brumotti",
+    "Il grande viaggio — Friedrich Nietzsche",
+    "Il grande viaggio — Jack London",
+    "Il mondo di Araldi — Garth Nix",
+    "Il silenzio degli innocenti — Tess Gerritsen",
+    "Il silenzio delle ragazze — Laura Purcell",
+    "L'amore bugiardo — Eleanor Oliphant",
+    "L'amore bugiardo — Elena Ferrante",
+    "L'arte di essere felice — Giovanni D'Agata",
+    "L'ultima cosa che vedo — Fiona Barton",
+    "L'ultima moglie — Amy Lloyd",
+    "L'ultima notte a Montecarlo — Emily St. John Mandel",
+    "La Trilogia di Gelo e Fuoco — George R.R. Martin",
+    "La colina de los fusilados — Eduardo Mendoza",
+    "La coscienza in coma — Guilio Tononi",
+    "La cucina italiana — Ada Boni",
+    "La donna nella finestra — A.J. Finn",
+    "La gang dei monelli — Enid Blyton",
+    "La gang dei monelli — Louis Sachar",
+    "La gang del bosco — Enid Blyton",
+    "La mente nuova del re — Roger Penrose",
+    "La pequeña princesa — Jean-Pierre Giraudoux",
+    "La pequeña princesa — Jean-Pierre Jeunet y Guillaume Laurent",
+    "La ragazza con il cuore di pietra — Maurizio de Giovanni",
+    "La ragazza con il cuore di vetro — Marco Malvaldi",
+    "La ragazza con la Leica — Helga Schneider",
+    "La ragazza con la pistola — Marcello D'Orta",
+    "La ragazza scomparsa — Clare Mackintosh",
+    "La ragazza scomparsa — Gillian Flynn",
+    "La ragazza sul treno — Paula Hawkins",
+    "La ragazza sulla collina — Nicola Lagioia",
+    "La ragazza sulla nave — Morgan McCarthy",
+    "La sencilla verdad — Thomas Merton",
+    "La silla roja — Ángeles Mastretta",
+    "Manuale del ciclista — Vittorio Brumotti",
+    "Manutenzione della bicicletta — Rob van der Plas",
+    "The Weather Makers — Tim Flannery",
+    "Treni e viaggi in Europa — Enrico Pastore",
+    "Treni e viaggi in Europa — Thomas Cook",
+    "Treni e viaggiatori — Paul Theroux",
+    "Un delitto per Natale — Giancarlo De Cataldo"
+   ],
+   "score_all_calls_pct": 93.2
+  },
+  "quality_overall_pct": 88.1,
+  "latency_clarify": {
+   "n": 42,
+   "p50": 1.5485,
+   "p95": 5.127400000000001,
+   "max": 21.702,
+   "over_30s": 0
+  },
+  "latency_recommend": {
+   "n": 42,
+   "p50": 13.378,
+   "p95": 47.037800000000026,
+   "max": 60.196,
+   "over_30s": 6
+  },
+  "cost": {
+   "clarify_usd": 3.4926528571428574e-05,
+   "recommend_usd": 0.00010942007857142856,
+   "per_chat_usd": 0.00014434660714285712,
+   "per_user_day_usd": 0.0007217330357142856,
+   "per_month_100dau_usd": 2.1651991071428567,
+   "tokens_in_clarify": 271.85714285714283,
+   "tokens_out_clarify": 18.5,
+   "tokens_in_recommend": 343.2142857142857,
+   "tokens_out_recommend": 216.85714285714286,
+   "reasoning_tokens_recommend": 0.0,
+   "total_spent_usd": 0.0105383528
+  },
+  "served_by": {
+   "DeepInfra / meta-llama/llama-3.3-70b-instruct": 126
+  }
+ }
+]

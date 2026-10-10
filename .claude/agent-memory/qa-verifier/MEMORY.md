@@ -7,4 +7,5 @@
 -   [Deploy-config QA recipe](reference_deploy_config_qa_recipe.md) — Docker context decoys, .gcloudignore via git, fake ADC 401/503, smoke replay, zsh interactivecomments trap
 -   [Runbook replay harness](reference_runbook_replay_harness.md) — expect + bracketed paste + stub CLIs in zsh -f -i; guard scenarios; Cloud Run scaling annotations; #61 PASS
 -   [API/auth QA recipe](reference_api_auth_qa_recipe.md) — Bearer/timeout/401/429/Origin checks: stub, CDP forwarder, no real token on real backend, emulator pitfalls
-- [Logging endpoint QA recipe](reference_logging_endpoint_qa_recipe.md) — Cloud Logging writes via REST stub, throwaway venvs + dep-bump diff, instrumentation flag facts, #66 PASS
+-   [Logging endpoint QA recipe](reference_logging_endpoint_qa_recipe.md) — Cloud Logging writes via REST stub, throwaway venvs + dep-bump diff, instrumentation flag facts, #66 PASS
+-   [Eval QA recipe](reference_eval_qa_recipe.md) — LLM-eval PRs: recompute from raw jsonl, literal-key scan, case bootstrap, OPAC SBN book lookups, vendor policy pages
