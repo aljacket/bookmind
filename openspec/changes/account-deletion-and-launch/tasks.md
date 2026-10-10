@@ -1,9 +1,9 @@
 Each section is one Trello card and one PR. The owner is in brackets. **Operator** marks steps only the operator can do: billing, consoles, deploys, legal text, keys. Every tick needs evidence in the PR (command output, a test name, a screenshot, or a file/line). The acceptance checklist on each card is authoritative; the tasks below are the implementation plan behind it.
 
-Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 5 → 6 → 8.
+Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 11 → 5 → 6 → 8.
 
 -   Section 10 (provider evaluation) runs in parallel with sections 1 to 3 and blocks none of them.
--   Section 6 (consent copy) and operator step 0.5 (Iubenda) wait for its decision.
+-   Section 6 (consent copy) and operator step 0.5 (Iubenda) waited for its decision, taken on 2026-10-10: OpenAI (design Decision 10, outcome). Their copy is final once section 11 has re-run the evaluation on `gpt-6-luna`.
 -   The ux-designer specs for sections 4, 5, 6 and 8 can be written while sections 1 to 3 are in progress.
 
 ## 0. Operator prerequisites (no card; see the closing comment on #44)
@@ -12,12 +12,12 @@ Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 5
 -   [ ] 0.2 **Operator**: enable the Blaze plan on the Firebase project and set a Cloud Billing budget of 10 € per month (alerts only).
 -   [ ] 0.3 **Operator**: create the Firestore database in `europe-west1` (permanent).
 -   [ ] 0.4 **Operator**: deploy the backend.
-    -   Create the `LLM_API_KEY` secret in Secret Manager. Its value is the OpenAI key unless #71 decides otherwise.
+    -   Create the `LLM_API_KEY` secret in Secret Manager. Its value is the OpenAI key (#71 decision, 2026-10-10).
     -   Deploy Cloud Run with `bookmind-server/DEPLOY.md`, using `--min 0 --max 2`.
     -   Apply the TTL policy and run the smoke test.
     -   Record the service URL.
 -   [ ] 0.5 **Operator**, after the #71 decision: publish the privacy policy.
-    -   Generate and approve the Iubenda policy in IT and EN from the data inventory in `design.md`. It names the chosen LLM provider.
+    -   Generate and approve the Iubenda policy in IT and EN from the data inventory in `design.md`. It names OpenAI (United States, up to 30 days, no training by default).
     -   Put both policy URLs into `firebase.json`.
     -   Run `firebase deploy --only hosting`.
     -   Open `/privacy`, `/privacy/en` and `/delete-account` in a private window.
@@ -25,7 +25,7 @@ Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 5
     -   Countries/regions: Italy only.
     -   Store listing: default language it-IT, no translations in v1.
     -   Closed testers must have their Play country set to Italy, or the closed track is unsynced.
--   [ ] 0.7 **Operator**: provide the keys for #71: an OpenRouter key, possibly with a low credit cap, and a fine-grained HF token with "Make calls to Inference Providers" plus credits. Both go in the local `bookmind-server/.env` only.
+-   [x] 0.7 **Operator**: provide the keys for #71: an OpenRouter key, possibly with a low credit cap, and a fine-grained HF token with "Make calls to Inference Providers" plus credits. Both go in the local `bookmind-server/.env` only. Done for OpenRouter; Hugging Face was taken out of scope on 2026-10-10.
 
 ## 1. Backend: token, quota, CORS (card #60, `backend-engineer`)
 
@@ -80,14 +80,14 @@ Suggested order: 1 → 10 → 2 → (operator section 0) → 3 → 4 → 7 → 5
 
 ## 6. App: explicit AI consent and corrected disclosure (card #65, `ux-designer` → `app-engineer`)
 
-This section starts after the #71 provider decision (design Decision 10). Task 6.1 can be done earlier.
+The #71 provider decision was taken on 2026-10-10: OpenAI (design Decision 10, outcome), so the section can start. Its copy is final once section 11 has re-run the evaluation on `gpt-6-luna`.
 
 -   [ ] 6.1 **ux-designer**: consent panel, declined state and withdraw entry (phone and tablet).
 -   [ ] 6.2 Consent gate in `PreferencesPage.vue`. Test that no API call happens without consent.
 -   [ ] 6.3 `${uid}_aiConsent = { granted, at, version }` in IndexedDB. An older version counts as not granted.
 -   [ ] 6.4 "Withdraw AI consent" menu entry.
 -   [ ] 6.5 `ai_transparency` copy in en/it/es without "nothing stored", approved by the operator.
--   [ ] 6.7 The consent panel and the transparency note name the recipient decided in #71, by name and country. With a router, they name both the router and the pinned provider. The names match the Iubenda third-party list.
+-   [ ] 6.7 The consent panel and the transparency note name the recipient decided in #71: OpenAI, United States, up to 30 days. The names match the Iubenda third-party list.
 -   [ ] 6.6 `wipeUserData` covers the consent key (or a note in the PR if section 4 is not merged yet).
 
 ## 7. Backend: `POST /reports` (card #66, `backend-engineer`)
@@ -112,6 +112,14 @@ This section starts after the #71 provider decision (design Decision 10). Task 6
 
 -   [ ] 10.1 Shortlist: the `gpt-4o-mini` baseline plus 3 to 5 candidates via OpenRouter and HF, each with a pinned provider and its price link and date.
 -   [ ] 10.2 `bookmind-server/eval/`: a script using the unchanged `prompts.py` and a fixed, versioned test set (at least 12 synthetic cases, mostly Italian, 2 off-topic). Keys come from `.env` only.
--   [ ] 10.3 At least 3 runs per case and endpoint, scored on the criteria in design Decision 10: quality (with Google Books existence check and operator blind rating of 5 or more cases), cost, latency p50/p95, JSON reliability and data handling.
+-   [ ] 10.3 At least 3 runs per case and endpoint, scored on the criteria in design Decision 10: quality (with Google Books existence check and operator blind rating of 5 or more cases), cost, latency p50/p95, JSON reliability and data handling. Operator, 2026-10-10: Hugging Face out of scope, the catalogue substitute accepted in place of Google Books, blind rating skipped.
 -   [ ] 10.4 `bookmind-server/eval/REPORT.md` with a comparison table, a recommendation, and the exact recipients to name in #65 and in the policy.
--   [ ] 10.5 **Operator**: decides. **product-lead**: records the decision in design Decision 10 and in the decisions table.
+-   [x] 10.5 **Operator**: decides. **product-lead**: records the decision in design Decision 10 and in the decisions table. Decided 2026-10-10: OpenAI, `gpt-6-luna`, reasoning off.
+
+## 11. Backend: `gpt-6-luna` support in `llm.py` (card #73, `backend-engineer`; after PR #24 merges)
+
+-   [ ] 11.1 `LLM_TOKEN_LIMIT_PARAM` (`max_tokens` by default, or `max_completion_tokens`) sends the existing limits (80 clarify, 400 recommendations) under the configured name only. An invalid value raises `LLMConfigError`.
+-   [ ] 11.2 A per-call `response_format` option in `llm.chat()`. `/recommendations` asks for `json_object` when `LLM_JSON_MODE` is on (the default). `/recommendations/clarify` never does.
+-   [ ] 11.3 Tests on the request bodies for 11.1 and 11.2, for `reasoning_effort` passed through `LLM_EXTRA_BODY`, and for the default configuration. There is no list of model names and no automatic retry.
+-   [ ] 11.4 `DEPLOY.md` production env file: `LLM_MODEL=gpt-6-luna`, `LLM_TOKEN_LIMIT_PARAM=max_completion_tokens`, `LLM_EXTRA_BODY={"reasoning_effort":"none"}`, no `LLM_BASE_URL`. README and `.env.example` show the same values. The code default stays `gpt-4o-mini`.
+-   [ ] 11.5 Re-run the #71 harness through the new `llm.py`, within a $0.05 cap: `gpt-6-luna` on 14 cases × 1 run, plus a `gpt-4o-mini` smoke test on 3 cases. Expected: 0 HTTP errors, 100 % of recommendations parsed, clarifier passing in at least 13 of 14 cases, p95 ≤ 15 s.

@@ -37,14 +37,25 @@ When the recommendation API returns 429, the chat SHALL show a localized "daily 
 
 ### Requirement: LLM provider and model come from configuration
 
-The backend SHALL make every LLM call through a single module that reads the OpenAI-compatible base URL (`LLM_BASE_URL`; when unset, the OpenAI default), the model (`LLM_MODEL`, default `gpt-4o-mini`) the API key (`LLM_API_KEY`, falling back to `OPENAI_API_KEY`) and an optional JSON object of extra request fields (`LLM_EXTRA_BODY`, for router options such as provider pinning) from the environment. Switching to another OpenAI-compatible provider or model SHALL require only environment changes. No other backend module SHALL call the provider SDK directly.
+The backend SHALL make every LLM call through a single module that reads the OpenAI-compatible base URL (`LLM_BASE_URL`; when unset, the OpenAI default), the model (`LLM_MODEL`, default `gpt-4o-mini`), the API key (`LLM_API_KEY`, falling back to `OPENAI_API_KEY`), an optional JSON object of extra request fields (`LLM_EXTRA_BODY`, for router options such as provider pinning or model options such as `reasoning_effort`), the name under which the output token limit is sent (`LLM_TOKEN_LIMIT_PARAM`: `max_tokens` by default, or `max_completion_tokens`), and whether `/recommendations` asks for a JSON object response (`LLM_JSON_MODE`, on by default) from the environment. `/recommendations/clarify` SHALL never ask for a JSON object response. The module SHALL NOT select request parameters from a list of model names. Switching to another OpenAI-compatible provider or model SHALL require only environment changes. No other backend module SHALL call the provider SDK directly.
 
 #### Scenario: Default configuration
 
 -   **WHEN** only `OPENAI_API_KEY` is set
--   **THEN** `/recommendations/clarify` and `/recommendations` call OpenAI with model `gpt-4o-mini`, exactly as before this change
+-   **THEN** `/recommendations/clarify` and `/recommendations` call OpenAI with model `gpt-4o-mini` and send the token limit as `max_tokens`, as before this change
+-   **AND** only `/recommendations` adds `response_format` of type `json_object`
 
 #### Scenario: Alternative provider by environment
 
 -   **WHEN** `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY` point to another OpenAI-compatible endpoint
 -   **THEN** both endpoints send their requests to that base URL with that model, and their request and response bodies are unchanged
+
+#### Scenario: Model that requires max_completion_tokens
+
+-   **WHEN** `LLM_MODEL` is `gpt-6-luna`, `LLM_TOKEN_LIMIT_PARAM` is `max_completion_tokens` and `LLM_EXTRA_BODY` is `{"reasoning_effort": "none"}`
+-   **THEN** both endpoints send the same token limits as `max_completion_tokens`, send no `max_tokens`, and include `reasoning_effort` set to `none`
+
+#### Scenario: JSON mode off
+
+-   **WHEN** `LLM_JSON_MODE` is `false`
+-   **THEN** neither endpoint sends `response_format`
