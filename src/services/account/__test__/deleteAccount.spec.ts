@@ -117,6 +117,17 @@ describe('deleteAccount', () => {
         expect(localStorage.getItem(PENDING_DELETION_KEY)).toBeNull()
     })
 
+    it('also clears the transient recommendations hand-off, but only once the account is gone', async () => {
+        localStorage.setItem('newRecommendations', '[{"title":"x"}]')
+        mocks.deleteUser.mockRejectedValueOnce(authError('auth/network-request-failed'))
+
+        await kindOf(deleteAccount('pw'))
+        expect(localStorage.getItem('newRecommendations')).not.toBeNull()
+
+        await deleteAccount('pw')
+        expect(localStorage.getItem('newRecommendations')).toBeNull()
+    })
+
     it('does not start a deletion it could not heal if the marker cannot be written', async () => {
         const setItem = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
             throw new Error('quota')

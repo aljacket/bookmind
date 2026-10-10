@@ -1,5 +1,5 @@
 import { wipeUserData } from '@/services/indexedDB/userPreferences'
-import { PENDING_DELETION_KEY } from './deleteAccount'
+import { PENDING_DELETION_KEY, clearTransientUserData } from './deleteAccount'
 
 /**
  * - `none`: no deletion was pending.
@@ -44,6 +44,7 @@ export async function runStartupSweep(signedInUid: string | null): Promise<Start
         return 'cleared'
     }
 
+    clearTransientUserData()
     await wipeUserData(markedUid)
     clearMarker()
     return 'wiped'

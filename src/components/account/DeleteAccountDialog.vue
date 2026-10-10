@@ -13,7 +13,11 @@
             aria-describedby="delete-account-lead"
             :aria-busy="inProgress ? 'true' : 'false'"
             novalidate
-            :class="['dad-panel', centred ? 'dad-panel--centred' : 'dad-panel--compact']"
+            :class="[
+                'dad-panel',
+                centred ? 'dad-panel--centred' : 'dad-panel--compact',
+                tight ? 'dad-panel--tight' : ''
+            ]"
             @submit.prevent="submit"
         >
             <!-- Header. In the centred presentation it holds the title; on compact it is only the top bar. -->
@@ -151,6 +155,7 @@
                             :value="accountEmail"
                         />
                         <label
+                            ref="labelEl"
                             for="delete-account-password"
                             class="block text-sm font-medium font-sans text-ink-700 mb-1"
                         >
@@ -341,6 +346,7 @@
     const rootEl = ref<HTMLElement | null>(null)
     const titleEl = ref<HTMLElement | null>(null)
     const passwordEl = ref<HTMLInputElement | null>(null)
+    const labelEl = ref<HTMLElement | null>(null)
     const confirmEl = ref<HTMLButtonElement | null>(null)
     const sessionActionEl = ref<HTMLButtonElement | null>(null)
 
@@ -359,8 +365,16 @@
     // ---- Keyboard inset: Android 15+ draws edge-to-edge and the WebView may not resize, so the
     // dialog measures the on-screen keyboard itself. ----
     const keyboardInset = ref(0)
+    // Height the user can actually see: it shrinks when the on-screen keyboard opens.
+    const viewportHeight = ref(window.visualViewport?.height ?? window.innerHeight)
+    // On a landscape phone with the keyboard open there can be ~100 px left, less than the sticky
+    // top bar plus action bar. Below this height the bars stop being sticky and scroll with the
+    // content, so the field and the primary action can always be scrolled into view.
+    const TIGHT_BELOW_PX = 340
+    const tight = computed(() => !centred.value && viewportHeight.value < TIGHT_BELOW_PX)
     const updateKeyboardInset = () => {
         const viewport = window.visualViewport
+        viewportHeight.value = viewport?.height ?? window.innerHeight
         if (!viewport) return
         keyboardInset.value = Math.max(
             0,
@@ -369,7 +383,11 @@
     }
 
     function onPasswordFocus() {
-        const scrollToField = () => passwordEl.value?.scrollIntoView({ block: 'center' })
+        // Tight: put the label at the top so label and field are both visible in what is left.
+        const scrollToField = () =>
+            tight.value
+                ? labelEl.value?.scrollIntoView({ block: 'start' })
+                : passwordEl.value?.scrollIntoView({ block: 'center' })
         scrollToField()
         // Scroll again once the keyboard has finished opening: that is a visualViewport resize.
         window.visualViewport?.addEventListener('resize', scrollToField, { once: true })
@@ -392,6 +410,7 @@
         window.visualViewport?.addEventListener('resize', updateKeyboardInset)
         window.visualViewport?.addEventListener('scroll', updateKeyboardInset)
         window.addEventListener('online', onOnline)
+        window.addEventListener('resize', updateKeyboardInset)
         updateKeyboardInset()
         // The title takes focus, not the field, so the keyboard does not cover the explanation.
         void nextTick(() => titleEl.value?.focus({ preventScroll: true }))
@@ -403,6 +422,7 @@
         window.visualViewport?.removeEventListener('resize', updateKeyboardInset)
         window.visualViewport?.removeEventListener('scroll', updateKeyboardInset)
         window.removeEventListener('online', onOnline)
+        window.removeEventListener('resize', updateKeyboardInset)
         password.value = ''
     })
 
@@ -599,6 +619,26 @@
         padding: 0.75rem calc(1rem + var(--bm-safe-right))
             calc(0.75rem + max(var(--bm-safe-bottom), var(--bm-kb-inset, 0px)))
             calc(1rem + var(--bm-safe-left));
+    }
+
+    /* ---- Tight: full-screen with under ~340 px visible (landscape phone + keyboard) ----
+       Nothing is sticky: the whole panel scrolls, and the two actions share one row. */
+    .dad-panel--tight {
+        display: block;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        height: calc(100% - var(--bm-kb-inset, 0px));
+    }
+    .dad-panel--tight .dad-body {
+        overflow: visible;
+    }
+    .dad-panel--tight .dad-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: calc(0.75rem + var(--bm-safe-bottom));
+    }
+    .dad-panel--tight .dad-actions .dad-btn {
+        flex: 1 1 10rem;
     }
 
     /* ---- Centred modal (width >= 600 and height >= 480) ---- */

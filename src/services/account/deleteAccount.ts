@@ -55,6 +55,22 @@ export function classifyDeleteAccountError(error: unknown): DeleteAccountErrorKi
     }
 }
 
+/**
+ * localStorage key where PreferencesPage hands the fresh AI recommendations to ProcessingPage, which
+ * removes it again after reading. It is not uid-prefixed, but it holds the signed-in user's
+ * recommendations, so it can linger if the app is closed during the 2 s hand-off.
+ */
+export const NEW_RECOMMENDATIONS_KEY = 'newRecommendations'
+
+/** Removes user-derived data that lives outside IndexedDB and is not keyed by uid. */
+export function clearTransientUserData() {
+    try {
+        localStorage.removeItem(NEW_RECOMMENDATIONS_KEY)
+    } catch (error) {
+        console.error('Could not clear transient user data', error)
+    }
+}
+
 function clearMarker() {
     try {
         localStorage.removeItem(PENDING_DELETION_KEY)
@@ -107,6 +123,7 @@ export async function deleteAccount(password: string): Promise<DeleteAccountResu
     }
 
     // From here on the account is gone for good: nothing below may turn into a failure.
+    clearTransientUserData()
     let wiped = true
     try {
         await wipeUserData(uid)

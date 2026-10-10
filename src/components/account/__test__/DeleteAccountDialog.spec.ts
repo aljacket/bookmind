@@ -281,6 +281,50 @@ describe('DeleteAccountDialog', () => {
         })
     })
 
+    describe('tight viewport (landscape phone with the keyboard open)', () => {
+        const stubViewport = (height: number) => {
+            vi.stubGlobal('visualViewport', {
+                height,
+                offsetTop: 0,
+                addEventListener: vi.fn(),
+                removeEventListener: vi.fn()
+            })
+        }
+        afterEach(() => {
+            vi.unstubAllGlobals()
+        })
+
+        it('stops being sticky when under 340 px are visible, and keeps the field and the actions in the DOM', () => {
+            stubViewport(108)
+            mountDialog()
+
+            expect(wrapper.find('[role="dialog"]').classes()).toContain('dad-panel--tight')
+            expect(wrapper.find('#delete-account-password').exists()).toBe(true)
+            expect(confirmButton().exists()).toBe(true)
+        })
+
+        it('keeps the sticky layout at 360 px of visible height and above', () => {
+            stubViewport(360)
+            mountDialog()
+
+            expect(wrapper.find('[role="dialog"]').classes()).not.toContain('dad-panel--tight')
+        })
+
+        it('scrolls the label to the top of what is left when the field gets focus', async () => {
+            stubViewport(108)
+            mountDialog()
+            const calls: Array<[Element, unknown]> = []
+            Element.prototype.scrollIntoView = function (this: Element, arg?: unknown) {
+                calls.push([this, arg])
+            }
+
+            await wrapper.find('#delete-account-password').trigger('focus')
+
+            expect(calls[0][1]).toEqual({ block: 'start' })
+            expect(calls[0][0]).toBe(wrapper.find('label[for="delete-account-password"]').element)
+        })
+    })
+
     describe('closing', () => {
         it('Cancel, the close button and Escape close without side effects', async () => {
             mountDialog()

@@ -27,6 +27,23 @@ describe('runStartupSweep', () => {
         expect(localStorage.getItem(PENDING_DELETION_KEY)).toBeNull()
     })
 
+    it('also clears the transient recommendations hand-off when it wipes', async () => {
+        localStorage.setItem('newRecommendations', '[{"title":"x"}]')
+        localStorage.setItem(PENDING_DELETION_KEY, 'uid-deleted')
+
+        await runStartupSweep(null)
+
+        expect(localStorage.getItem('newRecommendations')).toBeNull()
+    })
+
+    it('leaves the transient recommendations alone when nothing is pending', async () => {
+        localStorage.setItem('newRecommendations', '[{"title":"x"}]')
+
+        await runStartupSweep(null)
+
+        expect(localStorage.getItem('newRecommendations')).not.toBeNull()
+    })
+
     it('after a normal logout (no marker) keeps every reading list', async () => {
         // Logout leaves no marker; the next launch has no signed-in user either.
         expect(await runStartupSweep(null)).toBe('none')
