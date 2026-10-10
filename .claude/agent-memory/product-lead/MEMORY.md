@@ -8,3 +8,4 @@
 - [/login QA findings 09/10](project_login_qa_findings_2026-10-09.md) — #51 findings filed: contrast+link targets → #47, select/main/logo → #46; SEO items left out
 - [Card #44 launch change](project_card44_launch_change.md) — PR #16, cards #60-#71, decisions 09/10 (10/day, europe-west1, Italy-only, IT+EN), provider eval #71
 - [Card #63 deletion UX decisions](project_card63_deletion_ux_decisions.md) — PR #23: in-dialog reset (A), no haptics (#45), copy approved, export → #72, menu 40px → #47
+- [Card #71 provider decision](project_card71_provider_decision.md) — 10/10 OpenAI gpt-6-luna; default stays 4o-mini; #73 llm.py, #74 invented books; PR #25
