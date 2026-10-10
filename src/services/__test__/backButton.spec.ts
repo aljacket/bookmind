@@ -46,18 +46,16 @@ describe('services/backButton', () => {
         expect(plugin.addListener).not.toHaveBeenCalled()
     })
 
-    it('keeps the previous default: history back when there is history, leave the app at the root', async () => {
+    it('keeps the old default: Back leaves the app, whatever the history says', async () => {
         const { installBackButtonHandling } = await load()
         installBackButtonHandling()
         const onBack = plugin.addListener.mock.calls[0][1]
 
         onBack({ canGoBack: true })
-        expect(historyBack).toHaveBeenCalledOnce()
-        expect(plugin.exitApp).not.toHaveBeenCalled()
-
         onBack({ canGoBack: false })
-        expect(plugin.exitApp).toHaveBeenCalledOnce()
-        expect(historyBack).toHaveBeenCalledOnce()
+
+        expect(plugin.exitApp).toHaveBeenCalledTimes(2)
+        expect(historyBack).not.toHaveBeenCalled()
     })
 
     it('an interceptor takes Back over, and only until it is removed', async () => {
@@ -74,7 +72,8 @@ describe('services/backButton', () => {
         remove()
         onBack({ canGoBack: true })
         expect(handler).toHaveBeenCalledOnce()
-        expect(historyBack).toHaveBeenCalledOnce()
+        expect(plugin.exitApp).toHaveBeenCalledOnce()
+        expect(historyBack).not.toHaveBeenCalled()
     })
 
     it('can register again if the first registration failed', async () => {

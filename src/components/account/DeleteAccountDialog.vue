@@ -371,7 +371,7 @@
     // On a landscape phone with the keyboard open there can be ~100 px left, less than the sticky
     // top bar plus action bar. Below this height the bars stop being sticky and scroll with the
     // content, so the field and the primary action can always be scrolled into view.
-    const TIGHT_BELOW_PX = 340
+    const TIGHT_BELOW_PX = 300
     const tight = computed(() => !centred.value && viewportHeight.value < TIGHT_BELOW_PX)
     const updateKeyboardInset = () => {
         const viewport = window.visualViewport
@@ -626,7 +626,7 @@
             calc(1rem + var(--bm-safe-left));
     }
 
-    /* ---- Tight: full-screen with under ~340 px visible (landscape phone + keyboard) ----
+    /* ---- Tight: full-screen with under 300 px visible (landscape phone + keyboard) ----
        Nothing is sticky: the whole panel scrolls, and the two actions share one row. */
     .dad-panel--tight {
         display: block;

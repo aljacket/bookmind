@@ -294,7 +294,7 @@ describe('DeleteAccountDialog', () => {
             vi.unstubAllGlobals()
         })
 
-        it('stops being sticky when under 340 px are visible, and keeps the field and the actions in the DOM', () => {
+        it('stops being sticky when under 300 px are visible, and keeps the field and the actions in the DOM', () => {
             stubViewport(108)
             mountDialog()
 
@@ -303,8 +303,8 @@ describe('DeleteAccountDialog', () => {
             expect(confirmButton().exists()).toBe(true)
         })
 
-        it('keeps the sticky layout at 360 px of visible height and above', () => {
-            stubViewport(360)
+        it('keeps the sticky layout at 336 px of visible height and above', () => {
+            stubViewport(336)
             mountDialog()
 
             expect(wrapper.find('[role="dialog"]').classes()).not.toContain('dad-panel--tight')

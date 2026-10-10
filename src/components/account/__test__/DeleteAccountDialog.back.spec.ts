@@ -95,14 +95,13 @@ describe('DeleteAccountDialog: Android Back button', () => {
         expect(wrapper.emitted('close')).toHaveLength(1)
     })
 
-    it('once the dialog is gone, Back behaves as before again', () => {
+    it('once the dialog is gone, Back behaves as before again: it leaves the app', () => {
         mountDialog()
         wrapper.unmount()
 
         onBack({ canGoBack: true })
-        expect(historyBack).toHaveBeenCalledOnce()
 
-        onBack({ canGoBack: false })
         expect(plugin.exitApp).toHaveBeenCalledOnce()
+        expect(historyBack).not.toHaveBeenCalled()
     })
 })

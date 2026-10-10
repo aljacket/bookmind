@@ -4,11 +4,11 @@ import { App } from '@capacitor/app'
 /**
  * Android hardware/gesture Back handling.
  *
- * Once `@capacitor/app` is installed, Capacitor stops running its own default for Back whenever it
- * has a `backButton` listener, and with no listener it only goes back in history and never leaves
- * the app. So the app registers ONE listener at startup that reproduces the previous behaviour
- * (history back, or leave the app at the root), and lets a component temporarily take Back over
- * through `pushBackInterceptor` for exactly as long as it is on screen.
+ * Without `@capacitor/app`, Back leaves the app from every screen. Installing the plugin changes
+ * that default (with no listener it only goes back in history and never leaves), so the app
+ * registers ONE listener at startup that restores exactly the old behaviour (leave the app), and
+ * lets a component temporarily take Back over through `pushBackInterceptor` for as long as it is on
+ * screen. History-based Back is a product change and deliberately not done here.
  */
 
 type Interceptor = () => void
@@ -25,25 +25,21 @@ export function pushBackInterceptor(handler: Interceptor): () => void {
     }
 }
 
-/** What Back does for the app: the innermost interceptor if any, otherwise the previous default. */
-export function handleBackButton(canGoBack: boolean) {
+/** What Back does for the app: the innermost interceptor if any, otherwise leave the app. */
+export function handleBackButton() {
     const top = interceptors[interceptors.length - 1]
     if (top) {
         top()
         return
     }
-    if (canGoBack) {
-        window.history.back()
-    } else {
-        void App.exitApp()
-    }
+    void App.exitApp()
 }
 
 /** Registers the single Back listener. Call once at startup; it does nothing on the web and iOS. */
 export function installBackButtonHandling() {
     if (installed || !Capacitor.isNativePlatform()) return
     installed = true
-    App.addListener('backButton', ({ canGoBack }) => handleBackButton(canGoBack)).catch((error) => {
+    App.addListener('backButton', () => handleBackButton()).catch((error) => {
         installed = false
         console.error('Could not listen for the Back button', error)
     })

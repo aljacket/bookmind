@@ -46,21 +46,22 @@ describe('useBackButton', () => {
         const handler = vi.fn()
         mountHost(handler)
 
-        handleBackButton(true)
+        handleBackButton()
 
         expect(handler).toHaveBeenCalledOnce()
         expect(historyBack).not.toHaveBeenCalled()
         expect(plugin.exitApp).not.toHaveBeenCalled()
     })
 
-    it('gives Back back to the app once the component unmounts', () => {
+    it('gives Back back to the app (leave it) once the component unmounts', () => {
         const handler = vi.fn()
         const wrapper = mountHost(handler)
         wrapper.unmount()
 
-        handleBackButton(true)
+        handleBackButton()
         expect(handler).not.toHaveBeenCalled()
-        expect(historyBack).toHaveBeenCalledOnce()
+        expect(plugin.exitApp).toHaveBeenCalledOnce()
+        expect(historyBack).not.toHaveBeenCalled()
     })
 
     it('the innermost component gets Back, and the outer one gets it again when the inner unmounts', () => {
@@ -69,12 +70,12 @@ describe('useBackButton', () => {
         mountHost(outer)
         const innerWrapper = mountHost(inner)
 
-        handleBackButton(false)
+        handleBackButton()
         expect(inner).toHaveBeenCalledOnce()
         expect(outer).not.toHaveBeenCalled()
 
         innerWrapper.unmount()
-        handleBackButton(false)
+        handleBackButton()
         expect(outer).toHaveBeenCalledOnce()
     })
 })
