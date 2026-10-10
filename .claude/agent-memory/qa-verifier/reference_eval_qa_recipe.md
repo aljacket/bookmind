@@ -24,4 +24,9 @@ Card #71 (PR #24) took about 1 h. The verdict was FAIL because REPORT.md was mis
         The legal.mistral.ai pages need `curl -A Mozilla` plus a strip of the HTML tags. The OpenRouter ZDR list (`/api/v1/endpoints/zdr`, about 900 KB) needs curl plus a JSON parse, because WebFetch truncates it.
 -   The PR body can hold the report when a file write was refused, but the card names `eval/REPORT.md`, so its absence means FAIL on that checklist item.
 
+**Re-verification (head 45354c1, PASS on 2026-10-10)**
+
+- `score.py` is deterministic and needs no network once `books_cache.json` is complete. Re-run it on a scratch copy of `eval/`, then `cmp` its outputs against the committed results.
+- Catalogue hits override the manual labels, because `status()` checks the cache first. When a new catalogue source is added, count the overrides of **every** label type (I, U and T), not only the ones the engineer reports. On #71, OPAC SBN silently overrode 11 T labels.
+
 Related: [[backend-qa-recipe]], [[api-auth-qa-recipe]]
