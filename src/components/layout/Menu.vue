@@ -111,14 +111,53 @@
                             {{ t('logout') }}
                         </button>
                     </div>
+
+                    <!-- Danger zone: its own card, visibly apart from Logout. -->
+                    <div class="mt-6 bg-white rounded-xl shadow-lg">
+                        <button
+                            ref="deleteAccountRow"
+                            type="button"
+                            class="w-full min-h-12 flex items-center text-left py-3 px-6 rounded-xl transition-colors duration-300 text-red-700 hover:bg-red-50 active:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-600"
+                            @click="openDeleteDialog"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 mr-2 shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                />
+                            </svg>
+                            {{ t('delete_account_menu') }}
+                        </button>
+                    </div>
                 </div>
             </div>
         </Transition>
+
+        <!-- Above the menu and the hamburger button (z-50): teleported to <body>. -->
+        <Teleport to="body">
+            <Transition name="dad" appear>
+                <DeleteAccountDialog
+                    v-if="showDeleteDialog"
+                    @close="closeDeleteDialog"
+                    @deleted="onAccountDeleted"
+                    @sign-in-again="onSignInAgain"
+                />
+            </Transition>
+        </Teleport>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { nextTick, ref } from 'vue'
     import { useRouter } from 'vue-router'
     import { signOut } from 'firebase/auth'
     import { useI18n } from 'vue-i18n'
@@ -126,6 +165,7 @@
     import { useAuthStore } from '@/stores/auth'
     import { useLanguageStore } from '@/stores/language'
     import type { SupportedLocale } from '@/types/userPreferences'
+    import DeleteAccountDialog from '@/components/account/DeleteAccountDialog.vue'
 
     const { t } = useI18n()
     const router = useRouter()
@@ -153,6 +193,32 @@
         } catch (error) {
             console.error('Logout failed', error)
         }
+    }
+
+    const showDeleteDialog = ref(false)
+    const deleteAccountRow = ref<HTMLButtonElement | null>(null)
+
+    const openDeleteDialog = () => {
+        showDeleteDialog.value = true
+    }
+
+    // Cancelled: the menu stays open underneath, and focus goes back to the row that opened the dialog.
+    const closeDeleteDialog = async () => {
+        showDeleteDialog.value = false
+        await nextTick()
+        deleteAccountRow.value?.focus()
+    }
+
+    // The account is gone: `replace` so Back cannot return to an authenticated screen.
+    const onAccountDeleted = () => {
+        showDeleteDialog.value = false
+        isOpen.value = false
+        router.replace({ path: '/login', query: { deleted: '1' } })
+    }
+
+    const onSignInAgain = () => {
+        showDeleteDialog.value = false
+        logout()
     }
 
     const goToPreferences = () => {

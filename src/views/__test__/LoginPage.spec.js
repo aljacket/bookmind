@@ -69,3 +69,56 @@ describe('LoginPage', () => {
         expect(wrapper.find('.text-red-600').text()).toBe('Invalid credentials')
     })
 })
+
+describe('LoginPage after an account deletion', () => {
+    const mountAt = async (url) => {
+        const router = createRouter({
+            history: createMemoryHistory(),
+            routes: [
+                { path: '/', component: stub },
+                { path: '/login', component: LoginPage },
+                { path: '/register', component: stub },
+                { path: '/forgot-password', component: stub }
+            ]
+        })
+        await router.push(url)
+        await router.isReady()
+        const i18n = createI18n({
+            legacy: false,
+            locale: 'en',
+            fallbackLocale: 'en',
+            messages: { en, it: it_, es }
+        })
+        const wrapper = mount(LoginPage, {
+            attachTo: document.body,
+            global: { plugins: [router, createPinia(), i18n] }
+        })
+        await flushPromises()
+        return { wrapper, router }
+    }
+
+    it('shows the confirmation as the first element of the card, focuses it and drops the query', async () => {
+        const { wrapper, router } = await mountAt('/login?deleted=1')
+
+        const banner = wrapper.find('[role="status"]')
+        expect(banner.exists()).toBe(true)
+        expect(banner.text()).toContain(en.delete_account_done_title)
+        expect(banner.text()).toContain(en.delete_account_done_body)
+        // First element inside the card, above the logo.
+        const card = wrapper.find('.max-w-md')
+        expect(card.element.firstElementChild).toBe(banner.element)
+        // The heading takes focus so screen readers read the confirmation first.
+        expect(document.activeElement.textContent).toBe(en.delete_account_done_title)
+        // Read once: a reload or Back does not show it again.
+        expect(router.currentRoute.value.fullPath).toBe('/login')
+        expect(banner.exists()).toBe(true)
+        wrapper.unmount()
+    })
+
+    it('shows no banner on a plain visit', async () => {
+        const { wrapper } = await mountAt('/login')
+
+        expect(wrapper.find('[role="status"]').exists()).toBe(false)
+        wrapper.unmount()
+    })
+})
