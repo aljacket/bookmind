@@ -1,6 +1,6 @@
 ---
 name: bookmind-team
-description: The operating rules every BookMind agent works under — roles and hand-offs, the Trello board's columns with their entry/exit policies and WIP limits, how to read and move cards, the worktree rule, language, and what is always the operator's. Preloaded into product-lead, ux-designer, visual-designer, app-engineer, backend-engineer and qa-verifier.
+description: The operating rules every BookMind agent works under — roles and hand-offs, the Trello board's columns with their entry/exit policies and WIP limits, how to read and move cards, the worktree rule, language, and what is always the operator's. Preloaded into product-lead, ux-designer, visual-designer, growth-marketer, support-ops, app-engineer, backend-engineer and qa-verifier.
 user-invocable: false
 ---
 
@@ -13,14 +13,16 @@ and merges.
 
 ## Roles and hand-offs
 
-| Role               | Owns                                                                                                         | Hands off to                                   |
-| ------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
-| `product-lead`     | what and why: cards, OpenSpec changes, order of work                                                         | `ux-designer` (UI cards) or an engineer        |
-| `ux-designer`      | adaptive screen spec in the change's `design.md`                                                             | `app-engineer`                                 |
-| `visual-designer`  | how the app looks: brand, visual design system, redesigns, icon/splash/store graphics and copy, in `design/` | `ux-designer` (screen specs) or `app-engineer` |
-| `app-engineer`     | `src/`, Capacitor, `android/`, `ios/`                                                                        | `qa-verifier` (PR open)                        |
-| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config                                                           | `qa-verifier` (PR open)                        |
-| `qa-verifier`      | independent PASS/FAIL with evidence; read-only                                                               | operator (merge)                               |
+| Role               | Owns                                                                                                     | Hands off to                                   |
+| ------------------ | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `product-lead`     | what and why: cards, OpenSpec changes, order of work                                                     | `ux-designer` (UI cards) or an engineer        |
+| `ux-designer`      | adaptive screen spec in the change's `design.md`                                                         | `app-engineer`                                 |
+| `visual-designer`  | how the app looks: brand, visual design system, redesigns, icon/splash/store graphics, in `design/`      | `ux-designer` (screen specs) or `app-engineer` |
+| `growth-marketer`  | positioning, store copy and keywords (ASO), launch plan, tester recruitment, in `marketing/`             | `visual-designer` (captions) or operator       |
+| `support-ops`      | support page/FAQ copy, tester feedback, review reply drafts, weekly digest → "Idee" cards, in `support/` | `product-lead` (cards) or operator             |
+| `app-engineer`     | `src/`, Capacitor, `android/`, `ios/`                                                                    | `qa-verifier` (PR open)                        |
+| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config                                                       | `qa-verifier` (PR open)                        |
+| `qa-verifier`      | independent PASS/FAIL with evidence; read-only                                                           | operator (merge)                               |
 
 Nobody marks their own work done. Nobody works outside their area: a card that spans frontend and
 backend is split.
