@@ -8,4 +8,6 @@
 -   [Runbook replay harness](reference_runbook_replay_harness.md) — expect + bracketed paste + stub CLIs in zsh -f -i; guard scenarios; Cloud Run scaling annotations; #61 PASS
 -   [API/auth QA recipe](reference_api_auth_qa_recipe.md) — Bearer/timeout/401/429/Origin checks: stub, CDP forwarder, no real token on real backend, emulator pitfalls
 -   [Logging endpoint QA recipe](reference_logging_endpoint_qa_recipe.md) — Cloud Logging writes via REST stub, throwaway venvs + dep-bump diff, instrumentation flag facts, #66 PASS
--   [Eval QA recipe](reference_eval_qa_recipe.md) — LLM-eval PRs: recompute from raw jsonl, literal-key scan, case bootstrap, OPAC SBN book lookups, vendor policy pages
+-   [Eval QA recipe](reference_eval_qa_recipe.md) — LLM-eval PRs: recompute from raw jsonl, literal-key scan, case bootstrap, OPAC SBN book lookups, vendor policy pages, #73 rerun/JSON-mode checks
+- [Firebase Auth stub via CDP](reference_firebase_auth_stub_cdp.md) — auth flows w/o code change: identitytoolkit stub + Fetch interception, device offsets, IME/TalkBack/Back pitfalls
+- [Account deletion #63 QA](project_account_deletion_qa.md) — PASS 2026-10-11 at 76274d5 after 2 FAILs (IME clipping, Back loop); leftovers for ux/#55, re-test plan
