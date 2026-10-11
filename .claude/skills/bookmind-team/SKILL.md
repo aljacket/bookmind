@@ -1,6 +1,6 @@
 ---
 name: bookmind-team
-description: The operating rules every BookMind agent works under — roles and hand-offs, the Trello board's columns with their entry/exit policies and WIP limits, how to read and move cards, the worktree rule, language, and what is always the operator's. Preloaded into product-lead, ux-designer, app-engineer, backend-engineer and qa-verifier.
+description: The operating rules every BookMind agent works under — roles and hand-offs, the Trello board's columns with their entry/exit policies and WIP limits, how to read and move cards, the worktree rule, language, and what is always the operator's. Preloaded into product-lead, ux-designer, visual-designer, app-engineer, backend-engineer and qa-verifier.
 user-invocable: false
 ---
 
@@ -13,13 +13,14 @@ and merges.
 
 ## Roles and hand-offs
 
-| Role | Owns | Hands off to |
-|---|---|---|
-| `product-lead` | what and why: cards, OpenSpec changes, order of work | `ux-designer` (UI cards) or an engineer |
-| `ux-designer` | adaptive screen spec in the change's `design.md` | `app-engineer` |
-| `app-engineer` | `src/`, Capacitor, `android/`, `ios/` | `qa-verifier` (PR open) |
-| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config | `qa-verifier` (PR open) |
-| `qa-verifier` | independent PASS/FAIL with evidence; read-only | operator (merge) |
+| Role               | Owns                                                                    | Hands off to                            |
+| ------------------ | ----------------------------------------------------------------------- | --------------------------------------- |
+| `product-lead`     | what and why: cards, OpenSpec changes, order of work                    | `ux-designer` (UI cards) or an engineer |
+| `ux-designer`      | adaptive screen spec in the change's `design.md`                        | `app-engineer`                          |
+| `visual-designer`  | icon, splash, store graphics and copy; sources and exports in `design/` | `app-engineer` (integration)            |
+| `app-engineer`     | `src/`, Capacitor, `android/`, `ios/`                                   | `qa-verifier` (PR open)                 |
+| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config                      | `qa-verifier` (PR open)                 |
+| `qa-verifier`      | independent PASS/FAIL with evidence; read-only                          | operator (merge)                        |
 
 Nobody marks their own work done. Nobody works outside their area: a card that spans frontend and
 backend is split.
@@ -44,16 +45,16 @@ stop and report the blocker — never reconstruct scope from memory or from the 
 Columns follow the Kanban Guide (Kanban University) — model the real workflow, explicit policies,
 WIP limits, one commitment point and one delivery point:
 
-| List | WIP | Enters when | Leaves when |
-|---|---|---|---|
-| Documentazione | — | reference material (not work) | — |
-| Idee | — | anyone proposes an option | operator promotes it to Pronto, with acceptance checklist and owner |
-| **Pronto** (commitment point) | 3 | operator pulls it in; card is complete | an agent starts it |
-| In Sviluppo | 2 | owner starts work (worktree created) | PR open, checks green, PR link commented |
-| Verifica QA | ┐ shared | PR open | `qa-verifier` PASS (→ Review & Merge) or FAIL (→ In Sviluppo) |
-| Review & Merge | ┘ max 3 with In Sviluppo | QA passed | operator merges |
-| Da rilasciare | — | merged to `main` | included in a store release |
-| **In Produzione** (delivery point) | — | live on Google Play / App Store | archived periodically |
+| List                               | WIP                      | Enters when                            | Leaves when                                                         |
+| ---------------------------------- | ------------------------ | -------------------------------------- | ------------------------------------------------------------------- |
+| Documentazione                     | —                        | reference material (not work)          | —                                                                   |
+| Idee                               | —                        | anyone proposes an option              | operator promotes it to Pronto, with acceptance checklist and owner |
+| **Pronto** (commitment point)      | 3                        | operator pulls it in; card is complete | an agent starts it                                                  |
+| In Sviluppo                        | 2                        | owner starts work (worktree created)   | PR open, checks green, PR link commented                            |
+| Verifica QA                        | ┐ shared                 | PR open                                | `qa-verifier` PASS (→ Review & Merge) or FAIL (→ In Sviluppo)       |
+| Review & Merge                     | ┘ max 3 with In Sviluppo | QA passed                              | operator merges                                                     |
+| Da rilasciare                      | —                        | merged to `main`                       | included in a store release                                         |
+| **In Produzione** (delivery point) | —                        | live on Google Play / App Store        | archived periodically                                               |
 
 The shared limit of 3 across In Sviluppo + Verifica QA + Review & Merge exists because the
 bottleneck is the operator's review time, not the agents: do not start new work while three cards
