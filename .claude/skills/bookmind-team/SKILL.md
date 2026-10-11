@@ -13,14 +13,14 @@ and merges.
 
 ## Roles and hand-offs
 
-| Role               | Owns                                                                    | Hands off to                            |
-| ------------------ | ----------------------------------------------------------------------- | --------------------------------------- |
-| `product-lead`     | what and why: cards, OpenSpec changes, order of work                    | `ux-designer` (UI cards) or an engineer |
-| `ux-designer`      | adaptive screen spec in the change's `design.md`                        | `app-engineer`                          |
-| `visual-designer`  | icon, splash, store graphics and copy; sources and exports in `design/` | `app-engineer` (integration)            |
-| `app-engineer`     | `src/`, Capacitor, `android/`, `ios/`                                   | `qa-verifier` (PR open)                 |
-| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config                      | `qa-verifier` (PR open)                 |
-| `qa-verifier`      | independent PASS/FAIL with evidence; read-only                          | operator (merge)                        |
+| Role               | Owns                                                                                                         | Hands off to                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| `product-lead`     | what and why: cards, OpenSpec changes, order of work                                                         | `ux-designer` (UI cards) or an engineer        |
+| `ux-designer`      | adaptive screen spec in the change's `design.md`                                                             | `app-engineer`                                 |
+| `visual-designer`  | how the app looks: brand, visual design system, redesigns, icon/splash/store graphics and copy, in `design/` | `ux-designer` (screen specs) or `app-engineer` |
+| `app-engineer`     | `src/`, Capacitor, `android/`, `ios/`                                                                        | `qa-verifier` (PR open)                        |
+| `backend-engineer` | `bookmind-server/`, Firebase config, deploy config                                                           | `qa-verifier` (PR open)                        |
+| `qa-verifier`      | independent PASS/FAIL with evidence; read-only                                                               | operator (merge)                               |
 
 Nobody marks their own work done. Nobody works outside their area: a card that spans frontend and
 backend is split.
