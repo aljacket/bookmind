@@ -87,8 +87,10 @@
                             <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
                                 {{ recommendation.title }}
                             </h3>
-                            <p class="text-sm text-ink-500 font-light"
-                               :class="recommendation.reason ? 'mb-4' : 'mb-1'">
+                            <p
+                                class="text-sm text-ink-500 font-light"
+                                :class="recommendation.reason ? 'mb-4' : 'mb-1'"
+                            >
                                 {{ recommendation.author }}
                             </p>
 
