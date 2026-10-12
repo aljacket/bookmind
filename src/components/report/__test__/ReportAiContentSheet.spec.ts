@@ -124,12 +124,16 @@ describe('ReportAiContentSheet', () => {
             expect(wrapper.text()).toContain(en.report_privacy_note)
         })
 
-        it('links every reason to its hint', () => {
+        it('names every reason by its label and describes it by its hint, so the hint is read once', () => {
             mountSheet()
 
             for (const radio of radios()) {
+                const value = radio.attributes('value') as 'offensive' | 'inaccurate' | 'other'
+                const name = wrapper.find(`#${radio.attributes('aria-labelledby')}`)
                 const hint = wrapper.find(`#${radio.attributes('aria-describedby')}`)
-                expect(hint.exists()).toBe(true)
+                expect(name.text()).toBe(en[`report_reason_${value}`])
+                expect(hint.text()).toBe(en[`report_reason_${value}_hint`])
+                expect(name.element.contains(hint.element)).toBe(false)
             }
         })
 

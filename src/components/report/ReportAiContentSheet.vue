@@ -141,11 +141,15 @@
                                         type="radio"
                                         name="report-reason"
                                         :value="option"
+                                        :aria-labelledby="`report-reason-label-${option}`"
                                         :aria-describedby="`report-reason-hint-${option}`"
                                         class="w-5 h-5 mt-0.5 shrink-0 accent-ink-900"
                                     />
                                     <span class="min-w-0 font-sans">
-                                        <span class="block text-sm font-medium text-ink-900">
+                                        <span
+                                            :id="`report-reason-label-${option}`"
+                                            class="block text-sm font-medium text-ink-900"
+                                        >
                                             {{ t(`report_reason_${option}`) }}
                                         </span>
                                         <span
@@ -533,6 +537,8 @@
     .rs-title {
         flex: 1 1 auto;
         min-width: 0;
+        /* A long word ("recommendation", "segnalazione") must wrap at 320 px with 200 % text. */
+        overflow-wrap: anywhere;
     }
     .rs-title:focus {
         outline: none;
