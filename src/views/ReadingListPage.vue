@@ -122,9 +122,18 @@
 
                             <!-- Reason -->
                             <p v-if="book.reason"
-                               class="text-sm text-ink-600 italic mb-4 leading-relaxed">
+                               class="text-sm text-ink-600 italic mb-1 leading-relaxed">
                                 {{ book.reason }}
                             </p>
+
+                            <!-- The reason is AI text: it can be reported. A card without one shows
+                                 nothing the AI wrote, so it gets no action. -->
+                            <ReportAiContentButton
+                                v-if="book.reason"
+                                class="-ml-2 mb-3"
+                                :target="recommendationTarget(book)"
+                                :book-title="book.title"
+                            />
 
                             <!-- Metadata Row -->
                             <div class="flex items-center gap-4 text-xs text-ink-400 mb-5">
@@ -197,6 +206,8 @@
 
     import Header from '@/components/layout/Header.vue'
     import Footer from '@/components/layout/Footer.vue'
+    import ReportAiContentButton from '@/components/report/ReportAiContentButton.vue'
+    import { recommendationTarget } from '@/services/reports/reportAiContent'
 
     const authStore = useAuthStore()
     const { t, locale } = useI18n()

@@ -23,7 +23,10 @@
                         v-for="(msg, i) in chat"
                         :key="i"
                         class="flex"
-                        :class="msg.role === 'user' ? 'justify-end' : 'justify-start'"
+                        :class="[
+                            msg.role === 'user' ? 'justify-end' : 'justify-start',
+                            msg.kind === 'clarifier' ? 'flex-col items-start' : ''
+                        ]"
                     >
                         <div
                             :class="[
@@ -35,6 +38,14 @@
                         >
                             {{ msg.text }}
                         </div>
+                        <!-- Only the clarifier question is AI output: the opener and the anchor are
+                             app copy, and the user's own bubbles are not reportable. -->
+                        <ReportAiContentButton
+                            v-if="msg.kind === 'clarifier'"
+                            class="ml-2 mt-1"
+                            :target="clarifierTarget(msg.text)"
+                            :disabled="isAwaiting"
+                        />
                     </div>
 
                     <div v-if="isAwaiting" class="flex justify-start">
@@ -129,8 +140,11 @@
     import Header from '@/components/layout/Header.vue'
     import CTAButton from '@/components/ui/CTAButton.vue'
     import AiTransparencyNote from '@/components/ui/AiTransparencyNote.vue'
+    import ReportAiContentButton from '@/components/report/ReportAiContentButton.vue'
+    import { clarifierTarget } from '@/services/reports/reportAiContent'
 
-    type ChatMessage = { role: 'assistant' | 'user'; text: string }
+    // `kind: 'clarifier'` marks the one assistant message that the AI wrote (it can be reported).
+    type ChatMessage = { role: 'assistant' | 'user'; text: string; kind?: 'clarifier' }
 
     const { t, tm } = useI18n()
     const router = useRouter()
@@ -268,7 +282,7 @@
         scrollToBottom()
         try {
             const { question } = await fetchClarifier(buildTranscript())
-            chat.value.push({ role: 'assistant', text: question })
+            chat.value.push({ role: 'assistant', text: question, kind: 'clarifier' })
             scrollToBottom()
             focusInput()
             return true

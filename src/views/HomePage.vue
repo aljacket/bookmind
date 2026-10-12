@@ -87,15 +87,25 @@
                             <h3 class="text-lg font-serif font-semibold text-ink-800 mb-1 leading-tight">
                                 {{ recommendation.title }}
                             </h3>
-                            <p class="text-sm text-ink-500 mb-4 font-light">
+                            <p
+                                class="text-sm text-ink-500 font-light"
+                                :class="recommendation.reason ? 'mb-4' : 'mb-1'"
+                            >
                                 {{ recommendation.author }}
                             </p>
 
                             <!-- Recommendation Reason -->
                             <p v-if="recommendation.reason"
-                               class="text-sm text-ink-600 italic mb-4 leading-relaxed">
+                               class="text-sm text-ink-600 italic mb-1 leading-relaxed">
                                 {{ recommendation.reason }}
                             </p>
+
+                            <!-- The whole card is AI output, so every card can be reported -->
+                            <ReportAiContentButton
+                                class="-ml-2 mb-3"
+                                :target="recommendationTarget(recommendation)"
+                                :book-title="recommendation.title"
+                            />
 
                             <!-- Metadata Row -->
                             <div class="flex items-center gap-4 text-xs text-ink-400 mb-5">
@@ -215,6 +225,8 @@
     import Footer from '@/components/layout/Footer.vue'
     import CTAButton from '@/components/ui/CTAButton.vue'
     import SkeletonCard from '@/components/ui/SkeletonCard.vue'
+    import ReportAiContentButton from '@/components/report/ReportAiContentButton.vue'
+    import { recommendationTarget } from '@/services/reports/reportAiContent'
 
     const authStore = useAuthStore()
     const route = useRoute()

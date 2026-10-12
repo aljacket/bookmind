@@ -15,7 +15,7 @@ vi.mock('@/services/indexedDB/userPreferences', () => ({
     getReadingList: vi.fn().mockResolvedValue([])
 }))
 
-import api, { RECOMMENDATION_TIMEOUT_MS, classifyApiError } from '../axios'
+import api, { RECOMMENDATION_TIMEOUT_MS, classifyApiError, classifyReportError } from '../axios'
 import { fetchClarifier, fetchRecommendations } from '../../recommendations/bookRecommendation'
 
 // Replaces the network: records the request config that reached the adapter.
@@ -99,5 +99,37 @@ describe('classifyApiError', () => {
         ).toBe('generic')
         expect(classifyApiError(new Error('boom'))).toBe('generic')
         expect(classifyApiError(undefined)).toBe('generic')
+    })
+})
+
+describe('classifyReportError', () => {
+    const httpError = (status: number) =>
+        new AxiosError('failed', 'ERR_BAD_REQUEST', undefined, undefined, {
+            status,
+            data: {},
+            statusText: '',
+            headers: {},
+            config: { headers: {} as never }
+        })
+
+    it('maps 429 to quota and 401 to session', () => {
+        expect(classifyReportError(httpError(429))).toBe('quota')
+        expect(classifyReportError(httpError(401))).toBe('session')
+    })
+
+    it('maps a request without a response (offline, DNS, timeout) to network', () => {
+        expect(classifyReportError(new AxiosError('Network Error', 'ERR_NETWORK'))).toBe('network')
+        expect(
+            classifyReportError(new AxiosError('timeout of 10000ms exceeded', 'ECONNABORTED'))
+        ).toBe('network')
+        expect(classifyReportError(new AxiosError('timed out', 'ETIMEDOUT'))).toBe('network')
+    })
+
+    it('maps server errors, validation errors and anything unexpected to generic', () => {
+        expect(classifyReportError(httpError(500))).toBe('generic')
+        expect(classifyReportError(httpError(503))).toBe('generic')
+        expect(classifyReportError(httpError(422))).toBe('generic')
+        expect(classifyReportError(new Error('boom'))).toBe('generic')
+        expect(classifyReportError(undefined)).toBe('generic')
     })
 })

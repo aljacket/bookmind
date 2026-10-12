@@ -45,4 +45,17 @@ export function classifyApiError(error: unknown): ApiErrorKind {
     return 'generic'
 }
 
+export type ReportErrorKind = 'quota' | 'session' | 'network' | 'generic'
+
+// Errors of `POST /reports`. Same 429 and 401 as the rest of the API, but a request that got no
+// response at all (offline, DNS, timeout) is told apart from a server error, because the advice to
+// the user differs: check the connection versus try again in a moment.
+export function classifyReportError(error: unknown): ReportErrorKind {
+    if (!axios.isAxiosError(error)) return 'generic'
+    if (!error.response) return 'network'
+    if (error.response.status === 429) return 'quota'
+    if (error.response.status === 401) return 'session'
+    return 'generic'
+}
+
 export default api

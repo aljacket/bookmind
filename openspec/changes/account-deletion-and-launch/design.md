@@ -691,3 +691,329 @@ Viewports: 360×780, 600×960, 840×1200, 1200×800 (DevTools), 780×360 landsca
 3.  **Haptics**: none in #63. They belong to card #45 (native feel). See section 10.
 4.  **Data export before deletion**: not in v1, since neither store requires it. The operator wants it later, so it is its own card in Idee and is not part of this change.
 5.  **AI retention line**: approved now with `{provider}` and `{days}` read from the constant shared with #65. It follows the #71 decision automatically, with no new copy approval needed for a provider or days change.
+
+## UX spec: AI content reporting (card #67, task 8.1)
+
+Written by the ux-designer on 2026-10-12 against `main` 7ff7114. This section is the source of truth for the "Report" action, the reason sheet, its states and its copy. It covers the frontend only: `POST /reports` is already in `main` (#66, tasks 7.1 to 7.3) and does not change.
+
+### What the current screens look like (checked 2026-10-12, Chrome DevTools at 360×780; widths at 600, 840 and 1200 derived from the Tailwind classes)
+
+-   **AI text in the app, by screen (read from `src/views/` on 2026-10-12):**
+    -   `PreferencesPage.vue`: the chat shows four kinds of bubble. The opener and the anchor prompt are app copy from the locale files (`chat_openers`, `chat_anchors`), not AI output. The user's own bubbles are out of scope. **Only the clarifier question** (the assistant bubble pushed by `requestClarifier()` after the second user turn) is AI-generated.
+    -   `HomePage.vue`: every recommendation card is AI output: the model chose the title and author and wrote the italic `reason`. Cards are a 1-column grid below 768 px, 2 columns from `md`, 3 from `lg`. Card width: 312 px at 360 (measured), about 592 at 600, 344 at 840, 304 at 1200.
+    -   `ReadingListPage.vue`: **does show the AI reason** (`<p v-if="book.reason">`, same italic style as Home) on saved books. So the reading list gets the action too, but only on cards that show a reason (decision below).
+-   No toast, snackbar or bottom-sheet component exists. The only modal is `DeleteAccountDialog.vue` (#63). It already solves `inert` on `#app`, `matchMedia('(min-width: 600px) and (min-height: 480px)')`, `useBackButton`, safe areas and focus return. This spec reuses those mechanisms.
+-   Error patterns in use: the always-mounted `role="alert"` box in `PreferencesPage.vue` (red-50, with the 44 px "Sign in again" action for 401) and `classifyApiError()` in `src/services/api/axios.ts` (`quota` for 429, `session` for 401, everything else `generic`). Network and timeout errors are currently `generic`. This card needs them distinct (card step 5), see section 5.
+-   Measured at 360×780: the Home card's bookmark (heart) button is **20×20 px**, and the reading-list star and heart buttons are the same size. That is below the 44/48 baseline. It is outside #67 and is reported to the product-lead. The new Report action must not copy it.
+
+### Requirements this spec answers to (checked 2026-10-12)
+
+| Source                                                                                                                                                                                                             | What it asks of this flow                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Google Play, AI-Generated Content policy — https://support.google.com/googleplay/android-developer/answer/13985936                                                                                                 | Apps whose central feature is a text-to-text chatbot must provide in-app user reporting or flagging of offensive AI content, without the user leaving the app.                                                                                                                                                                                                                                                                              |
+| `ai-content-reporting` spec (this change) and Decision 9                                                                                                                                                           | Report action on the clarifier question and on each recommendation. Reasons offensive, inaccurate, other. Confirm receipt. Localized error with retry. Never navigate away.                                                                                                                                                                                                                                                                 |
+| `bookmind-server/main.py` `ReportRequest`, `auth.get_current_uid` and `quota.consume_report` (read on 2026-10-12)                                                                                                  | Body with `kind` (`clarifier` or `recommendation`), `lang` (`en`, `it` or `es`), `content` (1 to 1000 characters after trimming) and `reason` (`offensive`, `inaccurate` or `other`), and no other field (`extra="forbid"`). Responses: 204; 401 (token missing, invalid, expired or revoked); 422 (validation); 429 (`Daily report limit reached`, `Retry-After` up to the next UTC day); 503 (auth, quota store or log sink unavailable). |
+| Apple HIG, Accessibility — https://developer.apple.com/design/human-interface-guidelines/accessibility ; Android, large controls — https://developer.android.com/guide/topics/ui/accessibility/apps#large-controls | Targets at least 44×44 pt (Apple) and 48×48 dp (Android).                                                                                                                                                                                                                                                                                                                                                                                   |
+| WCAG 2.2 SC 2.5.3 Label in Name, 2.5.8 Target Size, 1.4.10 Reflow, 1.3.4 Orientation — https://www.w3.org/TR/WCAG22/                                                                                               | The accessible name starts with the visible label. Targets at least 24×24 (we use 44). Works at 320 px with 200 % text, in both orientations.                                                                                                                                                                                                                                                                                               |
+| Material Components for Android, Bottom sheets — https://github.com/material-components/material-components-android/blob/master/docs/components/BottomSheet.md                                                     | Modal bottom sheets are "an alternative to inline menus and simple dialogs on mobile devices"; default max width 640 dp; tapping outside dismisses.                                                                                                                                                                                                                                                                                         |
+| WAI-ARIA APG, Dialog (Modal) — https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/                                                                                                                              | Focus trapped, Escape closes, focus returns to the invoking element.                                                                                                                                                                                                                                                                                                                                                                        |
+
+### Flow at a glance
+
+```
+AI text (clarifier bubble / recommendation card)
+   └─ [⚑ Report] ──tap──▶ Reason sheet (idle: no reason picked, Send disabled)
+                              │ pick Offensive / Inaccurate / Something else
+                              ▼
+                           [Send report] ──▶ Sending (spinner, everything locked, one request)
+                  ┌──────────────┬───────────────┼────────────────┬──────────────────┐
+                  ▼              ▼               ▼                ▼                  ▼
+               204 OK       network/timeout   5xx/422/other     429 quota         401 session
+           "Report sent"    error + retry     error + retry     error, Close      error + "Sign in again"
+           [Done] closes    (reason kept)     (reason kept)     only              + Close
+                  │
+                  ▼
+       the Report action on that item becomes "✓ Reported" (not tappable) for the rest of the app session
+```
+
+The user never leaves the screen: no route change, no browser, no email. One tap, one choice, Send.
+
+### 1. Where the action sits (decided by the ux-designer, 2026-10-12)
+
+| Screen                              | Item                                                                                 | Action shown                                   | `kind`           |
+| ----------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------- | ---------------- |
+| `/preferences` (`PreferencesPage`)  | The clarifier question bubble only. Not the opener, not the anchor, not user bubbles | Always, once the question is shown             | `clarifier`      |
+| `/` (`HomePage`)                    | Every recommendation card                                                            | Always, also on a card whose `reason` is empty | `recommendation` |
+| `/reading-list` (`ReadingListPage`) | A saved book card                                                                    | **Only when `book.reason` is non-empty**       | `recommendation` |
+
+Why: the Play policy is about AI content the user sees. On Home the whole card is AI output (the model picked the book), so every card is reportable. In the reading list the book is the user's own saved choice, and the only AI text visible is the reason. A card without one shows nothing AI-written, so it gets no action.
+
+Why inline and not behind a "⋯" overflow menu: reporting has to be easy to find; an overflow menu would hide its only action and needs a menu component the app does not have. An inline text button directly under the AI text also tells the user, by position, exactly what they are reporting.
+
+#### 1a. The inline Report action (all three screens)
+
+```
+  The Left Hand of Darkness                  ← existing title
+  Ursula K. Le Guin                          ← existing author
+  You said you love quiet worlds… journey.   ← existing italic reason
+  ⚑ Report                                   ← NEW, 44 px tall row, 4 px below the AI text
+  Pages: 304   Published: March 1, 1969      ← existing metadata, 12 px below the action
+```
+
+| Property         | Value                                                                                                                                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Element          | `<button type="button" aria-haspopup="dialog">`                                                                                                                                                            |
+| Hit box          | `min-h-11 min-w-11` (at least 44×44 px), `inline-flex items-center gap-1.5 px-2 rounded-lg`                                                                                                                |
+| Visual alignment | On cards: `-ml-2`, so the icon lines up with the card's text edge while the hit box extends 8 px into the padding. In the chat: `ml-2`, so the icon lines up with the bubble's text (bubble `px-4`)        |
+| Icon             | Heroicons v2 `flag`, outline, 16×16 (`w-4 h-4`), `stroke-width 1.5`, `aria-hidden="true"`, inlined like the app's other SVGs                                                                               |
+| Label            | `report_action` ("Report"), `text-sm text-ink-600 font-sans not-italic` (ink-600 #565048 on white, about 7.9:1)                                                                                            |
+| Accessible name  | `aria-label` = `report_action_clarifier_aria`, or `report_action_recommendation_aria` with `{title}`. Both **start with the visible word** (WCAG 2.5.3)                                                    |
+| Pressed          | `active:bg-ink-100`; `hover:bg-ink-100` as an extra for pointer users. No hover-only affordance                                                                                                            |
+| Focus            | `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-400`                                                                                                                               |
+| Spacing          | 4 px between the AI text and the action (the reason's `mb-4` becomes `mb-1`; on a Home card without a reason, the author line's `mb-4` becomes `mb-1`). 12 px (`mb-3`) between the action and what follows |
+| Disabled         | Only in the chat: `disabled` while `isAwaiting` is true (`disabled:opacity-50`), so the sheet can never be open while the recommendation request navigates away                                            |
+
+Chat placement: the clarifier message row becomes `flex flex-col items-start`, bubble first, then the action with `mt-1`. `ChatMessage` gets an optional marker (for example `kind: 'clarifier'`) set only by `requestClarifier()`. The chat log is `aria-live="polite"`, so a screen reader reads the question followed by the action's name when it appears. That is acceptable and tells the user the action exists.
+
+#### 1b. "Reported" marker (after a successful report)
+
+-   The button is replaced, in the same place and at the same 44 px height (no layout shift), by `<span tabindex="-1" class="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm text-sage-700">` with a 16 px check icon (`aria-hidden`) and `report_done_inline` ("Reported"). sage-700 on white is about 9:1. Same `-ml-2` / `ml-2` alignment as the button.
+-   It is not interactive: the same item cannot be reported twice in a session.
+-   Scope of "already reported": an in-memory set keyed by `kind` + `content` (the exact string sent), shared by the three screens for the app session, so Home and the reading list agree. It is **never persisted** (no new data on the device) and is cleared when the signed-in user changes or signs out. After an app restart the action is available again; the backend's daily limit bounds abuse.
+
+### 2. The reason sheet: presentation per window class
+
+One component (suggested `src/components/report/ReportAiContentSheet.vue`), teleported to `body`, `z-[60]`, with the rest of the app `inert` while it is open (same mechanics as `DeleteAccountDialog.vue`). The presentation follows the #63 rule, by available width **and** height, never by device type:
+
+| Condition                              | Presentation                                            |
+| -------------------------------------- | ------------------------------------------------------- |
+| width < 600 px **or** height < 480 px  | **Modal bottom sheet** (phones, portrait and landscape) |
+| width ≥ 600 px **and** height ≥ 480 px | **Centred dialog** (tablets, open foldables, desktop)   |
+
+Why a bottom sheet and not #63's full-screen dialog on compact: this is a short choice with no text field and no keyboard. A sheet keeps the reported item's screen visible behind the scrim, which matches "without navigating away from the recommendations", and puts the choices within thumb reach.
+
+#### 2a. Bottom sheet (compact width or compact height)
+
+```
+┌──────────────────────────────────┐
+│ (screen behind, scrim ink-900/50)│
+├──────────────────────────────────┤ ← rounded-t-2xl, white
+│ Report this recommendation   [×] │  header: h2 + close 48×48
+│ ┃ The Left Hand of Darkness      │  quoted AI text, ink-50 panel,
+│ ┃ Ursula K. Le Guin              │  left rule ink-300
+│ ┃ You said you love quiet…       │
+│ What's wrong with it?            │  legend
+│ ┌──────────────────────────────┐ │
+│ │ ○ Offensive                  │ │  radio row ≥ 56 px
+│ │   Hateful, sexual, violent…  │ │
+│ └──────────────────────────────┘ │
+│ ┌──────────────────────────────┐ │
+│ │ ○ Inaccurate                 │ │
+│ │   Wrong or made-up facts…    │ │
+│ └──────────────────────────────┘ │
+│ ┌──────────────────────────────┐ │
+│ │ ○ Something else             │ │
+│ │   Another problem with…      │ │
+│ └──────────────────────────────┘ │
+│ Only this text and the reason…   │  privacy note
+│ (error box, role=alert)          │  always mounted, empty when no error
+├──────────────────────────────────┤  action bar, border-t ink-200
+│ [         Send report         ]  │  primary, 48 px
+│ [            Cancel           ]  │  secondary, 48 px
+└──────────────────────────────────┘ ← safe-area bottom
+```
+
+-   Root: `fixed inset-0 z-[60]`, scrim `bg-ink-900/50`. Scrim tap = Cancel (not while sending).
+-   Positioning box: `absolute bottom-0`, `left: var(--bm-safe-left); right: var(--bm-safe-right)`, so nothing sits under a landscape cut-out. Inside it the panel is `mx-auto w-full max-w-[640px]` (the Material default sheet max width): full width on a portrait phone, a centred 640 px sheet on a 780 px landscape phone.
+-   Panel: `bg-white rounded-t-2xl shadow-xl flex flex-col`, `max-height: calc(100dvh - var(--bm-safe-top) - 24px)`. Header and action bar stay fixed; the body scrolls (`overflow-y-auto overscroll-contain`).
+-   Header: `flex items-start justify-between pl-5 pr-2 pt-2`. Title `h2`, `font-serif text-xl text-ink-900 pt-3`, `tabindex="-1"`. Close button 48×48, `aria-label` = `report_close`, 24 px × icon.
+-   Body: `px-5 pb-4 space-y-4`.
+-   Action bar: `border-t border-ink-200 px-5 pt-3 pb-[calc(0.75rem+var(--bm-safe-bottom))] bg-white`. The panel's white runs to the bottom edge behind the navigation bar.
+    -   Panel narrower than 480 px: buttons stacked, `space-y-3`, "Send report" on top, "Cancel" below (same order as #63).
+    -   Panel 480 px or wider (landscape phone): one row, `flex flex-row-reverse gap-3`, each button `flex-1`, Send on the right. This saves about 60 px of height at 780×360.
+-   No drag handle and no swipe-to-dismiss in v1: a handle that cannot be dragged would mislead. Swipe gestures belong to card #45 (native feel).
+-   Motion: slide up from `translateY(100%)`, 220 ms, `cubic-bezier(0.2, 0, 0, 1)`; the scrim fades in over the same time. Exit 150 ms. With `prefers-reduced-motion: reduce`, fade only.
+
+Expected height at 360×780 in English: about 540 px, so the portrait sheet does not scroll. At 780×360 the panel is capped at about 312 px: header 56 + action bar 72 leave about 184 px of scrolling body.
+
+#### 2b. Centred dialog (medium, expanded, large)
+
+```
+            scrim ink-900/50
+     ┌───────────────────────────────────────────┐
+     │ Report this recommendation            [×] │  header px-6 pt-5
+     │ (same body as 2a, px-6)                   │  scrolls inside if needed
+     │───────────────────────────────────────────│
+     │                [ Cancel ] [ Send report ] │  footer px-6 py-4
+     └───────────────────────────────────────────┘
+```
+
+-   Width `min(480px, 100vw - 48px)`; max height `calc(100dvh - 48px - var(--bm-safe-top) - var(--bm-safe-bottom))`. `bg-white rounded-2xl border border-ink-200 shadow-xl`, centred with `place-items-center`.
+-   Footer: `flex flex-row-reverse flex-wrap justify-start gap-3`: Send on the right, Cancel to its left. Each `min-h-12 px-6 w-auto` (not CTAButton's `w-full`). At 200 % text the row wraps and both buttons go full width, Send on top.
+-   The same 480 px dialog at 600, 840 and 1200 px and on a tablet in either orientation. A modal choice stays modal; it does not become a side panel.
+-   Motion: fade plus scale 0.95 → 1, 150 ms (as #63). Reduced motion: fade only.
+
+### 3. Sheet content (both presentations)
+
+Order in the body:
+
+1.  **Title** (`h2`, in the header): `report_title_clarifier` or `report_title_recommendation`. It is the `aria-labelledby` target.
+2.  **Quoted AI text** (its `id` is the `aria-describedby` target): a `<blockquote>`, `bg-ink-50 border-l-2 border-ink-300 rounded-r-lg px-3 py-2`.
+    -   Clarifier: the question, `font-serif italic text-sm text-ink-700 line-clamp-4`.
+    -   Recommendation: title `font-serif font-semibold text-sm text-ink-800`, author `text-xs text-ink-600`, then the reason if any, `font-serif italic text-sm text-ink-700 line-clamp-3`. The values shown are the ones sent (section 5), so the user sees what leaves the device.
+    -   `line-clamp` hides overflow visually only; screen readers get the full text.
+3.  **Reasons**: a `<fieldset>` with `<legend>` = `report_reason_legend` (`text-sm font-semibold text-ink-800 mb-2`), then three rows in this order, `space-y-2`:
+
+    | Value        | Label key                  | Hint key                        |
+    | ------------ | -------------------------- | ------------------------------- |
+    | `offensive`  | `report_reason_offensive`  | `report_reason_offensive_hint`  |
+    | `inaccurate` | `report_reason_inaccurate` | `report_reason_inaccurate_hint` |
+    | `other`      | `report_reason_other`      | `report_reason_other_hint`      |
+
+    -   Each row is a `<label>` wrapping a native `<input type="radio" name="report-reason">`, so the whole row is the hit box: `flex items-start gap-3 rounded-xl border px-4 py-3 min-h-14` (at least 56 px).
+    -   Radio: `w-5 h-5 mt-0.5 accent-ink-900 shrink-0`. Label `text-sm font-medium text-ink-900`, hint below it `text-sm text-ink-600`, linked to the input with `aria-describedby`.
+    -   Unselected `border-ink-200 bg-white`; selected `border-ink-900 bg-ink-50`; pressed `active:bg-ink-100`; keyboard focus `has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ink-400` on the row.
+    -   **No reason is preselected.** The user chooses, so a report is never sent with a default reason by accident.
+    -   Arrow keys move between options (native radio behaviour).
+
+4.  **Privacy note**: `report_privacy_note`, `text-xs text-ink-600`.
+5.  **Error box**: a `<div role="alert">` that is always mounted and empty without an error. When filled: `bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm`, plus the optional "Sign in again" action (`chat_error_session_action`, `inline-flex min-h-11 items-center font-medium underline underline-offset-2`), exactly as in `PreferencesPage.vue`.
+
+Actions: "Send report" (`report_send`) looks like `CTAButton` primary; "Cancel" (`report_cancel`) like `CTAButton variant="secondary"`; both `min-h-12`. Send is `disabled` (CTAButton's existing disabled look) until a reason is picked. The form's submit is Send, so Enter on a selected radio sends.
+
+Tone: plain and calm, like the #63 dialog. The chat's playful voice is not used here.
+
+### 4. States
+
+| State                     | Trigger                                                                                                                                                                               | What the user sees                                                                                                                                                                                                                                                           | Focus / announcements                                                                                                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Idle**                  | Sheet opened                                                                                                                                                                          | Title, quote, three unselected reasons, privacy note. Send disabled; Cancel and × enabled                                                                                                                                                                                    | Focus on the title (`tabindex="-1"`, no visible ring on programmatic focus)                                                                         |
+| **Reason picked**         | A radio selected                                                                                                                                                                      | Selected row style. Send enabled                                                                                                                                                                                                                                             | —                                                                                                                                                   |
+| **Sending**               | Send with a reason, online                                                                                                                                                            | Send shows a 16 px spinner (`aria-hidden`) and `report_sending`, keeping its width. Radios, Cancel and × are `disabled`. Scrim tap, Escape and Android Back are ignored. The error box is cleared                                                                            | `aria-busy="true"` on the dialog; `report_sending` announced once by a polite live region                                                           |
+| **Sent**                  | Any 2xx (the backend returns 204)                                                                                                                                                     | Body and actions are replaced by a 24 px check icon `text-sage-700`, the heading `report_sent_title` (`font-serif text-xl text-ink-900`), the body `report_sent_body` (`text-sm text-ink-700`) and one button "Done" (`report_done`, primary). × still closes. No auto-close | Container `role="status"`; focus moves to the heading (`tabindex="-1"`)                                                                             |
+| **Network error**         | Offline at Send (`navigator.onLine === false`: **no request is sent**), or a request with no response: `ERR_NETWORK`, `ECONNABORTED`, `ETIMEDOUT` (the client's default 10 s timeout) | Error box `report_error_network`. Reason kept, Send enabled again: tapping it is the retry                                                                                                                                                                                   | `role="alert"`; focus back to Send                                                                                                                  |
+| **Generic error**         | 5xx (503 auth, quota store or log sink unavailable), 422, any other status                                                                                                            | Error box `report_error_generic`. Reason kept, Send enabled: retry                                                                                                                                                                                                           | `role="alert"`; focus back to Send                                                                                                                  |
+| **Daily limit (429)**     | 429 `Daily report limit reached`                                                                                                                                                      | Error box `report_error_quota`. **Send is removed** (a retry fails until the next UTC day). Cancel's label becomes `report_close`                                                                                                                                            | `role="alert"`; focus to Close                                                                                                                      |
+| **Session expired (401)** | 401                                                                                                                                                                                   | Error box `report_error_session` with the "Sign in again" action. Send is removed; Cancel's label becomes `report_close`                                                                                                                                                     | `role="alert"`; the action is the next focus stop. It closes the sheet, then signs out and goes to `/login` (same handler as `PreferencesPage.vue`) |
+
+-   **No double submit.** The send handler returns at once if a request is in flight (a flag checked first, not only the `disabled` attribute), so repeated taps, a double tap or Enter during sending produce exactly one `POST /reports`.
+-   After an error the user can change the reason and send again.
+-   Cancel, ×, Escape, scrim tap and Android Back (all except while sending) close the sheet without sending. Done closes it after success.
+-   Closing returns focus to the invoking Report button, or, after success, to the "Reported" marker (`tabindex="-1"`, section 1b).
+-   Haptics: none. Card #45 owns haptics, as decided for #63.
+
+### 5. What is sent (`POST /reports`)
+
+Through the existing `api` client (`src/services/api/axios.ts`), which adds the Firebase ID token, with its default 10 s timeout (the endpoint does not call the LLM). Body, and nothing else:
+
+| Field     | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`    | `"clarifier"` from the chat; `"recommendation"` from Home and the reading list                                                                                                                                                                                                                                                                                                                                                                           |
+| `lang`    | `useLanguageStore().selectedLanguage` at send time (`en`, `it` or `es`)                                                                                                                                                                                                                                                                                                                                                                                  |
+| `content` | Clarifier: the question exactly as received, trimmed. Recommendation: the **model's own output**, read from `fullRecommendation` (the raw `{title, author, reason}` JSON stored by `processRecommendations`) when it parses, otherwise the card's `title`, `author` and `reason`. Format: `"{title} — {author}"`, then a newline and `{reason}` when the reason is non-empty. If the string is longer than 1000 characters, cut it to 999 and append `…` |
+| `reason`  | `"offensive"`, `"inaccurate"` or `"other"`                                                                                                                                                                                                                                                                                                                                                                                                               |
+
+Why title and author go with the reason: they are AI output too (the model chose the book), and a reason such as "this one will make you cry" means nothing in Logs Explorer without the book it refers to. They identify nobody. The user's own messages, the transcript, the UID and the email are never in the body. Reading `fullRecommendation` keeps Google Books' corrected titles out, so the log shows what the model actually wrote.
+
+Error classification for this flow (suggested `classifyReportError`, alongside `classifyApiError`): 429 → `quota`; 401 → `session`; an axios error **without** `response` → `network`; anything else → `generic`. The offline pre-check maps to `network` without a request.
+
+### 6. Accessibility
+
+-   Sheet: `role="dialog"`, `aria-modal="true"`, `aria-labelledby` = the title, `aria-describedby` = the quote. `#app` is `inert` while it is open.
+-   Tab order: × → radio group (one stop, arrows inside) → Send → Cancel, trapped and wrapping. In the bottom sheet the stacked order matches the DOM. In the centred dialog and the landscape row, the DOM order stays Send → Cancel; `flex-row-reverse` only changes where they are drawn.
+-   Accessible names: the inline action uses the `*_aria` keys (visible word first). Buttons in the sheet use their visible labels. Icons are `aria-hidden`.
+-   Live regions: the error box (`role="alert"`, always mounted), the sending text (`aria-live="polite"`), the sent state (`role="status"`).
+-   Colour is never the only signal: the selected reason has the radio dot and a darker border; errors have text; "Reported" has a check icon and a word.
+
+### 7. Reflow, orientation, text size, safe areas
+
+-   320 px wide at 200 % text: no horizontal scroll. Hints wrap, the sheet body scrolls between header and action bar, and the centred footer wraps to full-width buttons.
+-   Portrait and landscape at every class. Landscape phones (height < 480) get the bottom sheet with the one-row action bar.
+-   Safe areas: the sheet's positioning box is inset by `--bm-safe-left/right`; the panel's max height subtracts `--bm-safe-top`; the action bar pads `--bm-safe-bottom`. The centred dialog is offset by all four.
+-   No on-screen keyboard opens in this flow (no text field). A hardware keyboard on a tablet gets Tab, arrows, Enter and Escape.
+
+### 8. Copy (en / it / es)
+
+Not legal text, so no operator approval is needed (card #67). Plain and calm. `{title}` is the displayed book title.
+
+| Key                                 | en                                                                                          | it                                                                                                               | es                                                                                                      |
+| ----------------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `report_action`                     | Report                                                                                      | Segnala                                                                                                          | Reportar                                                                                                |
+| `report_action_clarifier_aria`      | Report this AI question                                                                     | Segnala questa domanda dell'IA                                                                                   | Reportar esta pregunta de la IA                                                                         |
+| `report_action_recommendation_aria` | Report the AI recommendation for {title}                                                    | Segnala il consiglio dell'IA su {title}                                                                          | Reportar la recomendación de la IA sobre {title}                                                        |
+| `report_done_inline`                | Reported                                                                                    | Segnalato                                                                                                        | Reportado                                                                                               |
+| `report_title_clarifier`            | Report this question                                                                        | Segnala questa domanda                                                                                           | Reportar esta pregunta                                                                                  |
+| `report_title_recommendation`       | Report this recommendation                                                                  | Segnala questo consiglio                                                                                         | Reportar esta recomendación                                                                             |
+| `report_reason_legend`              | What's wrong with it?                                                                       | Qual è il problema?                                                                                              | ¿Qué problema tiene?                                                                                    |
+| `report_reason_offensive`           | Offensive                                                                                   | Offensivo                                                                                                        | Ofensivo                                                                                                |
+| `report_reason_offensive_hint`      | Hateful, sexual, violent or harassing                                                       | Odio, contenuti sessuali, violenza o molestie                                                                    | Odio, contenido sexual, violencia o acoso                                                               |
+| `report_reason_inaccurate`          | Inaccurate                                                                                  | Inesatto                                                                                                         | Inexacto                                                                                                |
+| `report_reason_inaccurate_hint`     | Wrong or made-up facts about a book or author                                               | Informazioni sbagliate o inventate su un libro o un autore                                                       | Datos erróneos o inventados sobre un libro o un autor                                                   |
+| `report_reason_other`               | Something else                                                                              | Altro                                                                                                            | Otro motivo                                                                                             |
+| `report_reason_other_hint`          | Another problem with this answer                                                            | Un altro problema con questa risposta                                                                            | Otro problema con esta respuesta                                                                        |
+| `report_privacy_note`               | Only this text and the reason you pick are sent. Your messages aren't included.             | Inviamo solo questo testo e il motivo che scegli. I tuoi messaggi non sono inclusi.                              | Solo se envían este texto y el motivo que elijas. Tus mensajes no se incluyen.                          |
+| `report_send`                       | Send report                                                                                 | Invia segnalazione                                                                                               | Enviar reporte                                                                                          |
+| `report_sending`                    | Sending…                                                                                    | Invio in corso…                                                                                                  | Enviando…                                                                                               |
+| `report_cancel`                     | Cancel                                                                                      | Annulla                                                                                                          | Cancelar                                                                                                |
+| `report_close`                      | Close                                                                                       | Chiudi                                                                                                           | Cerrar                                                                                                  |
+| `report_sent_title`                 | Report sent                                                                                 | Segnalazione inviata                                                                                             | Reporte enviado                                                                                         |
+| `report_sent_body`                  | Thanks for telling us. Reports help us improve BookMind's suggestions.                      | Grazie per avercelo segnalato. Le segnalazioni ci aiutano a migliorare i consigli di BookMind.                   | Gracias por avisarnos. Los reportes nos ayudan a mejorar las recomendaciones de BookMind.               |
+| `report_done`                       | Done                                                                                        | Fatto                                                                                                            | Hecho                                                                                                   |
+| `report_error_network`              | Your report wasn't sent because the connection failed. Check your connection and try again. | La segnalazione non è stata inviata perché la connessione non ha funzionato. Controlla la connessione e riprova. | El reporte no se ha enviado porque ha fallado la conexión. Comprueba la conexión y vuelve a intentarlo. |
+| `report_error_generic`              | Your report wasn't sent. Try again in a moment.                                             | La segnalazione non è stata inviata. Riprova tra poco.                                                           | El reporte no se ha enviado. Vuelve a intentarlo en un momento.                                         |
+| `report_error_quota`                | You've reached today's limit for reports. You can send more tomorrow.                       | Hai raggiunto il limite di segnalazioni per oggi. Potrai inviarne altre domani.                                  | Has alcanzado el límite de reportes de hoy. Podrás enviar más mañana.                                   |
+| `report_error_session`              | Your session has expired. Sign in again to send the report.                                 | La sessione è scaduta. Accedi di nuovo per inviare la segnalazione.                                              | Tu sesión ha caducado. Inicia sesión de nuevo para enviar el reporte.                                   |
+
+Existing key reused: `chat_error_session_action` ("Sign in again"). The verb stays the same along the flow: "Report" → "Send report" → "Report sent" → "Reported".
+
+Notes: "tomorrow" is approximate. The counter resets at 00:00 UTC (`Retry-After` runs to the next UTC day), which is 01:00 or 02:00 in Italy; the chat's quota copy already says "tomorrow" on the same basis. In `es`, "Reportar" is used rather than "Denunciar", which reads as a formal complaint and is too strong for "inaccurate".
+
+### 9. Acceptance checklist (for the app-engineer and the qa-verifier)
+
+Viewports: 360×780, 600×960, 840×1200, 1200×800 (DevTools), 780×360 landscape, 320×640 with 200 % text, plus `Pixel_9_API_36` and `Pixel_Tablet_API_36` (portrait and landscape).
+
+**Placement**
+
+-   [ ] `/preferences`: the action appears under the clarifier question only. The opener, the anchor prompt and the user's bubbles have none. It is disabled while the recommendation request is in flight.
+-   [ ] `/`: every recommendation card has the action directly under the reason (or under the author when the reason is empty), above the metadata row.
+-   [ ] `/reading-list`: the action appears on cards with a reason and on no other card.
+-   [ ] Each action's hit box is at least 44×44 px (`getBoundingClientRect`) at all four widths and on both emulators.
+-   [ ] Accessible names: TalkBack reads "Report this AI question" and "Report the AI recommendation for <title>" (and the it/es equivalents); each name starts with the visible label.
+
+**Sheet presentation**
+
+-   [ ] 360×780, 320×640 and 780×360: bottom sheet. At 780×360 it is 640 px wide and centred, with its actions in one row. On the emulator nothing sits under the status bar, the navigation bar or a cut-out.
+-   [ ] 600×960, 840×1200, 1200×800 and the Pixel Tablet in both orientations: a centred dialog 480 px wide (or 100vw − 48 px), rounded-2xl, with a scrim.
+-   [ ] 320 px at 200 % text: no horizontal scroll; the body scrolls between a fixed header and action bar.
+-   [ ] Every control in the sheet is at least 44×44 px: ×, each reason row (at least 56 px high), Send, Cancel/Close, Done, Sign in again.
+
+**Behaviour**
+
+-   [ ] No reason is preselected and Send is disabled until one is picked.
+-   [ ] A valid send makes exactly one `POST /reports` whose body has only `kind`, `lang`, `content` and `reason` (Network panel and vitest). `content` holds only the AI text as in section 5, never the user's messages. The route never changes.
+-   [ ] Tapping Send twice quickly, or Send then Enter, still makes exactly one request (vitest).
+-   [ ] 204: the "Report sent" state with Done; after closing, the item shows "Reported" and cannot be reported again until the app restarts or the user changes.
+-   [ ] Offline (DevTools Offline, airplane mode on the emulator): `report_error_network`, no request sent, reason kept, and Send works again once online.
+-   [ ] Timeout or no response (request blocked, or delayed past 10 s): `report_error_network` with retry.
+-   [ ] 503 and 422 (mocked): `report_error_generic` with retry.
+-   [ ] 429 (mocked): `report_error_quota`, Send removed, Close only.
+-   [ ] 401 (mocked): `report_error_session` with "Sign in again", which closes the sheet, signs out and opens `/login`.
+-   [ ] While sending: spinner and text show; radios, Cancel and × are disabled; Escape, scrim tap and Android Back do not close the sheet.
+
+**Accessibility**
+
+-   [ ] `role="dialog"`, `aria-modal`, `aria-labelledby` and `aria-describedby` are set; `#app` is `inert` while the sheet is open.
+-   [ ] Focus goes to the title on open, Tab wraps inside, arrows move between reasons, Escape closes (not while sending), and focus returns to the Report button (or to the "Reported" marker after success).
+-   [ ] TalkBack announces errors and "Report sent" without the user moving focus.
+
+**Copy**
+
+-   [ ] Every key in section 8 exists in `en.json`, `it.json` and `es.json` with the text above (vitest key test).
+
+### 10. Decisions taken in this spec, and observations
+
+1.  **Reading list**: the action appears there, only on cards that show an AI reason (card #67 asked the ux-designer to confirm).
+2.  **Home cards without a reason**: they still get the action, because the recommendation itself is AI output.
+3.  **`content` for a recommendation** carries the model's title and author with its reason (section 5). If the operator prefers the reason alone, only the content builder changes; the UI does not.
+4.  **"Reported" memory** is in memory only and never persisted.
+5.  **Observation, outside #67**: the Home bookmark button and the reading-list star and heart buttons measure 20×20 px at 360 px, below the 44/48 baseline. Reported to the product-lead for a separate card.
