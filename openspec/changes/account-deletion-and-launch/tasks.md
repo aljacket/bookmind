@@ -98,7 +98,7 @@ The #71 provider decision was taken on 2026-10-10: OpenAI (design Decision 10, o
 
 ## 8. App: report AI content (card #67, `ux-designer` → `app-engineer`)
 
--   [ ] 8.1 **ux-designer**: "Report" action on the clarifier question and on each recommendation card, the reason picker, confirmation and error states, with targets ≥ 44 px.
+-   [x] 8.1 **ux-designer**: "Report" action on the clarifier question and on each recommendation card, the reason picker, confirmation and error states, with targets ≥ 44 px.
 -   [ ] 8.2 Call `POST /reports` with the AI text only. Show a localized confirmation or an error with retry. The user never leaves the app.
 -   [ ] 8.3 Emulator verification on phone and tablet.
 
