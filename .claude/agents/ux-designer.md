@@ -34,8 +34,9 @@ These come from official sources; cite them, do not reinvent them.
 -   **Touch targets**: ≥ 44×44 pt (Apple HIG) and ≥ 48×48 dp (Android); never below WCAG 2.5.8's 24×24.
 -   **Safe areas / edge-to-edge**: content clears `--safe-area-inset-*` (Capacitor System Bars) on
     every edge; Android 15+ draws edge-to-edge by default.
--   **Orientation and reflow**: every screen works in portrait and landscape (WCAG 1.3.4; Android 16
-    ignores orientation locks on large screens) and at 320 px wide with 200 % text (WCAG 1.4.10).
+-   **Orientation**: every screen works in portrait and landscape (WCAG 1.3.4; Android 16 ignores
+    orientation locks on large screens). Large text / 200 % reflow is out of scope unless the card
+    asks for it — the operator decided to handle it with its own card when needed.
 -   **Native feel**: no hover-only affordances, visible pressed states, haptics on meaningful actions,
     keyboard never covers the focused field. A screen that feels like a website is an App Review 4.2
     risk.
