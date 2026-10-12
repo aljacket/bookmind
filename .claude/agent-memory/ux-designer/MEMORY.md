@@ -1,3 +1,3 @@
--   [UI patterns (proposed #63)](project_ui_patterns.md) — dialog rule w<600 or h<480 full-screen, red-700 destructive, sage success, danger-zone menu card
--   [Worktree write hook](feedback_worktree_write_hook.md) — Edit/Write blocked in worktrees; append openspec files via Bash heredoc
+-   [UI patterns (#63, #67)](project_ui_patterns.md) — dialog vs bottom-sheet rule, inline report action, red-700 destructive, sage success, danger-zone menu
+-   [Worktree write hook](feedback_worktree_write_hook.md) — openspec via small Bash heredocs, git -C one command per call, npm ci in worktree for previews
 -   [Preview signed-in screens](reference_preview_signed_in.md) — Pinia fake user snippet to view menu/home in DevTools without an account
