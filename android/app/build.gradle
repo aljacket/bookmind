@@ -1,5 +1,23 @@
 apply plugin: 'com.android.application'
 
+// Release signing (upload key for Play App Signing). Nothing secret lives in the repo:
+// values come from environment variables first, then from android/keystore.properties
+// (git-ignored; template in android/keystore.properties.example). See README "Release build".
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+def signingValue = { String envName, String propName ->
+    def fromEnv = System.getenv(envName)
+    fromEnv ? fromEnv : keystoreProperties.getProperty(propName)
+}
+def uploadStoreFile = signingValue('BOOKMIND_UPLOAD_STORE_FILE', 'storeFile')
+def uploadStorePassword = signingValue('BOOKMIND_UPLOAD_STORE_PASSWORD', 'storePassword')
+def uploadKeyAlias = signingValue('BOOKMIND_UPLOAD_KEY_ALIAS', 'keyAlias')
+def uploadKeyPassword = signingValue('BOOKMIND_UPLOAD_KEY_PASSWORD', 'keyPassword')
+def hasReleaseSigning = uploadStoreFile && uploadStorePassword && uploadKeyAlias && uploadKeyPassword
+
 android {
     namespace = "com.bookmind.app"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -16,10 +34,35 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                storeFile rootProject.file(uploadStoreFile)
+                storePassword uploadStorePassword
+                keyAlias uploadKeyAlias
+                keyPassword uploadKeyPassword
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}
+
+// Fail fast instead of producing an unsigned release that Play would reject.
+tasks.matching { it.name in ['bundleRelease', 'assembleRelease', 'packageReleaseBundle'] }.configureEach {
+    doFirst {
+        if (!hasReleaseSigning) {
+            throw new GradleException(
+                'Release signing is not configured. Set BOOKMIND_UPLOAD_STORE_FILE, BOOKMIND_UPLOAD_STORE_PASSWORD, ' +
+                'BOOKMIND_UPLOAD_KEY_ALIAS and BOOKMIND_UPLOAD_KEY_PASSWORD, or create android/keystore.properties ' +
+                'from android/keystore.properties.example (see README, "Release build").')
         }
     }
 }
